@@ -1,1 +1,11 @@
-/* You can add global styles to this file, and also import other style files */
+@import "./styles/reset";
+@import "./styles/variables";
+@import "./styles/themes";
+
+@import "./styles/components/cloud";
+@import "./styles/components/strip";
+
+body {
+  background: var(--main-background-color);
+  font-size: 10px;
+}

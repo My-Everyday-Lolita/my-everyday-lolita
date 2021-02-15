@@ -1,0 +1,32 @@
+.top-left-cloud {
+  fill: var(--top-left-cloud);
+}
+
+.top-left-cloud-shadow {
+  fill: var(--top-left-cloud-shadow);
+}
+
+.top-right-cloud {
+  fill: var(--top-right-cloud);
+}
+
+.top-right-cloud-shadow {
+  fill: var(--top-right-cloud-shadow);
+}
+
+#top-left-cloud {
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  width: 150px;
+  height: auto;
+}
+#top-right-cloud {
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  right: 0;
+  width: 145px;
+  height: auto;
+}

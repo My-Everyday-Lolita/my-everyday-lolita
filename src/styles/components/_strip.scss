@@ -1,0 +1,20 @@
+$from: 1;
+$to: 6;
+
+@for $i from $from to $to {
+  .strip-#{$i} {
+    background: var(--strip-#{$i}-color);
+    width: var(--strip-#{$i});
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    z-index: $to - $i;
+
+    &.left {
+      left: 0;
+    }
+    &.right {
+      right: 0;
+    }
+  }
+}

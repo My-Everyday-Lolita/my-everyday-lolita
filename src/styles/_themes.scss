@@ -1,0 +1,81 @@
+:root {
+  --main-background-color: #fff0fe;
+
+  // DECO
+  --top-left-cloud: #424242;
+  --top-left-cloud-shadow: #232323;
+  --top-right-cloud: #424242;
+  --top-right-cloud-shadow: #232323;
+
+  --strip-1: 10px;
+  --strip-1-color: #f7bff2;
+  --strip-2: 15px;
+  --strip-2-color: #cc85ff;
+  --strip-3: 28px;
+  --strip-3-color: #f7bff2;
+  --strip-4: 34px;
+  --strip-4-color: #fff0fe;
+  --strip-5: 50px;
+  --strip-5-color: #f7bff2;
+
+  // BUTTON
+  --app-button-primary: #424242;
+  --app-button-primary-text-color: #eee;
+  --app-button-primary-shadow: #232323;
+  --app-button-accent: #424242;
+  --app-button-accent-text-color: #eee;
+  --app-button-accent-shadow: #232323;
+  --app-button-default: #424242;
+  --app-button-default-text-color: #eee;
+  --app-button-default-shadow: #232323;
+}
+
+body.theme-sweet {
+  --main-background-color: #fff0fe;
+
+  --top-left-cloud: #92c8f4;
+  --top-left-cloud-shadow: #6396d3;
+  --top-right-cloud: #92c8f4;
+  --top-right-cloud-shadow: #6396d3;
+  --strip-1-color: #f7bff2;
+  --strip-2-color: #cc85ff;
+  --strip-3-color: #f7bff2;
+  --strip-4-color: #fff0fe;
+  --strip-5-color: #f7bff2;
+
+  // BUTTON
+  --app-button-primary: #f7bff2;
+  --app-button-primary-text-color: #000;
+  --app-button-primary-shadow: #cc85ff;
+  --app-button-accent: #92c8f4;
+  --app-button-accent-text-color: #fff0fe;
+  --app-button-accent-shadow: #6396d3;
+  --app-button-default: #424242;
+  --app-button-default-text-color: #eee;
+  --app-button-default-shadow: #232323;
+}
+
+body.theme-gothic {
+  --main-background-color: #7b71a5;
+
+  --top-left-cloud: #3f0770;
+  --top-left-cloud-shadow: #1c0638;
+  --top-right-cloud: #3f0770;
+  --top-right-cloud-shadow: #1c0638;
+  --strip-1-color: #000;
+  --strip-2-color: #4500b2;
+  --strip-3-color: #000;
+  --strip-4-color: #0a0077;
+  --strip-5-color: #000;
+
+  // BUTTON
+  --app-button-primary: #322187;
+  --app-button-primary-text-color: #fff;
+  --app-button-primary-shadow: #000;
+  --app-button-accent: #92c8f4;
+  --app-button-accent-text-color: #fff0fe;
+  --app-button-accent-shadow: #6396d3;
+  --app-button-default: #424242;
+  --app-button-default-text-color: #eee;
+  --app-button-default-shadow: #232323;
+}
