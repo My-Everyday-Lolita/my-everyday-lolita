@@ -1,6 +1,9 @@
 :root {
   --main-background-color: #fff0fe;
 
+  --primary: #424242;
+  --primary-shadow: #232323;
+
   // DECO
   --top-left-cloud: #424242;
   --top-left-cloud-shadow: #232323;
@@ -35,6 +38,9 @@
 
 body.theme-sweet {
   --main-background-color: #fff0fe;
+
+  --primary: #92c8f4;
+  --primary-shadow: #6396d3;
 
   --top-left-cloud: #92c8f4;
   --top-left-cloud-shadow: #6396d3;

@@ -1,4 +1,4 @@
-import { animate, query, stagger, style, transition, trigger } from '@angular/animations';
+import { animate, group, query, stagger, style, transition, trigger } from '@angular/animations';
 import { Component, HostBinding, OnInit } from '@angular/core';
 
 @Component({
@@ -7,10 +7,16 @@ import { Component, HostBinding, OnInit } from '@angular/core';
   animations: [
     trigger('homeEnterAnimation', [
       transition(':enter', [
-        query('nav a', [
-          style({ opacity: 0, transform: 'scale(0.7)' }),
-          stagger(100, animate('330ms linear', style({ opacity: 1, transform: 'scale(1)' })))
-        ], { optional: true }),
+        group([
+          query('.top-item', [
+            style({ opacity: 0, transform: 'translate(-50%, -50%) scale(0.5)' }),
+            animate('330ms linear', style({ opacity: 1, transform: 'translate(-50%, -50%) scale(1)' }))
+          ], { optional: true }),
+          query('nav a', [
+            style({ opacity: 0, transform: 'scale(0.7)' }),
+            stagger(100, animate('330ms linear', style({ opacity: 1, transform: 'scale(1)' })))
+          ], { optional: true }),
+        ])
       ])
     ])
   ]
