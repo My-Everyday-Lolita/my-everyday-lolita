@@ -19,7 +19,7 @@ import { TadaConfig } from './tada.model';
 export class TadaComponent implements OnInit {
 
   tadaStyle: any = { top: '50%', left: '50%', 'width.px': 10, 'height.px': 10 };
-  color = 'primary';
+  color = 'primary-shadow';
   activate = 'none';
 
   onDone?: () => void;

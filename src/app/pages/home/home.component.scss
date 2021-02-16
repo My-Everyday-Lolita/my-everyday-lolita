@@ -15,8 +15,41 @@ nav {
 #bunny {
   width: 112px;
   height: auto;
-  position: absolute;
-  top: 24%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  margin: var(--spacing-big);
+}
+
+.deco-item {
+  position: fixed;
+
+  > img {
+    width: inherit;
+    height: auto;
+  }
+
+  &.sweet {
+    &.item-1 {
+      top: 23%;
+      left: 3%;
+      width: 68px;
+      img {
+        transform: rotate(10deg);
+      }
+    }
+    &.item-2 {
+      top: 78%;
+      right: 3%;
+      width: 68px;
+      img {
+        transform: rotate(-10deg);
+      }
+    }
+  }
+}
+
+#brand-logo {
+  width: 142px;
+  height: auto;
+  display: block;
+  margin: var(--spacing-big);
+  margin-top: var(--spacing-bigger);
 }

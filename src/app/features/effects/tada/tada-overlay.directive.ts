@@ -21,7 +21,7 @@ export class TadaOverlayDirective {
         'width.px': config.size,
         'height.px': config.size,
       };
-      componentRef.instance.color = config.color || 'primary';
+      componentRef.instance.color = config.color || 'primary-shadow';
       componentRef.instance.onDone = () => {
         componentRef.destroy();
       };

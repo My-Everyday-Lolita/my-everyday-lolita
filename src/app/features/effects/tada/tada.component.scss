@@ -23,9 +23,15 @@
   pointer-events: none;
 
   &.primary {
+    background: var(--primary);
+  }
+  &.primary-shadow {
     background: var(--primary-shadow);
   }
   &.accent {
+    background: var(--accent);
+  }
+  &.accent-shadow {
     background: var(--accent-shadow);
   }
 

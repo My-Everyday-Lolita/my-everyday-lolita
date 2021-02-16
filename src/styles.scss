@@ -1,6 +1,7 @@
 @import "./styles/reset";
 @import "./styles/variables";
 @import "./styles/themes";
+@import "./styles/layout";
 
 @import "./styles/components/cloud";
 @import "./styles/components/strip";
@@ -8,10 +9,11 @@
 body {
   background: var(--main-background-color);
   font-size: 10px;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  // position: fixed;
+  // top: 0;
+  // left: 0;
+  // right: 0;
+  // bottom: 0;
   overscroll-behavior-y: none;
+  // overflow-y: auto;
 }

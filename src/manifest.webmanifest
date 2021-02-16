@@ -1,8 +1,8 @@
 {
   "name": "My Everyday Lolita",
   "short_name": "My Everyday Lolita",
-  "theme_color": "#1976d2",
-  "background_color": "#fafafa",
+  "theme_color": "#cc85ff",
+  "background_color": "#cc85ff",
   "display": "standalone",
   "scope": "./",
   "start_url": "./",
