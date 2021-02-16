@@ -13,6 +13,8 @@ import { ButtonComponent } from './features/buttons/button/button.component';
 import { HomeComponent } from './pages/home/home.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { TadaComponent } from './features/effects/tada/tada.component';
+import { TadaOverlayDirective } from './features/effects/tada/tada-overlay.directive';
 
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
   return new TranslateHttpLoader(http);
@@ -22,7 +24,9 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
   declarations: [
     AppComponent,
     ButtonComponent,
-    HomeComponent
+    HomeComponent,
+    TadaComponent,
+    TadaOverlayDirective,
   ],
   imports: [
     CommonModule,

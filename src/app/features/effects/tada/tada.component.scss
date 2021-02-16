@@ -1,0 +1,45 @@
+.tada {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 10px;
+  height: 10px;
+  z-index: 3;
+  user-select: none;
+  pointer-events: none;
+}
+
+.tada-item {
+  width: 8px;
+  height: 8px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-radius: 16px;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  user-select: none;
+  pointer-events: none;
+
+  &.primary {
+    background: var(--primary-shadow);
+  }
+  &.accent {
+    background: var(--accent-shadow);
+  }
+
+  &:nth-child(3),
+  &:nth-child(7) {
+    transform: translate(-50%, -50%) rotate(90deg);
+  }
+
+  &:nth-child(2),
+  &:nth-child(6) {
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+  &:nth-child(4),
+  &:nth-child(8) {
+    transform: translate(-50%, -50%) rotate(-45deg);
+  }
+}

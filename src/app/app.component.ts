@@ -1,5 +1,6 @@
 import { animate, group, query, stagger, style, transition, trigger } from '@angular/animations';
 import { Component } from '@angular/core';
+import { TadaService } from './features/effects/tada/tada.service';
 
 @Component({
   selector: 'app-root',
@@ -46,4 +47,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'my-everyday-lolita';
+
+  constructor(public tadaService: TadaService) { }
+
 }

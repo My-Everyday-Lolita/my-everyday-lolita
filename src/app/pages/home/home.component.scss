@@ -1,4 +1,7 @@
 nav {
+  li {
+    position: relative;
+  }
   a {
     margin-bottom: var(--spacing-medium);
     width: 270px;
