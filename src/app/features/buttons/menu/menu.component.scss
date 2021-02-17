@@ -1,0 +1,64 @@
+:host {
+  display: block;
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  border: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  background-color: var(--menu-background);
+  box-shadow: 4px 3px 0 var(--menu-foreground);
+  color: var(--menu-foreground);
+  position: relative;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.menu-icon {
+  position: relative;
+  display: block;
+  transform: rotate(0deg);
+  transition: all 330ms linear;
+
+  span {
+    height: 6px;
+    width: 28px;
+    border-radius: 8px;
+    background-color: var(--menu-foreground);
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 330ms linear;
+
+    &:nth-child(1) {
+      transform: translate(-50%, -200%);
+    }
+    &:nth-child(3) {
+      transform: translate(-50%, 100%);
+    }
+  }
+}
+
+:host {
+  &.active {
+    .menu-icon {
+      transform: rotate(180deg);
+
+      span {
+        &:nth-child(2) {
+          opacity: 0;
+        }
+        &:nth-child(1) {
+          transform: translate(-50%, -50%) rotate(45deg);
+        }
+        &:nth-child(3) {
+          transform: translate(-50%, -50%) rotate(-45deg);
+        }
+      }
+    }
+  }
+}

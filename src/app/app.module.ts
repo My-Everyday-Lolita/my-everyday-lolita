@@ -19,6 +19,7 @@ import { MyClosetComponent } from './pages/my-closet/my-closet.component';
 import { MyWishlistComponent } from './pages/my-wishlist/my-wishlist.component';
 import { MyCoordChecklistComponent } from './pages/my-coord-checklist/my-coord-checklist.component';
 import { SearchComponent } from './pages/search/search.component';
+import { MenuComponent } from './features/buttons/menu/menu.component';
 
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
   return new TranslateHttpLoader(http);
@@ -35,6 +36,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     MyWishlistComponent,
     MyCoordChecklistComponent,
     SearchComponent,
+    MenuComponent,
   ],
   imports: [
     CommonModule,

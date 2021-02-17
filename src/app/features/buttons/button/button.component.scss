@@ -1,6 +1,6 @@
 :host {
   background-color: var(--app-button-default);
-  box-shadow: 0 15px 0 var(--app-button-default-shadow);
+  box-shadow: 5px 4px 0 var(--app-button-default-shadow);
   color: var(--app-button-default-text-color);
   border-radius: 16px;
   display: flex;
@@ -11,6 +11,10 @@
   -webkit-tap-highlight-color: transparent;
   position: relative;
   text-align: center;
+
+  &:focus {
+    outline: none;
+  }
 
   .text-content {
     width: 100%;

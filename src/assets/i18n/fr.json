@@ -1,4 +1,9 @@
 {
+  "APP": {
+    "MENU": {
+      "LABEL": "Ouvrir/Fermer le menu"
+    }
+  },
   "HOME": {
     "LINKS": {
       "MY_CLOSET": "Mon placard",

@@ -1,4 +1,9 @@
 {
+  "APP": {
+    "MENU": {
+      "LABEL": "Open/Close the menu"
+    }
+  },
   "HOME": {
     "LINKS": {
       "MY_CLOSET": "My closet",

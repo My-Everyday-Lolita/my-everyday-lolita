@@ -13,3 +13,10 @@ main {
   overflow: hidden;
   z-index: 100;
 }
+
+[menu-button] {
+  position: fixed;
+  top: 16px;
+  right: 22px;
+  z-index: 11;
+}

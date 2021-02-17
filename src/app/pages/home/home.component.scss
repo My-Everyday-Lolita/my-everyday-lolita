@@ -26,6 +26,7 @@ nav {
   width: 112px;
   height: auto;
   margin: var(--spacing-big);
+  margin-top: var(--spacing);
 }
 
 .deco-item {
@@ -46,12 +47,22 @@ nav {
       }
     }
     &.item-2 {
-      top: 78%;
-      right: 3%;
+      top: 67%;
+      right: 5%;
       width: 68px;
       img {
         transform: rotate(-10deg);
       }
+    }
+    &.item-3 {
+      top: 21%;
+      right: 3%;
+      width: 68px;
+    }
+    &.item-4 {
+      top: 84%;
+      left: 5%;
+      width: 68px;
     }
   }
 }
@@ -61,5 +72,11 @@ nav {
   height: auto;
   display: block;
   margin: var(--spacing-big);
-  margin-top: var(--spacing-bigger);
+}
+
+#brand-title {
+  position: absolute;
+  bottom: -14px;
+  width: 195px;
+  height: auto;
 }
