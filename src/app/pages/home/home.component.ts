@@ -1,5 +1,7 @@
 import { animate, group, query, stagger, style, transition, trigger } from '@angular/animations';
-import { Component, HostBinding, OnInit } from '@angular/core';
+import { Component, HostBinding, Inject, OnInit } from '@angular/core';
+import { Routes } from '@angular/router';
+import { APP_ROUTES } from 'src/app/app.token';
 import { TadaService } from 'src/app/features/effects/tada/tada.service';
 
 @Component({
@@ -21,8 +23,34 @@ import { TadaService } from 'src/app/features/effects/tada/tada.service';
             style({ opacity: 0, transform: 'scale(0.5)' }),
             stagger(200, animate('500ms linear', style({ opacity: 1, transform: 'scale(1)' })))
           ], { optional: true }),
+          query('#brand-logo', [
+            style({ opacity: 0 }),
+            animate('800ms linear', style({ opacity: 1 }))
+          ], { optional: true }),
         ])
-      ])
+      ]),
+      transition(':leave', [
+        style({ opacity: 1, transform: 'translateY(0%)' }),
+        animate('330ms linear', style({ opacity: 0, transform: 'translateY(-5%)' }))
+        // group([
+        //   query('.top-item', [
+        //     style({ opacity: 1 }),
+        //     animate('330ms linear', style({ opacity: 0 }))
+        //   ], { optional: true }),
+        //   query('nav a', [
+        //     style({ opacity: 1 }),
+        //     animate('330ms linear', style({ opacity: 0 }))
+        //   ], { optional: true }),
+        //   query('.deco-item', [
+        //     style({ opacity: 1 }),
+        //     animate('330ms linear', style({ opacity: 0 }))
+        //   ], { optional: true }),
+        //   query('#brand-logo', [
+        //     style({ opacity: 1 }),
+        //     animate('330ms linear', style({ opacity: 0 }))
+        //   ], { optional: true }),
+        // ])
+      ]),
     ])
   ]
 })
@@ -30,7 +58,14 @@ export class HomeComponent {
 
   @HostBinding('@homeEnterAnimation') homeEnterAnimation = true;
 
-  constructor(private tadaService: TadaService) { }
+  routes: Routes;
+
+  constructor(
+    private tadaService: TadaService,
+    @Inject(APP_ROUTES) routes: Routes
+  ) {
+    this.routes = routes.filter(route => route.data && route.data.home);
+  }
 
   onBrandLogoClick(event: MouseEvent): void {
     this.tadaService.tada({

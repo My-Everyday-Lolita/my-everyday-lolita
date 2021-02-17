@@ -62,8 +62,8 @@
   <div class="strip-5 right"></div>
 </div>
 
-<main>
-  <router-outlet></router-outlet>
+<main [@routeAnimations]="prepareRoute(outlet)">
+  <router-outlet #outlet="outlet"></router-outlet>
 </main>
 
 <div class="tada-overlay" aria-hidden="true">

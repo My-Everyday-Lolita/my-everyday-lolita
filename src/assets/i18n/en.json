@@ -1,1 +1,10 @@
-{}
+{
+  "HOME": {
+    "LINKS": {
+      "MY_CLOSET": "My closet",
+      "MY_WISHLIST": "My wishlist",
+      "MY_COORD_CHECKLIST": "My coord checklist",
+      "SEARCH": "Search"
+    }
+  }
+}

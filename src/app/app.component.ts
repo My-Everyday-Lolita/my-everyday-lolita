@@ -1,5 +1,6 @@
-import { animate, group, query, stagger, style, transition, trigger } from '@angular/animations';
+import { animate, animateChild, group, query, stagger, style, transition, trigger } from '@angular/animations';
 import { Component } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
 import { TadaService } from './features/effects/tada/tada.service';
 
 @Component({
@@ -43,11 +44,32 @@ import { TadaService } from './features/effects/tada/tada.service';
         ])
       ]),
     ]),
+    trigger('routeAnimations', [
+      transition('* <=> *', [
+        style({ position: 'relative' }),
+        query(':enter, :leave', [
+          style({
+            top: 0,
+            left: 0,
+            width: '100%'
+          })
+        ], { optional: true }),
+        query(':leave', animateChild(), { optional: true }),
+        query(':enter', [
+          animateChild(),
+          style({ position: 'relative' }),
+        ], { optional: true }),
+      ])
+    ])
   ]
 })
 export class AppComponent {
   title = 'my-everyday-lolita';
 
   constructor(public tadaService: TadaService) { }
+
+  prepareRoute(outlet: RouterOutlet): any {
+    return outlet && outlet.activatedRouteData && outlet.activatedRouteData.animation;
+  }
 
 }

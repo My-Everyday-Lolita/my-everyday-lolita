@@ -15,6 +15,10 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { TadaComponent } from './features/effects/tada/tada.component';
 import { TadaOverlayDirective } from './features/effects/tada/tada-overlay.directive';
+import { MyClosetComponent } from './pages/my-closet/my-closet.component';
+import { MyWishlistComponent } from './pages/my-wishlist/my-wishlist.component';
+import { MyCoordChecklistComponent } from './pages/my-coord-checklist/my-coord-checklist.component';
+import { SearchComponent } from './pages/search/search.component';
 
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
   return new TranslateHttpLoader(http);
@@ -27,6 +31,10 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     HomeComponent,
     TadaComponent,
     TadaOverlayDirective,
+    MyClosetComponent,
+    MyWishlistComponent,
+    MyCoordChecklistComponent,
+    SearchComponent,
   ],
   imports: [
     CommonModule,
@@ -36,6 +44,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     AppRoutingModule,
     HttpClientModule,
     TranslateModule.forRoot({
+      defaultLanguage: 'en',
       loader: {
         provide: TranslateLoader,
         useFactory: HttpLoaderFactory,
