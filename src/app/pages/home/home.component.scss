@@ -29,6 +29,13 @@ nav {
   margin-top: var(--spacing);
 }
 
+#bat {
+  width: 180px;
+  height: auto;
+  margin: var(--spacing-big);
+  margin-top: var(--spacing);
+}
+
 .deco-item {
   position: fixed;
 
@@ -37,32 +44,49 @@ nav {
     height: auto;
   }
 
+  &.item-1 {
+    top: 23%;
+    left: 3%;
+    width: 68px;
+  }
+  &.item-2 {
+    top: 67%;
+    right: 5%;
+    width: 68px;
+  }
+  &.item-3 {
+    top: 21%;
+    right: 3%;
+    width: 68px;
+  }
+  &.item-4 {
+    top: 84%;
+    left: 5%;
+    width: 68px;
+  }
+
   &.sweet {
     &.item-1 {
-      top: 23%;
-      left: 3%;
-      width: 68px;
       img {
         transform: rotate(10deg);
       }
     }
     &.item-2 {
-      top: 67%;
-      right: 5%;
-      width: 68px;
       img {
         transform: rotate(-10deg);
       }
     }
+  }
+  &.gothic {
+    &.item-2 {
+      width: 80px;
+    }
     &.item-3 {
-      top: 21%;
-      right: 3%;
-      width: 68px;
+      right: 4%;
+      width: 74px;
     }
     &.item-4 {
-      top: 84%;
-      left: 5%;
-      width: 68px;
+      width: 87px;
     }
   }
 }

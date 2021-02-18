@@ -11,6 +11,7 @@
   -webkit-tap-highlight-color: transparent;
   position: relative;
   text-align: center;
+  transition: background-color 330ms linear, box-shadow 330ms linear, color 330ms linear;
 
   &:focus {
     outline: none;

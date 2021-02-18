@@ -80,10 +80,20 @@ body.theme-sweet {
 body.theme-gothic {
   --main-background-color: #7b71a5;
 
-  --top-left-cloud: #3f0770;
+  --primary: #322187;
+  --primary-shadow: #000;
+
+  --accent: #3f0670;
+  --accent-shadow: #1c0638;
+
+  --top-left-cloud: #3f0670;
   --top-left-cloud-shadow: #1c0638;
-  --top-right-cloud: #3f0770;
+  --top-right-cloud: #3f0670;
   --top-right-cloud-shadow: #1c0638;
+
+  --background-cloud: #fff;
+  --background-cloud-shadow: #000;
+
   --strip-1-color: #000;
   --strip-2-color: #4500b2;
   --strip-3-color: #000;
@@ -100,4 +110,7 @@ body.theme-gothic {
   --app-button-default: #424242;
   --app-button-default-text-color: #eee;
   --app-button-default-shadow: #232323;
+
+  --menu-background: #fff;
+  --menu-foreground: #000;
 }

@@ -10,6 +10,7 @@
   box-shadow: 4px 3px 0 var(--menu-foreground);
   color: var(--menu-foreground);
   position: relative;
+  transition: background-color 330ms linear, box-shadow 330ms linear, color 330ms linear;
 
   &:focus {
     outline: none;

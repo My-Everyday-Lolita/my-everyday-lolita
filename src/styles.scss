@@ -7,6 +7,7 @@
 @import "./styles/components/strip";
 
 body {
+  transition: all 330ms linear;
   background: var(--main-background-color);
   font-size: 10px;
   overscroll-behavior-y: none;

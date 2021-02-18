@@ -1,8 +1,9 @@
 import { animate, group, query, stagger, style, transition, trigger } from '@angular/animations';
-import { Component, HostBinding, Inject, OnInit } from '@angular/core';
+import { Component, HostBinding, Inject } from '@angular/core';
 import { Routes } from '@angular/router';
 import { APP_ROUTES } from 'src/app/app.token';
 import { TadaService } from 'src/app/features/effects/tada/tada.service';
+import { ThemeService } from 'src/app/features/theme/theme.service';
 
 @Component({
   templateUrl: './home.component.html',
@@ -43,6 +44,7 @@ export class HomeComponent {
   routes: Routes;
 
   constructor(
+    public themeService: ThemeService,
     private tadaService: TadaService,
     @Inject(APP_ROUTES) routes: Routes
   ) {

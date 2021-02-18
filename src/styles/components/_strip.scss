@@ -3,6 +3,7 @@ $to: 6;
 
 @for $i from $from to $to {
   .strip-#{$i} {
+    transition: background 330ms linear;
     background: var(--strip-#{$i}-color);
     width: var(--strip-#{$i});
     height: 100vh;

@@ -2,6 +2,7 @@ import { animate, animateChild, group, query, stagger, style, transition, trigge
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { TadaService } from './features/effects/tada/tada.service';
+import { ThemeService } from './features/theme/theme.service';
 
 @Component({
   selector: 'app-root',
@@ -66,10 +67,17 @@ import { TadaService } from './features/effects/tada/tada.service';
 export class AppComponent {
   title = 'my-everyday-lolita';
 
-  constructor(public tadaService: TadaService) { }
+  constructor(
+    public tadaService: TadaService,
+    private themeService: ThemeService
+  ) { }
 
   prepareRoute(outlet: RouterOutlet): any {
     return outlet && outlet.activatedRouteData && outlet.activatedRouteData.animation;
+  }
+
+  setTheme(): void {
+    this.themeService.setTheme(this.themeService.theme === 'sweet' ? 'gothic' : 'sweet');
   }
 
 }

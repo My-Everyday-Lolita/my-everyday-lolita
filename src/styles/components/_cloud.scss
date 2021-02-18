@@ -1,16 +1,20 @@
 .top-left-cloud {
+  transition: fill 330ms linear;
   fill: var(--top-left-cloud);
 }
 
 .top-left-cloud-shadow {
+  transition: fill 330ms linear;
   fill: var(--top-left-cloud-shadow);
 }
 
 .top-right-cloud {
+  transition: fill 330ms linear;
   fill: var(--top-right-cloud);
 }
 
 .top-right-cloud-shadow {
+  transition: fill 330ms linear;
   fill: var(--top-right-cloud-shadow);
 }
 
@@ -40,9 +44,11 @@
 }
 
 .background-cloud {
+  transition: fill 330ms linear;
   fill: var(--background-cloud);
 }
 .background-cloud-shadow {
+  transition: fill 330ms linear;
   fill: var(--background-cloud-shadow);
 }
 

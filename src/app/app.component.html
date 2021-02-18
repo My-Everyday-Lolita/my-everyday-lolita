@@ -62,7 +62,7 @@
   <div class="strip-5 right"></div>
 </div>
 
-<button menu-button></button>
+<button menu-button (click)="setTheme()"></button>
 
 <main [@routeAnimations]="prepareRoute(outlet)">
   <router-outlet #outlet="outlet"></router-outlet>
