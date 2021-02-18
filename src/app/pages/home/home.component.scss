@@ -22,7 +22,7 @@ nav {
   }
 }
 
-#bunny {
+.top-item > svg {
   width: 112px;
   height: auto;
   margin: var(--spacing-big);
@@ -30,10 +30,7 @@ nav {
 }
 
 #bat {
-  width: 180px;
-  height: auto;
-  margin: var(--spacing-big);
-  margin-top: var(--spacing);
+  transform: scale(1.5);
 }
 
 .deco-item {
@@ -87,6 +84,11 @@ nav {
     }
     &.item-4 {
       width: 87px;
+    }
+  }
+  &.classic {
+    &.item-4 {
+      top: 78%;
     }
   }
 }

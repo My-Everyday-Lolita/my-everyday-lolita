@@ -65,7 +65,6 @@ import { ThemeService } from './features/theme/theme.service';
   ]
 })
 export class AppComponent {
-  title = 'my-everyday-lolita';
 
   constructor(
     public tadaService: TadaService,
@@ -77,7 +76,7 @@ export class AppComponent {
   }
 
   setTheme(): void {
-    this.themeService.setTheme(this.themeService.theme === 'sweet' ? 'gothic' : 'sweet');
+    this.themeService.setTheme(this.themeService.theme === 'sweet' ? 'gothic' : this.themeService.theme === 'gothic' ? 'classic' : 'sweet');
   }
 
 }

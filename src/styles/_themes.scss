@@ -114,3 +114,41 @@ body.theme-gothic {
   --menu-background: #fff;
   --menu-foreground: #000;
 }
+
+body.theme-classic {
+  --main-background-color: #ffe2a9;
+
+  --primary: #d32a09;
+  --primary-shadow: #892806;
+
+  --accent: #875533;
+  --accent-shadow: #422a1a;
+
+  --top-left-cloud: #e0c3b8;
+  --top-left-cloud-shadow: #600202;
+  --top-right-cloud: #e0c3b8;
+  --top-right-cloud-shadow: #600202;
+
+  --background-cloud: #efac25;
+  --background-cloud-shadow: #600202;
+
+  --strip-1-color: #b50000;
+  --strip-2-color: #efac25;
+  --strip-3-color: #b50000;
+  --strip-4-color: #f9bbbb;
+  --strip-5-color: #b50000;
+
+  // BUTTON
+  --app-button-primary: #d32a09;
+  --app-button-primary-text-color: #fff;
+  --app-button-primary-shadow: #892806;
+  --app-button-accent: #875533;
+  --app-button-accent-text-color: #fff0fe;
+  --app-button-accent-shadow: #422a1a;
+  --app-button-default: #424242;
+  --app-button-default-text-color: #eee;
+  --app-button-default-shadow: #232323;
+
+  --menu-background: #edbe69;
+  --menu-foreground: #b50000;
+}
