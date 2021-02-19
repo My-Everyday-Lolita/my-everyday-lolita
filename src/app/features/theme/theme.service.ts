@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Observable, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +11,8 @@ export class ThemeService {
   theme = 'sweet';
   defaultTheme: string;
 
+  private themeChange = new Subject<string>();
+
   constructor() {
     this.defaultTheme = this.theme;
     const theme = localStorage.getItem(this.THEME_KEY) || this.defaultTheme;
@@ -18,6 +21,11 @@ export class ThemeService {
     } else {
       this.theme = theme;
     }
+    this.setStatusbar();
+  }
+
+  get theme$(): Observable<string> {
+    return this.themeChange.asObservable();
   }
 
   setTheme(theme: string): void {
@@ -26,6 +34,7 @@ export class ThemeService {
       this.setStatusbar();
       this.theme = theme;
       localStorage.setItem(this.THEME_KEY, this.theme);
+      this.themeChange.next(this.theme);
     }
   }
 

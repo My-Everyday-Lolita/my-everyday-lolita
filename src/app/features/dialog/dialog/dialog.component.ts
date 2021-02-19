@@ -1,5 +1,5 @@
-import { animate, animateChild, style, transition, trigger } from '@angular/animations';
-import { Component, ChangeDetectionStrategy, TemplateRef, HostBinding, ViewChild, ElementRef, OnInit } from '@angular/core';
+import { animate, animateChild, group, query, sequence, stagger, style, transition, trigger } from '@angular/animations';
+import { Component, ChangeDetectionStrategy, TemplateRef, HostBinding } from '@angular/core';
 import { DialogConfiguration } from '../dialog.model';
 
 @Component({

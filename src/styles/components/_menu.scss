@@ -7,6 +7,54 @@
   &.modal .dialog-content {
     top: 36px;
     transform: translateX(-50%);
-    width: 91%;
+    width: 91vw;
+    height: 165vw;
+  }
+
+  .dialog-content {
+    > svg {
+      position: absolute;
+      width: 100%;
+    }
+
+    // > ul {
+    //   display: flex;
+    //   flex-direction: column;
+    //   margin-top: 93px;
+
+    //   > li {
+    //     display: flex;
+    //     margin-left: 60px;
+
+    //     &:not(:last-of-type) {
+    //       margin-bottom: var(--spacing-medium);
+    //     }
+    //   }
+    // }
+
+    .menu-content {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      justify-content: flex-end;
+    }
+
+    .theme-buttons {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      margin-bottom: 108px;
+
+      li {
+        &:not(:last-of-type) {
+          margin-right: var(--spacing-medium);
+        }
+      }
+    }
+
+    [app-button] {
+      width: 188px;
+    }
   }
 }

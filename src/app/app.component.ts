@@ -1,5 +1,5 @@
 import { animate, animateChild, group, query, stagger, style, transition, trigger } from '@angular/animations';
-import { Component, TemplateRef, ViewChild, ViewContainerRef } from '@angular/core';
+import { Component, OnInit, TemplateRef, ViewChild, ViewContainerRef } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { DialogAttachComponent } from './features/dialog/dialog-attach/dialog-container.component';
 import { DialogService } from './features/dialog/dialog.service';
@@ -67,7 +67,7 @@ import { ThemeService } from './features/theme/theme.service';
     ])
   ]
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 
   @ViewChild('menu', { static: true }) private menuTemplate: any;
   @ViewChild('menuContainer', { static: true }) private menuContainer!: DialogAttachComponent;
@@ -80,6 +80,12 @@ export class AppComponent {
     private dialogService: DialogService,
     public viewContainerRef: ViewContainerRef
   ) { }
+
+  ngOnInit(): void {
+    setTimeout(() => {
+      this.toggleMenu();
+    }, 1000);
+  }
 
   prepareRoute(outlet: RouterOutlet): any {
     return outlet && outlet.activatedRouteData && outlet.activatedRouteData.animation;

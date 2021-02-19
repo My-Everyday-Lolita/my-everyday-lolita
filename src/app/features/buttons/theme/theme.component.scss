@@ -1,0 +1,15 @@
+:host {
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  background: var(--app-button-theme);
+  border-radius: 16px;
+  padding: var(--spacing);
+}
+
+svg {
+  width: 42px;
+}

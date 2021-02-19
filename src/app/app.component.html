@@ -137,6 +137,7 @@
       <style>
         .menu-cls-1 {
           fill: var(--menu-dialog-bg);
+          transition: fill 330ms linear;
         }
 
         .menu-cls-2 {
@@ -148,6 +149,7 @@
 
         .menu-cls-3 {
           fill: var(--primary-shadow);
+          transition: fill 330ms linear;
         }
 
         .menu-cls-4 {
@@ -157,10 +159,12 @@
 
         .menu-cls-5 {
           fill: var(--second-balloon);
+          transition: fill 330ms linear;
         }
 
         .menu-cls-6 {
           fill: var(--third-balloon);
+          transition: fill 330ms linear;
         }
       </style>
     </defs>
@@ -239,6 +243,25 @@
         d="M1070.06,541.4c-.25-5.71,8.07-12.74,15.7-12.74,12.48,0,25.07,18.85,19.55,30.28-4.1,8.49-18,12.33-22.92,8.26-3.29-2.7-.59-7.17-4.73-14.94C1074.13,545.64,1070.22,545.25,1070.06,541.4Z" />
     </g>
   </svg>
+  <div class="menu-content">
+    <ul class="theme-buttons">
+      <li>
+        <button theme-button theme="sweet">
+          Theme sweet
+        </button>
+      </li>
+      <li>
+        <button theme-button theme="gothic">
+          Theme gothic
+        </button>
+      </li>
+      <li>
+        <button theme-button theme="classic">
+          Theme classic
+        </button>
+      </li>
+    </ul>
+  </div>
 </ng-template>
 
 <app-dialog-attach #menuContainer></app-dialog-attach>

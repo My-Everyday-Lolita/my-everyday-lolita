@@ -22,6 +22,7 @@ import { SearchComponent } from './pages/search/search.component';
 import { MenuComponent } from './features/buttons/menu/menu.component';
 import { DialogComponent } from './features/dialog/dialog/dialog.component';
 import { DialogAttachComponent } from './features/dialog/dialog-attach/dialog-container.component';
+import { ThemeComponent } from './features/buttons/theme/theme.component';
 
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
   return new TranslateHttpLoader(http);
@@ -41,6 +42,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     MenuComponent,
     DialogComponent,
     DialogAttachComponent,
+    ThemeComponent,
   ],
   imports: [
     CommonModule,
