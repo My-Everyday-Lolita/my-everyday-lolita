@@ -114,6 +114,11 @@ export class AppComponent implements OnInit, OnDestroy {
     ).subscribe(data => {
       this.currentPage = data as PageData;
     });
+    window.onpopstate = (e: any) => {
+      if (this.menuComponent) {
+        this.menuComponent.close();
+      }
+    };
   }
 
   ngOnDestroy(): void {
@@ -141,7 +146,9 @@ export class AppComponent implements OnInit, OnDestroy {
           orignalClose();
         }
         this.menuComponent = undefined;
+        history.back();
       };
+      history.pushState({ menu: true }, 'Open menu');
     } else {
       this.menuComponent.close();
     }
