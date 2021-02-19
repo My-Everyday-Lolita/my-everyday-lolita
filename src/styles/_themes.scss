@@ -37,6 +37,10 @@
 
   --menu-background: #424242;
   --menu-foreground: #232323;
+
+  --menu-dialog-bg: #555555;
+
+  --dialog-backdrop: #000;
 }
 
 body.theme-sweet {
@@ -75,6 +79,12 @@ body.theme-sweet {
 
   --menu-background: #f7bff2;
   --menu-foreground: #cc85ff;
+
+  --menu-dialog-bg: #f4edbe;
+  --second-balloon: #92c8f4;
+  --third-balloon: #f7bff2;
+
+  --dialog-backdrop: #220935;
 }
 
 body.theme-gothic {
@@ -104,15 +114,21 @@ body.theme-gothic {
   --app-button-primary: #322187;
   --app-button-primary-text-color: #fff;
   --app-button-primary-shadow: #000;
-  --app-button-accent: #92c8f4;
+  --app-button-accent: #3f0670;
   --app-button-accent-text-color: #fff0fe;
-  --app-button-accent-shadow: #6396d3;
+  --app-button-accent-shadow: #1c0638;
   --app-button-default: #424242;
   --app-button-default-text-color: #eee;
   --app-button-default-shadow: #232323;
 
   --menu-background: #fff;
   --menu-foreground: #000;
+
+  --menu-dialog-bg: #938bbb;
+  --second-balloon: #3f0670;
+  --third-balloon: #cecece;
+
+  --dialog-backdrop: #06013d;
 }
 
 body.theme-classic {
@@ -151,4 +167,10 @@ body.theme-classic {
 
   --menu-background: #edbe69;
   --menu-foreground: #b50000;
+
+  --menu-dialog-bg: #fdd4bd;
+  --second-balloon: #e99f01;
+  --third-balloon: #d32a09;
+
+  --dialog-backdrop: #291a10;
 }

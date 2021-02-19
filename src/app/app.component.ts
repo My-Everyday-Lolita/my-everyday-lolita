@@ -1,6 +1,9 @@
 import { animate, animateChild, group, query, stagger, style, transition, trigger } from '@angular/animations';
-import { Component } from '@angular/core';
+import { Component, TemplateRef, ViewChild, ViewContainerRef } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { DialogAttachComponent } from './features/dialog/dialog-attach/dialog-container.component';
+import { DialogService } from './features/dialog/dialog.service';
+import { DialogComponent } from './features/dialog/dialog/dialog.component';
 import { TadaService } from './features/effects/tada/tada.service';
 import { ThemeService } from './features/theme/theme.service';
 
@@ -66,9 +69,16 @@ import { ThemeService } from './features/theme/theme.service';
 })
 export class AppComponent {
 
+  @ViewChild('menu', { static: true }) private menuTemplate: any;
+  @ViewChild('menuContainer', { static: true }) private menuContainer!: DialogAttachComponent;
+
+  menuComponent?: DialogComponent;
+
   constructor(
     public tadaService: TadaService,
-    private themeService: ThemeService
+    private themeService: ThemeService,
+    private dialogService: DialogService,
+    public viewContainerRef: ViewContainerRef
   ) { }
 
   prepareRoute(outlet: RouterOutlet): any {
@@ -77,6 +87,18 @@ export class AppComponent {
 
   setTheme(): void {
     this.themeService.setTheme(this.themeService.theme === 'sweet' ? 'gothic' : this.themeService.theme === 'gothic' ? 'classic' : 'sweet');
+  }
+
+  toggleMenu(): void {
+    if (this.menuComponent === undefined) {
+      this.menuComponent = this.dialogService.open(this.menuTemplate, {
+        dialogClass: 'main-menu',
+        modal: true,
+      }, this.menuContainer.viewContainerRef);
+    } else {
+      this.menuComponent.close();
+      this.menuComponent = undefined;
+    }
   }
 
 }

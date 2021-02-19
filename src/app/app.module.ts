@@ -20,6 +20,8 @@ import { MyWishlistComponent } from './pages/my-wishlist/my-wishlist.component';
 import { MyCoordChecklistComponent } from './pages/my-coord-checklist/my-coord-checklist.component';
 import { SearchComponent } from './pages/search/search.component';
 import { MenuComponent } from './features/buttons/menu/menu.component';
+import { DialogComponent } from './features/dialog/dialog/dialog.component';
+import { DialogAttachComponent } from './features/dialog/dialog-attach/dialog-container.component';
 
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
   return new TranslateHttpLoader(http);
@@ -37,6 +39,8 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     MyCoordChecklistComponent,
     SearchComponent,
     MenuComponent,
+    DialogComponent,
+    DialogAttachComponent,
   ],
   imports: [
     CommonModule,

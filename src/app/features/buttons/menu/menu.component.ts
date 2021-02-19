@@ -11,7 +11,7 @@ export class MenuComponent {
 
   @HostBinding('class.active')
   @Input()
-  active = false;
+  active: boolean | undefined = false;
 
   constructor(
     private tadaService: TadaService

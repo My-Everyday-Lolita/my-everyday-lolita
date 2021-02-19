@@ -1,6 +1,11 @@
 main {
   z-index: 10;
   position: relative;
+
+  &.menu-opened {
+    height: 100vh;
+    overflow: hidden;
+  }
 }
 
 .tada-overlay {
@@ -25,6 +30,6 @@ main {
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 1000;
+  z-index: 80;
   height: 15px;
 }

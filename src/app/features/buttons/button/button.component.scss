@@ -12,9 +12,14 @@
   position: relative;
   text-align: center;
   transition: background-color 330ms linear, box-shadow 330ms linear, color 330ms linear;
+  border: none;
 
   &:focus {
     outline: none;
+  }
+
+  &:active {
+    border: none;
   }
 
   .text-content {

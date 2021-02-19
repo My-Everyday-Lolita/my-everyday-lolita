@@ -1,0 +1,32 @@
+app-dialog {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  border: none;
+  font-size: 1.6rem;
+
+  &.modal {
+    .dialog-content {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    & > .backdrop {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: var(--dialog-backdrop);
+      opacity: 0.8;
+    }
+  }
+}
