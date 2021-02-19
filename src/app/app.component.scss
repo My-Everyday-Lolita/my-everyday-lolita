@@ -19,17 +19,44 @@ main {
   z-index: 100;
 }
 
-[menu-button] {
-  position: fixed;
-  top: 16px;
-  right: 22px;
-  z-index: 11;
-}
-
 #lace {
   position: fixed;
   top: 0;
   left: 0;
   z-index: 80;
   height: 15px;
+}
+
+.toolbar {
+  position: fixed;
+  top: 16px;
+  left: 22px;
+  right: 22px;
+  z-index: 11;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.back-title-wrapper {
+  flex: 1;
+  background: var(--primary);
+  box-shadow: 4px 3px 0 var(--primary-shadow);
+  border-radius: 30px;
+  margin-right: var(--spacing);
+  display: flex;
+}
+
+h1 {
+  margin: 0;
+  padding: 5px;
+  padding-left: var(--spacing-small);
+  display: flex;
+  color: var(--primary-text);
+  font-size: var(--font-size-medium);
+  font-family: Caveat;
+}
+
+[menu-button] {
+  z-index: 12;
 }

@@ -1,6 +1,9 @@
 import { animate, animateChild, group, query, stagger, style, transition, trigger } from '@angular/animations';
-import { Component, OnInit, TemplateRef, ViewChild, ViewContainerRef } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component, OnDestroy, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
+import { ActivatedRoute, NavigationEnd, NavigationStart, Router, RouterOutlet } from '@angular/router';
+import { Subject } from 'rxjs';
+import { filter, map, switchMap, takeUntil, tap } from 'rxjs/operators';
+import { PageData } from './app.model';
 import { DialogAttachComponent } from './features/dialog/dialog-attach/dialog-container.component';
 import { DialogService } from './features/dialog/dialog.service';
 import { DialogComponent } from './features/dialog/dialog/dialog.component';
@@ -64,27 +67,58 @@ import { ThemeService } from './features/theme/theme.service';
           style({ position: 'relative' }),
         ], { optional: true }),
       ])
+    ]),
+    trigger('toolbarItemAnimation', [
+      transition(':leave', [
+        style({ opacity: 1, transform: 'translateY(0%)' }),
+        animate('330ms linear', style({ opacity: 0, transform: 'translateY(20%)' }))
+      ]),
+      transition(':enter', [
+        style({ opacity: 0, transform: 'translateY(20%)' }),
+        animate('330ms linear', style({ opacity: 1, transform: 'translateY(0%)' }))
+      ]),
     ])
   ]
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, OnDestroy {
 
   @ViewChild('menu', { static: true }) private menuTemplate: any;
   @ViewChild('menuContainer', { static: true }) private menuContainer!: DialogAttachComponent;
 
   menuComponent?: DialogComponent;
+  currentPage?: PageData;
+
+  private unsubscsriber = new Subject();
 
   constructor(
     public tadaService: TadaService,
     private themeService: ThemeService,
     private dialogService: DialogService,
-    public viewContainerRef: ViewContainerRef
+    public viewContainerRef: ViewContainerRef,
+    private router: Router,
+    private activatedRoute: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
-    setTimeout(() => {
-      this.toggleMenu();
-    }, 1000);
+    this.router.events.pipe(
+      filter(event => event instanceof NavigationStart),
+      takeUntil(this.unsubscsriber)
+    ).subscribe(event => {
+      this.currentPage = undefined;
+    });
+    this.router.events.pipe(
+      filter(event => event instanceof NavigationEnd),
+      map(event => this.activatedRoute.firstChild as ActivatedRoute),
+      switchMap(route => route.data),
+      takeUntil(this.unsubscsriber)
+    ).subscribe(data => {
+      this.currentPage = data as PageData;
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.unsubscsriber.next();
+    this.unsubscsriber.complete();
   }
 
   prepareRoute(outlet: RouterOutlet): any {

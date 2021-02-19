@@ -1,0 +1,45 @@
+:host {
+  display: block;
+  width: 42px;
+  height: 42px;
+  border-top-left-radius: 50%;
+  border-bottom-left-radius: 50%;
+  border: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  background: transparent;
+  color: var(--menu-foreground);
+  position: relative;
+  transition: background-color 330ms linear, box-shadow 330ms linear, color 330ms linear;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.back-icon {
+  position: relative;
+  display: block;
+
+  span {
+    height: 4px;
+    width: 20px;
+    border-radius: 8px;
+    background-color: var(--menu-foreground);
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 330ms linear;
+
+    &:nth-child(1) {
+      transform: translate(-78%, -163%) rotate(-45deg);
+      width: 12px;
+    }
+    &:nth-child(3) {
+      transform: translate(-78%, 73%) rotate(45deg);
+      width: 12px;
+    }
+  }
+}

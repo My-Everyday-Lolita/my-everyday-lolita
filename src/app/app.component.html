@@ -125,7 +125,14 @@
   <div class="strip-5 right"></div>
 </div>
 
-<button menu-button (click)="toggleMenu()" [active]="menuComponent && menuComponent.opened"></button>
+<div class="toolbar">
+  <div @toolbarItemAnimation *ngIf="currentPage && !currentPage.isHome" class="back-title-wrapper">
+    <button back-button>{{ 'APP.BACK' | translate }}</button>
+    <h1 @toolbarItemAnimation *ngIf="currentPage.pageTitle">{{ currentPage.pageTitle | translate }}</h1>
+  </div>
+  <button menu-button (click)="toggleMenu()" [active]="menuComponent && menuComponent.opened"></button>
+  <app-dialog-attach #menuContainer></app-dialog-attach>
+</div>
 
 <main [@routeAnimations]="prepareRoute(outlet)" [class.menu-opened]="menuComponent && menuComponent.opened">
   <router-outlet #outlet="outlet"></router-outlet>
@@ -263,8 +270,6 @@
     </ul>
   </div>
 </ng-template>
-
-<app-dialog-attach #menuContainer></app-dialog-attach>
 
 <div class="tada-overlay" aria-hidden="true">
   <ng-template appTadaOverlay></ng-template>

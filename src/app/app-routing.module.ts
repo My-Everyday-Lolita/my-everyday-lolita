@@ -11,7 +11,8 @@ const routes: Routes = [
   {
     path: '', component: HomeComponent,
     data: {
-      animation: 'home'
+      animation: 'home',
+      isHome: true,
     }
   },
   {
@@ -19,7 +20,8 @@ const routes: Routes = [
     data: {
       home: true,
       linkLabel: 'HOME.LINKS.MY_CLOSET',
-      animation: 'my_closet'
+      animation: 'my_closet',
+      pageTitle: 'PAGES.TITLES.MY_CLOSET',
     }
   },
   {
@@ -27,7 +29,8 @@ const routes: Routes = [
     data: {
       home: true,
       linkLabel: 'HOME.LINKS.MY_WISHLIST',
-      animation: 'my_wishlist'
+      animation: 'my_wishlist',
+      pageTitle: 'PAGES.TITLES.MY_WISHLIST',
     }
   },
   {
@@ -35,7 +38,8 @@ const routes: Routes = [
     data: {
       home: true,
       linkLabel: 'HOME.LINKS.MY_COORD_CHECKLIST',
-      animation: 'my_coord_checklist'
+      animation: 'my_coord_checklist',
+      pageTitle: 'PAGES.TITLES.MY_COORD_CHECKLIST',
     }
   },
   {
@@ -43,7 +47,8 @@ const routes: Routes = [
     data: {
       home: true,
       linkLabel: 'HOME.LINKS.SEARCH',
-      animation: 'search'
+      animation: 'search',
+      pageTitle: 'PAGES.TITLES.SEARCH',
     }
   },
 ];

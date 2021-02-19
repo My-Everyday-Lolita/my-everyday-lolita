@@ -9,6 +9,15 @@
         "GOTHIC": "Theme gothic",
         "CLASSIC": "Theme classic"
       }
+    },
+    "BACK": "Previous page"
+  },
+  "PAGES": {
+    "TITLES": {
+      "MY_CLOSET": "My closet",
+      "MY_WISHLIST": "My wishlist",
+      "MY_COORD_CHECKLIST": "My coord checklist",
+      "SEARCH": "Search"
     }
   },
   "HOME": {
