@@ -2,6 +2,13 @@
   "APP": {
     "MENU": {
       "LABEL": "Open/Close the menu"
+    },
+    "THEME": {
+      "BUTTONS": {
+        "SWEET": "Theme sweet",
+        "GOTHIC": "Theme gothic",
+        "CLASSIC": "Theme classic"
+      }
     }
   },
   "HOME": {
