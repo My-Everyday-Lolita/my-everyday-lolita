@@ -95,9 +95,15 @@ export class AppComponent {
         dialogClass: 'main-menu',
         modal: true,
       }, this.menuContainer.viewContainerRef);
+      const orignalClose = this.menuComponent.onClose;
+      this.menuComponent.onClose = () => {
+        if (orignalClose) {
+          orignalClose();
+        }
+        this.menuComponent = undefined;
+      };
     } else {
       this.menuComponent.close();
-      this.menuComponent = undefined;
     }
   }
 

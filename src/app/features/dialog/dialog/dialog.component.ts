@@ -1,20 +1,36 @@
-import { Component, ChangeDetectionStrategy, TemplateRef, HostBinding } from '@angular/core';
+import { animate, animateChild, style, transition, trigger } from '@angular/animations';
+import { Component, ChangeDetectionStrategy, TemplateRef, HostBinding, ViewChild, ElementRef, OnInit } from '@angular/core';
 import { DialogConfiguration } from '../dialog.model';
 
 @Component({
   selector: 'app-dialog',
   templateUrl: './dialog.component.html',
   styleUrls: ['./dialog.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  animations: [
+    trigger('dialogAnimation', [
+      transition(':enter', [
+        style({ opacity: 0 }),
+        animate('330ms linear', style({ opacity: 1 })),
+        animateChild(),
+      ]),
+      transition(':leave', [
+        style({ opacity: 1 }),
+        animateChild(),
+        animate('330ms linear', style({ opacity: 0 })),
+      ])
+    ])
+  ]
 })
 export class DialogComponent {
-
 
   template!: TemplateRef<any>;
   config?: DialogConfiguration;
   opened = false;
 
   onClose?: () => void;
+
+  @HostBinding('@dialogAnimation') private dialogAnimation = true;
 
   @HostBinding('class')
   get classes(): string {
@@ -30,20 +46,10 @@ export class DialogComponent {
 
   show(): void {
     this.opened = true;
-    try {
-      // this.dialog.nativeElement[modal ? 'showModal' : 'show']();
-    } catch (error) {
-      // Fail silently.
-    }
   }
 
   close(): void {
     this.opened = false;
-    try {
-      // this.dialog.nativeElement.close();
-    } catch (error) {
-      // Fail silently.
-    }
     if (this.onClose) {
       this.onClose();
     }
