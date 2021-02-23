@@ -1,17 +1,19 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { CommonModule } from '@angular/common';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+
+import { NgAnimeDriverModule } from '@lheido/ng-anime-driver';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CommonModule } from '@angular/common';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { NgAnimeDriverModule } from '@lheido/ng-anime-driver';
 import { ButtonComponent } from './features/buttons/button/button.component';
 import { HomeComponent } from './pages/home/home.component';
-import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { TadaComponent } from './features/effects/tada/tada.component';
 import { TadaOverlayDirective } from './features/effects/tada/tada-overlay.directive';
@@ -24,6 +26,8 @@ import { DialogComponent } from './features/dialog/dialog/dialog.component';
 import { DialogAttachComponent } from './features/dialog/dialog-attach/dialog-container.component';
 import { ThemeComponent } from './features/buttons/theme/theme.component';
 import { BackComponent } from './features/buttons/back/back.component';
+import { RegistrationComponent } from './pages/registration/registration.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
   return new TranslateHttpLoader(http);
@@ -45,11 +49,13 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     DialogAttachComponent,
     ThemeComponent,
     BackComponent,
+    RegistrationComponent,
   ],
   imports: [
     CommonModule,
     BrowserModule,
     BrowserAnimationsModule,
+    ReactiveFormsModule,
     NgAnimeDriverModule,
     AppRoutingModule,
     HttpClientModule,

@@ -87,8 +87,10 @@ export class AppComponent implements OnInit, OnDestroy {
 
   menuComponent?: DialogComponent;
   currentPage?: PageData;
+  isMenuOpened?: boolean;
 
   private unsubscsriber = new Subject();
+  private menuClose$ = new Subject<boolean>();
 
   constructor(
     public tadaService: TadaService,
@@ -114,11 +116,20 @@ export class AppComponent implements OnInit, OnDestroy {
     ).subscribe(data => {
       this.currentPage = data as PageData;
     });
-    window.onpopstate = (e: any) => {
-      if (this.menuComponent) {
-        this.menuComponent.close();
-      }
-    };
+    // window.onpopstate = (e: PopStateEvent) => {
+    //   if (this.isMenuOpened && this.menuComponent) {
+    //     this.menuComponent.close();
+    //     this.isMenuOpened = false;
+    //     e.preventDefault();
+    //   }
+    // };
+    // this.menuClose$.pipe(takeUntil(this.unsubscsriber)).subscribe(closed => {
+    //   if (closed) {
+    //     history.back();
+    //   } else {
+    //     history.pushState({ menu: true }, 'Open menu');
+    //   }
+    // });
   }
 
   ngOnDestroy(): void {
@@ -134,24 +145,22 @@ export class AppComponent implements OnInit, OnDestroy {
     this.themeService.setTheme(this.themeService.theme === 'sweet' ? 'gothic' : this.themeService.theme === 'gothic' ? 'classic' : 'sweet');
   }
 
-  toggleMenu(): void {
-    if (this.menuComponent === undefined) {
+  toggleMenu(notify = true): void {
+    if (!this.isMenuOpened) {
       this.menuComponent = this.dialogService.open(this.menuTemplate, {
         dialogClass: 'main-menu',
         modal: true,
       }, this.menuContainer.viewContainerRef);
-      const orignalClose = this.menuComponent.onClose;
-      this.menuComponent.onClose = () => {
-        if (orignalClose) {
-          orignalClose();
-        }
-        this.menuComponent = undefined;
-        history.back();
-      };
-      history.pushState({ menu: true }, 'Open menu');
+      this.isMenuOpened = true;
     } else {
-      this.menuComponent.close();
+      this.isMenuOpened = false;
+      if (this.menuComponent) {
+        this.menuComponent.close();
+      }
     }
+    // if (notify) {
+    //   this.menuClose$.next(!this.isMenuOpened);
+    // }
   }
 
 }

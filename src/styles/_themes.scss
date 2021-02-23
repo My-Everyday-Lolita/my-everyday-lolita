@@ -40,9 +40,16 @@
   --menu-background: #424242;
   --menu-foreground: #232323;
 
+  --title: #424242;
+  --title-shadow: #232323;
+  --title-text: #fff;
+
   --menu-dialog-bg: #555555;
 
   --dialog-backdrop: #000;
+
+  --input-background: #cecece;
+  --input-color: #000;
 }
 
 body.theme-sweet {
@@ -84,11 +91,18 @@ body.theme-sweet {
   --menu-background: #f7bff2;
   --menu-foreground: #cc85ff;
 
+  --title: #f7bff2;
+  --title-shadow: #cc85ff;
+  --title-text: #000;
+
   --menu-dialog-bg: #f4edbe;
   --second-balloon: #92c8f4;
   --third-balloon: #f7bff2;
 
   --dialog-backdrop: #220935;
+
+  --input-background: #ffffff;
+  --input-color: #000;
 }
 
 body.theme-gothic {
@@ -129,11 +143,18 @@ body.theme-gothic {
   --menu-background: #fff;
   --menu-foreground: #000;
 
+  --title: #fff;
+  --title-shadow: #000;
+  --title-text: #000;
+
   --menu-dialog-bg: #938bbb;
   --second-balloon: #3f0670;
   --third-balloon: #cecece;
 
   --dialog-backdrop: #06013d;
+
+  --input-background: #cecece;
+  --input-color: #000;
 }
 
 body.theme-classic {
@@ -174,9 +195,16 @@ body.theme-classic {
   --menu-background: #edbe69;
   --menu-foreground: #b50000;
 
+  --title: #edbe69;
+  --title-shadow: #b50000;
+  --title-text: #000;
+
   --menu-dialog-bg: #fdd4bd;
   --second-balloon: #e99f01;
   --third-balloon: #d32a09;
 
   --dialog-backdrop: #291a10;
+
+  --input-background: #f1f1f1;
+  --input-color: #000;
 }

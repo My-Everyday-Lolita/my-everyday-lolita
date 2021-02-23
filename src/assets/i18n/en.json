@@ -17,7 +17,8 @@
       "MY_CLOSET": "My closet",
       "MY_WISHLIST": "My wishlist",
       "MY_COORD_CHECKLIST": "My coord checklist",
-      "SEARCH": "Search"
+      "SEARCH": "Search",
+      "REGISTRATION": "Registration"
     }
   },
   "HOME": {
@@ -26,6 +27,37 @@
       "MY_WISHLIST": "My wishlist",
       "MY_COORD_CHECKLIST": "My coord checklist",
       "SEARCH": "Search"
+    }
+  },
+  "REGISTRATION": {
+    "SUBMIT": "Register",
+    "REQUIRED_TEXT": "Fields marked with an * are mandatory.",
+    "FIELDS": {
+      "PLACEHOLDERS": {
+        "USERNAME": "Username",
+        "EMAIL": "Email",
+        "PASSWORD": "Password",
+        "CONFIRM_PASSWORD": "Password confirmation"
+      },
+      "LABELS": {
+        "USERNAME": "Username",
+        "EMAIL": "Email",
+        "PASSWORD": "Password",
+        "CONFIRM_PASSWORD": "Password confirmation"
+      }
+    },
+    "ERRORS": {
+      "REQUIRED": "Meh. This field is required.",
+      "MAX_LENGTH": "Wow wow wow. This field must be within {{maxlength}} characters.",
+      "MIN_LENGTH": "This field must be at least {{minlength}} characters long.",
+      "EMAIL": "Email format incorrect<br>(e.g.: cupcake.lolita@soita.com)",
+      "PASSWORD_PATTERN": "Password must contain at least:<br><ul><li>8 characters</li><li>1 lower case letter</li><li>1 upper case letter</li><li>1 numeric character</li></ul><br>(e.g.: Iamsoita1)",
+      "NOT_SAME_PASSWORD": "¯\\_(ツ)_/¯ The passwords do not match."
+    }
+  },
+  "USER": {
+    "LINKS": {
+      "TO_REGISTRATION": "Register"
     }
   }
 }

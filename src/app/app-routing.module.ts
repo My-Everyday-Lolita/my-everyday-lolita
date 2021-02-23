@@ -5,6 +5,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { MyClosetComponent } from './pages/my-closet/my-closet.component';
 import { MyCoordChecklistComponent } from './pages/my-coord-checklist/my-coord-checklist.component';
 import { MyWishlistComponent } from './pages/my-wishlist/my-wishlist.component';
+import { RegistrationComponent } from './pages/registration/registration.component';
 import { SearchComponent } from './pages/search/search.component';
 
 const routes: Routes = [
@@ -49,6 +50,15 @@ const routes: Routes = [
       linkLabel: 'HOME.LINKS.SEARCH',
       animation: 'search',
       pageTitle: 'PAGES.TITLES.SEARCH',
+    }
+  },
+  {
+    path: 'registration', component: RegistrationComponent,
+    data: {
+      home: false,
+      linkLabel: 'HOME.LINKS.REGISTRATION',
+      animation: 'registration',
+      pageTitle: 'PAGES.TITLES.REGISTRATION',
     }
   },
 ];

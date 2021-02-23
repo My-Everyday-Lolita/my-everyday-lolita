@@ -1,0 +1,18 @@
+.error {
+  li {
+    margin-left: var(--spacing-big);
+    position: relative;
+
+    &::before {
+      content: "";
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: #000;
+      position: absolute;
+      top: 50%;
+      left: -8px;
+      transform: translate(-50%, -50%);
+    }
+  }
+}

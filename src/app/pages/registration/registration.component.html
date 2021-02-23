@@ -1,0 +1,40 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <p [innerHTML]="'REGISTRATION.REQUIRED_TEXT' | translate"></p>
+  <div class="form-field">
+    <label for="registration-fields-username">
+      {{ 'REGISTRATION.FIELDS.LABELS.USERNAME' | translate }}
+      <span>*</span>
+    </label>
+    <input id="registration-fields-username" type="text" formControlName="username" required>
+    <p class="error visualy-hidden" *ngIf="username.errors?.required">{{ 'REGISTRATION.ERRORS.REQUIRED' | translate }}</p>
+    <p class="error" *ngIf="username.errors?.maxlength" [innerHTML]="'REGISTRATION.ERRORS.MAX_LENGTH' | translate:{maxlength: username.errors?.maxlength.requiredLength}"></p>
+  </div>
+  <div class="form-field">
+    <label for="registration-fields-email">
+      {{ 'REGISTRATION.FIELDS.LABELS.EMAIL' | translate }}
+      <span>*</span>
+    </label>
+    <input id="registration-fields-email" type="email" formControlName="email" required>
+    <p class="error visualy-hidden" *ngIf="email.errors?.required" [innerHTML]="'REGISTRATION.ERRORS.REQUIRED' | translate"></p>
+    <p class="error" *ngIf="email.errors?.email" [innerHTML]="'REGISTRATION.ERRORS.EMAIL' | translate"></p>
+  </div>
+  <div class="form-field">
+    <label for="registration-fields-password">
+      {{ 'REGISTRATION.FIELDS.LABELS.PASSWORD' | translate }}
+      <span>*</span>
+    </label>
+    <input id="registration-fields-password" type="password" formControlName="password" [attr.pattern]="passwordPattern" required>
+    <p class="error visualy-hidden" *ngIf="password.errors?.required" [innerHTML]="'REGISTRATION.ERRORS.REQUIRED' | translate"></p>
+    <p class="error" *ngIf="password.errors?.pattern" [innerHTML]="'REGISTRATION.ERRORS.PASSWORD_PATTERN' | translate"></p>
+  </div>
+  <div class="form-field">
+    <label for="registration-fields-confirm-password">
+      {{ 'REGISTRATION.FIELDS.LABELS.CONFIRM_PASSWORD' | translate }}
+      <span>*</span>
+    </label>
+    <input id="registration-fields-confirm-password" type="password" formControlName="confirmPassword" [attr.pattern]="passwordPattern" required>
+    <p class="error visualy-hidden" *ngIf="confirmPassword.errors?.required" [innerHTML]="'REGISTRATION.ERRORS.REQUIRED' | translate"></p>
+    <p class="error" *ngIf="form.errors?.notSameFields" [innerHTML]="'REGISTRATION.ERRORS.NOT_SAME_PASSWORD' | translate"></p>
+  </div>
+  <button type="submit" app-button color="primary" [disabled]="!form.valid">{{ 'REGISTRATION.SUBMIT' | translate}}</button>
+</form>

@@ -40,11 +40,12 @@ main {
 
 .back-title-wrapper {
   flex: 1;
-  background: var(--primary);
-  box-shadow: 4px 3px 0 var(--primary-shadow);
+  background: var(--title);
+  box-shadow: 4px 3px 0 var(--title-shadow);
   border-radius: 30px;
   margin-right: var(--spacing);
   display: flex;
+  color: var(--title-text);
 }
 
 h1 {
@@ -52,7 +53,7 @@ h1 {
   padding: 5px;
   padding-left: var(--spacing-small);
   display: flex;
-  color: var(--primary-text);
+  color: inherit;
   font-size: var(--font-size-medium);
   font-family: Caveat;
 }

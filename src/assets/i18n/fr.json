@@ -17,7 +17,8 @@
       "MY_CLOSET": "Mon placard",
       "MY_WISHLIST": "Ma wishlist",
       "MY_COORD_CHECKLIST": "Ma coordi checklist",
-      "SEARCH": "Recherche"
+      "SEARCH": "Recherche",
+      "REGISTRATION": "Inscription"
     }
   },
   "HOME": {
@@ -25,7 +26,8 @@
       "MY_CLOSET": "Mon placard",
       "MY_WISHLIST": "Ma wishlist",
       "MY_COORD_CHECKLIST": "Ma coordi checklist",
-      "SEARCH": "Recherche"
+      "SEARCH": "Recherche",
+      "REGISTRATION": "Inscription"
     }
   }
 }
