@@ -18,7 +18,11 @@
       "MY_WISHLIST": "My wishlist",
       "MY_COORD_CHECKLIST": "My coord checklist",
       "SEARCH": "Search",
-      "REGISTRATION": "Registration"
+      "SIGN_IN": "Sign in",
+      "REGISTRATION": "Registration",
+      "ABOUT_US": "About us",
+      "ABOUT_PROJECT": "About the project",
+      "TIPS": "Tips"
     }
   },
   "HOME": {
@@ -27,6 +31,18 @@
       "MY_WISHLIST": "My wishlist",
       "MY_COORD_CHECKLIST": "My coord checklist",
       "SEARCH": "Search"
+    }
+  },
+  "MENU": {
+    "LINKS": {
+      "SIGN_IN": "Sign in",
+      "REGISTRATION": "Register",
+      "ABOUT_US": "About us",
+      "ABOUT_PROJECT": "About the project",
+      "TIPS": "Tips"
+    },
+    "TEXT": {
+      "ANNONYMOUS": "You are not connected,<br>would you like to:"
     }
   },
   "REGISTRATION": {
@@ -53,11 +69,11 @@
       "EMAIL": "Email format incorrect<br>(e.g.: cupcake.lolita@soita.com)",
       "PASSWORD_PATTERN": "Password must contain at least:<br><ul><li>8 characters</li><li>1 lower case letter</li><li>1 upper case letter</li><li>1 numeric character</li></ul><br>(e.g.: Iamsoita1)",
       "NOT_SAME_PASSWORD": "¯\\_(ツ)_/¯ The passwords do not match."
-    }
-  },
-  "USER": {
-    "LINKS": {
-      "TO_REGISTRATION": "Register"
+    },
+    "TOASTS": {
+      "SUCCESS": "Congratulations !<br>Your registration has been successfully completed.",
+      "CONFLICT": "Oh no !<br>This email or username already exists.",
+      "UNKNOWN": "An unknown error has occured."
     }
   }
 }

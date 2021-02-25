@@ -1,12 +1,16 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { APP_ROUTES } from './app.token';
+import { AboutProjectComponent } from './pages/about-project/about-project.component';
+import { AboutUsComponent } from './pages/about-us/about-us.component';
 import { HomeComponent } from './pages/home/home.component';
 import { MyClosetComponent } from './pages/my-closet/my-closet.component';
 import { MyCoordChecklistComponent } from './pages/my-coord-checklist/my-coord-checklist.component';
 import { MyWishlistComponent } from './pages/my-wishlist/my-wishlist.component';
 import { RegistrationComponent } from './pages/registration/registration.component';
 import { SearchComponent } from './pages/search/search.component';
+import { SignInComponent } from './pages/sign-in/sign-in.component';
+import { TipsComponent } from './pages/tips/tips.component';
 
 const routes: Routes = [
   {
@@ -53,12 +57,51 @@ const routes: Routes = [
     }
   },
   {
+    path: 'sign-in', component: SignInComponent,
+    data: {
+      home: false,
+      linkLabel: 'MENU.LINKS.SIGN_IN',
+      animation: 'sign_in',
+      pageTitle: 'PAGES.TITLES.SIGN_IN',
+    }
+  },
+  {
     path: 'registration', component: RegistrationComponent,
     data: {
       home: false,
-      linkLabel: 'HOME.LINKS.REGISTRATION',
+      linkLabel: 'MENU.LINKS.REGISTRATION',
       animation: 'registration',
       pageTitle: 'PAGES.TITLES.REGISTRATION',
+    }
+  },
+  {
+    path: 'about-us', component: AboutUsComponent,
+    data: {
+      home: false,
+      others: true,
+      linkLabel: 'MENU.LINKS.ABOUT_US',
+      animation: 'about_us',
+      pageTitle: 'PAGES.TITLES.ABOUT_US',
+    }
+  },
+  {
+    path: 'about-the-project', component: AboutProjectComponent,
+    data: {
+      home: false,
+      others: true,
+      linkLabel: 'MENU.LINKS.ABOUT_PROJECT',
+      animation: 'about_project',
+      pageTitle: 'PAGES.TITLES.ABOUT_PROJECT',
+    }
+  },
+  {
+    path: 'tips', component: TipsComponent,
+    data: {
+      home: false,
+      others: true,
+      linkLabel: 'MENU.LINKS.TIPS',
+      animation: 'tips',
+      pageTitle: 'PAGES.TITLES.TIPS',
     }
   },
 ];

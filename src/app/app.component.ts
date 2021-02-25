@@ -1,9 +1,10 @@
 import { animate, animateChild, group, query, stagger, style, transition, trigger } from '@angular/animations';
-import { Component, OnDestroy, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
-import { ActivatedRoute, NavigationEnd, NavigationStart, Router, RouterOutlet } from '@angular/router';
+import { Component, Inject, OnDestroy, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
+import { ActivatedRoute, NavigationEnd, NavigationStart, Router, RouterOutlet, Routes } from '@angular/router';
 import { Subject } from 'rxjs';
 import { filter, map, switchMap, takeUntil, tap } from 'rxjs/operators';
 import { PageData } from './app.model';
+import { APP_ROUTES } from './app.token';
 import { DialogAttachComponent } from './features/dialog/dialog-attach/dialog-container.component';
 import { DialogService } from './features/dialog/dialog.service';
 import { DialogComponent } from './features/dialog/dialog/dialog.component';
@@ -88,6 +89,8 @@ export class AppComponent implements OnInit, OnDestroy {
   menuComponent?: DialogComponent;
   currentPage?: PageData;
   isMenuOpened?: boolean;
+  others: Routes;
+  replaceUrl = false;
 
   private unsubscsriber = new Subject();
   private menuClose$ = new Subject<boolean>();
@@ -98,8 +101,11 @@ export class AppComponent implements OnInit, OnDestroy {
     private dialogService: DialogService,
     public viewContainerRef: ViewContainerRef,
     private router: Router,
-    private activatedRoute: ActivatedRoute
-  ) { }
+    private activatedRoute: ActivatedRoute,
+    @Inject(APP_ROUTES) routes: Routes
+  ) {
+    this.others = routes.filter(route => route.data && route.data.others);
+  }
 
   ngOnInit(): void {
     this.router.events.pipe(
@@ -115,7 +121,9 @@ export class AppComponent implements OnInit, OnDestroy {
       takeUntil(this.unsubscsriber)
     ).subscribe(data => {
       this.currentPage = data as PageData;
+      this.replaceUrl = !this.currentPage.isHome;
     });
+    this.toggleMenu();
     // window.onpopstate = (e: PopStateEvent) => {
     //   if (this.isMenuOpened && this.menuComponent) {
     //     this.menuComponent.close();

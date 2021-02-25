@@ -4,7 +4,10 @@
 
 export const environment = {
   production: false,
-  theme: 'sweet'
+  theme: 'sweet',
+  api: {
+    registration: 'http://localhost:3000'
+  }
 };
 
 /*

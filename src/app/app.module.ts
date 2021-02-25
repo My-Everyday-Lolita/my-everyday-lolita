@@ -4,9 +4,11 @@ import { NgModule } from '@angular/core';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { ToastNoAnimationModule, ToastrModule } from 'ngx-toastr';
 
 import { NgAnimeDriverModule } from '@lheido/ng-anime-driver';
 
@@ -27,7 +29,11 @@ import { DialogAttachComponent } from './features/dialog/dialog-attach/dialog-co
 import { ThemeComponent } from './features/buttons/theme/theme.component';
 import { BackComponent } from './features/buttons/back/back.component';
 import { RegistrationComponent } from './pages/registration/registration.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ToastComponent } from './features/toast/toast/toast.component';
+import { AboutUsComponent } from './pages/about-us/about-us.component';
+import { AboutProjectComponent } from './pages/about-project/about-project.component';
+import { TipsComponent } from './pages/tips/tips.component';
+import { SignInComponent } from './pages/sign-in/sign-in.component';
 
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
   return new TranslateHttpLoader(http);
@@ -50,6 +56,11 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     ThemeComponent,
     BackComponent,
     RegistrationComponent,
+    ToastComponent,
+    AboutUsComponent,
+    AboutProjectComponent,
+    TipsComponent,
+    SignInComponent,
   ],
   imports: [
     CommonModule,
@@ -67,7 +78,16 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
         deps: [HttpClient]
       }
     }),
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
+    ToastNoAnimationModule.forRoot(),
+    ToastrModule.forRoot({
+      positionClass: 'toast-bottom-center',
+      enableHtml: true,
+      toastComponent: ToastComponent
+    }),
+  ],
+  entryComponents: [
+    ToastComponent,
   ],
   providers: [],
   bootstrap: [AppComponent]

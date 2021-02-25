@@ -253,11 +253,29 @@
   <div class="menu-content">
     <div class="user-wrapper">
       <div class="anonymous-wrapper" *ngIf="true">
-        <a [routerLink]="['/', 'registration']" app-button (click)="toggleMenu()">
-          {{ 'USER.LINKS.TO_REGISTRATION' | translate }}
-        </a>
+        <p class="text-center"><span class="kaomoji">ლ(ಥ﹏ಥლ)</span></p>
+        <p [innerHTML]="'MENU.TEXT.ANNONYMOUS' | translate"></p>
+        <ul>
+          <li>
+            <a [routerLink]="['/', 'sign-in']" app-button class="very-small no-shadow" (click)="toggleMenu()" [replaceUrl]="replaceUrl">
+              {{ 'MENU.LINKS.SIGN_IN' | translate }}
+            </a>
+          </li>
+          <li>
+            <a [routerLink]="['/', 'registration']" app-button class="very-small no-shadow" (click)="toggleMenu()" [replaceUrl]="replaceUrl">
+              {{ 'MENU.LINKS.REGISTRATION' | translate }}
+            </a>
+          </li>
+        </ul>
       </div>
     </div>
+    <ul class="others">
+      <li *ngFor="let other of others">
+        <a [routerLink]="['/', other.path]" app-button color="primary" class="small" (click)="toggleMenu()" [replaceUrl]="replaceUrl">
+          {{ other.data?.linkLabel | translate }}
+        </a>
+      </li>
+    </ul>
     <ul class="theme-buttons">
       <li>
         <button theme-button theme="sweet">

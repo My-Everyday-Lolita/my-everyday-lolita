@@ -1,6 +1,10 @@
 import { animate, style, transition, trigger } from '@angular/animations';
-import { Component, HostBinding, OnInit } from '@angular/core';
+import { Component, HostBinding } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
+import { of } from 'rxjs';
+import { catchError } from 'rxjs/operators';
+import { UserRegistrationService } from 'src/app/features/user/user-registration.service';
 import { sameFields } from '../../features/form/validators/same-fields.validator';
 
 @Component({
@@ -19,15 +23,17 @@ import { sameFields } from '../../features/form/validators/same-fields.validator
     ])
   ]
 })
-export class RegistrationComponent implements OnInit {
+export class RegistrationComponent {
 
   @HostBinding('@pageAnimation') private pageAnimation = true;
 
-  passwordPattern = '^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=\S+).{8,20}$';
+  passwordPattern = /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=\S+).{8,20}$/;
   form: FormGroup;
 
   constructor(
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private userRegistratioNService: UserRegistrationService,
+    private toastr: ToastrService
   ) {
     this.form = this.fb.group({
       username: ['', [Validators.required, Validators.maxLength(100)]],
@@ -40,11 +46,23 @@ export class RegistrationComponent implements OnInit {
     }, { validators: [sameFields('password', 'confirmPassword')] });
   }
 
-  ngOnInit(): void {
-  }
-
   onSubmit(): void {
-    console.log(this.form);
+    this.userRegistratioNService.register(this.form.value)
+      .pipe(
+        catchError(response => {
+          if (response.status === 409) {
+            this.toastr.error('REGISTRATION.TOASTS.CONFLICT', undefined, { closeButton: true, disableTimeOut: true });
+          } else {
+            this.toastr.error('REGISTRATION.TOASTS.UNKNOWN', undefined, { closeButton: true, disableTimeOut: true });
+          }
+          console.error(response);
+          return of(false);
+        })
+      ).subscribe(response => {
+        if (response && response.status === 201) {
+          this.toastr.success('REGISTRATION.TOASTS.SUCCESS', undefined, { closeButton: true, disableTimeOut: true });
+        }
+      });
   }
 
   get username(): FormControl {

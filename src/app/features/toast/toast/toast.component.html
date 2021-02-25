@@ -1,0 +1,13 @@
+<div class="toast-inner-content">
+  <div *ngIf="title" [class]="options.titleClass" [attr.aria-label]="title | translate">
+    {{ title | translate }}
+  </div>
+  <div *ngIf="message && options.enableHtml" role="alert" aria-live="polite" [class]="options.messageClass" [innerHTML]="message | translate">
+  </div>
+  <div *ngIf="message && !options.enableHtml" role="alert" aria-live="polite" [class]="options.messageClass" [attr.aria-label]="message | translate">
+    {{ message | translate }}
+  </div>
+  <button (click)="remove()" class="close-button">
+    <span class="visualy-hidden">Close</span>
+  </button>
+</div>

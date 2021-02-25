@@ -8,6 +8,7 @@
 @import "./styles/components/dialog";
 @import "./styles/components/menu";
 @import "./styles/components/form";
+@import "./styles/components/toastr";
 
 body {
   transition: all 330ms linear;
@@ -24,4 +25,12 @@ body {
   position: absolute;
   white-space: nowrap;
   width: 1px;
+}
+
+.kaomoji {
+  font-family: sans-serif !important;
+}
+
+.text-center {
+  text-align: center;
 }

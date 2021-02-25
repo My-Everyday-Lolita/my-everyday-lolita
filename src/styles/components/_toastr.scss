@@ -1,0 +1,157 @@
+.toast-container {
+  &.toast-bottom-center {
+    .ngx-toastr {
+      display: flex;
+      width: 95%;
+    }
+  }
+
+  .toast-message {
+    font-family: Caveat;
+    font-size: 1.5rem;
+  }
+
+  .ngx-toastr {
+    margin: 0;
+    padding: var(--spacing-medium);
+    border-radius: 16px;
+    margin-bottom: var(--spacing);
+    -webkit-tap-highlight-color: transparent;
+
+    &::before {
+      position: absolute;
+      top: 50%;
+      left: 0.8rem;
+      transform: translateY(-50%);
+    }
+  }
+
+  .toast-inner-content {
+    margin-left: 4.1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    color: inherit;
+  }
+
+  .close-button {
+    width: 24px;
+    height: 24px;
+    position: relative;
+    background: transparent;
+    border: none;
+
+    &::before,
+    &::after {
+      content: "";
+      background: #000;
+      width: 100%;
+      height: 6px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      border-radius: 16px;
+    }
+
+    &::before {
+      transform: translate(-50%, -50%) rotate(45deg);
+    }
+
+    &::after {
+      transform: translate(-50%, -50%) rotate(-45deg);
+    }
+  }
+
+  .toast-error {
+    background-image: none;
+    background: var(--toast-error);
+    box-shadow: 4px 4px 0 var(--toast-error-shadow);
+    color: var(--toast-error-shadow);
+
+    &:hover {
+      box-shadow: 4px 4px 0 var(--toast-error-shadow);
+    }
+
+    &::before {
+      content: "٩(× ×)۶";
+      font-size: 1.3rem;
+    }
+
+    .close-button {
+      &::before,
+      &::after {
+        background: var(--toast-error-shadow);
+      }
+    }
+  }
+
+  .toast-warning {
+    background-image: none;
+    background: var(--toast-warning);
+    box-shadow: 4px 4px 0 var(--toast-warning-shadow);
+    color: var(--toast-warning-shadow);
+
+    &:hover {
+      box-shadow: 4px 4px 0 var(--toast-warning-shadow);
+    }
+
+    &::before {
+      content: "╮(￣ω￣;)╭";
+      font-size: 0.7rem;
+    }
+
+    .close-button {
+      &::before,
+      &::after {
+        background: var(--toast-warning-shadow);
+      }
+    }
+  }
+
+  .toast-success {
+    background-image: none;
+    background: var(--toast-success);
+    box-shadow: 4px 4px 0 var(--toast-success-shadow);
+    color: var(--toast-success-shadow);
+
+    &:hover {
+      box-shadow: 4px 4px 0 var(--toast-success-shadow);
+    }
+
+    &::before {
+      content: "٩(｡•́‿•̀｡)۶";
+      font-size: 0.9rem;
+    }
+
+    .close-button {
+      &::before,
+      &::after {
+        background: var(--toast-success-shadow);
+      }
+    }
+  }
+
+  .toast-info {
+    background-image: none;
+    background: var(--toast-info);
+    box-shadow: 4px 4px 0 var(--toast-info-shadow);
+    color: var(--toast-info-shadow);
+
+    &:hover {
+      box-shadow: 4px 4px 0 var(--toast-info-shadow);
+    }
+
+    &::before {
+      content: "( ಠ ͜ʖ ಠ)";
+      font-size: 1.1rem;
+    }
+
+    .close-button {
+      &::before,
+      &::after {
+        background: var(--toast-info-shadow);
+      }
+    }
+  }
+}

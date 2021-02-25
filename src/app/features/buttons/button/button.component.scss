@@ -32,6 +32,26 @@
     z-index: 1;
   }
 
+  &.small {
+    font-size: var(--font-size-small);
+
+    .text-content {
+      padding: var(--spacing) var(--spacing);
+    }
+  }
+
+  &.very-small {
+    font-size: var(--font-size-very-small);
+
+    .text-content {
+      padding: var(--spacing) var(--spacing-medium);
+    }
+  }
+
+  &.no-shadow {
+    box-shadow: unset;
+  }
+
   &::before {
     content: "";
     top: 0;
