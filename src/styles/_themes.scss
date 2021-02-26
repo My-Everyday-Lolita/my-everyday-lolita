@@ -5,6 +5,8 @@
   --primary-text: #fff;
   --primary-shadow: #232323;
 
+  --username: #232323;
+
   // DECO
   --top-left-cloud: #424242;
   --top-left-cloud-shadow: #232323;
@@ -35,6 +37,9 @@
   --app-button-default: #424242;
   --app-button-default-text-color: #eee;
   --app-button-default-shadow: #232323;
+  --app-button-user-link: #999999;
+  --app-button-user-link-text-color: #fff;
+  --app-button-user-link-shadow: #2e2e2e;
   --app-button-theme: #eee;
 
   --menu-background: #424242;
@@ -67,6 +72,8 @@ body.theme-sweet {
   --primary: #f7bff2;
   --primary-shadow: #cc85ff;
   --primary-text: #000;
+
+  --username: #cc85ff;
 
   --accent: #92c8f4;
   --accent-shadow: #6396d3;
@@ -121,6 +128,8 @@ body.theme-gothic {
   --primary-shadow: #000;
   --primary-text: #fff;
 
+  --username: #3f0670;
+
   --accent: #3f0670;
   --accent-shadow: #1c0638;
 
@@ -148,6 +157,9 @@ body.theme-gothic {
   --app-button-default: #424242;
   --app-button-default-text-color: #eee;
   --app-button-default-shadow: #232323;
+  --app-button-user-link: #424242;
+  --app-button-user-link-text-color: #fff;
+  --app-button-user-link-shadow: #000000;
 
   --menu-background: #fff;
   --menu-foreground: #000;
@@ -172,6 +184,8 @@ body.theme-classic {
   --primary: #d32a09;
   --primary-shadow: #892806;
   --primary-text: #fff;
+
+  --username: #892806;
 
   --accent: #875533;
   --accent-shadow: #422a1a;

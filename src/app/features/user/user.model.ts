@@ -25,3 +25,8 @@ export interface UserSignInResponse {
 export interface UserSignInInfos extends UserSignInResponse {
   datetime: number;
 }
+
+export interface User {
+  preferred_username: string;
+  email: string;
+}

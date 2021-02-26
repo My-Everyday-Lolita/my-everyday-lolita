@@ -13,6 +13,7 @@
   text-align: center;
   transition: background-color 330ms linear, box-shadow 330ms linear, color 330ms linear;
   border: none;
+  padding: 0;
 
   &:focus {
     outline: none;
@@ -48,8 +49,8 @@
     }
   }
 
-  &.no-shadow {
-    box-shadow: unset;
+  &.fw-normal {
+    font-weight: normal;
   }
 
   &::before {
@@ -86,6 +87,20 @@
     }
   }
 
+  &.user-link {
+    background-color: var(--app-button-user-link);
+    box-shadow: 5px 4px 0 var(--app-button-user-link-shadow);
+    color: var(--app-button-user-link-text-color);
+
+    &:focus::before {
+      background-color: var(--app-button-user-link-shadow);
+    }
+  }
+
+  &.no-shadow {
+    box-shadow: unset;
+  }
+
   &[href] {
     &,
     &:visited,
@@ -98,6 +113,9 @@
       }
       &.accent {
         color: var(--app-button-accent-text-color);
+      }
+      &.user-link {
+        color: var(--app-button-user-link-text-color);
       }
     }
   }

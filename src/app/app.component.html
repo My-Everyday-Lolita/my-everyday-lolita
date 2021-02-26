@@ -252,21 +252,43 @@
   </svg>
   <div class="menu-content">
     <div class="user-wrapper">
-      <div class="anonymous-wrapper" *ngIf="true">
+      <div class="anonymous-wrapper" *ngIf="!signedIn">
         <p class="text-center"><span class="kaomoji">ლ(ಥ﹏ಥლ)</span></p>
         <p [innerHTML]="'MENU.TEXT.ANNONYMOUS' | translate"></p>
         <ul>
           <li>
-            <a [routerLink]="['/', 'sign-in']" app-button class="very-small no-shadow" (click)="toggleMenu()" [replaceUrl]="replaceUrl">
+            <a [routerLink]="['/', 'sign-in']" app-button color="user-link" class="very-small no-shadow fw-normal" (click)="toggleMenu()" [replaceUrl]="replaceUrl">
               {{ 'MENU.LINKS.SIGN_IN' | translate }}
             </a>
           </li>
           <li>
-            <a [routerLink]="['/', 'registration']" app-button class="very-small no-shadow" (click)="toggleMenu()" [replaceUrl]="replaceUrl">
+            <a [routerLink]="['/', 'registration']" app-button color="user-link" class="very-small no-shadow fw-normal" (click)="toggleMenu()" [replaceUrl]="replaceUrl">
               {{ 'MENU.LINKS.REGISTRATION' | translate }}
             </a>
           </li>
         </ul>
+      </div>
+      <div class="signed-in-wrapper" *ngIf="signedIn">
+        <div class="user">
+          <p>Connected as: <span class="username primary">{{ user?.preferred_username }}</span></p>
+          <div class="layout align-center">
+            <div class="user-picture-wrapper">
+              <img src="/assets/images/signed-in.svg" alt="User signed picture" class="user-picture">
+            </div>
+            <ul class="user-actions">
+              <li>
+                <a [routerLink]="['/', 'profile']" app-button color="user-link" class="very-small no-shadow fw-normal" (click)="toggleMenu()" [replaceUrl]="replaceUrl">
+                  {{ 'MENU.LINKS.PROFILE' | translate }}
+                </a>
+              </li>
+              <li>
+                <button app-button color="user-link" class="very-small no-shadow fw-normal" (click)="userSignInService.signOut()">
+                  {{ 'MENU.LINKS.SIGN_OUT' | translate }}
+                </button>
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
     <ul class="others">

@@ -25,6 +25,10 @@ export class ButtonComponent {
     return this.color === 'default';
   }
 
+  @HostBinding('class.user-link') get userLinkClass(): boolean {
+    return this.color === 'user-link';
+  }
+
   constructor(
     private tadaService: TadaService
   ) { }

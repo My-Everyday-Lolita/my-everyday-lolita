@@ -38,7 +38,8 @@
       }
     }
 
-    .anonymous-wrapper {
+    .anonymous-wrapper,
+    .signed-in-wrapper {
       flex: 1 1 100%;
       display: flex;
       flex-direction: column;
@@ -59,6 +60,10 @@
       li:not(:last-of-type) {
         margin-right: var(--spacing);
       }
+    }
+
+    .signed-in-wrapper {
+      padding-right: 86px;
     }
 
     .others {

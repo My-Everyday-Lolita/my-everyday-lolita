@@ -1,1 +1,1 @@
-export type AppButtonColor = 'primary' | 'accent' | 'default';
+export type AppButtonColor = 'primary' | 'accent' | 'default' | 'user-link';

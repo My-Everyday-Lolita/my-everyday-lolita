@@ -36,10 +36,12 @@
   "MENU": {
     "LINKS": {
       "SIGN_IN": "Sign in",
+      "SIGN_OUT": "Sign out",
       "REGISTRATION": "Register",
       "ABOUT_US": "About us",
       "ABOUT_PROJECT": "About the project",
-      "TIPS": "Tips"
+      "TIPS": "Tips",
+      "PROFILE": "Profile"
     },
     "TEXT": {
       "ANNONYMOUS": "You are not connected,<br>would you like to:"

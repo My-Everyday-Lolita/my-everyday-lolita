@@ -24,7 +24,19 @@ export class UserSignInService {
     if (localInfos) {
       this.signInInfos = JSON.parse(localInfos);
     }
-    this.signedIn = new BehaviorSubject<boolean>(this.isExpired());
+    this.signedIn = new BehaviorSubject<boolean>(this.isSignedIn());
+  }
+
+  get signedIn$(): Observable<boolean> {
+    return this.signedIn.asObservable();
+  }
+
+  getAccessToken(): string | undefined {
+    return this.signInInfos?.access_token;
+  }
+
+  isSignedIn(): boolean {
+    return !this.isExpired();
   }
 
   isExpired(): boolean {
@@ -63,6 +75,12 @@ export class UserSignInService {
       }),
       tap(response => this.signedIn.next(response))
     );
+  }
+
+  signOut(): void {
+    this.signInInfos = undefined;
+    localStorage.removeItem(this.STORAGE_KEY);
+    this.signedIn.next(false);
   }
 
   refreshToken(): Observable<boolean> {

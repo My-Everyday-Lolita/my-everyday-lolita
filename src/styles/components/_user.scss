@@ -1,0 +1,30 @@
+.user {
+  .user-picture-wrapper {
+    border-radius: 16px;
+    width: 100px;
+    overflow: hidden;
+    background: #fff;
+  }
+
+  .user-picture {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .username {
+    color: var(--username);
+    font-weight: bold;
+    transition: all 330ms linear;
+  }
+
+  .user-actions {
+    display: flex;
+    flex-direction: column;
+    margin-left: var(--spacing-medium);
+
+    li:not(:last-of-type) {
+      margin-bottom: var(--spacing);
+    }
+  }
+}

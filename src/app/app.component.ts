@@ -10,6 +10,9 @@ import { DialogService } from './features/dialog/dialog.service';
 import { DialogComponent } from './features/dialog/dialog/dialog.component';
 import { TadaService } from './features/effects/tada/tada.service';
 import { ThemeService } from './features/theme/theme.service';
+import { UserSignInService } from './features/user/user-sign-in.service';
+import { User } from './features/user/user.model';
+import { UserService } from './features/user/user.service';
 
 @Component({
   selector: 'app-root',
@@ -91,17 +94,21 @@ export class AppComponent implements OnInit, OnDestroy {
   isMenuOpened?: boolean;
   others: Routes;
   replaceUrl = false;
+  signedIn = false;
+  user: User | null = null;
 
   private unsubscsriber = new Subject();
   private menuClose$ = new Subject<boolean>();
 
   constructor(
     public tadaService: TadaService,
+    public viewContainerRef: ViewContainerRef,
+    public userSignInService: UserSignInService,
     private themeService: ThemeService,
     private dialogService: DialogService,
-    public viewContainerRef: ViewContainerRef,
     private router: Router,
     private activatedRoute: ActivatedRoute,
+    private userService: UserService,
     @Inject(APP_ROUTES) routes: Routes
   ) {
     this.others = routes.filter(route => route.data && route.data.others);
@@ -123,6 +130,11 @@ export class AppComponent implements OnInit, OnDestroy {
       this.currentPage = data as PageData;
       this.replaceUrl = !this.currentPage.isHome;
     });
+    this.userSignInService.signedIn$.pipe(takeUntil(this.unsubscsriber)).subscribe(signedIn => {
+      this.user = this.userService.getUserInfos();
+      this.signedIn = signedIn;
+    });
+    this.toggleMenu();
     // window.onpopstate = (e: PopStateEvent) => {
     //   if (this.isMenuOpened && this.menuComponent) {
     //     this.menuComponent.close();
