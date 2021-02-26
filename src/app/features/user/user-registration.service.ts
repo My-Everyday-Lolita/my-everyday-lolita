@@ -12,7 +12,7 @@ export class UserRegistrationService {
   ) { }
 
   register(data: UserRegistrationDto): Observable<any> {
-    return this.http.post(`${environment.api.registration}/register`, data, { observe: 'response' });
+    return this.http.post(`${environment.domains.registration}/register`, data, { observe: 'response' });
   }
 
 }

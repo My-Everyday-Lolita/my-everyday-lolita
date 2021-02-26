@@ -1,1 +1,19 @@
-<p>sign-in works!</p>
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div class="form-field">
+    <label for="registration-fields-username">
+      {{ 'SIGN_IN.FIELDS.LABELS.USERNAME' | translate }}
+      <span>*</span>
+    </label>
+    <input id="registration-fields-username" type="text" formControlName="username" required>
+    <p class="error visualy-hidden" *ngIf="username.errors?.required">{{ 'SIGN_IN.ERRORS.REQUIRED' | translate }}</p>
+  </div>
+  <div class="form-field">
+    <label for="registration-fields-password">
+      {{ 'SIGN_IN.FIELDS.LABELS.PASSWORD' | translate }}
+      <span>*</span>
+    </label>
+    <input id="registration-fields-password" type="password" formControlName="password" required>
+    <p class="error visualy-hidden" *ngIf="password.errors?.required" [innerHTML]="'SIGN_IN.ERRORS.REQUIRED' | translate"></p>
+  </div>
+  <button type="submit" app-button color="primary" [disabled]="!form.valid">{{ 'SIGN_IN.SUBMIT' | translate}}</button>
+</form>

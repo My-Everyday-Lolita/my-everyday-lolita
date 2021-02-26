@@ -49,12 +49,6 @@
     "SUBMIT": "Register",
     "REQUIRED_TEXT": "Fields marked with an * are mandatory.",
     "FIELDS": {
-      "PLACEHOLDERS": {
-        "USERNAME": "Username",
-        "EMAIL": "Email",
-        "PASSWORD": "Password",
-        "CONFIRM_PASSWORD": "Password confirmation"
-      },
       "LABELS": {
         "USERNAME": "Username",
         "EMAIL": "Email",
@@ -74,6 +68,25 @@
       "SUCCESS": "Congratulations !<br>Your registration has been successfully completed.",
       "CONFLICT": "Oh no !<br>This email or username already exists.",
       "UNKNOWN": "An unknown error has occured."
+    }
+  },
+  "SIGN_IN": {
+    "SUBMIT": "Sign in",
+    "REQUIRED_TEXT": "Fields marked with an * are mandatory.",
+    "FIELDS": {
+      "LABELS": {
+        "USERNAME": "Username",
+        "PASSWORD": "Password"
+      }
+    },
+    "ERRORS": {
+      "REQUIRED": "Meh. This field is required."
+    },
+    "TOASTS": {
+      "SUCCESS": "Congratulations !<br>Your registration has been successfully completed.",
+      "CONFLICT": "Oh no !<br>This email or username already exists.",
+      "UNKNOWN": "How sad!<br>An unknown error has occured.",
+      "CREDENTIALS_ERROR": "Oh dear...<br>that seems to be a wrong username or password."
     }
   }
 }

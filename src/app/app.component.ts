@@ -123,7 +123,6 @@ export class AppComponent implements OnInit, OnDestroy {
       this.currentPage = data as PageData;
       this.replaceUrl = !this.currentPage.isHome;
     });
-    this.toggleMenu();
     // window.onpopstate = (e: PopStateEvent) => {
     //   if (this.isMenuOpened && this.menuComponent) {
     //     this.menuComponent.close();

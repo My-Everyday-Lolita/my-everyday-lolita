@@ -5,8 +5,17 @@
 export const environment = {
   production: false,
   theme: 'sweet',
+  domains: {
+    registration: 'http://localhost:3000',
+    login: 'http://localhost:8080',
+  },
   api: {
-    registration: 'http://localhost:3000'
+    auth: {
+      realm: 'my-everyday-lolita-realm',
+      client_id: 'web-lolita',
+      grant_type: 'password',
+      scope: 'openid',
+    }
   }
 };
 

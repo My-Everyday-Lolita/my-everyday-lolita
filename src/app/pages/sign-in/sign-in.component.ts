@@ -1,14 +1,56 @@
-import { Component, OnInit } from '@angular/core';
+import { trigger, transition, style, animate } from '@angular/animations';
+import { Component, HostBinding } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { UserSignInService } from 'src/app/features/user/user-sign-in.service';
 
 @Component({
   templateUrl: './sign-in.component.html',
-  styleUrls: ['./sign-in.component.scss']
+  styleUrls: ['./sign-in.component.scss'],
+  animations: [
+    trigger('pageAnimation', [
+      transition(':enter', [
+        style({ opacity: 0 }),
+        animate('330ms 330ms linear', style({ opacity: 1 }))
+      ]),
+      transition(':leave', [
+        style({ opacity: 1, transform: 'translateY(0%)' }),
+        animate('330ms linear', style({ opacity: 0, transform: 'translateY(5%)' }))
+      ]),
+    ])
+  ]
 })
-export class SignInComponent implements OnInit {
+export class SignInComponent {
 
-  constructor() { }
+  @HostBinding('@pageAnimation') private pageAnimation = true;
 
-  ngOnInit(): void {
+  form: FormGroup;
+
+  constructor(
+    private fb: FormBuilder,
+    private userSignInService: UserSignInService
+  ) {
+    this.form = this.fb.group({
+      username: ['', Validators.required],
+      password: ['', Validators.required]
+    });
+  }
+
+  get username(): FormControl {
+    return this.form.controls.username as FormControl;
+  }
+
+  get password(): FormControl {
+    return this.form.controls.password as FormControl;
+  }
+
+  onSubmit(): void {
+    this.userSignInService.signIn(this.form.value).subscribe(signedIn => {
+      setTimeout(() => {
+        this.userSignInService.refreshToken().subscribe(refreshed => {
+          console.log('refreshed', refreshed);
+        });
+      }, 5000);
+    });
   }
 
 }
