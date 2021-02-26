@@ -134,7 +134,6 @@ export class AppComponent implements OnInit, OnDestroy {
       this.user = this.userService.getUserInfos();
       this.signedIn = signedIn;
     });
-    this.toggleMenu();
     // window.onpopstate = (e: PopStateEvent) => {
     //   if (this.isMenuOpened && this.menuComponent) {
     //     this.menuComponent.close();
