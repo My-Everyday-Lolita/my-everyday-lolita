@@ -41,7 +41,7 @@ export class UserSignInService {
 
   isExpired(): boolean {
     if (this.signInInfos === undefined) {
-      return false;
+      return true;
     }
     const now = Date.now() / 100;
     return (now - this.signInInfos.datetime) > this.signInInfos.refresh_expires_in;
