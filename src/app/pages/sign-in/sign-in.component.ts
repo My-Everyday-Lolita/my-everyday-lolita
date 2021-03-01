@@ -1,6 +1,7 @@
 import { trigger, transition, style, animate } from '@angular/animations';
 import { Component, HostBinding } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { UserSignInService } from 'src/app/features/user/user-sign-in.service';
 
 @Component({
@@ -27,7 +28,9 @@ export class SignInComponent {
 
   constructor(
     private fb: FormBuilder,
-    private userSignInService: UserSignInService
+    private userSignInService: UserSignInService,
+    private activatedRoute: ActivatedRoute,
+    private router: Router
   ) {
     this.form = this.fb.group({
       username: ['', Validators.required],
@@ -44,12 +47,11 @@ export class SignInComponent {
   }
 
   onSubmit(): void {
+    const redirect = this.activatedRoute.snapshot.queryParams.redirect || undefined;
     this.userSignInService.signIn(this.form.value).subscribe(signedIn => {
-      setTimeout(() => {
-        this.userSignInService.refreshToken().subscribe(refreshed => {
-          console.log('refreshed', refreshed);
-        });
-      }, 5000);
+      if (signedIn && redirect) {
+        this.router.navigateByUrl(redirect);
+      }
     });
   }
 

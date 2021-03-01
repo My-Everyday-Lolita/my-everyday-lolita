@@ -257,12 +257,14 @@
         <p [innerHTML]="'MENU.TEXT.ANNONYMOUS' | translate"></p>
         <ul>
           <li>
-            <a [routerLink]="['/', 'sign-in']" app-button color="user-link" class="very-small no-shadow fw-normal" (click)="toggleMenu()" [replaceUrl]="replaceUrl">
+            <a [routerLink]="['/', 'sign-in']" [queryParams]="{redirect: currentPath}" app-button color="user-link" class="very-small no-shadow fw-normal" (click)="toggleMenu()"
+              [replaceUrl]="replaceUrl">
               {{ 'MENU.LINKS.SIGN_IN' | translate }}
             </a>
           </li>
           <li>
-            <a [routerLink]="['/', 'registration']" app-button color="user-link" class="very-small no-shadow fw-normal" (click)="toggleMenu()" [replaceUrl]="replaceUrl">
+            <a [routerLink]="['/', 'registration']" [queryParams]="{redirect: currentPath}" app-button color="user-link" class="very-small no-shadow fw-normal"
+              (click)="toggleMenu()" [replaceUrl]="replaceUrl">
               {{ 'MENU.LINKS.REGISTRATION' | translate }}
             </a>
           </li>

@@ -96,6 +96,7 @@ export class AppComponent implements OnInit, OnDestroy {
   replaceUrl = false;
   signedIn = false;
   user: User | null = null;
+  currentPath = '';
 
   private unsubscsriber = new Subject();
   private menuClose$ = new Subject<boolean>();
@@ -123,6 +124,9 @@ export class AppComponent implements OnInit, OnDestroy {
     });
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd),
+      tap(event => {
+        this.currentPath = (event as NavigationEnd).url;
+      }),
       map(event => this.activatedRoute.firstChild as ActivatedRoute),
       switchMap(route => route.data),
       takeUntil(this.unsubscsriber)

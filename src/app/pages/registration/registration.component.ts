@@ -1,10 +1,12 @@
 import { animate, style, transition, trigger } from '@angular/animations';
 import { Component, HostBinding } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { UserRegistrationService } from 'src/app/features/user/user-registration.service';
+import { UserSignInService } from 'src/app/features/user/user-sign-in.service';
 import { sameFields } from '../../features/form/validators/same-fields.validator';
 
 @Component({
@@ -32,8 +34,11 @@ export class RegistrationComponent {
 
   constructor(
     private fb: FormBuilder,
-    private userRegistratioNService: UserRegistrationService,
-    private toastr: ToastrService
+    private userRegistrationService: UserRegistrationService,
+    private userSignInService: UserSignInService,
+    private toastr: ToastrService,
+    private activatedRoute: ActivatedRoute,
+    private router: Router
   ) {
     this.form = this.fb.group({
       username: ['', [Validators.required, Validators.maxLength(100)]],
@@ -47,7 +52,7 @@ export class RegistrationComponent {
   }
 
   onSubmit(): void {
-    this.userRegistratioNService.register(this.form.value)
+    this.userRegistrationService.register(this.form.value)
       .pipe(
         catchError(response => {
           if (response.status === 409) {
@@ -61,6 +66,15 @@ export class RegistrationComponent {
       ).subscribe(response => {
         if (response && response.status === 201) {
           this.toastr.success('REGISTRATION.TOASTS.SUCCESS', undefined, { closeButton: true, disableTimeOut: true });
+          this.userSignInService.signIn({
+            username: this.form.value.username,
+            password: this.form.value.password
+          }).subscribe(signedIn => {
+            const redirect = this.activatedRoute.snapshot.queryParams.redirect || undefined;
+            if (signedIn && redirect) {
+              this.router.navigateByUrl(redirect);
+            }
+          });
         }
       });
   }
