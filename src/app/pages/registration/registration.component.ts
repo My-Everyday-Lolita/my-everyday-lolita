@@ -29,6 +29,7 @@ export class RegistrationComponent {
 
   @HostBinding('@pageAnimation') private pageAnimation = true;
 
+  usernamePattern = /^[a-z0-9_\-]{3,100}$/;
   passwordPattern = /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=\S+).{8,20}$/;
   form: FormGroup;
 
@@ -41,7 +42,7 @@ export class RegistrationComponent {
     private router: Router
   ) {
     this.form = this.fb.group({
-      username: ['', [Validators.required, Validators.maxLength(100)]],
+      username: ['', [Validators.required, Validators.pattern(this.usernamePattern)]],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [
         Validators.required,
