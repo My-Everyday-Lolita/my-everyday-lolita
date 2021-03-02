@@ -111,6 +111,11 @@ details {
     padding: 32px;
     border: 1px solid var(--details-shadow);
     border-radius: 8px;
+    font-family: "Gamja Flower";
+
+    * {
+      font-family: inherit;
+    }
   }
 
   &[open] {

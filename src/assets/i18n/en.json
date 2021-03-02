@@ -63,6 +63,7 @@
       "MAX_LENGTH": "Wow wow wow. This field must be within {{maxlength}} characters.",
       "MIN_LENGTH": "This field must be at least {{minlength}} characters long.",
       "EMAIL": "Email format incorrect<br>(e.g.: cupcake.lolita@soita.com)",
+      "USERNAME_PATTERN": "Username must only contain lower case letters, numeric characters, underscore and dash.",
       "PASSWORD_PATTERN": "Password must contain at least:<br><ul><li>8 characters</li><li>1 lower case letter</li><li>1 upper case letter</li><li>1 numeric character</li></ul><br>(e.g.: Iamsoita1)",
       "NOT_SAME_PASSWORD": "¯\\_(ツ)_/¯ The passwords do not match."
     },

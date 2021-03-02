@@ -44,7 +44,7 @@
   </ng-template>
 </ng-template>
 
-<a app-button class="circle add-item" color="accent">
+<a [routerLink]="['/item', 'new']" app-button class="circle add-item" color="accent">
   <span class="visualy-hidden">{{ 'SEARCH.ADD.LABEL' | translate }}</span>
   <span class="add-icon" aria-hidden="true"></span>
 </a>
