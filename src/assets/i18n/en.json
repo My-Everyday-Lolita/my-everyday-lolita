@@ -90,5 +90,21 @@
       "UNKNOWN": "How sad!<br>An unknown error has occured.",
       "CREDENTIALS_ERROR": "Oh dear...<br>that seems to be a wrong username or password."
     }
+  },
+  "SEARCH": {
+    "FIELDS": {
+      "LABELS": {
+        "FILTER": "Filter"
+      },
+      "PLACEHOLDER": {
+        "CRITERIA": "Filter by brand, category, features or keywords..."
+      }
+    },
+    "TOP": {
+      "TEXT": "You can search an item by: <ul><li><span class=\"brand\">brand</span> (Angelic Pretty, BABY THE STARS SHINE BRIGHT...),</li><li><span class=\"category\">category</span> (jumperskirts, socks, underwear...),</li><li><span class=\"color\">color</span> (Pink, Gold, Sax...),</li><li><span class=\"feature\">feature</span> (Full back shirring, scalloped, Peter Pan collar...)</li><li>or even <span class=\"keywords\">keywords</span> (Sugary carnival, bunny, cookie...).</li></ul>You can always add more criteria to your search by clicking on the search bar and continuing to type."
+    },
+    "ADD": {
+      "LABEL": "Add new item"
+    }
   }
 }

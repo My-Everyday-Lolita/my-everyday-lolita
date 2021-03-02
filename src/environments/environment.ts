@@ -8,6 +8,7 @@ export const environment = {
   domains: {
     registration: 'http://localhost:3000',
     login: 'http://localhost:8080',
+    mel: 'http://localhost:3001',
   },
   api: {
     auth: {

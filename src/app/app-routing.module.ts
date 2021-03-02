@@ -1,6 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { APP_ROUTES } from './app.token';
+import { ResourcesBrandsResolver } from './features/resources/brands/brands.resolver';
+import { ResourcesCategoriesResolver } from './features/resources/categories/categories.resolver';
+import { ResourcesColorsResolver } from './features/resources/colors/colors.resolver';
+import { ResourcesFeaturesResolver } from './features/resources/features/features.resolver';
 import { AboutProjectComponent } from './pages/about-project/about-project.component';
 import { AboutUsComponent } from './pages/about-us/about-us.component';
 import { HomeComponent } from './pages/home/home.component';
@@ -49,6 +53,12 @@ const routes: Routes = [
   },
   {
     path: 'search', component: SearchComponent,
+    resolve: {
+      brands: ResourcesBrandsResolver,
+      colors: ResourcesColorsResolver,
+      categories: ResourcesCategoriesResolver,
+      features: ResourcesFeaturesResolver,
+    },
     data: {
       home: true,
       linkLabel: 'HOME.LINKS.SEARCH',

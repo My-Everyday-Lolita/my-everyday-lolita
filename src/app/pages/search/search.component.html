@@ -1,1 +1,50 @@
-<p>search works!</p>
+<form [formGroup]="form" class="filter">
+  <details>
+    <summary>
+      <span class="visualy-hidden">How to search</span>
+      <span class="help-icon" aria-hidden="true">?</span>
+    </summary>
+    <div class="details-content">
+      <p class="search-top-text" id="criteria-select-description" [innerHTML]="'SEARCH.TOP.TEXT' | translate"></p>
+    </div>
+  </details>
+  <div class="relative">
+    <div class="form-field">
+      <label class="visualy-hidden" for="criteria-select">{{ 'SEARCH.FIELDS.LABELS.FILTER' | translate }}</label>
+      <ng-select id="criteria-select" aria-describedby="criteria-select-description" formControlName="criteria" [virtualScroll]="true" [items]="criteria" bindLabel="name"
+        [multiple]="true" [placeholder]="'SEARCH.FIELDS.PLACEHOLDER.CRITERIA' | translate" [searchFn]="searchCriterias" [addTag]="addKeywords" class="padding-right">
+        <ng-template ng-option-tmp let-item="item">
+          {{ item.name }}<br>
+          <span class="criterium-type" [ngClass]="item.type">{{ item.type }}</span>
+        </ng-template>
+        <ng-template ng-label-tmp let-item="item" let-clear="clear">
+          <span class="ng-value-content" [ngClass]="item.type">
+            <span class="ng-value-icon left" (click)="clear(item);" aria-hidden="true">×</span>
+            <span class="ng-value-label">{{ item.name }}</span>
+          </span>
+        </ng-template>
+      </ng-select>
+    </div>
+    <button type="submit">
+      <span class="visualy-hidden">Search</span>
+      <img src="/assets/images/search-icon.svg" alt="Search icon" aria-hidden="true">
+    </button>
+  </div>
+</form>
+
+<ng-container *ngIf="selectedCriteria.length === 0; else resultTemplate">
+  <p>Recently added items</p>
+</ng-container>
+<ng-template #resultTemplate>
+  <ng-container *ngIf="results.length > 0; else noResults">
+    <p>Results</p>
+  </ng-container>
+  <ng-template #noResults>
+    <p>No results</p>
+  </ng-template>
+</ng-template>
+
+<a app-button class="circle add-item" color="accent">
+  <span class="visualy-hidden">{{ 'SEARCH.ADD.LABEL' | translate }}</span>
+  <span class="add-icon" aria-hidden="true"></span>
+</a>

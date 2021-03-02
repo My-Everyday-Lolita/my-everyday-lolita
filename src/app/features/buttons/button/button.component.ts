@@ -38,7 +38,8 @@ export class ButtonComponent {
     this.tadaService.tada({
       x: event.clientX,
       y: event.clientY,
-      size: this.tadaSize
+      size: this.tadaSize,
+      color: `${this.color}-shadow`,
     });
   }
 

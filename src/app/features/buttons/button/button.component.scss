@@ -119,4 +119,14 @@
       }
     }
   }
+
+  &.circle {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+
+    .text-content {
+      padding: 0;
+    }
+  }
 }

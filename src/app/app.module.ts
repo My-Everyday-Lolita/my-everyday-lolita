@@ -10,6 +10,8 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { ToastNoAnimationModule, ToastrModule } from 'ngx-toastr';
 
+import { NgSelectModule } from '@ng-select/ng-select';
+
 import { NgAnimeDriverModule } from '@lheido/ng-anime-driver';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -85,6 +87,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
       enableHtml: true,
       toastComponent: ToastComponent
     }),
+    NgSelectModule,
   ],
   entryComponents: [
     ToastComponent,

@@ -82,3 +82,33 @@ form {
     }
   }
 }
+
+.search-top-text {
+  font-size: var(--font-size-very-small);
+  margin: var(--spacing);
+  font-family: "Gamja Flower";
+
+  ul {
+    list-style: initial;
+
+    li {
+      margin-left: var(--spacing-big);
+    }
+  }
+
+  .brand {
+    color: var(--ng-select-criterium-brand);
+  }
+  .color {
+    color: var(--ng-select-criterium-color);
+  }
+  .feature {
+    color: var(--ng-select-criterium-feature);
+  }
+  .category {
+    color: var(--ng-select-criterium-category);
+  }
+  .keyword {
+    color: var(--ng-select-criterium-keywords);
+  }
+}

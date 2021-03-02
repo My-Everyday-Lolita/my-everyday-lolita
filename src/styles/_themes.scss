@@ -64,6 +64,17 @@
   --toast-warning-shadow: #68543d;
   --toast-success-shadow: #374d4b;
   --toast-info-shadow: #4c414d;
+
+  --ng-select-criterium-brand: #e645b5;
+  --ng-select-criterium-brand-text: #fff;
+  --ng-select-criterium-category: #4780c5;
+  --ng-select-criterium-category-text: #fff;
+  --ng-select-criterium-feature: #28964f;
+  --ng-select-criterium-feature-text: #fff;
+  --ng-select-criterium-keywords: #8a8a8a;
+  --ng-select-criterium-keywords-text: #fff;
+  --ng-select-criterium-color: #9c65ce;
+  --ng-select-criterium-color-text: #fff;
 }
 
 body.theme-sweet {
@@ -76,6 +87,7 @@ body.theme-sweet {
   --username: #cc85ff;
 
   --accent: #92c8f4;
+  --accent-text: #000000;
   --accent-shadow: #6396d3;
 
   --top-left-cloud: #92c8f4;
@@ -119,6 +131,10 @@ body.theme-sweet {
 
   --input-background: #ffffff;
   --input-color: #000;
+
+  --details: #f7bff2;
+  --details-shadow: #cc85ff;
+  --details-text: #000;
 }
 
 body.theme-gothic {
@@ -131,6 +147,7 @@ body.theme-gothic {
   --username: #3f0670;
 
   --accent: #3f0670;
+  --accent-text: #fff;
   --accent-shadow: #1c0638;
 
   --top-left-cloud: #3f0670;
@@ -176,6 +193,10 @@ body.theme-gothic {
 
   --input-background: #cecece;
   --input-color: #000;
+
+  --details: #3f0670;
+  --details-shadow: #000;
+  --details-text: #fff;
 }
 
 body.theme-classic {
@@ -188,6 +209,7 @@ body.theme-classic {
   --username: #892806;
 
   --accent: #875533;
+  --accent-text: #fff;
   --accent-shadow: #422a1a;
 
   --top-left-cloud: #e0c3b8;
@@ -230,4 +252,8 @@ body.theme-classic {
 
   --input-background: #f1f1f1;
   --input-color: #000;
+
+  --details: #edbe69;
+  --details-shadow: #d32a09;
+  --details-text: #000;
 }
