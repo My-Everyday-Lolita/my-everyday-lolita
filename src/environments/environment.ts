@@ -6,9 +6,9 @@ export const environment = {
   production: false,
   theme: 'sweet',
   domains: {
-    registration: 'http://localhost:3000',
-    login: 'http://localhost:8080',
-    mel: 'http://localhost:3001',
+    registration: 'http://192.168.1.22:3000',
+    login: 'http://192.168.1.22:8080',
+    mel: 'http://192.168.1.22:3001',
   },
   api: {
     auth: {

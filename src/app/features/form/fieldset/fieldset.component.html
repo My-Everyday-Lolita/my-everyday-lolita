@@ -1,0 +1,15 @@
+<div role="group" [attr.aria-labelledby]="legendId" [@collapseAnimation]="{value: open ? 'open' : 'close', params: animationParams}" [class.open]="open"
+  (@collapseAnimation.done)="onAnimationDone($event)">
+  <div class="legend-wrapper">
+    <div class="legend" [attr.id]="legendId" (click)="toggle()">{{ legend }}</div>
+    <button type="button" (click)="toggle()">
+      <span class="visualy-hidden">{{ 'FIELDSET.TOGGLE' | translate }}</span>
+      <span class="arrow-toggle-icon" [class.open]="open" aria-hidden="true"></span>
+    </button>
+  </div>
+  <div class="fieldset-container" [class.open]="openAnimationDone" #container>
+    <div class="fieldset-content" #content (cdkObserveContent)="onContentChange()">
+      <ng-content></ng-content>
+    </div>
+  </div>
+</div>

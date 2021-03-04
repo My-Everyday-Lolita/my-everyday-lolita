@@ -2,6 +2,7 @@
   font-size: var(--font-size);
   font-family: Caveat;
   width: 100%;
+  position: relative;
 
   &:not(:last-of-type) {
     margin-bottom: var(--spacing-medium);
@@ -12,7 +13,8 @@
     padding: var(--spacing) 0;
   }
 
-  input {
+  input,
+  textarea {
     width: inherit;
     padding: 0 var(--spacing);
     margin: 0;
@@ -21,7 +23,8 @@
     border-radius: 8px;
     background: var(--input-background);
     color: var(--input-color);
-    font-family: Caveat;
+    font-family: "Gamja Flower";
+    transition: background 330ms linear, color 330ms linear;
 
     &.ng-invalid:not(.ng-untouched) {
       border: 1px solid red;
@@ -56,9 +59,12 @@ form {
   align-items: center;
   width: 258px;
   margin-top: 140px;
+}
 
+form,
+.fieldset-content {
   > p {
-    font-family: Caveat;
+    font-family: "Gamja Flower";
     font-size: 1.1rem;
     align-self: flex-start;
   }
@@ -110,5 +116,98 @@ form {
   }
   .keyword {
     color: var(--ng-select-criterium-keywords);
+  }
+}
+
+form {
+  div[role="group"] {
+    font-size: var(--font-size);
+    font-family: Caveat;
+    width: 100%;
+    margin-top: var(--spacing-medium);
+    border-radius: 8px;
+    position: relative;
+    overflow: hidden;
+
+    &.open {
+      overflow: visible;
+    }
+
+    .legend-wrapper {
+      position: relative;
+      border-radius: inherit;
+
+      button {
+        position: absolute;
+        top: 50%;
+        right: var(--spacing);
+        transform: translateY(-50%);
+        user-select: none;
+        -webkit-tap-highlight-color: transparent;
+        border: none;
+        border-radius: 50%;
+        background: transparent;
+        width: 32px;
+        height: 32px;
+        transition: all 330ms linear;
+        padding: 0;
+        opacity: 0.7;
+
+        &:focus {
+          outline: none;
+          opacity: 1;
+        }
+
+        .arrow-toggle-icon {
+          &::before,
+          &::after {
+            background: var(--fieldset-legend-icon);
+          }
+        }
+      }
+    }
+
+    .legend {
+      padding: var(--spacing);
+      display: flex;
+      align-items: center;
+      background: var(--fieldset-legend);
+      color: var(--fieldset-legend-text);
+      border-radius: inherit;
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+      transition: all 330ms linear;
+    }
+
+    .fieldset-content {
+      padding: var(--spacing);
+      box-sizing: border-box;
+    }
+
+    .fieldset-container {
+      box-sizing: border-box;
+      position: relative;
+      border-radius: inherit;
+      overflow: hidden;
+
+      &.open {
+        overflow: visible;
+      }
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: var(--fieldset-background);
+        border-radius: inherit;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        opacity: 0.3;
+        transition: all 330ms linear;
+      }
+    }
   }
 }

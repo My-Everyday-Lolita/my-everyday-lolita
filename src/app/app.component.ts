@@ -10,6 +10,7 @@ import { DialogService } from './features/dialog/dialog.service';
 import { DialogComponent } from './features/dialog/dialog/dialog.component';
 import { TadaService } from './features/effects/tada/tada.service';
 import { ThemeService } from './features/theme/theme.service';
+import { TitleService } from './features/title/title.service';
 import { UserSignInService } from './features/user/user-sign-in.service';
 import { User } from './features/user/user.model';
 import { UserService } from './features/user/user.service';
@@ -105,6 +106,7 @@ export class AppComponent implements OnInit, OnDestroy {
     public tadaService: TadaService,
     public viewContainerRef: ViewContainerRef,
     public userSignInService: UserSignInService,
+    public title: TitleService,
     private themeService: ThemeService,
     private dialogService: DialogService,
     private router: Router,
@@ -132,11 +134,17 @@ export class AppComponent implements OnInit, OnDestroy {
       takeUntil(this.unsubscsriber)
     ).subscribe(data => {
       this.currentPage = data as PageData;
+      if (this.currentPage.pageTitle) {
+        this.title.set(this.currentPage.pageTitle);
+      }
       this.replaceUrl = !this.currentPage.isHome;
     });
     this.userSignInService.signedIn$.pipe(takeUntil(this.unsubscsriber)).subscribe(signedIn => {
       this.user = this.userService.getUserInfos();
       this.signedIn = signedIn;
+      if (!this.signedIn && this.isMenuOpened) {
+        this.toggleMenu();
+      }
     });
     // window.onpopstate = (e: PopStateEvent) => {
     //   if (this.isMenuOpened && this.menuComponent) {

@@ -12,6 +12,7 @@
 @import "./styles/components/user";
 @import "./styles/components/ng-select";
 @import "./styles/components/icons";
+@import "./styles/components/details";
 
 body {
   transition: all 330ms linear;
@@ -36,4 +37,8 @@ body {
 
 .text-center {
   text-align: center;
+}
+
+b {
+  font-weight: bold;
 }

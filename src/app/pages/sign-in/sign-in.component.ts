@@ -50,7 +50,7 @@ export class SignInComponent {
     const redirect = this.activatedRoute.snapshot.queryParams.redirect || undefined;
     this.userSignInService.signIn(this.form.value).subscribe(signedIn => {
       if (signedIn && redirect) {
-        this.router.navigateByUrl(redirect);
+        this.router.navigateByUrl(redirect, { replaceUrl: true });
       }
     });
   }

@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
@@ -18,7 +19,8 @@ export class UserSignInService {
 
   constructor(
     private http: HttpClient,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private router: Router
   ) {
     const localInfos = localStorage.getItem(this.STORAGE_KEY) || null;
     if (localInfos) {
@@ -81,6 +83,9 @@ export class UserSignInService {
     this.signInInfos = undefined;
     localStorage.removeItem(this.STORAGE_KEY);
     this.signedIn.next(false);
+    if (this.router.routerState.snapshot.url !== '/') {
+      this.router.navigateByUrl('/', { replaceUrl: true });
+    }
   }
 
   refreshToken(): Observable<boolean> {

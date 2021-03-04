@@ -5,9 +5,11 @@ import { ResourcesBrandsResolver } from './features/resources/brands/brands.reso
 import { ResourcesCategoriesResolver } from './features/resources/categories/categories.resolver';
 import { ResourcesColorsResolver } from './features/resources/colors/colors.resolver';
 import { ResourcesFeaturesResolver } from './features/resources/features/features.resolver';
+import { SignedInGuard } from './features/user/signed-in.guard';
 import { AboutProjectComponent } from './pages/about-project/about-project.component';
 import { AboutUsComponent } from './pages/about-us/about-us.component';
 import { HomeComponent } from './pages/home/home.component';
+import { ItemComponent } from './pages/item/item.component';
 import { MyClosetComponent } from './pages/my-closet/my-closet.component';
 import { MyCoordChecklistComponent } from './pages/my-coord-checklist/my-coord-checklist.component';
 import { MyWishlistComponent } from './pages/my-wishlist/my-wishlist.component';
@@ -112,6 +114,19 @@ const routes: Routes = [
       linkLabel: 'MENU.LINKS.TIPS',
       animation: 'tips',
       pageTitle: 'PAGES.TITLES.TIPS',
+    }
+  },
+  {
+    path: 'item/:id', component: ItemComponent,
+    canActivate: [SignedInGuard],
+    resolve: {
+      brands: ResourcesBrandsResolver,
+      colors: ResourcesColorsResolver,
+      categories: ResourcesCategoriesResolver,
+      features: ResourcesFeaturesResolver,
+    },
+    data: {
+      animation: 'item',
     }
   },
 ];

@@ -8,7 +8,7 @@ import { Component, HostBinding, OnInit } from '@angular/core';
     trigger('pageAnimation', [
       transition(':enter', [
         style({ opacity: 0 }),
-        animate('330ms 330ms linear', style({ opacity: 1 }))
+        animate('330ms', style({ opacity: 1 }))
       ]),
       transition(':leave', [
         style({ opacity: 1, transform: 'translateY(0%)' }),

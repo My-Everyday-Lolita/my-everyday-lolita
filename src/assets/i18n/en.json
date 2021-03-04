@@ -10,7 +10,12 @@
         "CLASSIC": "Theme classic"
       }
     },
-    "BACK": "Previous page"
+    "BACK": "Previous page",
+    "TOASTS": {
+      "ERRORS": {
+        "SIGNED_IN": "You must be signed in to access this page."
+      }
+    }
   },
   "PAGES": {
     "TITLES": {
@@ -106,6 +111,47 @@
     },
     "ADD": {
       "LABEL": "Add new item"
+    }
+  },
+  "ITEM": {
+    "REQUIRED_TEXT": "Fields marked with an * are mandatory.",
+    "TITLES": {
+      "NEW": "Add new item"
+    },
+    "FIELDS": {
+      "LABELS": {
+        "BRAND": "Brand",
+        "COLLECTIONN": "Collection",
+        "CATEGORY": "Category",
+        "FEATURES": "Features",
+        "COLORS": "Color(s)",
+        "PHOTO": "Photo",
+        "YEAR": "Year",
+        "JAPANESE": "Japanese name",
+        "MEASURMENTS": "Measurments",
+        "ESTIMATED_PRICE": "Estimated price",
+        "KEYWORDS": "Keywords"
+      },
+      "LEGENDS": {
+        "VARIANT": "Colorway {{i}}",
+        "ADDITIONALS": "Additional fields"
+      }
+    },
+    "ADD_VARIANT": "Add new colorway",
+    "REMOVE_VARIANT": "Remove",
+    "ERRORS": {
+      "REQUIRED": "Meh. This field is required.",
+      "MAX_LENGTH": "Wow wow wow. This field must be within {{maxlength}} characters.",
+      "MIN_LENGTH": "This field must be at least {{minlength}} characters long."
+    },
+    "HELPS": {
+      "PHOTO": "In order to limit the weight of our images, it is better to put the URL of the item picture you can find on Google.<br>If you want to use personal pictures, you just have to host them, using a photo hosting website (such as SmugMug, Google Photos, Flickr Pro, Imgur...)<br>Please try to provide the best quality pictures as possible.<br>Thank you :)",
+      "COLLECTION": "Hint : sometimes brands release items of differents colors under a same name.<br>Not all the brands do that, so you don’t have to fill this field if the item doesn’t belong to any collection.<br><br>For example :<br><b>Toy Doll Box</b> (Angelic Pretty)<br><br><b>The World's Most Adorable Dog and the World's Most Delicious Strawberry Frappe</b> (Baby, The Stars Shine Bright)<br><br>Also, as you can notice it might be long to write.",
+      "ADDITONALS": "These fields here are not mandatory, if you have the details you can fill in the fields, if you don’t, it’s okay, other member can edit them later.",
+      "KEYWORDS": "Here you can type pattern keywords, you can add severals ones!<br>Type \"Christmas\" if it is a Christmas themed dress, <br>Type \"bunnies\" if you see cute bunnies on the skirt,<br>Type \"cherries\" if there are cherries on these shoes...<br>It is simple !<br>Make sure that each keyword is validated with a border to separate them.<br>That will help the members to find their dream dresses, with a pattern only composed of cats ! (Which are evil creatures, as a reminder...)"
+    },
+    "DETAILS": {
+      "HOW_TO": "How to fill in this field ?"
     }
   }
 }

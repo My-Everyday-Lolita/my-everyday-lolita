@@ -37,9 +37,9 @@
   --app-button-default: #424242;
   --app-button-default-text-color: #eee;
   --app-button-default-shadow: #232323;
-  --app-button-user-link: #999999;
-  --app-button-user-link-text-color: #fff;
-  --app-button-user-link-shadow: #2e2e2e;
+  --app-button-discreet: #999999;
+  --app-button-discreet-text-color: #fff;
+  --app-button-discreet-shadow: #2e2e2e;
   --app-button-theme: #eee;
 
   --menu-background: #424242;
@@ -75,6 +75,17 @@
   --ng-select-criterium-keywords-text: #fff;
   --ng-select-criterium-color: #9c65ce;
   --ng-select-criterium-color-text: #fff;
+  --ng-select-default-color: #d1d1d1;
+  --ng-select-default-color-text: #000;
+
+  --fieldset-background: #cabdc9;
+  --fieldset-legend: #000000;
+  --fieldset-legend-text: #cabdc9;
+  --fieldset-legend-icon: #cabdc9;
+
+  --save-icon-1: #000;
+  --save-icon-2: #fdf2f8;
+  --save-icon-3: #fff;
 }
 
 body.theme-sweet {
@@ -135,6 +146,19 @@ body.theme-sweet {
   --details: #f7bff2;
   --details-shadow: #cc85ff;
   --details-text: #000;
+
+  --fieldset-background: #e6d7e4;
+  --fieldset-legend: #f7bff2;
+  --fieldset-legend-text: #000;
+  --fieldset-legend-icon: #242424;
+
+  --save-icon-1: #6396d3;
+  --save-icon-2: #fdf2f8;
+  --save-icon-3: #cc85ff;
+  --edit-icon-1: #5078aa;
+  --edit-icon-2: #fdf2f8;
+  --edit-icon-3: #cc85ff;
+  --edit-icon-4: #6da3e6;
 }
 
 body.theme-gothic {
@@ -174,9 +198,9 @@ body.theme-gothic {
   --app-button-default: #424242;
   --app-button-default-text-color: #eee;
   --app-button-default-shadow: #232323;
-  --app-button-user-link: #424242;
-  --app-button-user-link-text-color: #fff;
-  --app-button-user-link-shadow: #000000;
+  --app-button-discreet: #424242;
+  --app-button-discreet-text-color: #fff;
+  --app-button-discreet-shadow: #000000;
 
   --menu-background: #fff;
   --menu-foreground: #000;
@@ -191,12 +215,27 @@ body.theme-gothic {
 
   --dialog-backdrop: #06013d;
 
-  --input-background: #cecece;
+  --input-background: #fff;
   --input-color: #000;
 
   --details: #3f0670;
   --details-shadow: #000;
   --details-text: #fff;
+
+  --fieldset-background: #5d557c;
+  --fieldset-legend: #322187;
+  --fieldset-legend-text: #fff;
+  --fieldset-legend-icon: #fff;
+
+  --ng-select-default-color: #505050;
+
+  --save-icon-1: #000;
+  --save-icon-2: #fdf2f8;
+  --save-icon-3: #0a0077;
+  --edit-icon-1: #0a0077;
+  --edit-icon-2: #fdf2f8;
+  --edit-icon-3: #000;
+  --edit-icon-4: #1c0cc9;
 }
 
 body.theme-classic {
@@ -250,10 +289,23 @@ body.theme-classic {
 
   --dialog-backdrop: #291a10;
 
-  --input-background: #f1f1f1;
+  --input-background: #fff;
   --input-color: #000;
 
   --details: #edbe69;
   --details-shadow: #d32a09;
   --details-text: #000;
+
+  --fieldset-background: #c4ae83;
+  --fieldset-legend: #d32a09;
+  --fieldset-legend-text: #fff;
+  --fieldset-legend-icon: #fff;
+
+  --save-icon-1: #422a1a;
+  --save-icon-2: #fdf2f8;
+  --save-icon-3: #d32a09;
+  --edit-icon-1: #422a1a;
+  --edit-icon-2: #fdf2f8;
+  --edit-icon-3: #d32a09;
+  --edit-icon-4: #a36943;
 }

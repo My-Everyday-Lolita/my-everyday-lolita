@@ -1,0 +1,67 @@
+:host {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+}
+
+p {
+  font-family: "Gamja Flower";
+}
+
+.add-variant {
+  margin-top: var(--spacing);
+
+  .add-icon {
+    width: 30px;
+    height: 30px;
+    margin-left: var(--spacing);
+  }
+}
+
+.remove-variant {
+  margin-top: var(--spacing);
+}
+
+form {
+  padding-bottom: 100px;
+  width: 290px;
+}
+
+input.has-preview {
+  border-bottom-left-radius: 0px !important;
+  border-bottom-right-radius: 0px !important;
+}
+
+.photo-preview {
+  max-width: 100%;
+  display: block;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+[type="submit"].circle {
+  position: fixed;
+  bottom: var(--spacing-medium);
+  right: var(--spacing-medium);
+
+  svg {
+    width: 36px;
+    height: 36px;
+  }
+}
+
+details.right .details-content {
+  width: 360px;
+  right: -71%;
+}
+
+app-fieldset details.right .details-content {
+  width: 330px;
+  right: -57%;
+}
+
+.additional-fields {
+  margin-top: var(--spacing-big);
+}

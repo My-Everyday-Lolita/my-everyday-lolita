@@ -73,7 +73,7 @@ export class RegistrationComponent {
           }).subscribe(signedIn => {
             const redirect = this.activatedRoute.snapshot.queryParams.redirect || undefined;
             if (signedIn && redirect) {
-              this.router.navigateByUrl(redirect);
+              this.router.navigateByUrl(redirect, { replaceUrl: true });
             }
           });
         }

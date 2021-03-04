@@ -75,6 +75,11 @@ $ng-select-value-font-size: 0.9em !default;
       }
     }
   }
+  &.ng-invalid:not(.ng-untouched) {
+    .ng-select-container {
+      border: 1px solid red;
+    }
+  }
   &.ng-select-single {
     .ng-select-container {
       height: $ng-select-height;
@@ -124,26 +129,32 @@ $ng-select-value-font-size: 0.9em !default;
             display: flex;
             align-items: center;
             max-width: 230px;
+            border: 1px solid var(--ng-select-default-color);
 
             &.brand {
               background: var(--ng-select-criterium-brand);
               color: var(--ng-select-criterium-brand-text);
+              border: none;
             }
             &.color {
               background: var(--ng-select-criterium-color);
               color: var(--ng-select-criterium-color-text);
+              border: none;
             }
             &.feature {
               background: var(--ng-select-criterium-feature);
               color: var(--ng-select-criterium-feature-text);
+              border: none;
             }
             &.category {
               background: var(--ng-select-criterium-category);
               color: var(--ng-select-criterium-category-text);
+              border: none;
             }
             &.keyword {
               background: var(--ng-select-criterium-keywords);
               color: var(--ng-select-criterium-keywords-text);
+              border: none;
             }
           }
 
@@ -338,6 +349,15 @@ $ng-select-value-font-size: 0.9em !default;
           padding-right: 0;
         }
       }
+
+      .ng-option-label {
+        .lvl-1 {
+          padding-left: var(--spacing);
+        }
+        .lvl-2 {
+          padding-left: var(--spacing-medium);
+        }
+      }
     }
   }
 
@@ -345,4 +365,12 @@ $ng-select-value-font-size: 0.9em !default;
     direction: rtl;
     text-align: right;
   }
+}
+
+.color-display {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 1px solid black;
 }

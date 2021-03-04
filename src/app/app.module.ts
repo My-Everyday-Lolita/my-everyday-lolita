@@ -6,6 +6,8 @@ import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 
+import { ObserversModule } from '@angular/cdk/observers';
+
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { ToastNoAnimationModule, ToastrModule } from 'ngx-toastr';
@@ -36,6 +38,8 @@ import { AboutUsComponent } from './pages/about-us/about-us.component';
 import { AboutProjectComponent } from './pages/about-project/about-project.component';
 import { TipsComponent } from './pages/tips/tips.component';
 import { SignInComponent } from './pages/sign-in/sign-in.component';
+import { ItemComponent } from './pages/item/item.component';
+import { FieldsetComponent } from './features/form/fieldset/fieldset.component';
 
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
   return new TranslateHttpLoader(http);
@@ -63,6 +67,8 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     AboutProjectComponent,
     TipsComponent,
     SignInComponent,
+    ItemComponent,
+    FieldsetComponent,
   ],
   imports: [
     CommonModule,
@@ -88,6 +94,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
       toastComponent: ToastComponent
     }),
     NgSelectModule,
+    ObserversModule,
   ],
   entryComponents: [
     ToastComponent,

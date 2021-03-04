@@ -128,7 +128,7 @@
 <div class="toolbar">
   <div @toolbarItemAnimation *ngIf="currentPage && !currentPage.isHome" class="back-title-wrapper">
     <button back-button>{{ 'APP.BACK' | translate }}</button>
-    <h1 @toolbarItemAnimation *ngIf="currentPage.pageTitle">{{ currentPage.pageTitle | translate }}</h1>
+    <h1 @toolbarItemAnimation *ngIf="title.current">{{ title.current | translate }}</h1>
   </div>
   <button menu-button (click)="toggleMenu()" [active]="isMenuOpened"></button>
   <app-dialog-attach #menuContainer></app-dialog-attach>
@@ -257,13 +257,13 @@
         <p [innerHTML]="'MENU.TEXT.ANNONYMOUS' | translate"></p>
         <ul>
           <li>
-            <a [routerLink]="['/', 'sign-in']" [queryParams]="{redirect: currentPath}" app-button color="user-link" class="very-small no-shadow fw-normal" (click)="toggleMenu()"
+            <a [routerLink]="['/', 'sign-in']" [queryParams]="{redirect: currentPath}" app-button color="discreet" class="very-small no-shadow fw-normal" (click)="toggleMenu()"
               [replaceUrl]="replaceUrl">
               {{ 'MENU.LINKS.SIGN_IN' | translate }}
             </a>
           </li>
           <li>
-            <a [routerLink]="['/', 'registration']" [queryParams]="{redirect: currentPath}" app-button color="user-link" class="very-small no-shadow fw-normal"
+            <a [routerLink]="['/', 'registration']" [queryParams]="{redirect: currentPath}" app-button color="discreet" class="very-small no-shadow fw-normal"
               (click)="toggleMenu()" [replaceUrl]="replaceUrl">
               {{ 'MENU.LINKS.REGISTRATION' | translate }}
             </a>
@@ -279,12 +279,12 @@
             </div>
             <ul class="user-actions">
               <li>
-                <a [routerLink]="['/', 'profile']" app-button color="user-link" class="very-small no-shadow fw-normal" (click)="toggleMenu()" [replaceUrl]="replaceUrl">
+                <a [routerLink]="['/', 'profile']" app-button color="discreet" class="very-small no-shadow fw-normal" (click)="toggleMenu()" [replaceUrl]="replaceUrl">
                   {{ 'MENU.LINKS.PROFILE' | translate }}
                 </a>
               </li>
               <li>
-                <button app-button color="user-link" class="very-small no-shadow fw-normal" (click)="userSignInService.signOut()">
+                <button app-button color="discreet" class="very-small no-shadow fw-normal" (click)="userSignInService.signOut()">
                   {{ 'MENU.LINKS.SIGN_OUT' | translate }}
                 </button>
               </li>
