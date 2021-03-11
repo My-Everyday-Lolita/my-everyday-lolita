@@ -107,7 +107,7 @@
       }
     },
     "TOP": {
-      "TEXT": "You can search an item by: <ul><li><span class=\"brand\">brand</span> (Angelic Pretty, BABY THE STARS SHINE BRIGHT...),</li><li><span class=\"category\">category</span> (jumperskirts, socks, underwear...),</li><li><span class=\"color\">color</span> (Pink, Gold, Sax...),</li><li><span class=\"feature\">feature</span> (Full back shirring, scalloped, Peter Pan collar...)</li><li>or even <span class=\"keywords\">keywords</span> (Sugary carnival, bunny, cookie...).</li></ul>You can always add more criteria to your search by clicking on the search bar and continuing to type."
+      "TEXT": "You can search an item by : <ul><li><span class=\"brand\">brand</span> (Angelic Pretty, BABY THE STARS SHINE BRIGHT...),</li><li><span class=\"category\">category</span> (jumperskirts, socks, underwear...),</li><li><span class=\"color\">color</span> (Pink, Gold, Sax...),</li><li><span class=\"feature\">feature</span> (Full back shirring, scalloped, Peter Pan collar...)</li><li>or even <span class=\"keywords\">keywords</span> (Sugary carnival, bunny, cookie...).</li></ul>You can always add more criteria to your search by clicking on the search bar and continuing to type.<br><br>Tip: Type \"My items\" to display only the items you have created."
     },
     "ADD": {
       "LABEL": "Add new item"
@@ -115,6 +115,11 @@
   },
   "ITEM": {
     "REQUIRED_TEXT": "Fields marked with an * are mandatory.",
+    "SUBMIT": "Save",
+    "TOGGLE_EDIT_MODE": "Toggle edit mode",
+    "CANCEL": "Cancel",
+    "ADD_TO_CLOSET": "Add to <span class=\"visualy-hidden\">closet</span>",
+    "ADD_TO_WISHLIST": "Add to <span class=\"visualy-hidden\">wishlist</span>",
     "TITLES": {
       "NEW": "Add new item"
     },
@@ -152,6 +157,10 @@
     },
     "DETAILS": {
       "HOW_TO": "How to fill in this field ?"
+    },
+    "TOASTS": {
+      "NEW_SUCCESS": "Oh yeah ! Successfully created.",
+      "UPDATE_SUCCESS": "Oh yeah ! Successfully updated."
     }
   }
 }

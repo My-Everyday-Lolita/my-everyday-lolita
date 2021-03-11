@@ -1,5 +1,5 @@
 import { animate, animateChild, group, query, stagger, style, transition, trigger } from '@angular/animations';
-import { Component, Inject, OnDestroy, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
+import { Component, Inject, OnDestroy, OnInit, Renderer2, ViewChild, ViewContainerRef } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, NavigationStart, Router, RouterOutlet, Routes } from '@angular/router';
 import { Subject } from 'rxjs';
 import { filter, map, switchMap, takeUntil, tap } from 'rxjs/operators';
@@ -112,6 +112,7 @@ export class AppComponent implements OnInit, OnDestroy {
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private userService: UserService,
+    private renderer: Renderer2,
     @Inject(APP_ROUTES) routes: Routes
   ) {
     this.others = routes.filter(route => route.data && route.data.others);
@@ -191,6 +192,10 @@ export class AppComponent implements OnInit, OnDestroy {
     // if (notify) {
     //   this.menuClose$.next(!this.isMenuOpened);
     // }
+  }
+
+  getRenderer(): Renderer2 {
+    return this.renderer;
   }
 
 }

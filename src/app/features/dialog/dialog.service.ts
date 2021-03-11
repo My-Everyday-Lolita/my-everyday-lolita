@@ -1,4 +1,4 @@
-import { ApplicationRef, ComponentFactoryResolver, Injectable, Injector, TemplateRef, ViewContainerRef } from '@angular/core';
+import { ApplicationRef, ComponentFactoryResolver, Injectable, Injector, Renderer2, TemplateRef, ViewContainerRef } from '@angular/core';
 import { DialogConfiguration } from './dialog.model';
 import { DialogComponent } from './dialog/dialog.component';
 
@@ -18,9 +18,11 @@ export class DialogService {
     dialogRef.instance.config = config;
     dialogRef.instance.template = templateModal;
     dialogRef.instance.onClose = () => {
+      this.appRef.components[0].instance.getRenderer().setStyle(document.body, 'overflow', 'auto');
       dialogRef.destroy();
     };
     if (container) {
+      this.appRef.components[0].instance.getRenderer().setStyle(document.body, 'overflow', 'hidden');
       container.insert(dialogRef.hostView);
     } else {
       this.appRef.components[0].instance.viewContainerRef.insert(dialogRef.hostView);

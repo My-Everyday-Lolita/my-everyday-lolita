@@ -128,13 +128,13 @@
 <div class="toolbar">
   <div @toolbarItemAnimation *ngIf="currentPage && !currentPage.isHome" class="back-title-wrapper">
     <button back-button>{{ 'APP.BACK' | translate }}</button>
-    <h1 @toolbarItemAnimation *ngIf="title.current">{{ title.current | translate }}</h1>
+    <h1 @toolbarItemAnimation *ngIf="title.current"><span>{{ title.current | translate }}</span></h1>
   </div>
   <button menu-button (click)="toggleMenu()" [active]="isMenuOpened"></button>
   <app-dialog-attach #menuContainer></app-dialog-attach>
 </div>
 
-<main [@routeAnimations]="prepareRoute(outlet)" [class.menu-opened]="menuComponent && menuComponent.opened">
+<main [@routeAnimations]="prepareRoute(outlet)">
   <router-outlet #outlet="outlet"></router-outlet>
 </main>
 

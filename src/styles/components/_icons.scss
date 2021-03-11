@@ -24,13 +24,19 @@
   .primary & {
     &::before,
     &::after {
-      background: var(--app-button-primary-shadow);
+      background: var(--app-button-primary-text-color);
     }
   }
   .accent & {
     &::before,
     &::after {
-      background: var(--app-button-accent-shadow);
+      background: var(--app-button-accent-text-color);
+    }
+  }
+  .default & {
+    &::before,
+    &::after {
+      background: var(--app-button-default-text-color);
     }
   }
 
@@ -39,6 +45,71 @@
     &::after {
       height: 3px;
       width: 70%;
+    }
+  }
+  &.very-small {
+    &::before,
+    &::after {
+      height: 3px;
+      width: 50%;
+    }
+  }
+}
+
+.clear-icon {
+  position: relative;
+  width: 100%;
+  height: 100%;
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 50%;
+    height: 6px;
+    border-radius: 8px;
+  }
+
+  &::before {
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+  &::after {
+    transform: translate(-50%, -50%) rotate(-45deg);
+  }
+
+  .primary & {
+    &::before,
+    &::after {
+      background: var(--app-button-primary-text-color);
+    }
+  }
+  .accent & {
+    &::before,
+    &::after {
+      background: var(--app-button-accent-text-color);
+    }
+  }
+  .default & {
+    &::before,
+    &::after {
+      background: var(--app-button-default-text-color);
+    }
+  }
+
+  &.small {
+    &::before,
+    &::after {
+      height: 3px;
+      width: 70%;
+    }
+  }
+  &.very-small {
+    &::before,
+    &::after {
+      height: 3px;
+      width: 50%;
     }
   }
 }
@@ -74,4 +145,14 @@
   &.open {
     transform: rotate(90deg);
   }
+}
+
+/* SVG ICONS */
+
+.grayscale {
+  --add-to-closet-1: #000000;
+  --add-to-closet-2: #232323;
+  --add-to-wishlist-1: #000000;
+  --add-to-wishlist-2: #232323;
+  --add-to-wishlist-3: #fff;
 }

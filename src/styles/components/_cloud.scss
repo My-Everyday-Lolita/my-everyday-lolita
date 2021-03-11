@@ -25,6 +25,7 @@
   left: 0;
   width: 150px;
   height: auto;
+  pointer-events: none;
 }
 #top-right-cloud {
   position: fixed;
@@ -33,6 +34,7 @@
   right: 0;
   width: 145px;
   height: auto;
+  pointer-events: none;
 }
 
 .background-clouds {

@@ -1,12 +1,19 @@
 import { trigger, transition, style, animate } from '@angular/animations';
-import { Component, HostBinding, OnInit } from '@angular/core';
+import { Component, HostBinding, OnDestroy, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 import { Brand } from 'src/app/features/resources/brands/brands.model';
 import { ExtendedCategory } from 'src/app/features/resources/categories/categories.model';
 import { Color } from 'src/app/features/resources/colors/colors.model';
 import { Feature } from 'src/app/features/resources/features/features.model';
+import { Item, ItemVariant } from 'src/app/features/resources/items/items.model';
+import { ItemsService } from 'src/app/features/resources/items/items.service';
 import { TitleService } from 'src/app/features/title/title.service';
+import { UserSignInService } from 'src/app/features/user/user-sign-in.service';
+import { UserService } from 'src/app/features/user/user.service';
 
 @Component({
   templateUrl: './item.component.html',
@@ -24,11 +31,11 @@ import { TitleService } from 'src/app/features/title/title.service';
     ])
   ]
 })
-export class ItemComponent implements OnInit {
+export class ItemComponent implements OnInit, OnDestroy {
 
   @HostBinding('@pageAnimation') private pageAnimation = true;
 
-  form: FormGroup;
+  form!: FormGroup;
   id!: string;
   isNew!: boolean;
   brands: Brand[] = [];
@@ -36,32 +43,21 @@ export class ItemComponent implements OnInit {
   categories: ExtendedCategory[] = [];
   colors: Color[] = [];
   editing = false;
+  editable = true;
+  item: Item;
+
+  private unsubscriber = new Subject();
 
   constructor(
     private title: TitleService,
     private activatedRoute: ActivatedRoute,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private userSignInService: UserSignInService,
+    private userService: UserService,
+    private router: Router,
+    private itemsService: ItemsService,
+    private toastr: ToastrService
   ) {
-    this.form = this.fb.group({
-      brand: [null, Validators.required],
-      collectionn: [null],
-      category: [null],
-      features: [null],
-      variants: this.fb.array([
-        this.fb.group({
-          colors: [null, [Validators.required]],
-          photo: ['', [Validators.required]]
-        })
-      ]),
-      year: [''],
-      japanese: [''],
-      measurments: [''],
-      estimatedPrice: [null],
-      keywords: [null],
-    });
-  }
-
-  ngOnInit(): void {
     this.id = this.activatedRoute.snapshot.params.id;
     this.brands = this.activatedRoute.snapshot.data.brands;
     this.colors = this.activatedRoute.snapshot.data.colors;
@@ -74,11 +70,13 @@ export class ItemComponent implements OnInit {
         root.children.forEach(child => {
           child.disabled = child.children !== undefined;
           child._lvlClass = 'lvl-1';
+          child.parent = { ...root, children: undefined, disabled: undefined, _lvlClass: undefined };
           acc.push(child);
           if (child.children) {
             child.children.forEach(leaf => {
               leaf.disabled = false;
               leaf._lvlClass = 'lvl-2';
+              leaf.parent = { ...child, children: undefined, _lvlClass: undefined, disabled: undefined };
               acc.push(leaf);
             });
           }
@@ -86,13 +84,44 @@ export class ItemComponent implements OnInit {
       }
       return acc;
     }, [] as ExtendedCategory[]);
+
+    this.item = this.activatedRoute.snapshot.data.item;
+
     this.isNew = this.id === 'new';
     this.editing = this.isNew;
+
+    this.initForm(this.item || null);
+  }
+
+  ngOnInit(): void {
+
+    this.form.valueChanges.pipe(takeUntil(this.unsubscriber)).subscribe(values => {
+      localStorage.setItem(this.itemsService.TMP_SAVE_KEY, JSON.stringify(values));
+    });
+
+    this.userSignInService.signedIn$.pipe(takeUntil(this.unsubscriber)).subscribe(signedIn => {
+      this.editable = signedIn && (this.isNew || this.item.owner === this.userService.user?.email || this.userService.isAdmin());
+      if (!signedIn && this.isNew) {
+        this.router.navigateByUrl('/', { replaceUrl: true });
+      }
+    });
+
     setTimeout(() => {
       if (this.isNew) {
         this.title.set('ITEM.TITLES.NEW');
+      } else {
+        this.title.set(`${this.item.brand.shortname || this.item.brand.name} ${this.item.collectionn}`, true);
       }
     });
+  }
+
+  ngOnDestroy(): void {
+    this.unsubscriber.next();
+    this.unsubscriber.complete();
+  }
+
+  toggleEditMode(): void {
+    this.editing = !this.editing;
   }
 
   get brand(): FormControl {
@@ -131,19 +160,101 @@ export class ItemComponent implements OnInit {
     return this.form.controls.keywords as FormControl;
   }
 
-  onSubmit(): void {
-    console.log(this.form.value);
+  cancel(): void {
+    this.toggleEditMode();
+    this.form.reset(this.item || null);
   }
 
-  addVariant(): void {
-    this.variants.push(this.fb.group({
-      colors: [null, [Validators.required]],
-      photo: ['', [Validators.required]]
-    }));
+  onSubmit(): void {
+    const values = JSON.parse(JSON.stringify(this.form.value));
+    this.cleanValues(values);
+    if (this.isNew) {
+      delete values._id;
+      this.itemsService.create(values).subscribe(response => {
+        this.toastr.success('ITEM.TOASTS.NEW_SUCCESS', undefined);
+        this.router.navigateByUrl(`/item/${response._id}`, { replaceUrl: true });
+        this.title.set(`Item ${this.item._id}`, true);
+        this.isNew = false;
+        this.editing = false;
+        localStorage.removeItem(this.itemsService.TMP_SAVE_KEY);
+      });
+    } else {
+      this.itemsService.update(values).subscribe(response => {
+        this.item = response;
+        this.toastr.success('ITEM.TOASTS.UPDATE_SUCCESS', undefined);
+        this.toggleEditMode();
+      });
+    }
+  }
+
+  addVariant(initialValue?: ItemVariant): void {
+    this.variants.push(this._addVariant(initialValue));
+  }
+
+  addPhoto(variantControl: FormGroup, initialValue?: string): void {
+    (variantControl.get('photos') as FormArray).push(this.fb.control(initialValue || null));
+  }
+
+  removePhoto(variantControl: FormGroup, index: number): void {
+    (variantControl.get('photos') as FormArray).removeAt(index);
   }
 
   removeVariant(index: number): void {
     this.variants.removeAt(index);
+  }
+
+  private _addVariant(initialValue?: ItemVariant): FormGroup {
+    const variantControl = this.fb.group({
+      colors: [initialValue && initialValue.colors || null, [Validators.required]],
+      photos: this.fb.array([], [Validators.required])
+    });
+    (initialValue && initialValue.photos || [null]).forEach((photo: any) => {
+      this.addPhoto(variantControl, photo);
+    });
+    return variantControl;
+  }
+
+  private cleanValues(values: Item): void {
+    if (values.variants) {
+      for (const variant of values.variants) {
+        // clean photos
+        variant.photos = variant.photos.filter(photo => !!photo);
+      }
+    }
+  }
+
+  private initForm(initialValue?: Item): void {
+    const value = {
+      brand: null,
+      collectionn: null,
+      category: null,
+      features: null,
+      year: null,
+      japanese: null,
+      measurments: null,
+      estimatedPrice: null,
+      keywords: null,
+      owner: this.userService.user && this.userService.user.email || null,
+      variants: [
+        null
+      ],
+      _id: null,
+      ...(initialValue || {})
+    };
+    this.form = this.fb.group({
+      _id: [value._id, Validators.required],
+      brand: [value.brand, Validators.required],
+      collectionn: [value.collectionn],
+      category: [value.category],
+      features: [value.features],
+      year: [value.year],
+      japanese: [value.japanese],
+      measurments: [value.measurments],
+      estimatedPrice: [value.estimatedPrice],
+      keywords: [value.keywords],
+      owner: [value.owner, Validators.required],
+      variants: this.fb.array((value.variants as any[]).map((variant: any) => this._addVariant(variant)), [Validators.required])
+    });
   }
 
 }

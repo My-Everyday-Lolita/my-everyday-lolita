@@ -29,4 +29,8 @@ export interface UserSignInInfos extends UserSignInResponse {
 export interface User {
   preferred_username: string;
   email: string;
+  sub: string;
+  realm_access: {
+    roles: string[]
+  };
 }

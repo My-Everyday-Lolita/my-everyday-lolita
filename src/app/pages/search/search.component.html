@@ -1,4 +1,4 @@
-<form [formGroup]="form" class="filter">
+<form [formGroup]="form" class="filter" (ngSubmit)="search()">
   <details>
     <summary>
       <span class="visualy-hidden">How to search</span>
@@ -11,16 +11,16 @@
   <div class="relative">
     <div class="form-field">
       <label class="visualy-hidden" for="criteria-select">{{ 'SEARCH.FIELDS.LABELS.FILTER' | translate }}</label>
-      <ng-select id="criteria-select" aria-describedby="criteria-select-description" formControlName="criteria" [virtualScroll]="true" [items]="criteria" bindLabel="name"
+      <ng-select id="criteria-select" aria-describedby="criteria-select-description" formControlName="criteria" [virtualScroll]="true" [items]="criteria" bindLabel="displayValue"
         [multiple]="true" [placeholder]="'SEARCH.FIELDS.PLACEHOLDER.CRITERIA' | translate" [searchFn]="searchCriterias" [addTag]="addKeywords" class="padding-right">
         <ng-template ng-option-tmp let-item="item">
-          {{ item.name }}<br>
+          {{ item.displayValue }}<br>
           <span class="criterium-type" [ngClass]="item.type">{{ item.type }}</span>
         </ng-template>
         <ng-template ng-label-tmp let-item="item" let-clear="clear">
           <span class="ng-value-content" [ngClass]="item.type">
             <span class="ng-value-icon left" (click)="clear(item);" aria-hidden="true">×</span>
-            <span class="ng-value-label">{{ item.name }}</span>
+            <span class="ng-value-label">{{ item.displayValue }}</span>
           </span>
         </ng-template>
       </ng-select>
@@ -32,19 +32,37 @@
   </div>
 </form>
 
-<ng-container *ngIf="selectedCriteria.length === 0; else resultTemplate">
+<ng-container *ngIf="selectedCriteria.length === 0 && results.length === 0; else resultTemplate">
   <p>Recently added items</p>
 </ng-container>
 <ng-template #resultTemplate>
-  <ng-container *ngIf="results.length > 0; else noResults">
-    <p>Results</p>
-  </ng-container>
+  <section *ngIf="results.length > 0; else noResults" class="items">
+    <article *ngFor="let item of results" class="item">
+      <a [routerLink]="['/item', item._id]">
+        <img [attr.src]="item | itemPhoto" alt="Item colorway photo">
+      </a>
+      <div class="actions">
+        <button app-button class="circle very-small no-shadow no-background" [tadaSize]="36" color="primary">
+          <span class="visualy-hidden">{{ 'ITEM.ACTIONS.ADD_TO_CLOSET' | translate }}</span>
+          <svg>
+            <use xlink:href="#add_to_closet" />
+          </svg>
+        </button>
+        <button app-button class="circle very-small no-shadow no-background" [tadaSize]="36" color="primary">
+          <span class="visualy-hidden">{{ 'ITEM.ACTIONS.ADD_TO_WISHLIST' | translate }}</span>
+          <svg>
+            <use xlink:href="#add_to_wishlist" />
+          </svg>
+        </button>
+      </div>
+    </article>
+  </section>
   <ng-template #noResults>
     <p>No results</p>
   </ng-template>
 </ng-template>
 
-<a [routerLink]="['/item', 'new']" app-button class="circle add-item" color="accent">
+<a [routerLink]="['/item', 'new']" app-button class="circle add-item" color="accent" *ngIf="displayAddItem">
   <span class="visualy-hidden">{{ 'SEARCH.ADD.LABEL' | translate }}</span>
   <span class="add-icon" aria-hidden="true"></span>
 </a>

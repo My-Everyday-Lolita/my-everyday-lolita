@@ -33,6 +33,19 @@
     &.ng-untouched ~ .error {
       display: none;
     }
+
+    &.price-input {
+      width: 50%;
+
+      & + span {
+        display: block;
+        margin-left: var(--spacing);
+      }
+    }
+  }
+
+  textarea {
+    resize: none;
   }
 
   label > span:last-of-type {
@@ -120,7 +133,7 @@ form,
 }
 
 form {
-  div[role="group"] {
+  .fieldset[role="group"] {
     font-size: var(--font-size);
     font-family: Caveat;
     width: 100%;
@@ -133,7 +146,7 @@ form {
       overflow: visible;
     }
 
-    .legend-wrapper {
+    > .legend-wrapper {
       position: relative;
       border-radius: inherit;
 
@@ -165,18 +178,18 @@ form {
           }
         }
       }
-    }
 
-    .legend {
-      padding: var(--spacing);
-      display: flex;
-      align-items: center;
-      background: var(--fieldset-legend);
-      color: var(--fieldset-legend-text);
-      border-radius: inherit;
-      border-bottom-left-radius: 0;
-      border-bottom-right-radius: 0;
-      transition: all 330ms linear;
+      > .legend {
+        padding: var(--spacing);
+        display: flex;
+        align-items: center;
+        background: var(--fieldset-legend);
+        color: var(--fieldset-legend-text);
+        border-radius: inherit;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+        transition: all 330ms linear;
+      }
     }
 
     .fieldset-content {
@@ -184,7 +197,7 @@ form {
       box-sizing: border-box;
     }
 
-    .fieldset-container {
+    > .fieldset-container {
       box-sizing: border-box;
       position: relative;
       border-radius: inherit;

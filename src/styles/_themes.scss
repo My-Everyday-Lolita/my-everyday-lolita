@@ -5,6 +5,10 @@
   --primary-text: #fff;
   --primary-shadow: #232323;
 
+  --default: #424242;
+  --default-text: #fff;
+  --default-shadow: #232323;
+
   --username: #232323;
 
   // DECO
@@ -86,6 +90,15 @@
   --save-icon-1: #000;
   --save-icon-2: #fdf2f8;
   --save-icon-3: #fff;
+
+  --item-actions: #ffffff;
+
+  --item-header: #ffffff;
+  --item-header-text: #000;
+
+  --item-field-section-header: #424242;
+  --item-field-section-header-text: #fff;
+  --item-field-section: #c1c1c1;
 }
 
 body.theme-sweet {
@@ -159,6 +172,13 @@ body.theme-sweet {
   --edit-icon-2: #fdf2f8;
   --edit-icon-3: #cc85ff;
   --edit-icon-4: #6da3e6;
+
+  --item-field-section-header: #f7bff2;
+  --item-field-section-header-text: #000;
+  --item-field-section: #e6d7e4;
+
+  --cloud-symbol: #eacdff;
+  --cloud-symbol-shadow: #cc85ff;
 }
 
 body.theme-gothic {
@@ -236,6 +256,24 @@ body.theme-gothic {
   --edit-icon-2: #fdf2f8;
   --edit-icon-3: #000;
   --edit-icon-4: #1c0cc9;
+
+  --arabesque-top-shadow: #000;
+
+  --item-field-section-header: #322187;
+  --item-field-section-header-text: #fff;
+  --item-field-section: #5d557c;
+  --item-field-section-content-text: #fff;
+
+  .grayscale {
+    --add-to-closet-1: #ffffff;
+    --add-to-closet-2: #d4d4d4;
+    --add-to-wishlist-1: #ffffff;
+    --add-to-wishlist-2: #d4d4d4;
+    --add-to-wishlist-3: #000;
+  }
+
+  --cloud-symbol: #e5d4ff;
+  --cloud-symbol-shadow: #4500b2;
 }
 
 body.theme-classic {
@@ -308,4 +346,19 @@ body.theme-classic {
   --edit-icon-2: #fdf2f8;
   --edit-icon-3: #d32a09;
   --edit-icon-4: #a36943;
+
+  --item-field-section-header: #d32a09;
+  --item-field-section-header-text: #fff;
+  --item-field-section: #c4ae83;
+
+  .grayscale {
+    --add-to-closet-1: #ffffff;
+    --add-to-closet-2: #d4d4d4;
+    --add-to-wishlist-1: #ffffff;
+    --add-to-wishlist-2: #d4d4d4;
+    --add-to-wishlist-3: #000;
+  }
+
+  --cloud-symbol: #ffe0d5;
+  --cloud-symbol-shadow: #892806;
 }

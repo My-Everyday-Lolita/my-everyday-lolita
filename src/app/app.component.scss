@@ -1,11 +1,6 @@
 main {
   z-index: 10;
   position: relative;
-
-  &.menu-opened {
-    height: 100vh;
-    overflow: hidden;
-  }
 }
 
 .tada-overlay {
@@ -46,6 +41,8 @@ main {
   margin-right: var(--spacing);
   display: flex;
   color: var(--title-text);
+  min-width: 0;
+  overflow: hidden;
 }
 
 h1 {
@@ -56,6 +53,15 @@ h1 {
   color: inherit;
   font-size: var(--font-size-medium);
   font-family: Caveat;
+  min-width: 0;
+  flex: 1;
+
+  span {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    min-width: 0;
+    overflow: hidden;
+  }
 }
 
 [menu-button] {

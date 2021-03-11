@@ -6,6 +6,13 @@
   min-height: 100vh;
 }
 
+.content-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 160px;
+}
+
 p {
   font-family: "Gamja Flower";
 }
@@ -34,6 +41,16 @@ input.has-preview {
   border-bottom-right-radius: 0px !important;
 }
 
+.preview-wrapper {
+  position: relative;
+
+  button {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+  }
+}
+
 .photo-preview {
   max-width: 100%;
   display: block;
@@ -41,10 +58,22 @@ input.has-preview {
   border-bottom-right-radius: 8px;
 }
 
-[type="submit"].circle {
+[type="submit"].circle,
+.toggle-edit {
   position: fixed;
   bottom: var(--spacing-medium);
   right: var(--spacing-medium);
+
+  svg {
+    width: 36px;
+    height: 36px;
+  }
+}
+
+.cancel-button {
+  position: fixed;
+  bottom: 24px;
+  left: var(--spacing-medium);
 
   svg {
     width: 36px;
@@ -62,6 +91,173 @@ app-fieldset details.right .details-content {
   right: -57%;
 }
 
+.photos-fieldset {
+  margin-top: var(--spacing);
+
+  .legend {
+    line-height: 50px;
+  }
+
+  .add-photo {
+    position: absolute;
+    top: var(--spacing);
+    right: 34px + 8px;
+    border: 1px solid var(--app-button-primary-shadow);
+  }
+
+  .photo-fieldset {
+    &:not(:last-of-type) {
+      margin-bottom: var(--spacing);
+    }
+  }
+}
+
+.photos-details {
+  position: absolute;
+  top: 0;
+  left: -8px;
+
+  summary {
+    position: absolute;
+    right: var(--spacing);
+  }
+
+  .details-content {
+    left: unset;
+    right: -10% !important;
+  }
+}
+
 .additional-fields {
   margin-top: var(--spacing-big);
+}
+
+app-form-field:not(:first-of-type) {
+  margin-top: var(--spacing);
+}
+
+.image-grid {
+  margin-top: var(--spacing-big);
+  margin-bottom: var(--spacing-big);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
+  max-width: 70vw;
+  gap: var(--spacing-small) var(--spacing-small);
+  user-select: none;
+
+  li {
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+}
+
+.item-header-wrapper {
+  min-width: 84vw;
+  svg {
+    display: block;
+  }
+
+  .arabesque-bottom {
+    position: relative;
+    top: -1px;
+    z-index: -1;
+  }
+}
+
+.item-header {
+  padding: var(--spacing);
+  background: var(--item-header);
+  color: var(--item-header-text);
+  font-size: var(--font-size);
+}
+
+.item-field-section {
+  position: relative;
+  border-radius: 8px;
+  width: 70vw;
+  margin-bottom: var(--spacing-big);
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    background: var(--item-field-section);
+    opacity: 0.3;
+    transition: all 330ms linear;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+  }
+
+  h2 {
+    font-family: Caveat;
+    background: var(--item-field-section-header);
+    color: var(--item-field-section-header-text);
+    padding: var(--spacing);
+    font-size: var(--font-size);
+    transition: all 330ms linear;
+    display: flex;
+    align-items: center;
+
+    span {
+      flex: 1;
+    }
+
+    svg {
+      width: 32px;
+      height: 32px;
+    }
+  }
+}
+
+.item-field-content {
+  padding: var(--spacing);
+  font-size: var(--font-size-very-small);
+  font-family: "Gamja Flower";
+  color: var(--item-field-section-content-text, inherit);
+
+  ul,
+  li {
+    font-family: inherit;
+    font-size: inherit;
+  }
+}
+
+.add-to-wrapper {
+  padding-bottom: var(--spacing-bigger);
+}
+
+[app-cloud-container] {
+  width: 160px;
+  height: 93px;
+  margin-bottom: var(--spacing);
+
+  .add-to-closet {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translate(-50%, -50%);
+    background: #fff;
+
+    svg {
+      width: 25px;
+      height: 25px;
+    }
+  }
+  .add-to-wishlist {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translate(50%, -50%);
+    background: #fff;
+
+    svg {
+      width: 25px;
+      height: 25px;
+    }
+  }
 }

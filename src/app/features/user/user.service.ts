@@ -23,4 +23,12 @@ export class UserService {
     }
     return null;
   }
+
+  isAdmin(): boolean {
+    return (this.user && this.user.realm_access.roles.includes('admin')) as boolean;
+  }
+
+  hasRole(role: string): boolean {
+    return this.isAdmin() || (this.user && this.user.realm_access.roles.includes(role)) as boolean;
+  }
 }

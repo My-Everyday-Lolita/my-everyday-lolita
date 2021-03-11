@@ -14,11 +14,15 @@ export class TitleService {
     private translate: TranslateService
   ) { }
 
-  set(untranslatedTitle: string): void {
+  set(untranslatedTitle: string, disableTranslate = false): void {
     this.current = untranslatedTitle;
-    this.translate.get(untranslatedTitle).subscribe(translatedTitle => {
-      this.title.setTitle(translatedTitle);
-    });
+    if (disableTranslate) {
+      this.title.setTitle(untranslatedTitle);
+    } else {
+      this.translate.get(untranslatedTitle).subscribe(translatedTitle => {
+        this.title.setTitle(translatedTitle);
+      });
+    }
   }
 
 }

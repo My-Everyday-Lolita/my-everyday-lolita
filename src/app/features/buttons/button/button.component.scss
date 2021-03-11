@@ -97,7 +97,7 @@
   }
 
   &.no-shadow {
-    box-shadow: unset;
+    box-shadow: unset !important;
   }
 
   &[href] {
@@ -128,11 +128,49 @@
       padding: 0;
       height: 100%;
     }
+
+    &.small {
+      width: 42px;
+      height: 42px;
+
+      &.primary {
+        box-shadow: 2px 2px 0 var(--app-button-primary-shadow);
+      }
+      &.accent {
+        box-shadow: 2px 2px 0 var(--app-button-accent-shadow);
+      }
+      &.default {
+        box-shadow: 2px 2px 0 var(--app-button-default-shadow);
+      }
+    }
+
+    &.very-small {
+      width: 34px;
+      height: 34px;
+
+      &.primary {
+        box-shadow: 2px 2px 0 var(--app-button-primary-shadow);
+      }
+      &.accent {
+        box-shadow: 2px 2px 0 var(--app-button-accent-shadow);
+      }
+      &.default {
+        box-shadow: 2px 2px 0 var(--app-button-default-shadow);
+      }
+    }
+  }
+
+  &.no-background {
+    background: transparent !important;
   }
 
   &.small-padding {
     .text-content {
       padding: var(--spacing-small) var(--spacing);
     }
+  }
+
+  &.alternate-ff {
+    font-family: "Gamja Flower";
   }
 }

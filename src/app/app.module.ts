@@ -40,6 +40,12 @@ import { TipsComponent } from './pages/tips/tips.component';
 import { SignInComponent } from './pages/sign-in/sign-in.component';
 import { ItemComponent } from './pages/item/item.component';
 import { FieldsetComponent } from './features/form/fieldset/fieldset.component';
+import { FormFieldComponent } from './features/form/form-field/form-field.component';
+import { LabelComponent } from './features/form/form-field/label.component';
+import { InputDirective } from './features/form/form-field/input.directive';
+import { PhotosPipe } from './features/resources/items/photos.pipe';
+import { ItemPhotoPipe } from './features/resources/items/item-photo.pipe';
+import { CloudContainerComponent } from './features/cloud-container/cloud-container/cloud-container.component';
 
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
   return new TranslateHttpLoader(http);
@@ -69,6 +75,12 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     SignInComponent,
     ItemComponent,
     FieldsetComponent,
+    FormFieldComponent,
+    LabelComponent,
+    InputDirective,
+    PhotosPipe,
+    ItemPhotoPipe,
+    CloudContainerComponent,
   ],
   imports: [
     CommonModule,

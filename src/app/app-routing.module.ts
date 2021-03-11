@@ -5,6 +5,7 @@ import { ResourcesBrandsResolver } from './features/resources/brands/brands.reso
 import { ResourcesCategoriesResolver } from './features/resources/categories/categories.resolver';
 import { ResourcesColorsResolver } from './features/resources/colors/colors.resolver';
 import { ResourcesFeaturesResolver } from './features/resources/features/features.resolver';
+import { ResourcesItemResolver } from './features/resources/items/item.resolver';
 import { SignedInGuard } from './features/user/signed-in.guard';
 import { AboutProjectComponent } from './pages/about-project/about-project.component';
 import { AboutUsComponent } from './pages/about-us/about-us.component';
@@ -118,12 +119,12 @@ const routes: Routes = [
   },
   {
     path: 'item/:id', component: ItemComponent,
-    canActivate: [SignedInGuard],
     resolve: {
       brands: ResourcesBrandsResolver,
       colors: ResourcesColorsResolver,
       categories: ResourcesCategoriesResolver,
       features: ResourcesFeaturesResolver,
+      item: ResourcesItemResolver,
     },
     data: {
       animation: 'item',

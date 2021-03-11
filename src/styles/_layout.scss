@@ -12,6 +12,10 @@
   &.column {
     flex-direction: column;
   }
+
+  > .flex {
+    flex: 1;
+  }
 }
 
 .relative {

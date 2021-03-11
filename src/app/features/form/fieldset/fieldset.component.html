@@ -1,4 +1,4 @@
-<div role="group" [attr.aria-labelledby]="legendId" [@collapseAnimation]="{value: open ? 'open' : 'close', params: animationParams}" [class.open]="open"
+<div class="fieldset" role="group" [attr.aria-labelledby]="legendId" [@collapseAnimation]="{value: open ? 'open' : 'close', params: animationParams}" [class.open]="open"
   (@collapseAnimation.done)="onAnimationDone($event)">
   <div class="legend-wrapper">
     <div class="legend" [attr.id]="legendId" (click)="toggle()">{{ legend }}</div>
