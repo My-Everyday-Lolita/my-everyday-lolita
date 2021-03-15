@@ -9,6 +9,7 @@ import { DialogAttachComponent } from './features/dialog/dialog-attach/dialog-co
 import { DialogService } from './features/dialog/dialog.service';
 import { DialogComponent } from './features/dialog/dialog/dialog.component';
 import { TadaService } from './features/effects/tada/tada.service';
+import { UserContentService } from './features/resources/user-content/user-content.service';
 import { ThemeService } from './features/theme/theme.service';
 import { TitleService } from './features/title/title.service';
 import { UserSignInService } from './features/user/user-sign-in.service';

@@ -1,4 +1,4 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
@@ -16,11 +16,19 @@ export class ItemsService {
   ) { }
 
   create(data: Item): Observable<Item> {
-    return this.http.put<Item>(`${environment.domains.mel}/api/resources/items`, data);
+    return this.http.put<Item>(`${environment.domains.mel}/api/resources/items`, data, {
+      headers: new HttpHeaders({
+        Authorization: 'auto'
+      })
+    });
   }
 
   update(data: Item): Observable<Item> {
-    return this.http.patch<Item>(`${environment.domains.mel}/api/resources/items`, data);
+    return this.http.patch<Item>(`${environment.domains.mel}/api/resources/items`, data, {
+      headers: new HttpHeaders({
+        Authorization: 'auto'
+      })
+    });
   }
 
   findById(id: string): Observable<Item> {

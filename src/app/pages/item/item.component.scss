@@ -32,8 +32,9 @@ p {
 }
 
 form {
-  padding-bottom: 100px;
+  padding-bottom: 200px;
   width: 290px;
+  margin-top: 140px;
 }
 
 input.has-preview {
@@ -150,6 +151,16 @@ app-form-field:not(:first-of-type) {
     img {
       width: 100%;
       height: auto;
+
+      &.active {
+        position: fixed;
+        z-index: 1004;
+        width: var(--image-grid-width);
+        top: var(--image-grid-top, 0);
+        left: var(--image-grid-left, 0);
+        transform: translate(var(--image-grid-translate, 0%), var(--image-grid-translate, 0%));
+        transition: all var(--image-grid-timing, 0ms);
+      }
     }
   }
 }

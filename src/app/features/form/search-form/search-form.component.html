@@ -1,0 +1,25 @@
+<form [formGroup]="form" class="filter" (ngSubmit)="triggerSearch()">
+  <ng-content select="[before]"></ng-content>
+  <div class="search-form-content">
+    <div class="form-field">
+      <label class="visualy-hidden" for="criteria-select">{{ 'SEARCH.FIELDS.LABELS.FILTER' | translate }}</label>
+      <ng-select id="criteria-select" aria-describedby="criteria-select-description" formControlName="criteria" [virtualScroll]="true" [items]="criteria" bindLabel="displayValue"
+        [multiple]="true" [placeholder]="placeholder" [searchFn]="searchCriterias" [addTag]="enableKeywords && addKeywords" class="padding-right">
+        <ng-template ng-option-tmp let-item="item">
+          {{ item.displayValue }}<br>
+          <span class="criterium-type" [ngClass]="item.type">{{ item.type }}</span>
+        </ng-template>
+        <ng-template ng-label-tmp let-item="item" let-clear="clear">
+          <span class="ng-value-content" [ngClass]="item.type">
+            <span class="ng-value-icon left" (click)="clear(item);" aria-hidden="true">×</span>
+            <span class="ng-value-label">{{ item.displayValue }}</span>
+          </span>
+        </ng-template>
+      </ng-select>
+    </div>
+    <button type="submit">
+      <span class="visualy-hidden">Search</span>
+      <ng-content select="[submit-icon]"></ng-content>
+    </button>
+  </div>
+</form>

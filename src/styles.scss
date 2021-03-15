@@ -13,6 +13,8 @@
 @import "./styles/components/ng-select";
 @import "./styles/components/icons";
 @import "./styles/components/details";
+@import "./styles/components/item";
+@import "./styles/components/search";
 
 body {
   transition: all 330ms linear;
@@ -41,4 +43,9 @@ body {
 
 b {
   font-weight: bold;
+}
+
+.small-yes {
+  height: 22px;
+  width: 49px;
 }

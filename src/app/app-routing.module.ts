@@ -29,6 +29,12 @@ const routes: Routes = [
   },
   {
     path: 'my-closet', component: MyClosetComponent,
+    resolve: {
+      brands: ResourcesBrandsResolver,
+      colors: ResourcesColorsResolver,
+      categories: ResourcesCategoriesResolver,
+      features: ResourcesFeaturesResolver,
+    },
     data: {
       home: true,
       linkLabel: 'HOME.LINKS.MY_CLOSET',
@@ -38,6 +44,12 @@ const routes: Routes = [
   },
   {
     path: 'my-wishlist', component: MyWishlistComponent,
+    resolve: {
+      brands: ResourcesBrandsResolver,
+      colors: ResourcesColorsResolver,
+      categories: ResourcesCategoriesResolver,
+      features: ResourcesFeaturesResolver,
+    },
     data: {
       home: true,
       linkLabel: 'HOME.LINKS.MY_WISHLIST',

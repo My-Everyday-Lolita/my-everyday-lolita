@@ -1,0 +1,4 @@
+<div class="backdrop" (click)="close()" [@backdrop]="animationState"></div>
+<div class="dialog-content" [@animation]="{ value: animationState, params: config }" (@animation.done)="onAnimationDone($event)" (click)="close()">
+  <img [attr.src]="url" alt="Item photo">
+</div>

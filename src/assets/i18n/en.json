@@ -94,7 +94,8 @@
       "SUCCESS": "Congratulations !<br>Your registration has been successfully completed.",
       "CONFLICT": "Oh no !<br>This email or username already exists.",
       "UNKNOWN": "How sad!<br>An unknown error has occured.",
-      "CREDENTIALS_ERROR": "Oh dear...<br>that seems to be a wrong username or password."
+      "CREDENTIALS_ERROR": "Oh dear...<br>that seems to be a wrong username or password.",
+      "EXPIRED_SESSION": "Where have you been ?<br>Your session has expired."
     }
   },
   "SEARCH": {
@@ -135,7 +136,17 @@
         "JAPANESE": "Japanese name",
         "MEASURMENTS": "Measurments",
         "ESTIMATED_PRICE": "Estimated price",
-        "KEYWORDS": "Keywords"
+        "KEYWORDS": "Keywords",
+        "SUBSTYLES": "Substyle(s) / Theme(s)"
+      },
+      "SECTIONS": {
+        "FEATURES": "Features",
+        "YEAR": "Year of release",
+        "JAPANESE": "Japanese name",
+        "MEASURMENTS": "Measurments",
+        "ESTIMATED_PRICE": "Estimated price",
+        "KEYWORDS": "Keywords",
+        "SUBSTYLES": "Substyle(s) / Theme(s)"
       },
       "LEGENDS": {
         "VARIANT": "Colorway {{i}}",
@@ -153,7 +164,8 @@
       "PHOTO": "In order to limit the weight of our images, it is better to put the URL of the item picture you can find on Google.<br>If you want to use personal pictures, you just have to host them, using a photo hosting website (such as SmugMug, Google Photos, Flickr Pro, Imgur...)<br>Please try to provide the best quality pictures as possible.<br>Thank you :)",
       "COLLECTION": "Hint : sometimes brands release items of differents colors under a same name.<br>Not all the brands do that, so you don’t have to fill this field if the item doesn’t belong to any collection.<br><br>For example :<br><b>Toy Doll Box</b> (Angelic Pretty)<br><br><b>The World's Most Adorable Dog and the World's Most Delicious Strawberry Frappe</b> (Baby, The Stars Shine Bright)<br><br>Also, as you can notice it might be long to write.",
       "ADDITONALS": "These fields here are not mandatory, if you have the details you can fill in the fields, if you don’t, it’s okay, other member can edit them later.",
-      "KEYWORDS": "Here you can type pattern keywords, you can add severals ones!<br>Type \"Christmas\" if it is a Christmas themed dress, <br>Type \"bunnies\" if you see cute bunnies on the skirt,<br>Type \"cherries\" if there are cherries on these shoes...<br>It is simple !<br>Make sure that each keyword is validated with a border to separate them.<br>That will help the members to find their dream dresses, with a pattern only composed of cats ! (Which are evil creatures, as a reminder...)"
+      "KEYWORDS": "Here you can type pattern keywords, you can add severals ones!<br>Type \"Christmas\" if it is a Christmas themed dress, <br>Type \"bunnies\" if you see cute bunnies on the skirt,<br>Type \"cherries\" if there are cherries on these shoes...<br>It is simple !<br>Make sure that each keyword is validated with a border to separate them.<br>That will help the members to find their dream dresses, with a pattern only composed of cats ! (Which are evil creatures, as a reminder...)",
+      "SUBSTYLES": "This allows you fellows lolita friends to find easier the items matching their personality !<br>You can add several of course, a Valentine's Day theme can be sweet, a dress can be both military and circus etc.<br><br>Just keep in mind that it will help everyone to have more relevent researches."
     },
     "DETAILS": {
       "HOW_TO": "How to fill in this field ?"
@@ -161,6 +173,34 @@
     "TOASTS": {
       "NEW_SUCCESS": "Oh yeah ! Successfully created.",
       "UPDATE_SUCCESS": "Oh yeah ! Successfully updated."
+    }
+  },
+  "MY_CLOSET": {
+    "TOP": {
+      "TEXT": "If you have planned to sell an item, hit the <svg class=\"small-yes\"><use xlink:href=\"#want-to-sell\" /></svg> button !<br>So that you can have a visual hint."
+    },
+    "FOOTER": {
+      "BEGINING": "This is just the beginning ! Muhahaha *evil laugh*",
+      "MORE_POWERFUL": "Oh you are getting more powerful !",
+      "IMPRESSIVE": "Your power is impressive !",
+      "MANA_SAMA": "On the road to be Mana-sama !",
+      "GOD": "Are you the god of lolita fashion ?!<br>The legend was true",
+      "ESTIMATED_PRICE": "Your whole collection accounts for about $<b>{{price}}</b> ! Amazing!",
+      "ESTIMATED_PRICE_ZERO": "No item yet ? Please add some so that I can tell you how expensive you are."
+    },
+    "SEARCH": {
+      "PLACEHOLDER": "Filter your collection by brand or category",
+      "GO_TO": "Go to the search page"
+    }
+  },
+  "MY_WISHLIST": {
+    "FOOTER": {
+      "ESTIMATED_PRICE": "Estimation of your wishlist: <b>${{price}}</b>. You are going to need more money to buy this dream !",
+      "ESTIMATED_PRICE_ZERO": "You are going to need more money to buy this dream !"
+    },
+    "SEARCH": {
+      "PLACEHOLDER": "Filter your wishlist by brand or category",
+      "GO_TO": "Go to the search page"
     }
   }
 }

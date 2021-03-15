@@ -98,7 +98,14 @@ export class UserSignInService {
         headers: new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')
       };
       return this.http.post(this.url, body.toString(), options).pipe(
-        catchError(err => {
+        catchError(response => {
+          if (response.error.error === 'invalid_grant') {
+            this.signOut();
+            this.toastr.error('SIGN_IN.TOASTS.EXPIRED_SESSION', undefined, { closeButton: true, disableTimeOut: true, enableHtml: true });
+          } else {
+            this.toastr.error('SIGN_IN.TOASTS.UNKNOWN', undefined, { closeButton: true, disableTimeOut: true, enableHtml: true });
+            console.error(response);
+          }
           return of(false);
         }),
         map(response => {

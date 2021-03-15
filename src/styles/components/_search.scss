@@ -1,0 +1,26 @@
+.criterium-type {
+  font-size: var(--font-size-extra-small);
+
+  &.brand {
+    color: var(--ng-select-criterium-brand);
+  }
+  &.color {
+    color: var(--ng-select-criterium-color);
+  }
+  &.feature {
+    color: var(--ng-select-criterium-feature);
+  }
+  &.category {
+    color: var(--ng-select-criterium-category);
+  }
+  &.keyword {
+    color: var(--ng-select-criterium-keywords);
+  }
+}
+
+app-search-form {
+  [submit-icon] {
+    width: 25px;
+    height: auto;
+  }
+}

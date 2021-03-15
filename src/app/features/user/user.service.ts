@@ -12,7 +12,15 @@ export class UserService {
 
   constructor(
     private userSignInService: UserSignInService
-  ) { }
+  ) {
+    this.userSignInService.signedIn$.subscribe(signedIn => {
+      if (signedIn) {
+        this.getUserInfos();
+      } else {
+        this.user = undefined;
+      }
+    });
+  }
 
   getUserInfos(): User | null {
     if (this.userSignInService.isSignedIn()) {

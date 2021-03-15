@@ -11,6 +11,7 @@ import { Color } from 'src/app/features/resources/colors/colors.model';
 import { Feature } from 'src/app/features/resources/features/features.model';
 import { Item, ItemVariant } from 'src/app/features/resources/items/items.model';
 import { ItemsService } from 'src/app/features/resources/items/items.service';
+import { UserContentService } from 'src/app/features/resources/user-content/user-content.service';
 import { TitleService } from 'src/app/features/title/title.service';
 import { UserSignInService } from 'src/app/features/user/user-sign-in.service';
 import { UserService } from 'src/app/features/user/user.service';
@@ -45,6 +46,34 @@ export class ItemComponent implements OnInit, OnDestroy {
   editing = false;
   editable = true;
   item: Item;
+  signedIn = false;
+
+  substyles = [
+    'Sweet lolita',
+    'Gothic lolita',
+    'Classic lolita',
+    'Punk lolita',
+    'Sailor lolita',
+    'Bride lolita',
+    'Steam lolita',
+    'Military lolita',
+    'Pirate lolita',
+    'Ero lolita',
+    'Country lolita',
+    'Vintage lolita',
+    'Hime lolita',
+    'Wa lolita (Japanese)',
+    'Qi lolita (Chinese)',
+    'Han lolita (Korean)',
+    'Monochrome (Shiro / Kuro / Ao / Pinku)',
+    'Guro lolita (gore)',
+    'Circus lolita',
+    'Cyber lolita',
+    'Halloween',
+    'Christmas',
+    'Easter',
+    'Valentine’s Day',
+  ];
 
   private unsubscriber = new Subject();
 
@@ -100,6 +129,7 @@ export class ItemComponent implements OnInit, OnDestroy {
     });
 
     this.userSignInService.signedIn$.pipe(takeUntil(this.unsubscriber)).subscribe(signedIn => {
+      this.signedIn = signedIn;
       this.editable = signedIn && (this.isNew || this.item.owner === this.userService.user?.email || this.userService.isAdmin());
       if (!signedIn && this.isNew) {
         this.router.navigateByUrl('/', { replaceUrl: true });
@@ -203,6 +233,12 @@ export class ItemComponent implements OnInit, OnDestroy {
     this.variants.removeAt(index);
   }
 
+  addCustomBrand(term: string): Brand {
+    return {
+      name: term,
+    };
+  }
+
   private _addVariant(initialValue?: ItemVariant): FormGroup {
     const variantControl = this.fb.group({
       colors: [initialValue && initialValue.colors || null, [Validators.required]],
@@ -234,6 +270,7 @@ export class ItemComponent implements OnInit, OnDestroy {
       measurments: null,
       estimatedPrice: null,
       keywords: null,
+      substyles: null,
       owner: this.userService.user && this.userService.user.email || null,
       variants: [
         null
@@ -252,6 +289,7 @@ export class ItemComponent implements OnInit, OnDestroy {
       measurments: [value.measurments],
       estimatedPrice: [value.estimatedPrice],
       keywords: [value.keywords],
+      substyles: [value.substyles],
       owner: [value.owner, Validators.required],
       variants: this.fb.array((value.variants as any[]).map((variant: any) => this._addVariant(variant)), [Validators.required])
     });

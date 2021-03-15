@@ -3,7 +3,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { CommonModule } from '@angular/common';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { ObserversModule } from '@angular/cdk/observers';
@@ -46,6 +46,14 @@ import { InputDirective } from './features/form/form-field/input.directive';
 import { PhotosPipe } from './features/resources/items/photos.pipe';
 import { ItemPhotoPipe } from './features/resources/items/item-photo.pipe';
 import { CloudContainerComponent } from './features/cloud-container/cloud-container/cloud-container.component';
+import { AuthorizationInterceptor } from './features/http/interceptors/authorization.interceptor';
+import { InactiveInterceptor } from './features/http/interceptors/inactive.interceptor';
+import { InClosetDirective } from './features/resources/user-content/in-closet.directive';
+import { InWishListDirective } from './features/resources/user-content/in-wishlist.directive';
+import { SearchFormComponent } from './features/form/search-form/search-form.component';
+import { SafePipeModule } from 'safe-pipe';
+import { ImageZoomDirective } from './features/dialog/image-zoom.directive';
+import { ImageDialogComponent } from './features/dialog/image-dialog/image-dialog.component';
 
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
   return new TranslateHttpLoader(http);
@@ -81,6 +89,11 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     PhotosPipe,
     ItemPhotoPipe,
     CloudContainerComponent,
+    InClosetDirective,
+    InWishListDirective,
+    SearchFormComponent,
+    ImageZoomDirective,
+    ImageDialogComponent,
   ],
   imports: [
     CommonModule,
@@ -107,11 +120,15 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     }),
     NgSelectModule,
     ObserversModule,
+    SafePipeModule,
   ],
   entryComponents: [
     ToastComponent,
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthorizationInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: InactiveInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -48,12 +48,12 @@
 
     <ul class="image-grid">
       <li *ngFor="let photo of item | photos">
-        <img [attr.src]="photo" alt="">
+        <img [attr.src]="photo" alt="" [appImageZoom]="photo">
       </li>
     </ul>
 
     <section class="item-field-section" *ngIf="item.features && item.features.length > 0">
-      <h2>Features</h2>
+      <h2>{{ 'ITEM.FIELDS.SECTIONS.FEATURES' | translate }}</h2>
       <div class="item-field-content">
         <ul>
           <li *ngFor="let feature of item.features">
@@ -63,31 +63,31 @@
       </div>
     </section>
     <section class="item-field-section" *ngIf="item.year">
-      <h2>Year of release</h2>
+      <h2>{{ 'ITEM.FIELDS.SECTIONS.YEAR' | translate }}</h2>
       <div class="item-field-content">
         <p>{{ item.year }}</p>
       </div>
     </section>
     <section class="item-field-section" *ngIf="item.japanese">
-      <h2>Japanese name</h2>
+      <h2>{{ 'ITEM.FIELDS.SECTIONS.JAPANESE' | translate }}</h2>
       <div class="item-field-content">
         <p>{{ item.japanese }}</p>
       </div>
     </section>
     <section class="item-field-section" *ngIf="item.measurments">
-      <h2>Measurments</h2>
+      <h2>{{ 'ITEM.FIELDS.SECTIONS.MEASURMENTS' | translate }}</h2>
       <div class="item-field-content">
         <p [innerText]="item.measurments"></p>
       </div>
     </section>
     <section class="item-field-section" *ngIf="item.estimatedPrice">
-      <h2>Estimated price</h2>
+      <h2>{{ 'ITEM.FIELDS.SECTIONS.ESTIMATED_PRICE' | translate }}</h2>
       <div class="item-field-content">
         <p>${{ item.estimatedPrice }}</p>
       </div>
     </section>
     <section class="item-field-section" *ngIf="item.keywords && item.keywords.length > 0">
-      <h2>Keywords</h2>
+      <h2>{{ 'ITEM.FIELDS.SECTIONS.KEYWORDS' | translate }}</h2>
       <div class="item-field-content">
         <ul>
           <li *ngFor="let keyword of item.keywords">
@@ -96,11 +96,21 @@
         </ul>
       </div>
     </section>
+    <section class="item-field-section" *ngIf="item.substyles && item.substyles.length > 0">
+      <h2>{{ 'ITEM.FIELDS.SECTIONS.SUBSTYLES' | translate }}</h2>
+      <div class="item-field-content">
+        <ul>
+          <li *ngFor="let substyle of item.substyles">
+            {{ substyle }}
+          </li>
+        </ul>
+      </div>
+    </section>
     <ul class="add-to-wrapper">
       <li app-cloud-container *ngFor="let variant of item.variants" class="alternate-ff fw-normal">
-        <button app-button color="discreet" class="circle small no-shadow add-to-closet">
+        <button app-button color="default" class="circle small no-shadow add-to-closet" *ngIf="signedIn" appInCloset [item]="item" [variant]="variant" #inCloset="inCloset">
           <span class="visualy-hidden" [innerHTML]="'ITEM.ADD_TO_CLOSET' | translate"></span>
-          <svg>
+          <svg [class.grayscale]="!inCloset.isIn">
             <use xlink:href="#add_to_closet" />
           </svg>
         </button>
@@ -108,9 +118,9 @@
           <span>{{ color.name }}</span>
           <span *ngIf="!isLast">,&nbsp;</span>
         </ng-container>
-        <button app-button color="discreet" class="circle small no-shadow add-to-wishlist">
+        <button app-button color="default" class="circle small no-shadow add-to-wishlist" *ngIf="signedIn" appInWishlist [item]="item" [variant]="variant" #inWishlist="inWishlist">
           <span class="visualy-hidden" [innerHTML]="'ITEM.ADD_TO_WISHLIST' | translate"></span>
-          <svg>
+          <svg [class.grayscale]="!inWishlist.isIn">
             <use xlink:href="#add_to_wishlist" />
           </svg>
         </button>
@@ -126,7 +136,7 @@
       <label appLabel>
         {{ 'ITEM.FIELDS.LABELS.BRAND' | translate }}
       </label>
-      <ng-select appInput formControlName="brand" [items]="brands" bindLabel="name" required></ng-select>
+      <ng-select appInput formControlName="brand" [items]="brands" bindLabel="name" [addTag]="addCustomBrand" required></ng-select>
       <p class="error visualy-hidden" *ngIf="brand.errors?.required">{{ 'ITEM.ERRORS.REQUIRED' | translate }}</p>
     </app-form-field>
     <app-form-field>
@@ -253,6 +263,31 @@
           </div>
         </details>
         <ng-select appInput formControlName="keywords" [multiple]="true" [items]="[]" [addTag]="true" [selectOnTab]="true" [isOpen]="false"
+          (changeEvent)="additionalFields.onContentChange()">
+          <ng-template ng-label-tmp let-item="item" let-clear="clear">
+            <span class="ng-value-content">
+              <span class="ng-value-icon left" (click)="clear(item);" aria-hidden="true">×</span>
+              <span class="ng-value-label">
+                {{ item }}
+              </span>
+            </span>
+          </ng-template>
+        </ng-select>
+      </app-form-field>
+      <app-form-field>
+        <label appLabel>
+          {{ 'ITEM.FIELDS.LABELS.SUBSTYLES' | translate }}
+        </label>
+        <details class="right">
+          <summary>
+            <span class="visualy-hidden">{{ 'ITEM.DETAILS.HOW_TO' | translate }}</span>
+            <span class="help-icon" aria-hidden="true">?</span>
+          </summary>
+          <div class="details-content">
+            <p [innerHTML]="'ITEM.HELPS.SUBSTYLES' | translate"></p>
+          </div>
+        </details>
+        <ng-select appInput formControlName="substyles" [multiple]="true" [items]="substyles" [addTag]="true" [selectOnTab]="true"
           (changeEvent)="additionalFields.onContentChange()">
           <ng-template ng-label-tmp let-item="item" let-clear="clear">
             <span class="ng-value-content">

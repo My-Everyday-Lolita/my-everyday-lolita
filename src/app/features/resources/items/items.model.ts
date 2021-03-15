@@ -19,13 +19,19 @@ export interface Item {
   measurments?: string;
   estimatedPrice?: number;
   keywords?: string[];
+  substyles?: string[];
   owner: string;
   _id?: string;
+
+  /**
+   * Specific closet/wishlist
+   */
+  wantToSell?: boolean;
 }
 
 export interface Criterium {
-  type: 'brand' | 'color' | 'feature' | 'category' | 'keyword' | 'own';
+  type: 'brand' | 'color' | 'feature' | 'category' | 'keyword' | 'own' | 'id';
   value: string;
-  displayValue: string;
+  displayValue?: string;
   parents?: string[];
 }

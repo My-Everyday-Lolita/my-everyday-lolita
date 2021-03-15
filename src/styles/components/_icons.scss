@@ -97,6 +97,12 @@
       background: var(--app-button-default-text-color);
     }
   }
+  .discreet & {
+    &::before,
+    &::after {
+      background: #fff;
+    }
+  }
 
   &.small {
     &::before,
@@ -150,9 +156,11 @@
 /* SVG ICONS */
 
 .grayscale {
-  --add-to-closet-1: #000000;
-  --add-to-closet-2: #232323;
+  --add-to-closet-1: #5c5c5c;
+  --add-to-closet-2: #a1a1a1;
   --add-to-wishlist-1: #000000;
   --add-to-wishlist-2: #232323;
   --add-to-wishlist-3: #fff;
+  --want-to-sell: #cfcfcf;
+  --want-to-sell-text: #ffffff;
 }
