@@ -84,6 +84,7 @@ footer {
     width: 220px;
     height: auto;
     position: relative;
+    z-index: -1;
     top: -100px;
     left: 20px;
     transform: translate(20%, 20%);
