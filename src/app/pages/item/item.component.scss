@@ -62,6 +62,7 @@ input.has-preview {
 [type="submit"].circle,
 .toggle-edit {
   position: fixed;
+  z-index: 1004;
   bottom: var(--spacing-medium);
   right: var(--spacing-medium);
 

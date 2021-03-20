@@ -4,7 +4,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: auto;
-  max-width: 70vw;
+  width: 70vw;
   gap: var(--spacing-small) var(--spacing-small);
 }
 
@@ -30,9 +30,46 @@
     }
   }
 
+  .img-container {
+    height: 180px;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      background: url("/assets/images/logo.svg") no-repeat;
+      background-position: center center;
+      background-size: contain;
+      width: 70%;
+      height: 70%;
+      transform: translate(-50%, -50%);
+      filter: grayscale(100%) blur(2px);
+    }
+
+    > img {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+
   img {
     width: 100%;
     height: auto;
     display: block;
+
+    &.load-behavior {
+      opacity: 0;
+      transition: opacity 200ms linear;
+
+      &.loaded {
+        opacity: 1;
+      }
+    }
   }
 }

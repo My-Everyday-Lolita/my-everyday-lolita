@@ -1,7 +1,8 @@
-import { trigger, transition, style, animate } from '@angular/animations';
+import { trigger, transition, style, animate, query, useAnimation } from '@angular/animations';
 import { Component, HostBinding, OnDestroy, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { itemsEnterAnimation, itemsLeaveAnimation } from 'src/app/features/animations/items.animation';
 import { Criterium, Item } from 'src/app/features/resources/items/items.model';
 import { ItemsService } from 'src/app/features/resources/items/items.service';
 import { UserSignInService } from 'src/app/features/user/user-sign-in.service';
@@ -19,6 +20,16 @@ import { UserSignInService } from 'src/app/features/user/user-sign-in.service';
         style({ opacity: 1, transform: 'translateY(0%)' }),
         animate('330ms linear', style({ opacity: 0, transform: 'translateY(5%)' }))
       ]),
+    ]),
+    trigger('items', [
+      transition('* <=> *', [
+        query(':leave', [
+          useAnimation(itemsLeaveAnimation),
+        ], { optional: true }),
+        query(':enter', [
+          useAnimation(itemsEnterAnimation),
+        ], { optional: true })
+      ])
     ])
   ]
 })
@@ -49,6 +60,7 @@ export class SearchComponent implements OnInit, OnDestroy {
   }
 
   search(criteria: Criterium[]): void {
+    this.results = [];
     this.itemsService.findByCriteria(criteria).subscribe(response => {
       const colorCriteria = criteria.filter(crit => crit.type === 'color');
       const displayedItems = [];

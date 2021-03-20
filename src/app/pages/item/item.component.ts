@@ -11,7 +11,6 @@ import { Color } from 'src/app/features/resources/colors/colors.model';
 import { Feature } from 'src/app/features/resources/features/features.model';
 import { Item, ItemVariant } from 'src/app/features/resources/items/items.model';
 import { ItemsService } from 'src/app/features/resources/items/items.service';
-import { UserContentService } from 'src/app/features/resources/user-content/user-content.service';
 import { TitleService } from 'src/app/features/title/title.service';
 import { UserSignInService } from 'src/app/features/user/user-sign-in.service';
 import { UserService } from 'src/app/features/user/user.service';
@@ -140,7 +139,7 @@ export class ItemComponent implements OnInit, OnDestroy {
       if (this.isNew) {
         this.title.set('ITEM.TITLES.NEW');
       } else {
-        this.title.set(`${this.item.brand.shortname || this.item.brand.name} ${this.item.collectionn}`, true);
+        this.updateTitle();
       }
     });
   }
@@ -201,9 +200,10 @@ export class ItemComponent implements OnInit, OnDestroy {
     if (this.isNew) {
       delete values._id;
       this.itemsService.create(values).subscribe(response => {
+        this.item = response;
         this.toastr.success('ITEM.TOASTS.NEW_SUCCESS', undefined);
         this.router.navigateByUrl(`/item/${response._id}`, { replaceUrl: true });
-        this.title.set(`Item ${this.item._id}`, true);
+        this.updateTitle();
         this.isNew = false;
         this.editing = false;
         localStorage.removeItem(this.itemsService.TMP_SAVE_KEY);
@@ -211,8 +211,10 @@ export class ItemComponent implements OnInit, OnDestroy {
     } else {
       this.itemsService.update(values).subscribe(response => {
         this.item = response;
+        localStorage.removeItem(this.itemsService.TMP_SAVE_KEY);
         this.toastr.success('ITEM.TOASTS.UPDATE_SUCCESS', undefined);
         this.toggleEditMode();
+        this.updateTitle();
       });
     }
   }
@@ -279,7 +281,7 @@ export class ItemComponent implements OnInit, OnDestroy {
       ...(initialValue || {})
     };
     this.form = this.fb.group({
-      _id: [value._id, Validators.required],
+      _id: [value._id, !this.isNew ? [Validators.required] : []],
       brand: [value.brand, Validators.required],
       collectionn: [value.collectionn],
       category: [value.category],
@@ -293,6 +295,10 @@ export class ItemComponent implements OnInit, OnDestroy {
       owner: [value.owner, Validators.required],
       variants: this.fb.array((value.variants as any[]).map((variant: any) => this._addVariant(variant)), [Validators.required])
     });
+  }
+
+  private updateTitle(): void {
+    this.title.set(`${this.item.brand.shortname || this.item.brand.name} ${this.item.collectionn || ''}`, true);
   }
 
 }

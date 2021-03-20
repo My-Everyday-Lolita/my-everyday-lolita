@@ -7,7 +7,6 @@ import {
   HostListener,
   Injector,
   Input,
-  Renderer2,
   ViewContainerRef
 } from '@angular/core';
 import { ImageDialogConfiguration } from './dialog.model';
@@ -24,7 +23,6 @@ export class ImageZoomDirective {
 
   constructor(
     private elementRef: ElementRef<HTMLImageElement>,
-    private renderer: Renderer2,
     private injector: Injector,
     private componentFactoryResolver: ComponentFactoryResolver,
     private appRef: ApplicationRef

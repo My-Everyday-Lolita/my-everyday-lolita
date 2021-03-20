@@ -23,6 +23,7 @@ p:not(.search-top-text) {
 
 .search-button {
   position: fixed;
+  z-index: 1;
   right: var(--spacing-medium);
   bottom: var(--spacing-medium);
 }

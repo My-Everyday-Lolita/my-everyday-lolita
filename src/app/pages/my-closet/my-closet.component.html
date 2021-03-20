@@ -23,10 +23,10 @@
   <span class="add-icon" aria-hidden="true"></span>
 </a>
 
-<section *ngIf="results.length > 0; else noResults" class="items">
+<section *ngIf="results.length > 0; else noResults" class="items" [@items]="results.length">
   <article *ngFor="let item of results" class="item">
-    <a [routerLink]="['/item', item._id]">
-      <img [attr.src]="item | itemPhoto" alt="Item colorway photo">
+    <a [routerLink]="['/item', item._id]" class="img-container">
+      <img [attr.src]="item | itemPhoto" appImageLoad alt="Item colorway photo">
     </a>
     <div class="actions" *ngIf="signedIn">
       <button class="want-to-sell-btn" (click)="toggleWantToSellProperty(item)">

@@ -1,7 +1,8 @@
-import { animate, style, transition, trigger } from '@angular/animations';
+import { animate, query, style, transition, trigger, useAnimation } from '@angular/animations';
 import { Component, HostBinding, OnDestroy, OnInit } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { filter, map, takeUntil } from 'rxjs/operators';
+import { itemsLeaveAnimation, itemsEnterAnimation } from 'src/app/features/animations/items.animation';
 import { Criterium, Item } from 'src/app/features/resources/items/items.model';
 import { ItemsService } from 'src/app/features/resources/items/items.service';
 import { UserContentService } from 'src/app/features/resources/user-content/user-content.service';
@@ -21,6 +22,16 @@ import { UserSignInService } from 'src/app/features/user/user-sign-in.service';
         style({ opacity: 1, transform: 'translateY(0%)' }),
         animate('330ms linear', style({ opacity: 0, transform: 'translateY(5%)' }))
       ]),
+    ]),
+    trigger('items', [
+      transition('* <=> *', [
+        query(':leave', [
+          useAnimation(itemsLeaveAnimation),
+        ], { optional: true }),
+        query(':enter', [
+          useAnimation(itemsEnterAnimation),
+        ], { optional: true })
+      ])
     ])
   ]
 })
@@ -71,8 +82,11 @@ export class MyClosetComponent implements OnInit, OnDestroy {
   }
 
   onFilter(criteria: Criterium[]): void {
-    this.selectedCriteria = criteria;
-    this.results = this.filterItems(this.items, this.selectedCriteria);
+    this.results = [];
+    setTimeout(() => {
+      this.selectedCriteria = criteria;
+      this.results = this.filterItems(this.items, this.selectedCriteria);
+    });
   }
 
   toggleWantToSellProperty(item: Item): void {

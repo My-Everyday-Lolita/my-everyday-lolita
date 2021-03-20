@@ -15,10 +15,10 @@
   <p>Recently added items</p>
 </ng-container>
 <ng-template #resultTemplate>
-  <section *ngIf="results.length > 0; else noResults" class="items">
+  <section *ngIf="results.length > 0; else noResults" class="items" [@items]="results.length">
     <article *ngFor="let item of results" class="item">
-      <a [routerLink]="['/item', item._id]">
-        <img [attr.src]="item | itemPhoto" alt="Item colorway photo">
+      <a [routerLink]="['/item', item._id]" class="img-container">
+        <img [attr.src]="item | itemPhoto" appImageLoad alt="Item colorway photo">
       </a>
       <div class="actions" *ngIf="signedIn">
         <button app-button class="circle very-small no-shadow no-background" [tadaSize]="36" color="primary" appInCloset [item]="item" [variant]="item.variants[0]"

@@ -54,6 +54,7 @@ import { SearchFormComponent } from './features/form/search-form/search-form.com
 import { SafePipeModule } from 'safe-pipe';
 import { ImageZoomDirective } from './features/dialog/image-zoom.directive';
 import { ImageDialogComponent } from './features/dialog/image-dialog/image-dialog.component';
+import { ImageLoadDirective } from './features/images/image-load.directive';
 
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
   return new TranslateHttpLoader(http);
@@ -94,6 +95,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     SearchFormComponent,
     ImageZoomDirective,
     ImageDialogComponent,
+    ImageLoadDirective,
   ],
   imports: [
     CommonModule,
