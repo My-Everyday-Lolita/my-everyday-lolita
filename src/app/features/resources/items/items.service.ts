@@ -45,4 +45,8 @@ export class ItemsService {
     return this.http.post<Item[]>(`${environment.domains.mel}/api/resources/items/search`, criteria, { params });
   }
 
+  recentlyAdded(): Observable<Item[]> {
+    return this.http.get<Item[]>(`${environment.domains.mel}/api/resources/items/recently-added`);
+  }
+
 }

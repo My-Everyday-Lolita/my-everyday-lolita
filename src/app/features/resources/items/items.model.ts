@@ -21,6 +21,8 @@ export interface Item {
   keywords?: string[];
   substyles?: string[];
   owner: string;
+  created: Date;
+  modified: Date;
   _id?: string;
 
   /**

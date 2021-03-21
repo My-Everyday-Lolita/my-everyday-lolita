@@ -12,7 +12,30 @@
 </app-search-form>
 
 <ng-container *ngIf="searchForm.selectedCriteria.length === 0 && results.length === 0; else resultTemplate">
-  <p>Recently added items</p>
+  <p>{{ 'SEARCH.RECENTLY_ADDED' | translate }}</p>
+  <section *ngIf="recentlyAddedItems.length > 0" class="items" [@items]="results.length">
+    <article *ngFor="let item of recentlyAddedItems" class="item">
+      <a [routerLink]="['/item', item._id]" class="img-container">
+        <img [attr.src]="item | itemPhoto" appImageLoad alt="Item colorway photo">
+      </a>
+      <div class="actions" *ngIf="signedIn">
+        <button app-button class="circle very-small no-shadow no-background" [tadaSize]="36" color="primary" appInCloset [item]="item" [variant]="item.variants[0]"
+          #inCloset="inCloset">
+          <span class="visualy-hidden">{{ 'ITEM.ACTIONS.ADD_TO_CLOSET' | translate }}</span>
+          <svg [class.grayscale]="!inCloset.isIn">
+            <use xlink:href="#add_to_closet" />
+          </svg>
+        </button>
+        <button app-button class="circle very-small no-shadow no-background" [tadaSize]="36" color="primary" appInWishlist [item]="item" [variant]="item.variants[0]"
+          #inWishlist="inWishlist">
+          <span class="visualy-hidden">{{ 'ITEM.ACTIONS.ADD_TO_WISHLIST' | translate }}</span>
+          <svg [class.grayscale]="!inWishlist.isIn">
+            <use xlink:href="#add_to_wishlist" />
+          </svg>
+        </button>
+      </div>
+    </article>
+  </section>
 </ng-container>
 <ng-template #resultTemplate>
   <section *ngIf="results.length > 0; else noResults" class="items" [@items]="results.length">

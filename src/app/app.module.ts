@@ -2,8 +2,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { ServiceWorkerModule } from '@angular/service-worker';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe, registerLocaleData } from '@angular/common';
 import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import localeEn from '@angular/common/locales/en';
+import localeFr from '@angular/common/locales/fr';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { ObserversModule } from '@angular/cdk/observers';
@@ -56,6 +58,10 @@ import { ImageZoomDirective } from './features/dialog/image-zoom.directive';
 import { ImageDialogComponent } from './features/dialog/image-dialog/image-dialog.component';
 import { ImageLoadDirective } from './features/images/image-load.directive';
 import { UpdateService } from './features/update/update.service';
+import { LocalizedDatePipe } from './features/date/localized-date.pipe';
+
+registerLocaleData(localeEn, 'en');
+registerLocaleData(localeFr, 'fr');
 
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
   return new TranslateHttpLoader(http);
@@ -97,6 +103,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     ImageZoomDirective,
     ImageDialogComponent,
     ImageLoadDirective,
+    LocalizedDatePipe,
   ],
   imports: [
     CommonModule,
@@ -135,6 +142,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthorizationInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: InactiveInterceptor, multi: true },
+    DatePipe
   ],
   bootstrap: [AppComponent]
 })

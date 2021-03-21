@@ -38,6 +38,7 @@ export class SearchComponent implements OnInit, OnDestroy {
   @HostBinding('@pageAnimation') private pageAnimation = true;
 
   results: Item[] = [];
+  recentlyAddedItems: Item[] = [];
   signedIn = false;
 
   private unsubscriber = new Subject();
@@ -56,6 +57,9 @@ export class SearchComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.userSignInService.signedIn$.pipe(takeUntil(this.unsubscriber)).subscribe(signedIn => {
       this.signedIn = signedIn;
+    });
+    this.itemsService.recentlyAdded().subscribe(response => {
+      this.recentlyAddedItems = response || [];
     });
   }
 
