@@ -9,9 +9,9 @@ import { DialogAttachComponent } from './features/dialog/dialog-attach/dialog-co
 import { DialogService } from './features/dialog/dialog.service';
 import { DialogComponent } from './features/dialog/dialog/dialog.component';
 import { TadaService } from './features/effects/tada/tada.service';
-import { UserContentService } from './features/resources/user-content/user-content.service';
 import { ThemeService } from './features/theme/theme.service';
 import { TitleService } from './features/title/title.service';
+import { UpdateService } from './features/update/update.service';
 import { UserSignInService } from './features/user/user-sign-in.service';
 import { User } from './features/user/user.model';
 import { UserService } from './features/user/user.service';
@@ -114,7 +114,8 @@ export class AppComponent implements OnInit, OnDestroy {
     private activatedRoute: ActivatedRoute,
     private userService: UserService,
     private renderer: Renderer2,
-    @Inject(APP_ROUTES) routes: Routes
+    @Inject(APP_ROUTES) routes: Routes,
+    private update: UpdateService,
   ) {
     this.others = routes.filter(route => route.data && route.data.others);
   }

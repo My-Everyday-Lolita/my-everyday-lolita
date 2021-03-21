@@ -7,7 +7,7 @@
   <div *ngIf="message && !options.enableHtml" role="alert" aria-live="polite" [class]="options.messageClass" [attr.aria-label]="message | translate">
     {{ message | translate }}
   </div>
-  <button (click)="remove()" class="close-button">
+  <button *ngIf="options.closeButton" (click)="remove()" class="close-button">
     <span class="visualy-hidden">Close</span>
   </button>
 </div>

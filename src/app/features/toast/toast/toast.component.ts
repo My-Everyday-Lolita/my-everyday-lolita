@@ -1,6 +1,6 @@
 import { animate, style, transition, trigger } from '@angular/animations';
-import { ApplicationRef, Component, HostBinding } from '@angular/core';
-import { Toast, ToastNoAnimation, ToastPackage, ToastrService } from 'ngx-toastr';
+import { Component } from '@angular/core';
+import { Toast, ToastPackage, ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-toast, [app-toast]',
@@ -18,14 +18,10 @@ import { Toast, ToastNoAnimation, ToastPackage, ToastrService } from 'ngx-toastr
 })
 export class ToastComponent extends Toast {
 
-  // @HostBinding('@toastAnimation') toastAnimation = true;
-
   constructor(
     protected toastrService: ToastrService,
-    public toastPackage: ToastPackage,
-    // protected appRef: ApplicationRef
+    public toastPackage: ToastPackage
   ) {
-    // super(toastrService, toastPackage, appRef);
     super(toastrService, toastPackage);
   }
 

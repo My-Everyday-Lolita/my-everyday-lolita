@@ -55,6 +55,7 @@ import { SafePipeModule } from 'safe-pipe';
 import { ImageZoomDirective } from './features/dialog/image-zoom.directive';
 import { ImageDialogComponent } from './features/dialog/image-dialog/image-dialog.component';
 import { ImageLoadDirective } from './features/images/image-load.directive';
+import { UpdateService } from './features/update/update.service';
 
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
   return new TranslateHttpLoader(http);
@@ -121,6 +122,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     ToastrModule.forRoot({
       positionClass: 'toast-bottom-center',
       enableHtml: true,
+      closeButton: true,
       toastComponent: ToastComponent
     }),
     NgSelectModule,
