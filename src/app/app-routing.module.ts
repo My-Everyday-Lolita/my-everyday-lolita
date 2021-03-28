@@ -6,9 +6,12 @@ import { ResourcesCategoriesResolver } from './features/resources/categories/cat
 import { ResourcesColorsResolver } from './features/resources/colors/colors.resolver';
 import { ResourcesFeaturesResolver } from './features/resources/features/features.resolver';
 import { ResourcesItemResolver } from './features/resources/items/item.resolver';
+import { CoordinationGuard } from './features/resources/user-content/coordination.guard';
+import { CoordinationResolver } from './features/resources/user-content/coordination.resolver';
 import { SignedInGuard } from './features/user/signed-in.guard';
 import { AboutProjectComponent } from './pages/about-project/about-project.component';
 import { AboutUsComponent } from './pages/about-us/about-us.component';
+import { CoordinationComponent } from './pages/coordination/coordination.component';
 import { HomeComponent } from './pages/home/home.component';
 import { ItemComponent } from './pages/item/item.component';
 import { MyClosetComponent } from './pages/my-closet/my-closet.component';
@@ -64,6 +67,16 @@ const routes: Routes = [
       linkLabel: 'HOME.LINKS.MY_COORD_CHECKLIST',
       animation: 'my_coord_checklist',
       pageTitle: 'PAGES.TITLES.MY_COORD_CHECKLIST',
+    }
+  },
+  {
+    path: 'my-coord-checklist/:id', component: CoordinationComponent,
+    resolve: {
+      coordination: CoordinationResolver
+    },
+    canActivate: [CoordinationGuard],
+    data: {
+      animation: 'coordination',
     }
   },
   {

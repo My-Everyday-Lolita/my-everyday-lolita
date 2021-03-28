@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, fromEvent, Observable, Subject } from 'rxjs';
+import { filter } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { UserSignInService } from '../../user/user-sign-in.service';
 import { UserService } from '../../user/user.service';
@@ -35,19 +36,19 @@ export class UserContentService {
         this.content = null;
       }
       if (signedIn) {
-        this.get().subscribe(userContent => {
+        this.getUserContentFromBackend().subscribe(userContent => {
           this.getHandler(userContent);
         });
       }
     });
-    fromEvent(document, 'visibilitychange').subscribe(() => {
+    fromEvent(document, 'visibilitychange').pipe(filter(() => this.userSignInService.isSignedIn())).subscribe(() => {
       if (document.visibilityState === 'hidden' && this.hasChanged) {
         this.update().subscribe(() => {
           this.hasChanged = false;
         });
       }
       if (document.visibilityState === 'visible') {
-        this.get().subscribe(userContent => {
+        this.getUserContentFromBackend().subscribe(userContent => {
           this.getHandler(userContent);
         });
       }
@@ -64,7 +65,7 @@ export class UserContentService {
     });
   }
 
-  get(): Observable<UserContent> {
+  getUserContentFromBackend(): Observable<UserContent> {
     return this.http.get<UserContent>(`${environment.domains.mel}/api/resources/user-contents/me`, {
       headers: new HttpHeaders({
         Authorization: 'auto'

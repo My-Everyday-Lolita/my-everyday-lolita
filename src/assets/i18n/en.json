@@ -15,7 +15,7 @@
       "ERRORS": {
         "SIGNED_IN": "You must be signed in to access this page."
       },
-      "PWA_UPDATE": "A new version is available,<br> tap here to upgrade !"
+      "PWA_UPDATE": "A new version is available,<br> tap here to upgrade!"
     }
   },
   "PAGES": {
@@ -74,8 +74,8 @@
       "NOT_SAME_PASSWORD": "¯\\_(ツ)_/¯ The passwords do not match."
     },
     "TOASTS": {
-      "SUCCESS": "Congratulations !<br>Your registration has been successfully completed.",
-      "CONFLICT": "Oh no !<br>This email or username already exists.",
+      "SUCCESS": "Congratulations!<br>Your registration has been successfully completed.",
+      "CONFLICT": "Oh no!<br>This email or username already exists.",
       "UNKNOWN": "An unknown error has occured."
     }
   },
@@ -92,11 +92,11 @@
       "REQUIRED": "Meh. This field is required."
     },
     "TOASTS": {
-      "SUCCESS": "Congratulations !<br>Your registration has been successfully completed.",
-      "CONFLICT": "Oh no !<br>This email or username already exists.",
+      "SUCCESS": "Congratulations!<br>Your registration has been successfully completed.",
+      "CONFLICT": "Oh no!<br>This email or username already exists.",
       "UNKNOWN": "How sad!<br>An unknown error has occured.",
       "CREDENTIALS_ERROR": "Oh dear...<br>that seems to be a wrong username or password.",
-      "EXPIRED_SESSION": "Where have you been ?<br>Your session has expired."
+      "EXPIRED_SESSION": "Where have you been?<br>Your session has expired."
     }
   },
   "SEARCH": {
@@ -110,7 +110,7 @@
       }
     },
     "TOP": {
-      "TEXT": "You can search an item by : <ul><li><span class=\"brand\">brand</span> (Angelic Pretty, BABY THE STARS SHINE BRIGHT...),</li><li><span class=\"category\">category</span> (jumperskirts, socks, underwear...),</li><li><span class=\"color\">color</span> (Pink, Gold, Sax...),</li><li><span class=\"feature\">feature</span> (Full back shirring, scalloped, Peter Pan collar...)</li><li>or even <span class=\"keywords\">keywords</span> (Sugary carnival, bunny, cookie...).</li></ul>You can always add more criteria to your search by clicking on the search bar and continuing to type.<br><br>Tip: Type \"My items\" to display only the items you have created."
+      "TEXT": "You can search an item by: <ul><li><span class=\"brand\">brand</span> (Angelic Pretty, BABY THE STARS SHINE BRIGHT...),</li><li><span class=\"category\">category</span> (jumperskirts, socks, underwear...),</li><li><span class=\"color\">color</span> (Pink, Gold, Sax...),</li><li><span class=\"feature\">feature</span> (Full back shirring, scalloped, Peter Pan collar...)</li><li>or even <span class=\"keywords\">keywords</span> (Sugary carnival, bunny, cookie...).</li></ul>You can always add more criteria to your search by clicking on the search bar and continuing to type.<br><br>Tip: Type \"My items\" to display only the items you have created."
     },
     "ADD": {
       "LABEL": "Add new item"
@@ -163,32 +163,32 @@
       "MIN_LENGTH": "This field must be at least {{minlength}} characters long."
     },
     "HELPS": {
-      "PHOTO": "In order to limit the weight of our images, it is better to put the URL of the item picture you can find on Google.<br>If you want to use personal pictures, you just have to host them, using a photo hosting website (such as SmugMug, Google Photos, Flickr Pro, Imgur...)<br>Please try to provide the best quality pictures as possible.<br>Thank you :)",
-      "COLLECTION": "Hint : sometimes brands release items of differents colors under a same name.<br>Not all the brands do that, so you don’t have to fill this field if the item doesn’t belong to any collection.<br><br>For example :<br><b>Toy Doll Box</b> (Angelic Pretty)<br><br><b>The World's Most Adorable Dog and the World's Most Delicious Strawberry Frappe</b> (Baby, The Stars Shine Bright)<br><br>Also, as you can notice it might be long to write.",
+      "PHOTO": "In order to limit the weight of our images, it is better to put the URL of the item picture you can find on Google.<br>If you want to use personal pictures, you just have to host them, using a photo hosting website (such as SmugMug, Google Photos, Flickr Pro, Imgur...)<br>Please try to provide the best quality pictures as possible.<br>Thank you:)",
+      "COLLECTION": "Hint: sometimes brands release items of differents colors under a same name.<br>Not all the brands do that, so you don’t have to fill this field if the item doesn’t belong to any collection.<br><br>For example:<br><b>Toy Doll Box</b> (Angelic Pretty)<br><br><b>The World's Most Adorable Dog and the World's Most Delicious Strawberry Frappe</b> (Baby, The Stars Shine Bright)<br><br>Also, as you can notice it might be long to write.",
       "ADDITONALS": "These fields here are not mandatory, if you have the details you can fill in the fields, if you don’t, it’s okay, other member can edit them later.",
-      "KEYWORDS": "Here you can type pattern keywords, you can add severals ones!<br>Type \"Christmas\" if it is a Christmas themed dress, <br>Type \"bunnies\" if you see cute bunnies on the skirt,<br>Type \"cherries\" if there are cherries on these shoes...<br>It is simple !<br>Make sure that each keyword is validated with a border to separate them.<br>That will help the members to find their dream dresses, with a pattern only composed of cats ! (Which are evil creatures, as a reminder...)",
-      "SUBSTYLES": "This allows you fellows lolita friends to find easier the items matching their personality !<br>You can add several of course, a Valentine's Day theme can be sweet, a dress can be both military and circus etc.<br><br>Just keep in mind that it will help everyone to have more relevent researches."
+      "KEYWORDS": "Here you can type pattern keywords, you can add severals ones!<br>Type \"Christmas\" if it is a Christmas themed dress, <br>Type \"bunnies\" if you see cute bunnies on the skirt,<br>Type \"cherries\" if there are cherries on these shoes...<br>It is simple!<br>Make sure that each keyword is validated with a border to separate them.<br>That will help the members to find their dream dresses, with a pattern only composed of cats! (Which are evil creatures, as a reminder...)",
+      "SUBSTYLES": "This allows you fellows lolita friends to find easier the items matching their personality!<br>You can add several of course, a Valentine's Day theme can be sweet, a dress can be both military and circus etc.<br><br>Just keep in mind that it will help everyone to have more relevent researches."
     },
     "DETAILS": {
-      "HOW_TO": "How to fill in this field ?"
+      "HOW_TO": "How to fill in this field?"
     },
     "TOASTS": {
-      "NEW_SUCCESS": "Oh yeah ! Successfully created.",
-      "UPDATE_SUCCESS": "Oh yeah ! Successfully updated."
+      "NEW_SUCCESS": "Oh yeah! Successfully created.",
+      "UPDATE_SUCCESS": "Oh yeah! Successfully updated."
     }
   },
   "MY_CLOSET": {
     "TOP": {
-      "TEXT": "If you have planned to sell an item, hit the <svg class=\"small-yes\"><use xlink:href=\"#want-to-sell\" /></svg> button !<br>So that you can have a visual hint."
+      "TEXT": "If you have planned to sell an item, hit the <svg class=\"small-yes\"><use xlink:href=\"#want-to-sell\" /></svg> button!<br>So that you can have a visual hint."
     },
     "FOOTER": {
-      "BEGINING": "This is just the beginning ! Muhahaha *evil laugh*",
-      "MORE_POWERFUL": "Oh you are getting more powerful !",
-      "IMPRESSIVE": "Your power is impressive !",
-      "MANA_SAMA": "On the road to be Mana-sama !",
-      "GOD": "Are you the god of lolita fashion ?!<br>The legend was true",
-      "ESTIMATED_PRICE": "Your whole collection accounts for about $<b>{{price}}</b> ! Amazing!",
-      "ESTIMATED_PRICE_ZERO": "No item yet ? Please add some so that I can tell you how expensive you are."
+      "BEGINING": "This is just the beginning! Muhahaha *evil laugh*",
+      "MORE_POWERFUL": "Oh you are getting more powerful!",
+      "IMPRESSIVE": "Your power is impressive!",
+      "MANA_SAMA": "On the road to be Mana-sama!",
+      "GOD": "Are you the god of lolita fashion?!<br>The legend was true",
+      "ESTIMATED_PRICE": "Your whole collection accounts for about $<b>{{price}}</b>! Amazing!",
+      "ESTIMATED_PRICE_ZERO": "No item yet? Please add some so that I can tell you how expensive you are."
     },
     "SEARCH": {
       "PLACEHOLDER": "Filter your collection by brand or category",
@@ -197,12 +197,29 @@
   },
   "MY_WISHLIST": {
     "FOOTER": {
-      "ESTIMATED_PRICE": "Estimation of your wishlist: <b>${{price}}</b>. You are going to need more money to buy this dream !",
-      "ESTIMATED_PRICE_ZERO": "You are going to need more money to buy this dream !"
+      "ESTIMATED_PRICE": "Estimation of your wishlist: <b>${{price}}</b>. You are going to need more money to buy this dream!",
+      "ESTIMATED_PRICE_ZERO": "You are going to need more money to buy this dream!"
     },
     "SEARCH": {
       "PLACEHOLDER": "Filter your wishlist by brand or category",
       "GO_TO": "Go to the search page"
+    }
+  },
+  "COORDINATIONS": {
+    "ADD_TO": "Create a new coordination"
+  },
+  "COORDINATION": {
+    "TITLES": {
+      "NEW": "New coordination"
+    },
+    "ERRORS": {
+      "NOT_FOUND": "Coordination not found.<br> this message is not supposed to appear"
+    },
+    "DETAILS": {
+      "HOW_TO": "How is this useful?"
+    },
+    "HELPS": {
+      "USEFUL": "The Coordination Checklist is here to help you to coordinate your outfit!<br>Click on each category to choose the item from your closet.<br><br>Whether you are a baby lolita or an advanced lolita, I'm sure it will be helpful to you!<br><br>You can use this tool if you are busy with many upcoming events or if you simply like dressing up at home and remember your coordinations for later. You can give titles to your coord, add a date or a theme, It will be useful to anticipate any event you are invited to, it will also help you remembering the progress you’ve made in coord construction. Furthermore, it can be used as a reminder to know what you are going to buy next to complete your coord!<br><br>You don’t have to be home next to your closet!<br>You just need a wi-fi and your lovely closet (that you put on My Everyday Lolita and kept updated, right?) so that you can work on your coords anywhere anytime!<br><br>You have no idea how to coordinate a piece?<br><br>Have a look at the Coord Helper!<br><br>You can use the memo field to write down what you need to take to a specific event.<br>We sometimes regret to have forgotten a second pair of shoes, or a bigger bag (these lolita bags are so small...so cute for pictures but SOOOO SMALLL). Anyways: write down anything you want!<br><br>You can share your coord with your friends and ask them for constructive criticism...or not! (For real, I’m not a juge here, you can do whatever you want, I’m already so happy you’re here 💕)"
     }
   }
 }

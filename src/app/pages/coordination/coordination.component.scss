@@ -1,0 +1,222 @@
+:host {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+}
+
+form {
+  padding-bottom: 200px;
+  width: 290px;
+  margin-top: 140px;
+}
+
+button {
+  width: 100%;
+  margin-bottom: var(--spacing-big);
+
+  &.empty {
+    background: #ded8df;
+  }
+
+  .btn-content {
+    position: relative;
+    z-index: 1;
+  }
+
+  .icons {
+    position: absolute;
+    z-index: 0;
+    top: 50%;
+    right: 0;
+    transform: translate(0%, -50%);
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 16px;
+
+    img {
+      width: 60px;
+      height: auto;
+      position: absolute;
+
+      &.icon1 {
+        opacity: 0.55;
+      }
+      &.icon2 {
+        opacity: 0.35;
+      }
+    }
+  }
+
+  &.headdress {
+    .icons {
+      img {
+        &.icon1 {
+          width: 60px;
+          top: -6px;
+          right: 9px;
+        }
+        &.icon2 {
+          top: 24px;
+          right: -6px;
+          width: 42px;
+        }
+      }
+    }
+  }
+  &.hairstyle {
+    .icons {
+      img {
+        &.icon1 {
+          width: 52px;
+          top: 7px;
+          left: -7px;
+        }
+        &.icon2 {
+          top: -9px;
+          left: 40px;
+          width: 42px;
+        }
+      }
+    }
+  }
+  &.main_piece {
+    margin-top: 100px;
+    .icons {
+      img {
+        &.icon1 {
+          width: 52px;
+          top: 3px;
+          right: -9px;
+        }
+        &.icon2 {
+          top: 3px;
+          left: -9px;
+          width: 52px;
+          opacity: 0.55;
+        }
+      }
+    }
+  }
+  &.topwear {
+    .icons {
+      img {
+        &.icon1 {
+          width: 52px;
+          top: 4px;
+          right: -12px;
+        }
+        &.icon2 {
+          top: 14px;
+          right: 26px;
+          width: 42px;
+        }
+      }
+    }
+  }
+  &.outerwear {
+    .icons {
+      img {
+        &.icon1 {
+          width: 52px;
+          top: 7px;
+          left: -7px;
+        }
+        &.icon2 {
+          top: -9px;
+          left: 40px;
+          width: 42px;
+        }
+      }
+    }
+  }
+  &.bag {
+    .icons {
+      img {
+        &.icon1 {
+          width: 40px;
+          top: -6px;
+          right: -6px;
+        }
+        &.icon2 {
+          top: 20px;
+          right: 15px;
+          width: 42px;
+        }
+      }
+    }
+  }
+  &.accessories {
+    .icons {
+      img {
+        &.icon1 {
+          width: 52px;
+          top: 7px;
+          left: -7px;
+        }
+        &.icon2 {
+          top: -9px;
+          left: 40px;
+          width: 42px;
+          opacity: 0.7;
+        }
+        &.icon3 {
+          top: 26px;
+          left: 28px;
+          width: 28px;
+          opacity: 0.35;
+        }
+      }
+    }
+  }
+  &.legwear {
+    .icons {
+      img {
+        &.icon1 {
+          width: 39px;
+          top: 0px;
+          right: -3px;
+        }
+        &.icon2 {
+          top: 14px;
+          right: 21px;
+          width: 42px;
+        }
+      }
+    }
+  }
+  &.shoes {
+    .icons {
+      img {
+        &.icon1 {
+          width: 52px;
+          top: 7px;
+          left: -7px;
+        }
+        &.icon2 {
+          top: -9px;
+          left: 40px;
+          width: 42px;
+        }
+      }
+    }
+  }
+  &.underwear {
+    .icons {
+      img {
+        &.icon1 {
+          width: 60px;
+          top: -6px;
+          right: 9px;
+        }
+        &.icon2 {
+          top: 24px;
+          right: -6px;
+          width: 42px;
+        }
+      }
+    }
+  }
+}

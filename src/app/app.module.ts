@@ -57,8 +57,8 @@ import { SafePipeModule } from 'safe-pipe';
 import { ImageZoomDirective } from './features/dialog/image-zoom.directive';
 import { ImageDialogComponent } from './features/dialog/image-dialog/image-dialog.component';
 import { ImageLoadDirective } from './features/images/image-load.directive';
-import { UpdateService } from './features/update/update.service';
 import { LocalizedDatePipe } from './features/date/localized-date.pipe';
+import { CoordinationComponent } from './pages/coordination/coordination.component';
 
 registerLocaleData(localeEn, 'en');
 registerLocaleData(localeFr, 'fr');
@@ -104,6 +104,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     ImageDialogComponent,
     ImageLoadDirective,
     LocalizedDatePipe,
+    CoordinationComponent,
   ],
   imports: [
     CommonModule,
