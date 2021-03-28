@@ -31,3 +31,96 @@ app-image-dialog {
     }
   }
 }
+
+app-root + app-dialog {
+  z-index: 1005;
+}
+
+.dialog-inner-container {
+  position: relative;
+  min-width: 80vw;
+  min-height: 60vh;
+  max-height: 90vh;
+  box-sizing: border-box;
+  background: #e4c3ff;
+  border-radius: 16px;
+
+  > .deco-wrapper .deco {
+    position: absolute;
+    width: 42px;
+    height: 42px;
+    transform: translate(-30%, -50%);
+
+    &.r45 {
+      transform: translate(-30%, -50%) rotate(45deg);
+    }
+
+    &.medium {
+      width: 33px;
+      height: 33px;
+    }
+    &.small {
+      width: 20px;
+      height: 20px;
+    }
+    &.top {
+      top: 0;
+      &-middle {
+        top: 50%;
+      }
+      &-1 {
+        top: 10%;
+      }
+      &-2-5 {
+        top: 25%;
+      }
+    }
+    &.bottom {
+      top: 100%;
+      &-middle {
+        top: 50%;
+      }
+      &-1 {
+        top: 90%;
+      }
+      &-1-5 {
+        top: 85%;
+      }
+      &-2 {
+        top: 80%;
+      }
+      &-2-5 {
+        top: 75%;
+      }
+    }
+    &.left {
+      left: 0;
+      &-middle {
+        left: 25%;
+      }
+    }
+    &.right {
+      left: 100%;
+      transform: translate(-75%, -50%);
+
+      &.r45 {
+        transform: translate(-75%, -50%) rotate(45deg);
+      }
+      &-middle {
+        left: 75%;
+      }
+    }
+    &.middle {
+      left: 50%;
+    }
+  }
+
+  .dialog-inner-content {
+    position: absolute;
+    top: var(--spacing-big);
+    left: var(--spacing-big);
+    right: var(--spacing-big);
+    bottom: var(--spacing-big);
+    overflow: auto;
+  }
+}
