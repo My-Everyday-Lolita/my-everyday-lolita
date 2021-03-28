@@ -32,7 +32,7 @@ export class UserContentService {
     this.content$ = new BehaviorSubject<UserContent>(initialContent);
 
     this.userSignInService.signedIn$.subscribe(signedIn => {
-      if (this.content !== null && this.userService.user && this.content.user !== this.userService.user.email) {
+      if (this.content !== null && this.userService.user && this.content.user !== this.userService.user.sub) {
         this.content = null;
       }
       if (signedIn) {

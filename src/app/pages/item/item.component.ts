@@ -129,7 +129,7 @@ export class ItemComponent implements OnInit, OnDestroy {
 
     this.userSignInService.signedIn$.pipe(takeUntil(this.unsubscriber)).subscribe(signedIn => {
       this.signedIn = signedIn;
-      this.editable = signedIn && (this.isNew || this.item.owner === this.userService.user?.email || this.userService.isAdmin());
+      this.editable = signedIn && (this.isNew || this.item.owner === this.userService.user?.sub || this.userService.isAdmin());
       if (!signedIn && this.isNew) {
         this.router.navigateByUrl('/', { replaceUrl: true });
       }
@@ -273,7 +273,7 @@ export class ItemComponent implements OnInit, OnDestroy {
       estimatedPrice: null,
       keywords: null,
       substyles: null,
-      owner: this.userService.user && this.userService.user.email || null,
+      owner: this.userService.user && this.userService.user.sub || null,
       variants: [
         null
       ],

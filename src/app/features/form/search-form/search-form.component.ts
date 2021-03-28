@@ -118,7 +118,7 @@ export class SearchFormComponent implements OnInit {
             this.criteria.push({
               type: 'own',
               displayValue: 'My items',
-              value: this.userService.user?.email as string
+              value: this.userService.user?.sub as string
             });
           }
         } else {
