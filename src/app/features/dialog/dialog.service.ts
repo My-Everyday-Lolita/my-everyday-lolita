@@ -22,11 +22,11 @@ export class DialogService {
       dialogRef.destroy();
     };
     if (container) {
-      this.appRef.components[0].instance.getRenderer().setStyle(document.body, 'overflow', 'hidden');
       container.insert(dialogRef.hostView);
     } else {
       this.appRef.components[0].instance.viewContainerRef.insert(dialogRef.hostView);
     }
+    this.appRef.components[0].instance.getRenderer().setStyle(document.body, 'overflow', 'hidden');
     dialogRef.instance.show();
     return dialogRef.instance;
   }

@@ -1,6 +1,7 @@
 export interface DialogConfiguration {
   modal?: boolean;
   dialogClass?: string;
+  data?: any;
 }
 
 export interface ImageDialogConfiguration {

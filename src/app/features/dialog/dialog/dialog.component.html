@@ -1,4 +1,4 @@
 <div class="backdrop" *ngIf="modal" (click)="close()"></div>
 <div class="dialog-content">
-  <ng-container *ngTemplateOutlet="template"></ng-container>
+  <ng-container *ngTemplateOutlet="template; context:{$implicit: this, data: config?.data}"></ng-container>
 </div>
