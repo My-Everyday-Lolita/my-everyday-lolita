@@ -143,15 +143,12 @@
       <label appLabel>
         {{ 'ITEM.FIELDS.LABELS.COLLECTIONN' | translate }}
       </label>
-      <details class="right">
-        <summary>
-          <span class="visualy-hidden">{{ 'ITEM.DETAILS.HOW_TO' | translate }}</span>
-          <span class="help-icon" aria-hidden="true">?</span>
-        </summary>
+      <app-details class="right">
+        <span summary class="visualy-hidden">{{ 'ITEM.DETAILS.HOW_TO' | translate }}</span>
         <div class="details-content">
           <p [innerHTML]="'ITEM.HELPS.COLLECTION' | translate"></p>
         </div>
-      </details>
+      </app-details>
       <input type="text" appInput formControlName="collectionn">
     </app-form-field>
     <app-form-field>
@@ -253,15 +250,12 @@
         <label appLabel>
           {{ 'ITEM.FIELDS.LABELS.KEYWORDS' | translate }}
         </label>
-        <details class="right">
-          <summary>
-            <span class="visualy-hidden">{{ 'ITEM.DETAILS.HOW_TO' | translate }}</span>
-            <span class="help-icon" aria-hidden="true">?</span>
-          </summary>
+        <app-details class="right">
+          <span summary class="visualy-hidden">{{ 'ITEM.DETAILS.HOW_TO' | translate }}</span>
           <div class="details-content">
             <p [innerHTML]="'ITEM.HELPS.KEYWORDS' | translate"></p>
           </div>
-        </details>
+        </app-details>
         <ng-select appInput formControlName="keywords" [multiple]="true" [items]="[]" [addTag]="true" [selectOnTab]="true" (changeEvent)="additionalFields.onContentChange()">
           <ng-template ng-label-tmp let-item="item" let-clear="clear">
             <span class="ng-value-content">
@@ -277,15 +271,12 @@
         <label appLabel>
           {{ 'ITEM.FIELDS.LABELS.SUBSTYLES' | translate }}
         </label>
-        <details class="right">
-          <summary>
-            <span class="visualy-hidden">{{ 'ITEM.DETAILS.HOW_TO' | translate }}</span>
-            <span class="help-icon" aria-hidden="true">?</span>
-          </summary>
+        <app-details class="right">
+          <span summary class="visualy-hidden">{{ 'ITEM.DETAILS.HOW_TO' | translate }}</span>
           <div class="details-content">
             <p [innerHTML]="'ITEM.HELPS.SUBSTYLES' | translate"></p>
           </div>
-        </details>
+        </app-details>
         <ng-select appInput formControlName="substyles" [multiple]="true" [items]="substyles" [addTag]="true" [selectOnTab]="true"
           (changeEvent)="additionalFields.onContentChange()">
           <ng-template ng-label-tmp let-item="item" let-clear="clear">
@@ -376,15 +367,12 @@
         <span class="visualy-hidden">Add a photo</span>
         <span class="add-icon very-small"></span>
       </button>
-      <details class="right photos-details">
-        <summary>
-          <span class="visualy-hidden">{{ 'ITEM.DETAILS.HOW_TO' | translate }}</span>
-          <span class="help-icon" aria-hidden="true">?</span>
-        </summary>
+      <app-details class="right photos-details">
+        <span summary class="visualy-hidden">{{ 'ITEM.DETAILS.HOW_TO' | translate }}</span>
         <div class="details-content">
           <p [innerHTML]="'ITEM.HELPS.PHOTO' | translate"></p>
         </div>
-      </details>
+      </app-details>
       <app-form-field *ngFor="let photo of photos.controls; let j = index" class="photo-fieldset">
         <label appLabel class="visualy-hidden">{{ 'ITEM.FIELDS.LABELS.PHOTO' | translate }}</label>
         <input type="url" appInput [formControlName]="j" [required]="j === 0" [class.has-preview]="photo.value" [attr.placeholder]="'ITEM.FIELDS.LABELS.PHOTO' | translate">

@@ -81,3 +81,14 @@ a.add-button {
     }
   }
 }
+
+p.empty {
+  margin-top: var(--spacing-medium);
+}
+
+.empty-wrapper {
+  position: absolute;
+  bottom: 43px;
+  right: 53px;
+  width: 270px;
+}

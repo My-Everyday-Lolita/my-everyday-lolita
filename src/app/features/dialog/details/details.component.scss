@@ -1,0 +1,26 @@
+button.summary-button {
+  font-family: "Gamja Flower";
+  font-weight: normal;
+  font-size: var(--font-size-very-small);
+  background: var(--details);
+  color: var(--details-text);
+  box-shadow: 2px 2px 0 var(--details-shadow);
+  border: 1px solid var(--details-shadow);
+  padding: var(--spacing);
+  border-radius: 50%;
+  width: 34px;
+  height: 34px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  list-style: none;
+  transition: all 330ms linear;
+
+  .help-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}

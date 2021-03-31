@@ -17,7 +17,10 @@
       },
       "PWA_UPDATE": "A new version is available,<br> tap here to upgrade!"
     },
-    "HOME_LINK": "Go back to the home page"
+    "HOME_LINK": "Go back to the home page",
+    "DETAILS": {
+      "CLOSE": "Close"
+    }
   },
   "PAGES": {
     "TITLES": {
@@ -124,7 +127,7 @@
         "COLORS": "Color(s)",
         "PHOTO": "Photo",
         "YEAR": "Year",
-        "JAPANESE": "Japanese name",
+        "JAPANESE": "Original name",
         "MEASURMENTS": "Measurments",
         "ESTIMATED_PRICE": "Estimated price",
         "KEYWORDS": "Keywords",
@@ -133,7 +136,7 @@
       "SECTIONS": {
         "FEATURES": "Features",
         "YEAR": "Year of release",
-        "JAPANESE": "Japanese name",
+        "JAPANESE": "Original name",
         "MEASURMENTS": "Measurments",
         "ESTIMATED_PRICE": "Estimated price",
         "KEYWORDS": "Keywords",
@@ -192,7 +195,8 @@
   "COORDINATIONS": {
     "ADD_TO": "Create a new coordination",
     "TOGGLE_TRASH": "Toggle the trash mode",
-    "REMOVE_COORDINATION": "Remove the coordination \"{{name}}\""
+    "REMOVE_COORDINATION": "Remove the coordination \"{{name}}\"",
+    "EMPTY_LIST": "No coordination yet ?<br>Create one by clicking on the plus button here"
   },
   "COORDINATION": {
     "SUBMIT": "Save the coordination",
@@ -215,12 +219,28 @@
         "THEME": "Theme",
         "DATE": "Date",
         "PLACE": "Place",
-        "MEMO": "Memo"
+        "MEMO": "Memo",
+        "CUSTOM_TEXT": "Hairstyle"
       },
       "EMPTY_FIELD": "(Keep this field empty)"
     },
     "CLOSE_MODAL": "Close",
-    "EMPTY_MEMO": "- Bring bunny plush for the photoshoot ₍ᐢ ̥ ̞ ̥ᐢ₎\n- Bring my camera (*•̀ᴗ•́*)و ̑̑ "
+    "EMPTY_MEMO": "- Bring bunny plush for the photoshoot ₍ᐢ ̥ ̞ ̥ᐢ₎\n- Bring my camera (*•̀ᴗ•́*)و ̑̑ ",
+    "MODAL": {
+      "TITLES": {
+        "HEADDRESS": "Headress",
+        "HAIRSTYLE": "Hairstyle & wig",
+        "MAIN_PIECE": "Main piece",
+        "TOPWEAR": "Topwear",
+        "OUTERWEAR": "Outerwear",
+        "BAG": "Bag",
+        "ACCESSORIES": "Accessories",
+        "LEGWEAR": "Legwear",
+        "SHOES": "Shoes",
+        "UNDERWEAR": "Underwear",
+        "OTHERS": "Others"
+      }
+    }
   },
   "FORM": {
     "ERRORS": {

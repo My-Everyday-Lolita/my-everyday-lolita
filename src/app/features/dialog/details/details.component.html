@@ -1,0 +1,17 @@
+<button app-button type="button" (click)="open()" class="summary-button">
+  <ng-content select="[summary]"></ng-content>
+  <span class="help-icon" aria-hidden="true">?</span>
+</button>
+<ng-template #modalTemplate let-ref>
+  <div class="dialog-inner-container">
+    <button type="button" app-button class="circle small close-button" color="default" (click)="ref.close()">
+      <span class="visualy-hidden">{{ 'APP.DETAILS.CLOSE' | translate }}</span>
+      <span class="clear-icon very-small"></span>
+    </button>
+    <div class="dialog-inner-content">
+      <div [appDialognInnerContent]="ref" [padding]="16">
+        <ng-content></ng-content>
+      </div>
+    </div>
+  </div>
+</ng-template>

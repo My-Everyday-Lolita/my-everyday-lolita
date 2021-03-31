@@ -16,6 +16,7 @@ export interface UserContent {
 export interface CoordinationField {
   type: CoordinationFieldType;
   value: any;
+  customText?: string;
 }
 
 export interface Coordination {
@@ -42,6 +43,19 @@ export enum CoordinationFieldType {
   UNDERWEAR = 'underwear',
   OTHERS = 'others'
 }
+
+export const coordinationTypeTranslateLabels: { [key in (CoordinationFieldType | any)]: string } = {};
+coordinationTypeTranslateLabels[CoordinationFieldType.HEADDRESS] = 'COORDINATION.MODAL.TITLES.HEADDRESS';
+coordinationTypeTranslateLabels[CoordinationFieldType.HAIRSTYLE] = 'COORDINATION.MODAL.TITLES.HAIRSTYLE';
+coordinationTypeTranslateLabels[CoordinationFieldType.MAIN_PIECE] = 'COORDINATION.MODAL.TITLES.MAIN_PIECE';
+coordinationTypeTranslateLabels[CoordinationFieldType.TOPWEAR] = 'COORDINATION.MODAL.TITLES.TOPWEAR';
+coordinationTypeTranslateLabels[CoordinationFieldType.OUTERWEAR] = 'COORDINATION.MODAL.TITLES.OUTERWEAR';
+coordinationTypeTranslateLabels[CoordinationFieldType.BAG] = 'COORDINATION.MODAL.TITLES.BAG';
+coordinationTypeTranslateLabels[CoordinationFieldType.ACCESSORIES] = 'COORDINATION.MODAL.TITLES.ACCESSORIES';
+coordinationTypeTranslateLabels[CoordinationFieldType.LEGWEAR] = 'COORDINATION.MODAL.TITLES.LEGWEAR';
+coordinationTypeTranslateLabels[CoordinationFieldType.SHOES] = 'COORDINATION.MODAL.TITLES.SHOES';
+coordinationTypeTranslateLabels[CoordinationFieldType.UNDERWEAR] = 'COORDINATION.MODAL.TITLES.UNDERWEAR';
+coordinationTypeTranslateLabels[CoordinationFieldType.OTHERS] = 'COORDINATION.MODAL.TITLES.OTHERS';
 
 export const coordinationTypeMap: { [key in CoordinationFieldType]?: string[] } = {};
 coordinationTypeMap[CoordinationFieldType.HEADDRESS] = ['Headdress'];

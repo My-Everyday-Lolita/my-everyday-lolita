@@ -16,34 +16,6 @@ button:not([type="submit"]) {
   width: 100%;
   margin-bottom: var(--spacing-big);
 
-  &.section-btn {
-    min-height: 49px;
-    background: var(--coord-section-btn);
-
-    .img-container {
-      width: 55px;
-      height: 55px;
-      position: absolute;
-      top: 0;
-      border-radius: 50%;
-      overflow: hidden;
-      z-index: 1;
-      background: rgb(236, 236, 236);
-      border: 2px solid var(--coord-section-btn);
-      box-sizing: border-box;
-
-      img {
-        width: inherit;
-        height: auto;
-        display: block;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-      }
-    }
-  }
-
   &.empty {
     background: var(--button-empty);
     font-size: var(--font-size-very-small);
@@ -56,6 +28,24 @@ button:not([type="submit"]) {
     overflow: hidden;
     text-overflow: ellipsis;
     min-width: 0;
+
+    &.multiple {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+
+      span {
+        text-align: center;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        min-width: 0;
+
+        &.customText {
+          font-size: var(--font-size-extra-small);
+        }
+      }
+    }
   }
 
   .icons {
@@ -80,219 +70,6 @@ button:not([type="submit"]) {
       &.icon2 {
         opacity: 0.35;
       }
-    }
-  }
-
-  &.headdress {
-    .icons {
-      img {
-        &.icon1 {
-          width: 60px;
-          top: -6px;
-          right: 9px;
-        }
-        &.icon2 {
-          top: 24px;
-          right: -6px;
-          width: 42px;
-        }
-      }
-    }
-  }
-  &.hairstyle {
-    .icons {
-      img {
-        &.icon1 {
-          width: 52px;
-          top: 7px;
-          left: -7px;
-        }
-        &.icon2 {
-          top: -9px;
-          left: 40px;
-          width: 42px;
-        }
-      }
-    }
-  }
-  &.main_piece {
-    margin-top: 130px;
-    .icons {
-      img {
-        &.icon1 {
-          width: 52px;
-          top: 3px;
-          right: -9px;
-        }
-        &.icon2 {
-          top: 3px;
-          left: -9px;
-          width: 52px;
-          opacity: 0.55;
-        }
-      }
-    }
-  }
-  &.topwear {
-    .icons {
-      img {
-        &.icon1 {
-          width: 52px;
-          top: 4px;
-          right: -12px;
-        }
-        &.icon2 {
-          top: 14px;
-          right: 26px;
-          width: 42px;
-        }
-      }
-    }
-  }
-  &.outerwear {
-    .icons {
-      img {
-        &.icon1 {
-          width: 52px;
-          top: 7px;
-          left: -7px;
-        }
-        &.icon2 {
-          top: -9px;
-          left: 40px;
-          width: 42px;
-        }
-      }
-    }
-  }
-  &.bag {
-    .icons {
-      img {
-        &.icon1 {
-          width: 40px;
-          top: -6px;
-          right: -6px;
-        }
-        &.icon2 {
-          top: 20px;
-          right: 15px;
-          width: 42px;
-        }
-      }
-    }
-  }
-  &.accessories {
-    .icons {
-      img {
-        &.icon1 {
-          width: 52px;
-          top: 7px;
-          left: -7px;
-        }
-        &.icon2 {
-          top: -9px;
-          left: 40px;
-          width: 42px;
-          opacity: 0.7;
-        }
-        &.icon3 {
-          top: 26px;
-          left: 28px;
-          width: 28px;
-          opacity: 0.35;
-        }
-      }
-    }
-  }
-  &.legwear {
-    .icons {
-      img {
-        &.icon1 {
-          width: 39px;
-          top: 0px;
-          right: -3px;
-        }
-        &.icon2 {
-          top: 14px;
-          right: 21px;
-          width: 42px;
-        }
-      }
-    }
-  }
-  &.shoes {
-    .icons {
-      img {
-        &.icon1 {
-          width: 52px;
-          top: 7px;
-          left: -7px;
-        }
-        &.icon2 {
-          top: -9px;
-          left: 40px;
-          width: 42px;
-        }
-      }
-    }
-  }
-  &.underwear {
-    .icons {
-      img {
-        &.icon1 {
-          width: 60px;
-          top: -6px;
-          right: 9px;
-        }
-        &.icon2 {
-          top: 24px;
-          right: -6px;
-          width: 42px;
-        }
-      }
-    }
-  }
-
-  &.headdress,
-  &.topwear,
-  &.bag,
-  &.legwear,
-  &.underwear {
-    .img-container {
-      top: 50%;
-      left: 0;
-      transform: translate(-50%, -50%);
-    }
-    .btn-content {
-      padding-left: var(--spacing-big);
-      padding-right: var(--spacing-medium);
-    }
-  }
-
-  &.hairstyle,
-  &.outerwear,
-  &.accessories,
-  &.shoes,
-  &.others {
-    .img-container {
-      top: 50%;
-      right: 0;
-      transform: translate(50%, -50%);
-    }
-    .btn-content {
-      padding-right: var(--spacing-big);
-      padding-left: var(--spacing-medium);
-    }
-  }
-
-  &.main_piece {
-    .img-container {
-      width: 190px;
-      height: 190px;
-      transform: translate(-50%, -80%);
-      top: 0;
-      left: 50%;
-      z-index: -1;
     }
   }
 }
@@ -397,4 +174,16 @@ button.memo {
 
 label {
   color: var(--primary-text);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Caveat;
+  color: var(--primary-text);
+
+  span {
+    margin-right: var(--spacing);
+  }
 }

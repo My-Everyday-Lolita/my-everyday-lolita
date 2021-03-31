@@ -138,7 +138,6 @@ app-root + app-dialog {
 .coordination-modal {
   .dialog-inner-content {
     .type-img {
-      margin: auto;
       display: block;
       width: auto;
       height: 70px;
@@ -159,6 +158,35 @@ app-root + app-dialog {
       height: 100%;
       padding: var(--spacing);
       box-sizing: border-box;
+    }
+  }
+}
+
+.details-dialog {
+  .dialog-content {
+    background: var(--details);
+    color: var(--details-text);
+    border: 1px solid var(--details-shadow);
+    border-radius: 8px;
+    font-family: "Gamja Flower";
+
+    .close-button {
+      position: absolute;
+      top: var(--spacing);
+      right: var(--spacing);
+      z-index: 1;
+    }
+
+    .dialog-inner-container {
+      background: inherit;
+      color: inherit;
+
+      .dialog-inner-content {
+        top: var(--spacing-bigger);
+        left: var(--spacing-medium);
+        right: var(--spacing-medium);
+        bottom: var(--spacing-medium);
+      }
     }
   }
 }

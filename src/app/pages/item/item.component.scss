@@ -83,14 +83,10 @@ button.cancel-button {
   }
 }
 
-details.right .details-content {
-  width: 360px;
-  right: -71%;
-}
-
-app-fieldset details.right .details-content {
-  width: 330px;
-  right: -57%;
+app-details.right {
+  position: absolute;
+  top: 0;
+  right: 0;
 }
 
 .photos-fieldset {
@@ -114,20 +110,8 @@ app-fieldset details.right .details-content {
   }
 }
 
-.photos-details {
-  position: absolute;
-  top: 0;
-  left: -8px;
-
-  summary {
-    position: absolute;
-    right: var(--spacing);
-  }
-
-  .details-content {
-    left: unset;
-    right: -10% !important;
-  }
+app-details.photos-details {
+  top: var(--spacing);
 }
 
 .additional-fields {

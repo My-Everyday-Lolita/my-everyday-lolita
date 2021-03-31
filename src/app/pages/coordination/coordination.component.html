@@ -1,13 +1,10 @@
 <form [formGroup]="form" (ngSubmit)="onSubmit()">
-  <details class="right">
-    <summary>
-      <span class="visualy-hidden">{{ 'COORDINATION.DETAILS.HOW_TO' | translate }}</span>
-      <span class="help-icon" aria-hidden="true">?</span>
-    </summary>
+  <app-details>
+    <span summary class="visualy-hidden">{{ 'COORDINATION.DETAILS.HOW_TO' | translate }}</span>
     <div class="details-content">
       <p [innerHTML]="'COORDINATION.HELPS.USEFUL' | translate"></p>
     </div>
-  </details>
+  </app-details>
   <button app-button type="button" color="primary" class="top-title no-style" (click)="edit(form, 'toptitle')">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 934.95 92.85" aria-hidden="true">
       <defs>
@@ -71,10 +68,15 @@
             </div>
           </ng-container>
           <ng-template #notArrayValue>
-            <span class="btn-content">{{ control.value.value | cacheItem | cacheItemName | async }}</span>
-            <div class="img-container">
-              <img [attr.src]="control.value.value | cacheItem | cacheItemPhoto | async" alt="Item photo">
-            </div>
+            <ng-container>
+              <span class="btn-content" [class.multiple]="control.value.customText !== ''">
+                <span>{{ control.value.value | cacheItem | cacheItemName | async }}</span>
+                <span class="customText" *ngIf="control.value.customText">{{ control.value.customText }}</span>
+              </span>
+              <div class="img-container" *ngIf="control.value.value">
+                <img [attr.src]="control.value.value | cacheItem | cacheItemPhoto | async" alt="Item photo">
+              </div>
+            </ng-container>
           </ng-template>
         </ng-template>
         <ng-container *ngTemplateOutlet="icons; context: { $implicit: control.value.type }"></ng-container>
@@ -216,7 +218,10 @@
     </button>
     <div class="dialog-inner-content">
       <div [appDialognInnerContent]="ref" [padding]="32">
-        <img *ngIf="data.control.value.type" [attr.src]="'assets/images/' + data.control.value.type + '.svg'" alt="Coordination section icon" aria-hidden="true" class="type-img">
+        <div class="modal-header">
+          <span>{{ coordinationTypeTranslateLabels[data.control.value.type] | translate }}</span>
+          <img *ngIf="data.control.value.type" [attr.src]="'assets/images/' + data.control.value.type + '.svg'" alt="Coordination section icon" aria-hidden="true" class="type-img">
+        </div>
         <div class="layout column" *ngIf="data.key === 'toptitle'">
           <app-form-field>
             <label appLabel>
@@ -250,36 +255,42 @@
             <input type="text" appInput [formControl]="data.control.controls.place">
           </app-form-field>
         </div>
-        <fieldset *ngIf="data.key === 'fields'">
-          <legend class="visualy-hidden">Available items</legend>
-          <ng-container *ngIf="!(data.control.controls.value | isFormArray); else values">
-            <div class="items">
-              <label class="item">
-                <input type="radio" [value]="null" [formControl]="data.control.controls.value" class="visualy-hidden">
-                <div class="img-container">
-                  <p [innerHTML]="'COORDINATION.FIELDS.EMPTY_FIELD' | translate"></p>
-                </div>
-              </label>
-              <label class="item" *ngFor="let item of data.items">
-                <input type="radio" [value]="item.id" [formControl]="data.control.controls.value" class="visualy-hidden">
-                <div class="img-container">
-                  <img [attr.src]="item.photo" alt="Item photo">
-                </div>
-              </label>
-            </div>
-          </ng-container>
-          <ng-template #values>
-            <div class="items">
-              <label class="item" *ngFor="let item of data.items">
-                <input type="checkbox" [value]="item.id" [checked]="item.id | isChecked:data.control.controls.value"
-                  (change)="checkItemMultiple($event, data.control.controls.value)" class="visualy-hidden">
-                <div class="img-container">
-                  <img [attr.src]="item.photo" alt="Item photo">
-                </div>
-              </label>
-            </div>
-          </ng-template>
-        </fieldset>
+        <ng-container *ngIf="data.key === 'fields'">
+          <fieldset>
+            <legend class="visualy-hidden">Available items</legend>
+            <ng-container *ngIf="!(data.control.controls.value | isFormArray); else values">
+              <div class="items">
+                <label class="item">
+                  <input type="radio" [value]="null" [formControl]="data.control.controls.value" class="visualy-hidden">
+                  <div class="img-container">
+                    <p [innerHTML]="'COORDINATION.FIELDS.EMPTY_FIELD' | translate"></p>
+                  </div>
+                </label>
+                <label class="item" *ngFor="let item of data.items">
+                  <input type="radio" [value]="item.id" [formControl]="data.control.controls.value" class="visualy-hidden">
+                  <div class="img-container">
+                    <img [attr.src]="item.photo" alt="Item photo">
+                  </div>
+                </label>
+              </div>
+            </ng-container>
+            <ng-template #values>
+              <div class="items">
+                <label class="item" *ngFor="let item of data.items">
+                  <input type="checkbox" [value]="item.id" [checked]="item.id | isChecked:data.control.controls.value"
+                    (change)="checkItemMultiple($event, data.control.controls.value)" class="visualy-hidden">
+                  <div class="img-container">
+                    <img [attr.src]="item.photo" alt="Item photo">
+                  </div>
+                </label>
+              </div>
+            </ng-template>
+          </fieldset>
+          <app-form-field *ngIf="data.control.value.type === CoordinationFieldTypes.HAIRSTYLE">
+            <label appLabel>{{ 'COORDINATION.FIELDS.LABELS.CUSTOM_TEXT' | translate }}</label>
+            <input type="text" appInput [formControl]="data.control.controls.customText">
+          </app-form-field>
+        </ng-container>
         <div *ngIf="data.key === 'memo'">
           <app-form-field>
             <label appLabel>{{ 'COORDINATION.FIELDS.LABELS.MEMO' | translate }}</label>

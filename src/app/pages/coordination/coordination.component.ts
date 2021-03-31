@@ -8,7 +8,7 @@ import { CacheService } from 'src/app/features/cache/cache.service';
 import { DialogService } from 'src/app/features/dialog/dialog.service';
 import { Item } from 'src/app/features/resources/items/items.model';
 import { ItemsService } from 'src/app/features/resources/items/items.service';
-import { Coordination, CoordinationField, CoordinationFieldType, coordinationTypeMap } from 'src/app/features/resources/user-content/user-content.model';
+import { Coordination, CoordinationField, CoordinationFieldType, coordinationTypeMap, coordinationTypeTranslateLabels } from 'src/app/features/resources/user-content/user-content.model';
 import { UserContentService } from 'src/app/features/resources/user-content/user-content.service';
 import { TitleService } from 'src/app/features/title/title.service';
 
@@ -31,6 +31,7 @@ import { TitleService } from 'src/app/features/title/title.service';
 export class CoordinationComponent implements OnInit, OnDestroy {
 
   CoordinationFieldTypes = CoordinationFieldType;
+  coordinationTypeTranslateLabels = coordinationTypeTranslateLabels;
 
   @ViewChild('modal', { static: true }) modalTemplate!: TemplateRef<any>;
 
@@ -152,7 +153,8 @@ export class CoordinationComponent implements OnInit, OnDestroy {
       fields: this.fb.array(this.coordination.fields.map(field => {
         return this.fb.group({
           type: [field.type, Validators.required],
-          value: this.createFieldValueControl(field.type, field)
+          value: this.createFieldValueControl(field.type, field),
+          customText: [field.customText || ''],
         });
       }))
     });
