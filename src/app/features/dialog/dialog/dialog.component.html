@@ -1,4 +1,4 @@
 <div class="backdrop" *ngIf="modal" (click)="close()"></div>
-<div class="dialog-content">
+<div class="dialog-content" [ngStyle]="{'height.px': height}">
   <ng-container *ngTemplateOutlet="template; context:{$implicit: this, data: config?.data}"></ng-container>
 </div>

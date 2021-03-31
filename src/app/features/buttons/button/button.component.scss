@@ -1,4 +1,12 @@
 :host {
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  border: none;
+  padding: 0;
+  background: transparent;
+}
+
+:host:not(.no-style) {
   background-color: var(--app-button-default);
   box-shadow: 5px 4px 0 var(--app-button-default-shadow);
   color: var(--app-button-default-text-color);
@@ -12,8 +20,6 @@
   position: relative;
   text-align: center;
   transition: background-color 330ms linear, box-shadow 330ms linear, color 330ms linear;
-  border: none;
-  padding: 0;
 
   &:focus {
     outline: none;
@@ -30,6 +36,10 @@
     align-items: center;
     padding: var(--spacing) var(--spacing-big);
     position: relative;
+    min-width: 0;
+    font-size: inherit;
+    min-height: inherit;
+    box-sizing: border-box;
   }
 
   &.small {

@@ -6,7 +6,7 @@ import { DialogConfiguration } from '../dialog.model';
   selector: 'app-dialog',
   templateUrl: './dialog.component.html',
   styleUrls: ['./dialog.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  // changeDetection: ChangeDetectionStrategy.OnPush,
   animations: [
     trigger('dialogAnimation', [
       transition(':enter', [
@@ -27,6 +27,7 @@ export class DialogComponent {
   template!: TemplateRef<any>;
   config?: DialogConfiguration;
   opened = false;
+  height!: number;
 
   onClose?: () => void;
 

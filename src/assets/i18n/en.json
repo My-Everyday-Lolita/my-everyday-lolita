@@ -64,15 +64,6 @@
         "CONFIRM_PASSWORD": "Password confirmation"
       }
     },
-    "ERRORS": {
-      "REQUIRED": "Meh. This field is required.",
-      "MAX_LENGTH": "Wow wow wow. This field must be within {{maxlength}} characters.",
-      "MIN_LENGTH": "This field must be at least {{minlength}} characters long.",
-      "EMAIL": "Email format incorrect<br>(e.g.: cupcake.lolita@soita.com)",
-      "USERNAME_PATTERN": "Username must only contain lower case letters, numeric characters, underscore and dash.",
-      "PASSWORD_PATTERN": "Password must contain at least:<br><ul><li>8 characters</li><li>1 lower case letter</li><li>1 upper case letter</li><li>1 numeric character</li></ul><br>(e.g.: Iamsoita1)",
-      "NOT_SAME_PASSWORD": "¯\\_(ツ)_/¯ The passwords do not match."
-    },
     "TOASTS": {
       "SUCCESS": "Congratulations!<br>Your registration has been successfully completed.",
       "CONFLICT": "Oh no!<br>This email or username already exists.",
@@ -87,9 +78,6 @@
         "USERNAME": "Username",
         "PASSWORD": "Password"
       }
-    },
-    "ERRORS": {
-      "REQUIRED": "Meh. This field is required."
     },
     "TOASTS": {
       "SUCCESS": "Congratulations!<br>Your registration has been successfully completed.",
@@ -157,11 +145,6 @@
     },
     "ADD_VARIANT": "Add new colorway",
     "REMOVE_VARIANT": "Remove",
-    "ERRORS": {
-      "REQUIRED": "Meh. This field is required.",
-      "MAX_LENGTH": "Wow wow wow. This field must be within {{maxlength}} characters.",
-      "MIN_LENGTH": "This field must be at least {{minlength}} characters long."
-    },
     "HELPS": {
       "PHOTO": "In order to limit the weight of our images, it is better to put the URL of the item picture you can find on Google.<br>If you want to use personal pictures, you just have to host them, using a photo hosting website (such as SmugMug, Google Photos, Flickr Pro, Imgur...)<br>Please try to provide the best quality pictures as possible.<br>Thank you:)",
       "COLLECTION": "Hint: sometimes brands release items of differents colors under a same name.<br>Not all the brands do that, so you don’t have to fill this field if the item doesn’t belong to any collection.<br><br>For example:<br><b>Toy Doll Box</b> (Angelic Pretty)<br><br><b>The World's Most Adorable Dog and the World's Most Delicious Strawberry Frappe</b> (Baby, The Stars Shine Bright)<br><br>Also, as you can notice it might be long to write.",
@@ -206,9 +189,12 @@
     }
   },
   "COORDINATIONS": {
-    "ADD_TO": "Create a new coordination"
+    "ADD_TO": "Create a new coordination",
+    "TOGGLE_TRASH": "Toggle the trash mode",
+    "REMOVE_COORDINATION": "Remove the coordination \"{{name}}\""
   },
   "COORDINATION": {
+    "SUBMIT": "Save the coordination",
     "TITLES": {
       "NEW": "New coordination"
     },
@@ -220,6 +206,30 @@
     },
     "HELPS": {
       "USEFUL": "The Coordination Checklist is here to help you to coordinate your outfit!<br>Click on each category to choose the item from your closet.<br><br>Whether you are a baby lolita or an advanced lolita, I'm sure it will be helpful to you!<br><br>You can use this tool if you are busy with many upcoming events or if you simply like dressing up at home and remember your coordinations for later. You can give titles to your coord, add a date or a theme, It will be useful to anticipate any event you are invited to, it will also help you remembering the progress you’ve made in coord construction. Furthermore, it can be used as a reminder to know what you are going to buy next to complete your coord!<br><br>You don’t have to be home next to your closet!<br>You just need a wi-fi and your lovely closet (that you put on My Everyday Lolita and kept updated, right?) so that you can work on your coords anywhere anytime!<br><br>You have no idea how to coordinate a piece?<br><br>Have a look at the Coord Helper!<br><br>You can use the memo field to write down what you need to take to a specific event.<br>We sometimes regret to have forgotten a second pair of shoes, or a bigger bag (these lolita bags are so small...so cute for pictures but SOOOO SMALLL). Anyways: write down anything you want!<br><br>You can share your coord with your friends and ask them for constructive criticism...or not! (For real, I’m not a juge here, you can do whatever you want, I’m already so happy you’re here 💕)"
+    },
+    "FIELDS": {
+      "LABELS": {
+        "TITLE": "Coordination name",
+        "EVENT": "Event",
+        "THEME": "Theme",
+        "DATE": "Date",
+        "PLACE": "Place",
+        "MEMO": "Memo"
+      },
+      "EMPTY_FIELD": "(Keep this field empty)"
+    },
+    "CLOSE_MODAL": "Close",
+    "EMPTY_MEMO": "- Bring bunny plush for the photoshoot ₍ᐢ ̥ ̞ ̥ᐢ₎\n- Bring my camera (*•̀ᴗ•́*)و ̑̑ "
+  },
+  "FORM": {
+    "ERRORS": {
+      "REQUIRED": "Meh. This field is required.",
+      "MAX_LENGTH": "Wow wow wow. This field must be within {{maxlength}} characters.",
+      "MIN_LENGTH": "This field must be at least {{minlength}} characters long.",
+      "EMAIL": "Email format incorrect<br>(e.g.: cupcake.lolita@soita.com)",
+      "USERNAME_PATTERN": "Username must only contain lower case letters, numeric characters, underscore and dash.",
+      "PASSWORD_PATTERN": "Password must contain at least:<br><ul><li>8 characters</li><li>1 lower case letter</li><li>1 upper case letter</li><li>1 numeric character</li></ul><br>(e.g.: Iamsoita1)",
+      "NOT_SAME_PASSWORD": "¯\\_(ツ)_/¯ The passwords do not match."
     }
   }
 }

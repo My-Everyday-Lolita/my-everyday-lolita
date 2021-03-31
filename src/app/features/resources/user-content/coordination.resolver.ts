@@ -1,24 +1,27 @@
+import { formatDate } from '@angular/common';
 import { Injectable } from '@angular/core';
 import {
   Resolve,
   RouterStateSnapshot,
-  ActivatedRouteSnapshot
+  ActivatedRouteSnapshot,
+  Router,
+  UrlTree
 } from '@angular/router';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
 import { Coordination, CoordinationFieldType } from './user-content.model';
 import { UserContentService } from './user-content.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class CoordinationResolver implements Resolve<Coordination> {
+export class CoordinationResolver implements Resolve<Coordination | UrlTree> {
 
   constructor(
     private userContentService: UserContentService,
+    private router: Router
   ) { }
 
-  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Coordination | Observable<Coordination> {
+  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Coordination | Observable<Coordination> | UrlTree {
     if (route.params.id === 'new') {
       return {
         id: this.generateUuid(),
@@ -26,7 +29,7 @@ export class CoordinationResolver implements Resolve<Coordination> {
         event: '',
         place: '',
         theme: '',
-        date: new Date(),
+        date: formatDate(new Date(), 'yyyy-MM-dd', 'en'),
         fields: [
           { type: CoordinationFieldType.HEADDRESS, value: null },
           { type: CoordinationFieldType.HAIRSTYLE, value: null },
@@ -43,11 +46,10 @@ export class CoordinationResolver implements Resolve<Coordination> {
         memo: ''
       };
     }
-    return this.userContentService.content$.pipe(
-      map(content => {
-        return content.coordinations.find(coord => coord.id = route.params.id) as Coordination;
-      })
-    );
+    if (this.userContentService.content) {
+      return this.userContentService.content.coordinations.find(coord => coord.id === route.params.id) as Coordination;
+    }
+    return this.router.createUrlTree(['/', 'my-coord-checklist']);
   }
 
   generateUuid(): string {

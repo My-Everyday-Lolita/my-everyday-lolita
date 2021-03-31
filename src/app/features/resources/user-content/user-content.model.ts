@@ -1,3 +1,4 @@
+import { Item } from "../items/items.model";
 
 /**
  * Variant id === item._id:color1._id[,color2._id]
@@ -23,7 +24,7 @@ export interface Coordination {
   event: string;
   place: string;
   theme?: string;
-  date: Date;
+  date: string;
   fields: CoordinationField[];
   memo: string;
 }
@@ -39,7 +40,7 @@ export enum CoordinationFieldType {
   LEGWEAR = 'legwear',
   SHOES = 'shoes',
   UNDERWEAR = 'underwear',
-  OTHERS = 'OTHERS'
+  OTHERS = 'others'
 }
 
 export const coordinationTypeMap: { [key in CoordinationFieldType]?: string[] } = {};
@@ -54,3 +55,10 @@ coordinationTypeMap[CoordinationFieldType.LEGWEAR] = ['Legwear'];
 coordinationTypeMap[CoordinationFieldType.SHOES] = ['Shoes'];
 coordinationTypeMap[CoordinationFieldType.UNDERWEAR] = ['Underwear'];
 coordinationTypeMap[CoordinationFieldType.OTHERS] = ['Other'];
+
+export interface UserContentEvent {
+  type: 'add' | 'remove' | 'toggle-want-to-sell' | 'update-coordinations';
+  content: UserContent;
+  item?: Item;
+  id?: string;
+}

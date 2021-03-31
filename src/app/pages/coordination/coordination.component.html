@@ -1,4 +1,4 @@
-<form [formGroup]="form">
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
   <details class="right">
     <summary>
       <span class="visualy-hidden">{{ 'COORDINATION.DETAILS.HOW_TO' | translate }}</span>
@@ -8,12 +8,96 @@
       <p [innerHTML]="'COORDINATION.HELPS.USEFUL' | translate"></p>
     </div>
   </details>
-  <ng-container *ngFor="let control of fieldsControl.value">
-    <button app-button color="primary" class="no-shadow small empty" [ngClass]="control.value.type" (click)="edit(control)">
-      <span class="btn-content kaomoji">( ･ั﹏･ั)・・・</span>
-      <ng-container *ngTemplateOutlet="icons; context: { $implicit: control.value.type }"></ng-container>
-    </button>
+  <button app-button type="button" color="primary" class="top-title no-style" (click)="edit(form, 'toptitle')">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 934.95 92.85" aria-hidden="true">
+      <defs>
+        <style>
+          .top-title-1,
+          .top-title-2 {
+            fill: var(--coord-top-title);
+          }
+
+          .top-title-2 {
+            stroke: var(--coord-section-btn);
+            stroke-miterlimit: 10;
+            stroke-width: 6px;
+          }
+        </style>
+      </defs>
+      <rect class="top-title-1" x="0.42" y="63.06" width="934.92" height="29.52" />
+      <path class="top-title-1"
+        d="M935.34,63c-.06-.12-.09-.25-.14-.37A23.27,23.27,0,0,0,931.41,52a38.39,38.39,0,0,0-4.4-7.16c-5.78-7.67-13.51-12.83-16.75-15C881,10.48,828.57,32.2,757.55,38.59c-62.63,5.63-129.74-1.56-144-3.17-43.86-5-69.09-11.68-98.11,2.37-2,1-4.09,2.08-6.19,3.28H426.79c-2.26-1.3-4.49-2.48-6.65-3.53-29-14-54.25-7.34-98.11-2.38-14.26,1.62-81.37,8.8-144,3.17-71-6.39-123.47-28.1-152.71-8.7C21.17,32.38,9.66,40,4.29,51.57A23.44,23.44,0,0,0,.42,63.06a.26.26,0,0,1,0,.08v.67c0,.26,0,.51,0,.76v1h0v7.54h935Z" />
+      <path class="top-title-2"
+        d="M467.77,44.66c1.3,8.16-6.22,13.59-13.57,25s-9.86,21.69-11.31,21.23S441.73,80,440.11,73a4,4,0,0,0-1.57-2.61c-1.7-1-4.18.28-5.39.87-4.46,2.18-12.58,4.87-13.92,3.48-2.17-2.26,8.65-20.34,27-30.27,3.52-1.91,15-8.13,19.66-4A6.7,6.7,0,0,1,467.77,44.66Z" />
+      <path class="top-title-2"
+        d="M472.64,39.09c-1.95,2.72,1.55,7.55,6.27,16,11.46,20.53,15.3,35.85,17.74,35.14,2-.57,3.25-11.75,3.48-16,.06-.92.15-3.2,1.57-4s3.27.24,4.18.69c3.91,2,12.15,5.12,13.74,3.66C522.09,72.31,512,55.52,498.74,45a33.89,33.89,0,0,0-8.7-5C484.77,37.88,475.13,35.64,472.64,39.09Z" />
+      <path class="top-title-2"
+        d="M474.38,23.78A27.61,27.61,0,0,1,480.82,18c10-7.07,18-12.76,29.41-14.09,4.49-.52,7.64-.8,10.78,1,5.75,3.37,6.75,11.17,7.31,16,.37,3.19,2.84,27.68-10.09,34.27-5,2.57-5.87-.91-35.67-8.87-6.17-1.65-10.73-2.74-12.52-6.61C467.07,33.4,473.75,24.6,474.38,23.78Z" />
+      <path class="top-title-2"
+        d="M465.51,25.35c-1.6-4-5.38-6.6-12.87-11.66-7.9-5.33-13.66-9.13-22.1-10.26-3.89-.53-8-1-11.48,1.39s-4.37,6.11-5.57,11.13c-2.37,10-.89,17.88.35,24.19,2.05,10.42,4.76,12.83,6.61,13.92a11.82,11.82,0,0,0,4.7,1.39c6.87.84,11.83-1.86,18.79-4.7,14.33-5.84,16.12-3.68,19.31-7.65C467.17,38.21,467.73,30.87,465.51,25.35Z" />
+      <path class="top-title-2"
+        d="M476.3,21.17c-2.68-3.28-9.69-3.51-12.88-.17-.45.48-1.63,1.87-1.91,7.31-.34,6.73-.72,14.16,4,17.05,3.08,1.88,7.91,1.57,10.27-.87,1.19-1.24,1.43-3.14,1.91-7a43.52,43.52,0,0,0,0-10.09C477.32,24,477.14,22.2,476.3,21.17Z" />
+    </svg>
+    <span class="inputs-wrapper">
+      Event: {{ form.value.event }}<br>
+      Theme: {{ form.value.theme }}<br>
+      Date: {{ form.value.date | localizedDate:'shortDate' }}<br>
+      Place: {{ form.value.place }}<br>
+    </span>
+  </button>
+  <ng-container *ngFor="let control of fieldsControls">
+    <ng-container *ngIf="(control.controls.value | formArrayLength | async); else singleButton">
+      <ng-container *ngIf="(control.controls.value | formArrayControls).length > 1; else singleButton">
+        <ng-container *ngFor="let subcontrol of control.controls.value | formArrayControls">
+          <button app-button type="button" color="primary" class="no-shadow small section-btn fw-normal" [ngClass]="control.value.type" (click)="edit(control, 'fields')">
+            <span class="btn-content">{{ subcontrol.value | cacheItem | cacheItemName | async }}</span>
+            <div class="img-container">
+              <img [attr.src]="subcontrol.value | cacheItem | cacheItemPhoto | async" alt="Item photo">
+            </div>
+            <ng-container *ngTemplateOutlet="icons; context: { $implicit: control.value.type }"></ng-container>
+          </button>
+        </ng-container>
+      </ng-container>
+    </ng-container>
+    <ng-template #singleButton>
+      <button app-button type="button" color="primary" class="no-shadow small section-btn fw-normal" [class.empty]="control | coordinationFieldIsEmpty | async"
+        [ngClass]="control.value.type" (click)="edit(control, 'fields')">
+        <span *ngIf="control | coordinationFieldIsEmpty | async; else displayName" class="btn-content kaomoji">(･ั﹏･ั)・・・</span>
+        <ng-template #displayName>
+          <ng-container *ngIf="control.value.value | isArray; else notArrayValue">
+            <span class="btn-content">{{ control.value.value[0] | cacheItem | cacheItemName | async }}</span>
+            <div class="img-container">
+              <img [attr.src]="control.value.value[0] | cacheItem | cacheItemPhoto | async" alt="Item photo">
+            </div>
+          </ng-container>
+          <ng-template #notArrayValue>
+            <span class="btn-content">{{ control.value.value | cacheItem | cacheItemName | async }}</span>
+            <div class="img-container">
+              <img [attr.src]="control.value.value | cacheItem | cacheItemPhoto | async" alt="Item photo">
+            </div>
+          </ng-template>
+        </ng-template>
+        <ng-container *ngTemplateOutlet="icons; context: { $implicit: control.value.type }"></ng-container>
+      </button>
+    </ng-template>
   </ng-container>
+
+  <button app-button type="button" color="primary" class="memo no-style" [class.empty]="[null, ''].includes(form.value.memo)" (click)="edit(form, 'memo')">
+    <svg aria-hidden="true" class="memo-icon">
+      <use xlink:href="#memo" />
+    </svg>
+    <span class="memo-value" *ngIf="form.value.memo; else emptyMemo" [innerHTML]="form.value.memo"></span>
+    <ng-template #emptyMemo>
+      <span class="memo-value" [innerHTML]="'COORDINATION.EMPTY_MEMO' | translate"></span>
+    </ng-template>
+  </button>
+
+  <button type="submit" app-button class="circle" color="accent" [disabled]="form.invalid || form.pristine">
+    <span class="visualy-hidden">{{ 'COORDINATION.SUBMIT' | translate }}</span>
+    <svg aria-hidden="true">
+      <use xlink:href="#save-icon" />
+    </svg>
+  </button>
 </form>
 
 <ng-template #icons let-type>
@@ -63,7 +147,7 @@
 </ng-template>
 
 <ng-template #modal let-ref let-data="data">
-  <div class="dialog-inner-container">
+  <div class="dialog-inner-container coordination-modal">
     <div class="deco-wrapper">
       <svg class="deco top right r45" aria-hidden="true">
         <use xlink:href="#modal-deco-1" />
@@ -126,11 +210,83 @@
         <use xlink:href="#modal-deco-3" />
       </svg>
     </div>
+    <button app-button color="default" class="circle small close-modal no-shadow" (click)="ref.close()">
+      <span class="visualy-hidden">{{ 'COORDINATION.CLOSE_MODAL' | translate }}</span>
+      <span class="clear-icon very-small"></span>
+    </button>
     <div class="dialog-inner-content">
-      <ng-container *ngTemplateOutlet="icons; context: { $implicit: data.control.value.type }"></ng-container>
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto minima laudantium eligendi hic quidem neque recusandae officiis! Illo suscipit officia error animi aut?
-      Repudiandae quas necessitatibus nemo ab fugiat placeat!
-      <button app-button color="primary" (click)="ref.close()">Close</button>
+      <div [appDialognInnerContent]="ref" [padding]="32">
+        <img *ngIf="data.control.value.type" [attr.src]="'assets/images/' + data.control.value.type + '.svg'" alt="Coordination section icon" aria-hidden="true" class="type-img">
+        <div class="layout column" *ngIf="data.key === 'toptitle'">
+          <app-form-field>
+            <label appLabel>
+              {{ 'COORDINATION.FIELDS.LABELS.TITLE' | translate }}
+            </label>
+            <input type="text" appInput [formControl]="data.control.controls.title" required>
+            <p class="error visualy-hidden" *ngIf="data.control.controls.title.errors?.required">{{ 'FORM.ERRORS.REQUIRED' | translate }}</p>
+          </app-form-field>
+          <app-form-field>
+            <label appLabel>
+              {{ 'COORDINATION.FIELDS.LABELS.EVENT' | translate }}
+            </label>
+            <input type="text" appInput [formControl]="data.control.controls.event">
+          </app-form-field>
+          <app-form-field>
+            <label appLabel>
+              {{ 'COORDINATION.FIELDS.LABELS.THEME' | translate }}
+            </label>
+            <input type="text" appInput [formControl]="data.control.controls.theme">
+          </app-form-field>
+          <app-form-field>
+            <label appLabel>
+              {{ 'COORDINATION.FIELDS.LABELS.DATE' | translate }}
+            </label>
+            <input type="date" appInput [formControl]="data.control.controls.date">
+          </app-form-field>
+          <app-form-field>
+            <label appLabel>
+              {{ 'COORDINATION.FIELDS.LABELS.PLACE' | translate }}
+            </label>
+            <input type="text" appInput [formControl]="data.control.controls.place">
+          </app-form-field>
+        </div>
+        <fieldset *ngIf="data.key === 'fields'">
+          <legend class="visualy-hidden">Available items</legend>
+          <ng-container *ngIf="!(data.control.controls.value | isFormArray); else values">
+            <div class="items">
+              <label class="item">
+                <input type="radio" [value]="null" [formControl]="data.control.controls.value" class="visualy-hidden">
+                <div class="img-container">
+                  <p [innerHTML]="'COORDINATION.FIELDS.EMPTY_FIELD' | translate"></p>
+                </div>
+              </label>
+              <label class="item" *ngFor="let item of data.items">
+                <input type="radio" [value]="item.id" [formControl]="data.control.controls.value" class="visualy-hidden">
+                <div class="img-container">
+                  <img [attr.src]="item.photo" alt="Item photo">
+                </div>
+              </label>
+            </div>
+          </ng-container>
+          <ng-template #values>
+            <div class="items">
+              <label class="item" *ngFor="let item of data.items">
+                <input type="checkbox" [value]="item.id" [checked]="item.id | isChecked:data.control.controls.value"
+                  (change)="checkItemMultiple($event, data.control.controls.value)" class="visualy-hidden">
+                <div class="img-container">
+                  <img [attr.src]="item.photo" alt="Item photo">
+                </div>
+              </label>
+            </div>
+          </ng-template>
+        </fieldset>
+        <div *ngIf="data.key === 'memo'">
+          <app-form-field>
+            <label appLabel>{{ 'COORDINATION.FIELDS.LABELS.MEMO' | translate }}</label>
+            <textarea [formControl]="data.control.controls.memo" rows="5"></textarea>
+          </app-form-field>
+        </div>
+      </div>
     </div>
   </div>
 </ng-template>

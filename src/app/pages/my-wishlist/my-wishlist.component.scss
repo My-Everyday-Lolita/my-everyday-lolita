@@ -21,7 +21,7 @@ p:not(.search-top-text) {
   height: 95px;
 }
 
-.search-button {
+a.search-button {
   position: fixed;
   z-index: 1;
   right: var(--spacing-medium);

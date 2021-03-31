@@ -19,11 +19,11 @@ export class CoordinationGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    if (route.params.id === 'new') {
-      return true;
-    }
     return this.userContentService.content$.pipe(map(content => {
-      if (!content.coordinations.find(coord => coord.id = route.params.id)) {
+      if (route.params.id === 'new') {
+        return true;
+      }
+      if (!content.coordinations.find(coord => coord.id === route.params.id)) {
         this.toastr.error('COORDINATION.ERRORS.NOT_FOUND', undefined, { disableTimeOut: true, closeButton: true });
         return this.router.createUrlTree(['/', 'my-coord-checklist']);
       }

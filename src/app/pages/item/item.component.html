@@ -137,7 +137,7 @@
         {{ 'ITEM.FIELDS.LABELS.BRAND' | translate }}
       </label>
       <ng-select appInput formControlName="brand" [items]="brands" bindLabel="name" [addTag]="addCustomBrand" required></ng-select>
-      <p class="error visualy-hidden" *ngIf="brand.errors?.required">{{ 'ITEM.ERRORS.REQUIRED' | translate }}</p>
+      <p class="error visualy-hidden" *ngIf="brand.errors?.required">{{ 'FORM.ERRORS.REQUIRED' | translate }}</p>
     </app-form-field>
     <app-form-field>
       <label appLabel>
@@ -163,7 +163,7 @@
           <span [ngClass]="item._lvlClass">{{ item.name }}</span>
         </ng-template>
       </ng-select>
-      <p class="error visualy-hidden" *ngIf="category.errors?.required">{{ 'ITEM.ERRORS.REQUIRED' | translate }}</p>
+      <p class="error visualy-hidden" *ngIf="category.errors?.required">{{ 'FORM.ERRORS.REQUIRED' | translate }}</p>
     </app-form-field>
     <app-form-field>
       <label appLabel>
@@ -182,7 +182,7 @@
           </span>
         </ng-template>
       </ng-select>
-      <p class="error visualy-hidden" *ngIf="features.errors?.required">{{ 'ITEM.ERRORS.REQUIRED' | translate }}</p>
+      <p class="error visualy-hidden" *ngIf="features.errors?.required">{{ 'FORM.ERRORS.REQUIRED' | translate }}</p>
     </app-form-field>
     <ng-container formArrayName="variants">
       <app-fieldset *ngFor="let variant of variants.controls; let i = index" [formGroupName]="i" [legend]="'ITEM.FIELDS.LEGENDS.VARIANT' | translate:{i: i+1}" [opened]="true"
@@ -207,7 +207,7 @@
               </span>
             </ng-template>
           </ng-select>
-          <p class="error visualy-hidden" *ngIf="variants.controls[i].get('colors')?.errors?.required">{{ 'ITEM.ERRORS.REQUIRED' | translate }}</p>
+          <p class="error visualy-hidden" *ngIf="variants.controls[i].get('colors')?.errors?.required">{{ 'FORM.ERRORS.REQUIRED' | translate }}</p>
         </app-form-field>
         <ng-container *ngTemplateOutlet="photos; context: {$implicit: variant.get('photos'), i: i, variant: variant, fieldset: fieldset}"></ng-container>
         <button *ngIf="!(variants.length === 1 && i === 0)" app-button color="discreet" class="discreet very-small no-shadow fw-normal remove-variant" (click)="removeVariant(i)">
@@ -262,8 +262,7 @@
             <p [innerHTML]="'ITEM.HELPS.KEYWORDS' | translate"></p>
           </div>
         </details>
-        <ng-select appInput formControlName="keywords" [multiple]="true" [items]="[]" [addTag]="true" [selectOnTab]="true" [isOpen]="false"
-          (changeEvent)="additionalFields.onContentChange()">
+        <ng-select appInput formControlName="keywords" [multiple]="true" [items]="[]" [addTag]="true" [selectOnTab]="true" (changeEvent)="additionalFields.onContentChange()">
           <ng-template ng-label-tmp let-item="item" let-clear="clear">
             <span class="ng-value-content">
               <span class="ng-value-icon left" (click)="clear(item);" aria-hidden="true">×</span>
@@ -308,32 +307,8 @@
 
     <button type="submit" app-button class="circle" color="accent" *ngIf="form" [disabled]="form.invalid && editable">
       <span class="visualy-hidden">{{ 'ITEM.SUBMIT' | translate }}</span>
-      <svg id="save_icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
-        <defs>
-          <style>
-            .save-cls-1 {
-              fill: var(--save-icon-1);
-            }
-
-            .save-cls-2 {
-              fill: var(--save-icon-2);
-            }
-
-            .save-cls-3 {
-              fill: var(--save-icon-2);
-            }
-
-            .save-cls-4 {
-              fill: var(--save-icon-3);
-            }
-          </style>
-        </defs>
-        <path class="save-cls-1"
-          d="M382.54,138.48a16.74,16.74,0,0,0-.65-3.34,12.43,12.43,0,0,0-1.05-2.11C369.71,115.6,313.26,61.4,313.26,61.4,289,38.12,282.32,26.83,262.91,22.27c-6.09-1.43-10.23-1.93-20.06-1.49-30,1.33-60.14-.45-90.2-.53-27.87-.07-47.53-.65-60.13-.21-1.85.07-7.79.3-16.11.26l.28-.57L74,19.9c-3.63.23-4.95.22-6.26.36a63.23,63.23,0,0,0-7.19,1.17C54.23,22.83,40.86,26,30.07,37.77,27.61,40.46,17.42,51.6,17.43,65.93a19.64,19.64,0,0,0,.14,2.47c-1.37,37.63-.48,125.39-.48,125.39,0,47.69-1.15,98.62-.53,137.14a65.13,65.13,0,0,0,1.52,13.45c1.4,6.31,4.56,19.68,16.35,30.47,2.69,2.46,13.83,12.65,28.15,12.64h63.14c5,.06,11.21.08,20.08,0H253c8.89.08,15.1.06,20.1,0h58c.42,0,1.34.06,2.59,0h.38v0l.52,0c.49,0,1,.06,1.63.06,14.33,0,25.47-10.18,28.16-12.64a49.53,49.53,0,0,0,4.95-5.29,43.07,43.07,0,0,0,12.34-20.3,37.69,37.69,0,0,0,.83-4.13h0V141.57A15.77,15.77,0,0,0,382.54,138.48Z" />
-        <path class="save-cls-2" d="M76.69,19.73v62.5a21.36,21.36,0,0,0,21.36,21.36H214.1a21.36,21.36,0,0,0,21.36-21.36V19.73Z" />
-        <rect class="save-cls-3" x="78.95" y="185.1" width="242.11" height="141.36" rx="19.78" />
-        <path class="save-cls-4"
-          d="M270.59,218.06A36,36,0,0,0,234,196.2a35.43,35.43,0,0,0-19.81,7.92,35,35,0,0,0-9.34,12.18l-.66,0a35,35,0,0,0-9.35-12.2A35.43,35.43,0,0,0,175,196.2a36,36,0,0,0-36.6,21.86,38.17,38.17,0,0,0-1.74,23.61c1.45,6.61,4.13,10.92,8.55,18.06a119.54,119.54,0,0,0,14,18.22c3.53,3.84,8.22,8.49,29,24.88,6.78,5.35,12.43,9.7,16.32,12.68v-2.34h0v2.34c3.89-3,9.55-7.33,16.32-12.68,20.78-16.39,25.47-21,29-24.88a118.7,118.7,0,0,0,13.94-18.22c4.43-7.14,7.1-11.45,8.56-18.06A38.17,38.17,0,0,0,270.59,218.06Z" />
+      <svg aria-hidden="true">
+        <use xlink:href="#save-icon" />
       </svg>
     </button>
   </form>

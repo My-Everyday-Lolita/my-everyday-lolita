@@ -12,6 +12,10 @@ app-image-dialog {
   border: none;
   font-size: 1.6rem;
 
+  .dialog-content {
+    max-height: 90vh;
+  }
+
   &.modal {
     .dialog-content {
       position: fixed;
@@ -39,10 +43,9 @@ app-root + app-dialog {
 .dialog-inner-container {
   position: relative;
   min-width: 80vw;
-  min-height: 60vh;
-  max-height: 90vh;
+  height: 100%;
   box-sizing: border-box;
-  background: #e4c3ff;
+  background: var(--modal-deco-bg);
   border-radius: 16px;
 
   > .deco-wrapper .deco {
@@ -115,6 +118,13 @@ app-root + app-dialog {
     }
   }
 
+  > button.close-modal {
+    position: absolute;
+    top: var(--spacing);
+    right: var(--spacing);
+    z-index: 1;
+  }
+
   .dialog-inner-content {
     position: absolute;
     top: var(--spacing-big);
@@ -122,5 +132,33 @@ app-root + app-dialog {
     right: var(--spacing-big);
     bottom: var(--spacing-big);
     overflow: auto;
+  }
+}
+
+.coordination-modal {
+  .dialog-inner-content {
+    .type-img {
+      margin: auto;
+      display: block;
+      width: auto;
+      height: 70px;
+      opacity: 0.7;
+    }
+  }
+
+  .img-container {
+    p {
+      position: relative;
+      z-index: 1;
+      font-size: var(--font-size-very-small);
+      font-family: "Gamja Flower";
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      height: 100%;
+      padding: var(--spacing);
+      box-sizing: border-box;
+    }
   }
 }

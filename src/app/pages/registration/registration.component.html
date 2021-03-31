@@ -6,9 +6,9 @@
       <span>*</span>
     </label>
     <input id="registration-fields-username" type="text" [attr.pattern]="usernamePattern" formControlName="username" required>
-    <p class="error visualy-hidden" *ngIf="username.errors?.required">{{ 'REGISTRATION.ERRORS.REQUIRED' | translate }}</p>
-    <p class="error" *ngIf="username.errors?.pattern" [innerHTML]="'REGISTRATION.ERRORS.USERNAME_PATTERN' | translate"></p>
-    <p class="error" *ngIf="username.errors?.maxlength" [innerHTML]="'REGISTRATION.ERRORS.MAX_LENGTH' | translate:{maxlength: username.errors?.maxlength.requiredLength}"></p>
+    <p class="error visualy-hidden" *ngIf="username.errors?.required">{{ 'FORM.ERRORS.REQUIRED' | translate }}</p>
+    <p class="error" *ngIf="username.errors?.pattern" [innerHTML]="'FORM.ERRORS.USERNAME_PATTERN' | translate"></p>
+    <p class="error" *ngIf="username.errors?.maxlength" [innerHTML]="'FORM.ERRORS.MAX_LENGTH' | translate:{maxlength: username.errors?.maxlength.requiredLength}"></p>
   </div>
   <div class="form-field">
     <label for="registration-fields-email">
@@ -16,8 +16,8 @@
       <span>*</span>
     </label>
     <input id="registration-fields-email" type="email" formControlName="email" required>
-    <p class="error visualy-hidden" *ngIf="email.errors?.required" [innerHTML]="'REGISTRATION.ERRORS.REQUIRED' | translate"></p>
-    <p class="error" *ngIf="email.errors?.email" [innerHTML]="'REGISTRATION.ERRORS.EMAIL' | translate"></p>
+    <p class="error visualy-hidden" *ngIf="email.errors?.required" [innerHTML]="'FORM.ERRORS.REQUIRED' | translate"></p>
+    <p class="error" *ngIf="email.errors?.email" [innerHTML]="'FORM.ERRORS.EMAIL' | translate"></p>
   </div>
   <div class="form-field">
     <label for="registration-fields-password">
@@ -25,8 +25,8 @@
       <span>*</span>
     </label>
     <input id="registration-fields-password" type="password" formControlName="password" [attr.pattern]="passwordPattern" required>
-    <p class="error visualy-hidden" *ngIf="password.errors?.required" [innerHTML]="'REGISTRATION.ERRORS.REQUIRED' | translate"></p>
-    <p class="error" *ngIf="password.errors?.pattern" [innerHTML]="'REGISTRATION.ERRORS.PASSWORD_PATTERN' | translate"></p>
+    <p class="error visualy-hidden" *ngIf="password.errors?.required" [innerHTML]="'FORM.ERRORS.REQUIRED' | translate"></p>
+    <p class="error" *ngIf="password.errors?.pattern" [innerHTML]="'FORM.ERRORS.PASSWORD_PATTERN' | translate"></p>
   </div>
   <div class="form-field">
     <label for="registration-fields-confirm-password">
@@ -34,8 +34,8 @@
       <span>*</span>
     </label>
     <input id="registration-fields-confirm-password" type="password" formControlName="confirmPassword" [attr.pattern]="passwordPattern" required>
-    <p class="error visualy-hidden" *ngIf="confirmPassword.errors?.required" [innerHTML]="'REGISTRATION.ERRORS.REQUIRED' | translate"></p>
-    <p class="error" *ngIf="form.errors?.notSameFields" [innerHTML]="'REGISTRATION.ERRORS.NOT_SAME_PASSWORD' | translate"></p>
+    <p class="error visualy-hidden" *ngIf="confirmPassword.errors?.required" [innerHTML]="'FORM.ERRORS.REQUIRED' | translate"></p>
+    <p class="error" *ngIf="form.errors?.notSameFields" [innerHTML]="'FORM.ERRORS.NOT_SAME_PASSWORD' | translate"></p>
   </div>
   <button type="submit" app-button color="primary" [disabled]="!form.valid">{{ 'REGISTRATION.SUBMIT' | translate}}</button>
 </form>

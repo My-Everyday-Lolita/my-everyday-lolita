@@ -1,8 +1,9 @@
 import { trigger, transition, style, animate, query, useAnimation } from '@angular/animations';
 import { Component, HostBinding, OnDestroy, OnInit } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
-import { takeUntil, filter, map } from 'rxjs/operators';
+import { from, Observable, Subject, zip } from 'rxjs';
+import { takeUntil, filter, map, switchMap } from 'rxjs/operators';
 import { itemsLeaveAnimation, itemsEnterAnimation } from 'src/app/features/animations/items.animation';
+import { CacheService } from 'src/app/features/cache/cache.service';
 import { Criterium, Item } from 'src/app/features/resources/items/items.model';
 import { ItemsService } from 'src/app/features/resources/items/items.service';
 import { UserContentService } from 'src/app/features/resources/user-content/user-content.service';
@@ -54,7 +55,8 @@ export class MyWishlistComponent implements OnInit, OnDestroy {
     private userSignInService: UserSignInService,
     private userContentService: UserContentService,
     private itemsService: ItemsService,
-    public themeService: ThemeService
+    public themeService: ThemeService,
+    private cacheService: CacheService
   ) { }
 
   ngOnDestroy(): void {
@@ -98,30 +100,30 @@ export class MyWishlistComponent implements OnInit, OnDestroy {
   }
 
   private getItems(): Observable<Item[]> {
-    const criteria: Criterium[] = this.content.reduce((acc, value) => {
-      const itemId = value.id.split(':')[0];
-      if (!acc.find(i => i === itemId)) {
-        acc.push(itemId);
-      }
-      return acc;
-    }, [] as string[]).map(id => ({ type: 'id', value: id }));
-    return this.itemsService.findByCriteria(criteria).pipe(
-      map(response => {
-        return response.reduce((acc, item) => {
-          for (const variant of item.variants) {
-            const vid = `${item._id}:${variant.colors.map(c => c._id).join(',')}`;
-            const wishlistData = this.content.find(vi => vi.id === vid);
-            if (wishlistData) {
-              acc.push({
-                ...item,
-                variants: [variant],
-              });
+    const items$ = this.content.map(item => this.cacheService.match(item.id).pipe(
+      switchMap(cacheResponse => {
+        if (cacheResponse) {
+          return from(cacheResponse.json()) as Observable<Item>;
+        }
+        const [itemId, colorIds] = item.id.split(':');
+        return this.itemsService.findById(itemId).pipe(
+          map(response => {
+            if (response) {
+              const selectedVariant = response.variants.filter(v => v.colors.map(c => c._id).join(',') === colorIds)[0] || undefined;
+              if (selectedVariant) {
+                const freshItem = {
+                  ...JSON.parse(JSON.stringify(response)),
+                  variants: [selectedVariant],
+                };
+                this.cacheService.put(item.id, freshItem);
+                return freshItem;
+              }
             }
-          }
-          return acc;
-        }, [] as Item[]);
-      })
-    );
+          })
+        );
+      }),
+    ));
+    return zip(...items$);
   }
 
   filterItems(items: Item[], criteria: Criterium[]): Item[] {

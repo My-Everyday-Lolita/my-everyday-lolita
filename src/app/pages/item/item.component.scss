@@ -59,8 +59,8 @@ input.has-preview {
   border-bottom-right-radius: 8px;
 }
 
-[type="submit"].circle,
-.toggle-edit {
+button[type="submit"].circle,
+button.toggle-edit {
   position: fixed;
   z-index: 1004;
   bottom: var(--spacing-medium);
@@ -72,7 +72,7 @@ input.has-preview {
   }
 }
 
-.cancel-button {
+button.cancel-button {
   position: fixed;
   bottom: 24px;
   left: var(--spacing-medium);

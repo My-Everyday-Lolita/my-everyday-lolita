@@ -107,6 +107,7 @@ body.theme-sweet {
   --primary: #f7bff2;
   --primary-shadow: #cc85ff;
   --primary-text: #000;
+  --primary-rgb: 247, 192, 242;
 
   --username: #cc85ff;
 
@@ -185,6 +186,19 @@ body.theme-sweet {
     --add-to-wishlist-2: #9e9e9e;
     --add-to-wishlist-3: #fff;
   }
+
+  --button-empty: #ded8df;
+  --coord-section-btn: #deb8ff;
+  --coord-top-title: #e8cdff;
+  --coord-memo: #e8cdff;
+
+  --modal-deco: #ae78b1;
+  --modal-deco-bg: #e4c3ff;
+
+  --memo-1: #5d1fa0;
+  --memo-2: #cc9cff;
+  --memo-3: #b972f7;
+  --memo-4: #af71ff;
 }
 
 body.theme-gothic {
@@ -193,6 +207,7 @@ body.theme-gothic {
   --primary: #322187;
   --primary-shadow: #000;
   --primary-text: #fff;
+  --primary-rgb: 50, 33, 135;
 
   --username: #3f0670;
 
@@ -228,10 +243,10 @@ body.theme-gothic {
   --app-button-discreet-text-color: #fff;
   --app-button-discreet-shadow: #000000;
 
-  --menu-background: #fff;
+  --menu-background: #fdf2f8;
   --menu-foreground: #000;
 
-  --title: #fff;
+  --title: #fdf2f8;
   --title-shadow: #000;
   --title-text: #000;
 
@@ -280,6 +295,19 @@ body.theme-gothic {
 
   --cloud-symbol: #e5d4ff;
   --cloud-symbol-shadow: #4500b2;
+
+  --button-empty: #3d3d3d;
+  --coord-section-btn: #140d38;
+  --coord-top-title: #201a3f;
+  --coord-memo: #201a3f;
+
+  --modal-deco: #5d557c;
+  --modal-deco-bg: #0e0927;
+
+  --memo-1: #1c0cc9;
+  --memo-2: #ece4e9;
+  --memo-3: #110e33;
+  --memo-4: #a6a0ff;
 }
 
 body.theme-classic {
@@ -288,6 +316,7 @@ body.theme-classic {
   --primary: #d32a09;
   --primary-shadow: #892806;
   --primary-text: #fff;
+  --primary-rgb: 211, 42, 9;
 
   --username: #892806;
 
@@ -367,4 +396,17 @@ body.theme-classic {
 
   --cloud-symbol: #ffe0d5;
   --cloud-symbol-shadow: #892806;
+
+  --button-empty: #818181;
+  --coord-section-btn: #892806;
+  --coord-top-title: #a04828;
+  --coord-memo: #a04828;
+
+  --modal-deco: #633d3d;
+  --modal-deco-bg: #c09d9d;
+
+  --memo-1: #a04e1f;
+  --memo-2: #ffab9c;
+  --memo-3: #f78d72;
+  --memo-4: #b91313;
 }

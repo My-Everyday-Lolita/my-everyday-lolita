@@ -1,4 +1,4 @@
-import { ApplicationRef, ComponentFactoryResolver, Injectable, Injector, Renderer2, TemplateRef, ViewContainerRef } from '@angular/core';
+import { ApplicationRef, ComponentFactoryResolver, ComponentRef, Injectable, Injector, Renderer2, TemplateRef, ViewContainerRef } from '@angular/core';
 import { DialogConfiguration } from './dialog.model';
 import { DialogComponent } from './dialog/dialog.component';
 

@@ -59,6 +59,17 @@ import { ImageDialogComponent } from './features/dialog/image-dialog/image-dialo
 import { ImageLoadDirective } from './features/images/image-load.directive';
 import { LocalizedDatePipe } from './features/date/localized-date.pipe';
 import { CoordinationComponent } from './pages/coordination/coordination.component';
+import { DialognInnerContentDirective } from './features/dialog/dialogn-inner-content.directive';
+import { IsFormArrayPipe } from './features/form/is-form-array.pipe';
+import { IsCheckedPipe } from './features/form/is-checked.pipe';
+import { CacheItemPipe } from './features/resources/user-content/cache-item.pipe';
+import { CacheItemNamePipe } from './features/resources/user-content/cache-item-name.pipe';
+import { FormArrayLengthPipe } from './features/form/form-array-length.pipe';
+import { FormArrayControlsPipe } from './features/form/form-array-controls.pipe';
+import { CoordinationFieldIsEmptyPipe } from './features/form/coordination-field-is-empty.pipe';
+import { IsArrayPipe } from './features/form/is-array.pipe';
+import { CacheItemPhotoPipe } from './features/resources/user-content/cache-item-photo.pipe';
+import { CoordMainPiecePipe } from './features/resources/user-content/coord-main-piece.pipe';
 
 registerLocaleData(localeEn, 'en');
 registerLocaleData(localeFr, 'fr');
@@ -105,6 +116,17 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     ImageLoadDirective,
     LocalizedDatePipe,
     CoordinationComponent,
+    DialognInnerContentDirective,
+    IsFormArrayPipe,
+    IsCheckedPipe,
+    CacheItemPipe,
+    CacheItemNamePipe,
+    FormArrayLengthPipe,
+    FormArrayControlsPipe,
+    CoordinationFieldIsEmptyPipe,
+    IsArrayPipe,
+    CacheItemPhotoPipe,
+    CoordMainPiecePipe,
   ],
   imports: [
     CommonModule,

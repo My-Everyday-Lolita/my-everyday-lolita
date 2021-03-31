@@ -1,12 +1,13 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, fromEvent, Observable, Subject } from 'rxjs';
-import { filter } from 'rxjs/operators';
+import { filter, publish, shareReplay } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
+import { CacheService } from '../../cache/cache.service';
 import { UserSignInService } from '../../user/user-sign-in.service';
 import { UserService } from '../../user/user.service';
 import { Item } from '../items/items.model';
-import { UserContent } from './user-content.model';
+import { UserContent, UserContentEvent } from './user-content.model';
 
 @Injectable({
   providedIn: 'root'
@@ -15,16 +16,17 @@ export class UserContentService {
 
   readonly STORAGE_KEY = 'mel-user-content';
 
-  changes$ = new Subject<{ type: 'add' | 'remove' | 'toggle-want-to-sell', content: UserContent, item: Item }>();
+  changes$ = new Subject<UserContentEvent>();
   content$: BehaviorSubject<UserContent>;
 
-  private content: UserContent | null;
+  content: UserContent | null;
   private hasChanged = false;
 
   constructor(
     private http: HttpClient,
     private userSignInService: UserSignInService,
-    private userService: UserService
+    private userService: UserService,
+    private cacheService: CacheService
   ) {
     const localContent = localStorage.getItem(this.STORAGE_KEY);
     const initialContent: UserContent = localContent ? JSON.parse(localContent) : null;
@@ -61,6 +63,12 @@ export class UserContentService {
         if (event.type !== 'toggle-want-to-sell') {
           this.content$.next(this.content);
         }
+        if (event.type === 'add' && event.id) {
+          this.cacheService.put(event.id, event.item);
+        }
+        if (event.type === 'remove' && event.id) {
+          this.cacheService.delete(event.id);
+        }
       }
     });
   }
@@ -74,11 +82,13 @@ export class UserContentService {
   }
 
   update(): Observable<UserContent> {
-    return this.http.patch<UserContent>(`${environment.domains.mel}/api/resources/user-contents`, this.content, {
+    const obs = this.http.patch<UserContent>(`${environment.domains.mel}/api/resources/user-contents`, this.content, {
       headers: new HttpHeaders({
         Authorization: 'auto'
       })
-    });
+    }).pipe(shareReplay(1));
+    publish()(obs).connect();
+    return obs;
   }
 
   isInCloset(item: Item): boolean {
@@ -102,7 +112,7 @@ export class UserContentService {
     if (this.content && !this.content.closet.find(vi => vi.id === variantId)) {
       this.content.closet.push({ id: variantId, wantToSell: false });
       this.content.wishlist = this.content.wishlist.filter(vi => vi.id !== variantId);
-      this.changes$.next({ type: 'add', content: this.content, item });
+      this.changes$.next({ type: 'add', content: this.content, item, id: variantId });
     }
   }
 
@@ -110,7 +120,7 @@ export class UserContentService {
     const variantId = this.buildVariantId(item);
     if (this.content && this.content.closet.find(vi => vi.id === variantId)) {
       this.content.closet = this.content.closet.filter(vi => vi.id !== variantId);
-      this.changes$.next({ type: 'remove', content: this.content, item });
+      this.changes$.next({ type: 'remove', content: this.content, item, id: variantId });
     }
   }
 
@@ -119,7 +129,7 @@ export class UserContentService {
     if (this.content && !this.content.wishlist.find(vi => vi.id === variantId)) {
       this.content.wishlist.push({ id: variantId });
       this.content.closet = this.content.closet.filter(vi => vi.id !== variantId);
-      this.changes$.next({ type: 'add', content: this.content, item });
+      this.changes$.next({ type: 'add', content: this.content, item, id: variantId });
     }
   }
 
@@ -127,7 +137,7 @@ export class UserContentService {
     const variantId = this.buildVariantId(item);
     if (this.content && this.content.wishlist.find(vi => vi.id === variantId)) {
       this.content.wishlist = this.content.wishlist.filter(vi => vi.id !== variantId);
-      this.changes$.next({ type: 'remove', content: this.content, item });
+      this.changes$.next({ type: 'remove', content: this.content, item, id: variantId });
     }
   }
 
@@ -137,11 +147,17 @@ export class UserContentService {
       const variantItem = this.content.closet.find(vi => vi.id === variantId);
       if (variantItem) {
         variantItem.wantToSell = !variantItem.wantToSell;
-        this.changes$.next({ type: 'toggle-want-to-sell', content: this.content, item });
+        this.changes$.next({ type: 'toggle-want-to-sell', content: this.content, item, id: variantId });
         return variantItem.wantToSell;
       }
     }
     return false;
+  }
+
+  updateCoordinations(): void {
+    if (this.content) {
+      this.changes$.next({ type: 'update-coordinations', content: this.content });
+    }
   }
 
   buildVariantId(item: Item): string {
@@ -151,7 +167,7 @@ export class UserContentService {
   private getHandler(userContent: UserContent): void {
     if (this.content !== null) {
       if (this.content.modified > userContent.modified) {
-        this.update().subscribe(() => {/* Just update */ });
+        this.update();
       } else if (this.content.modified < userContent.modified) {
         this.content = null;
       }

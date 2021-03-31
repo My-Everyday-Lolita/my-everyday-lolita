@@ -1,4 +1,32 @@
-<p>my-coord-checklist works!</p>
+<div class="page-content">
+  <details class="right">
+    <summary>
+      <span class="visualy-hidden">{{ 'COORDINATION.DETAILS.HOW_TO' | translate }}</span>
+      <span class="help-icon" aria-hidden="true">?</span>
+    </summary>
+    <div class="details-content">
+      <p [innerHTML]="'COORDINATION.HELPS.USEFUL' | translate"></p>
+    </div>
+  </details>
+  <ul class="coordinations" [@list]="coordinations.length">
+    <li *ngFor="let coord of coordinations">
+      <a app-button color="primary" [routerLink]="['/my-coord-checklist', coord.id]">
+        {{ coord.title }}
+        <div class="img-container" *ngIf="coord | coordMainPiece">
+          <img [attr.src]="coord | coordMainPiece | cacheItem | cacheItemPhoto | async" alt="Coordination main piece item">
+        </div>
+      </a>
+      <button app-button color="default" class="circle small no-shadow remove" *ngIf="trashMode" @remove (click)="remove(coord)">
+        <span class="visualy-hidden">{{ 'COORDINATIONS.REMOVE_COORDINATION' | translate:{name: coord.title} }}</span>
+        <span class="clear-icon very-small"></span>
+      </button>
+    </li>
+  </ul>
+</div>
+
+<button app-button color="default" class="circle no-shadow trash-button" (click)="toggleTrashMode()">
+  <span class="visualy-hidden">{{ 'COORDINATIONS.TOGGLE_TRASH' | translate }}</span>
+</button>
 
 <a routerLink="/my-coord-checklist/new" app-button class="circle add-button" color="accent">
   <span class="visualy-hidden">{{ 'COORDINATIONS.ADD_NEW' | translate }}</span>
