@@ -126,6 +126,9 @@
 </div>
 
 <div class="toolbar">
+  <a routerLink="/" app-button class="back-to-home no-style" *ngIf="currentPage?.backHome" @backHome>
+    <span class="visualy-hidden">{{ 'APP.HOME_LINK' | translate }}</span>
+  </a>
   <div @toolbarItemAnimation *ngIf="currentPage && !currentPage.isHome" class="back-title-wrapper">
     <button back-button>{{ 'APP.BACK' | translate }}</button>
     <h1 @toolbarItemAnimation *ngIf="title.current"><span>{{ title.current | translate }}</span></h1>

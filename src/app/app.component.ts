@@ -9,6 +9,7 @@ import { DialogAttachComponent } from './features/dialog/dialog-attach/dialog-co
 import { DialogService } from './features/dialog/dialog.service';
 import { DialogComponent } from './features/dialog/dialog/dialog.component';
 import { TadaService } from './features/effects/tada/tada.service';
+import { UserContentService } from './features/resources/user-content/user-content.service';
 import { ThemeService } from './features/theme/theme.service';
 import { TitleService } from './features/title/title.service';
 import { UpdateService } from './features/update/update.service';
@@ -83,6 +84,16 @@ import { UserService } from './features/user/user.service';
         style({ opacity: 0, transform: 'translateY(20%)' }),
         animate('330ms linear', style({ opacity: 1, transform: 'translateY(0%)' }))
       ]),
+    ]),
+    trigger('backHome', [
+      transition(':leave', [
+        style({ opacity: 1, transform: 'translateY(0%)' }),
+        animate('330ms linear', style({ opacity: 0, transform: 'translateY(20%)' }))
+      ]),
+      transition(':enter', [
+        style({ opacity: 0, transform: 'translateY(20%)' }),
+        animate('330ms linear', style({ opacity: 1, transform: 'translateY(0%)' }))
+      ]),
     ])
   ]
 })
@@ -116,17 +127,12 @@ export class AppComponent implements OnInit, OnDestroy {
     private renderer: Renderer2,
     @Inject(APP_ROUTES) routes: Routes,
     private update: UpdateService,
+    private userContentService: UserContentService
   ) {
     this.others = routes.filter(route => route.data && route.data.others);
   }
 
   ngOnInit(): void {
-    this.router.events.pipe(
-      filter(event => event instanceof NavigationStart),
-      takeUntil(this.unsubscsriber)
-    ).subscribe(event => {
-      this.currentPage = undefined;
-    });
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd),
       tap(event => {

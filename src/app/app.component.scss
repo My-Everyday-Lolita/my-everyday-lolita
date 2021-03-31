@@ -68,3 +68,16 @@ h1 {
 [menu-button] {
   z-index: 12;
 }
+
+.back-to-home {
+  position: absolute;
+  top: 64px;
+  left: -18px;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background-color: var(--menu-background);
+  box-shadow: 4px 3px 0 var(--menu-foreground);
+  color: var(--menu-foreground);
+  transition: background-color 330ms linear, box-shadow 330ms linear, color 330ms linear;
+}

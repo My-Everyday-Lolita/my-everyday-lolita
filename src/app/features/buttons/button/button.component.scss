@@ -4,6 +4,14 @@
   border: none;
   padding: 0;
   background: transparent;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:active {
+    border: none;
+  }
 }
 
 :host:not(.no-style) {
@@ -20,14 +28,6 @@
   position: relative;
   text-align: center;
   transition: background-color 330ms linear, box-shadow 330ms linear, color 330ms linear;
-
-  &:focus {
-    outline: none;
-  }
-
-  &:active {
-    border: none;
-  }
 
   .text-content {
     width: 100%;

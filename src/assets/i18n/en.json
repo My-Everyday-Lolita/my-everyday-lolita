@@ -16,7 +16,8 @@
         "SIGNED_IN": "You must be signed in to access this page."
       },
       "PWA_UPDATE": "A new version is available,<br> tap here to upgrade!"
-    }
+    },
+    "HOME_LINK": "Go back to the home page"
   },
   "PAGES": {
     "TITLES": {

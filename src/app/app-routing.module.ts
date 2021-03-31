@@ -77,6 +77,7 @@ const routes: Routes = [
     canActivate: [CoordinationGuard],
     data: {
       animation: 'coordination',
+      backHome: true
     }
   },
   {
@@ -153,6 +154,7 @@ const routes: Routes = [
     },
     data: {
       animation: 'item',
+      backHome: true
     }
   },
 ];
