@@ -80,4 +80,13 @@ h1 {
   box-shadow: 4px 3px 0 var(--menu-foreground);
   color: var(--menu-foreground);
   transition: background-color 330ms linear, box-shadow 330ms linear, color 330ms linear;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  svg {
+    width: 26px;
+    height: 26px;
+    fill: var(--menu-foreground);
+  }
 }

@@ -11,6 +11,21 @@ button.trash-button {
   z-index: 1;
   left: var(--spacing-medium);
   bottom: var(--spacing-medium);
+
+  .trash {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 28px;
+    height: 36px;
+    fill: var(--app-button-default-text-color);
+
+    &.opened {
+      width: 28px;
+      height: 44px;
+    }
+  }
 }
 
 a.add-button {

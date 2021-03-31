@@ -16,7 +16,7 @@
           <img [attr.src]="coord | coordMainPiece | cacheItem | cacheItemPhoto | async" alt="Coordination main piece item">
         </div>
       </a>
-      <button app-button color="default" class="circle small no-shadow remove" *ngIf="trashMode" @remove (click)="remove(coord)">
+      <button app-button color="default" class="circle very-small no-shadow remove" *ngIf="trashMode" @remove (click)="remove(coord)">
         <span class="visualy-hidden">{{ 'COORDINATIONS.REMOVE_COORDINATION' | translate:{name: coord.title} }}</span>
         <span class="clear-icon very-small"></span>
       </button>
@@ -26,6 +26,9 @@
 
 <button app-button color="default" class="circle no-shadow trash-button" (click)="toggleTrashMode()">
   <span class="visualy-hidden">{{ 'COORDINATIONS.TOGGLE_TRASH' | translate }}</span>
+  <svg class="trash" aria-hidden="true" [class.opened]="trashMode">
+    <use [attr.xlink:href]="trashMode ? '#opened-trash' : '#closed-trash'" />
+  </svg>
 </button>
 
 <a routerLink="/my-coord-checklist/new" app-button class="circle add-button" color="accent">
