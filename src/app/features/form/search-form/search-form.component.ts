@@ -81,6 +81,7 @@ export class SearchFormComponent implements OnInit {
           type: 'category',
           value: category.name,
           displayValue: category.name,
+          _lvlClass: 'lvl-0',
         });
         if (category.children) {
           category.children.forEach(category2 => {
@@ -89,6 +90,7 @@ export class SearchFormComponent implements OnInit {
               value: category2.name,
               displayValue: category2.name,
               parents: [category.name],
+              _lvlClass: 'lvl-1',
             });
             if (category2.children) {
               category2.children.forEach(category3 => {
@@ -97,6 +99,7 @@ export class SearchFormComponent implements OnInit {
                   value: category3.name,
                   displayValue: category3.name,
                   parents: [category.name, category2.name],
+                  _lvlClass: 'lvl-2',
                 });
               });
             }

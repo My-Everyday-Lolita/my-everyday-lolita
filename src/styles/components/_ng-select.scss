@@ -350,13 +350,11 @@ $ng-select-value-font-size: 0.9em !default;
         }
       }
 
-      .ng-option-label {
-        .lvl-1 {
-          padding-left: var(--spacing);
-        }
-        .lvl-2 {
-          padding-left: var(--spacing-medium);
-        }
+      .lvl-1 {
+        padding-left: var(--spacing);
+      }
+      .lvl-2 {
+        padding-left: var(--spacing-big);
       }
     }
   }

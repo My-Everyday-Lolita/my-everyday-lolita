@@ -6,8 +6,10 @@
       <ng-select id="criteria-select" aria-describedby="criteria-select-description" formControlName="criteria" [virtualScroll]="true" [items]="criteria" bindLabel="displayValue"
         [multiple]="true" [placeholder]="placeholder" [searchFn]="searchCriterias" [addTag]="enableKeywords && addKeywords" class="padding-right">
         <ng-template ng-option-tmp let-item="item">
-          {{ item.displayValue }}<br>
-          <span class="criterium-type" [ngClass]="item.type">{{ item.type }}</span>
+          <span [ngClass]="item._lvlClass" class="layout column">
+            {{ item.displayValue }}
+            <span class="criterium-type" [ngClass]="item.type">{{ item.type }}</span>
+          </span>
         </ng-template>
         <ng-template ng-label-tmp let-item="item" let-clear="clear">
           <span class="ng-value-content" [ngClass]="item.type">

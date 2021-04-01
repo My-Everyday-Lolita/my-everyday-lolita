@@ -37,4 +37,5 @@ export interface Criterium {
   value: string;
   displayValue?: string;
   parents?: string[];
+  _lvlClass?: string;
 }
