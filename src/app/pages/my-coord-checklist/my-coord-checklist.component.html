@@ -59,7 +59,7 @@
   </ng-template>
 </div>
 
-<button app-button color="default" class="circle no-shadow trash-button" (click)="toggleTrashMode()">
+<button app-button color="default" class="circle no-shadow trash-button" (click)="toggleTrashMode()" *ngIf="coordinations.length > 0">
   <span class="visualy-hidden">{{ 'COORDINATIONS.TOGGLE_TRASH' | translate }}</span>
   <svg class="trash" aria-hidden="true" [class.opened]="trashMode">
     <use [attr.xlink:href]="trashMode ? '#opened-trash' : '#closed-trash'" />
