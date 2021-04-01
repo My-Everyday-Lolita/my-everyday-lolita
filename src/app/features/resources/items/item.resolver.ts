@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import {
-  Router, Resolve,
+  Resolve,
   RouterStateSnapshot,
   ActivatedRouteSnapshot
 } from '@angular/router';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { Item } from './items.model';
 import { ItemsService } from './items.service';
 
@@ -18,7 +18,7 @@ export class ResourcesItemResolver implements Resolve<Item> {
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Item> {
     const id = route.params.id;
     if (id === 'new') {
-      const tmp = localStorage.getItem(this.itemsService.TMP_SAVE_KEY);
+      const tmp = sessionStorage.getItem(this.itemsService.TMP_SAVE_KEY);
       if (tmp) {
         return JSON.parse(tmp);
       }

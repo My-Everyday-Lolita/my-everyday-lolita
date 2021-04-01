@@ -124,7 +124,7 @@ export class ItemComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
 
     this.form.valueChanges.pipe(takeUntil(this.unsubscriber)).subscribe(values => {
-      localStorage.setItem(this.itemsService.TMP_SAVE_KEY, JSON.stringify(values));
+      sessionStorage.setItem(this.itemsService.TMP_SAVE_KEY, JSON.stringify(values));
     });
 
     this.userSignInService.signedIn$.pipe(takeUntil(this.unsubscriber)).subscribe(signedIn => {
@@ -206,12 +206,12 @@ export class ItemComponent implements OnInit, OnDestroy {
         this.updateTitle();
         this.isNew = false;
         this.editing = false;
-        localStorage.removeItem(this.itemsService.TMP_SAVE_KEY);
+        sessionStorage.removeItem(this.itemsService.TMP_SAVE_KEY);
       });
     } else {
       this.itemsService.update(values).subscribe(response => {
         this.item = response;
-        localStorage.removeItem(this.itemsService.TMP_SAVE_KEY);
+        sessionStorage.removeItem(this.itemsService.TMP_SAVE_KEY);
         this.toastr.success('ITEM.TOASTS.UPDATE_SUCCESS', undefined);
         this.toggleEditMode();
         this.updateTitle();
