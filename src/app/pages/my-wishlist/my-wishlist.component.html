@@ -15,7 +15,7 @@
 </a>
 
 <section *ngIf="results.length > 0; else noResults" class="items" [@items]="results.length">
-  <article *ngFor="let item of results" class="item">
+  <article *ngFor="let item of results; trackBy: trackByFn" class="item">
     <a [routerLink]="['/item', item._id]" class="img-container">
       <img [attr.src]="item | itemPhoto" appImageLoad alt="Item colorway photo">
     </a>

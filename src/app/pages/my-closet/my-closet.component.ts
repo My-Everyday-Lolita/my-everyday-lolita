@@ -103,6 +103,10 @@ export class MyClosetComponent implements OnInit, OnDestroy {
     this.footerEE = (this.footerEE + 1) % 3;
   }
 
+  trackByFn(index: number, item: Item): string {
+    return item._variantId as string;
+  }
+
   private getItems(): Observable<Item[]> {
     const items$ = this.content.map(item => this.cacheService.match(item.id).pipe(
       switchMap(cacheResponse => {
@@ -128,6 +132,8 @@ export class MyClosetComponent implements OnInit, OnDestroy {
       }),
       map(almostReadyitem => {
         almostReadyitem.wantToSell = item.wantToSell;
+        // Keep the variant id for reuse in the trackByFn function.
+        almostReadyitem._variantId = this.userContentService.buildVariantId(almostReadyitem);
         return almostReadyitem;
       })
     ));

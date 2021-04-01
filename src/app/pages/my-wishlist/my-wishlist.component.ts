@@ -99,6 +99,10 @@ export class MyWishlistComponent implements OnInit, OnDestroy {
     this.footerEE = (this.footerEE + 1) % 2;
   }
 
+  trackByFn(index: number, item: Item): string {
+    return item._variantId as string;
+  }
+
   private getItems(): Observable<Item[]> {
     const items$ = this.content.map(item => this.cacheService.match(item.id).pipe(
       switchMap(cacheResponse => {
@@ -122,6 +126,11 @@ export class MyWishlistComponent implements OnInit, OnDestroy {
           })
         );
       }),
+      map(almostReadyitem => {
+        // Keep the variant id for reuse in the trackByFn function.
+        almostReadyitem._variantId = this.userContentService.buildVariantId(almostReadyitem);
+        return almostReadyitem;
+      })
     ));
     return zip(...items$);
   }

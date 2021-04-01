@@ -29,6 +29,7 @@ export interface Item {
    * Specific closet/wishlist
    */
   wantToSell?: boolean;
+  _variantId?: string;
 }
 
 export interface Criterium {
