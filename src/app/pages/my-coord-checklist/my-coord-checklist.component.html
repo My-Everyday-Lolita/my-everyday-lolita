@@ -5,7 +5,7 @@
   <ul class="coordinations" [@list]="coordinations.length" *ngIf="coordinations.length > 0; else noCoordinations">
     <li *ngFor="let coord of coordinations">
       <a app-button color="primary" [routerLink]="['/my-coord-checklist', coord.id]">
-        {{ coord.title }}
+        <span class="ellipsis">{{ coord.title }}</span>
         <div class="img-container" *ngIf="coord | coordMainPiece">
           <img [attr.src]="coord | coordMainPiece | cacheItem | cacheItemPhoto | async" alt="Coordination main piece item">
         </div>

@@ -51,3 +51,9 @@ b {
   height: 22px;
   width: 49px;
 }
+
+.ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
