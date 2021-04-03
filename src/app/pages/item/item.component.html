@@ -296,11 +296,12 @@
       <span class="clear-icon very-small"></span>
     </button>
 
-    <button type="submit" app-button class="circle" color="accent" *ngIf="form" [disabled]="form.invalid && editable">
+    <button type="submit" app-button class="circle" color="accent" *ngIf="form" [disabled]="(form.invalid && editable)">
       <span class="visualy-hidden">{{ 'ITEM.SUBMIT' | translate }}</span>
-      <svg aria-hidden="true">
+      <svg aria-hidden="true" *ngIf="!displayLoader">
         <use xlink:href="#save-icon" />
       </svg>
+      <app-simple-loader class="accent" *ngIf="displayLoader" [height]="24"></app-simple-loader>
     </button>
   </form>
 </ng-template>

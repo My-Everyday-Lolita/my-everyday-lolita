@@ -3,8 +3,8 @@ import { Component, HostBinding, OnDestroy, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { interval, Subject } from 'rxjs';
+import { finalize, map, publish, takeUntil, tap } from 'rxjs/operators';
 import { Brand } from 'src/app/features/resources/brands/brands.model';
 import { ExtendedCategory } from 'src/app/features/resources/categories/categories.model';
 import { Color } from 'src/app/features/resources/colors/colors.model';
@@ -46,6 +46,7 @@ export class ItemComponent implements OnInit, OnDestroy {
   editable = true;
   item: Item;
   signedIn = false;
+  displayLoader = false;
 
   substyles = [
     'Sweet lolita',
@@ -197,25 +198,35 @@ export class ItemComponent implements OnInit, OnDestroy {
   onSubmit(): void {
     const values = JSON.parse(JSON.stringify(this.form.value));
     this.cleanValues(values);
+    let request$;
     if (this.isNew) {
       delete values._id;
-      this.itemsService.create(values).subscribe(response => {
-        this.item = response;
-        this.toastr.success('ITEM.TOASTS.NEW_SUCCESS', undefined);
-        this.router.navigateByUrl(`/item/${response._id}`, { replaceUrl: true });
-        this.updateTitle();
-        this.isNew = false;
-        this.editing = false;
-        sessionStorage.removeItem(this.itemsService.TMP_SAVE_KEY);
-      });
+      request$ = this.itemsService.create(values).pipe(
+        map(response => {
+          this.item = response;
+          this.toastr.success('ITEM.TOASTS.NEW_SUCCESS', undefined);
+          this.router.navigateByUrl(`/item/${response._id}`, { replaceUrl: true });
+          this.updateTitle();
+          this.isNew = false;
+          this.editing = false;
+          sessionStorage.removeItem(this.itemsService.TMP_SAVE_KEY);
+          this.displayLoader = false;
+        })
+      );
     } else {
-      this.itemsService.update(values).subscribe(response => {
-        this.item = response;
-        sessionStorage.removeItem(this.itemsService.TMP_SAVE_KEY);
-        this.toastr.success('ITEM.TOASTS.UPDATE_SUCCESS', undefined);
-        this.toggleEditMode();
-        this.updateTitle();
-      });
+      request$ = this.itemsService.update(values).pipe(
+        map(response => {
+          this.item = response;
+          sessionStorage.removeItem(this.itemsService.TMP_SAVE_KEY);
+          this.toastr.success('ITEM.TOASTS.UPDATE_SUCCESS', undefined);
+          this.toggleEditMode();
+          this.updateTitle();
+          this.displayLoader = false;
+        })
+      );
+    }
+    if (request$) {
+      publish()(interval(500).pipe(tap(() => this.displayLoader = true), takeUntil(request$))).connect();
     }
   }
 

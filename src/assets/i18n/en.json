@@ -93,6 +93,12 @@
   },
   "SEARCH": {
     "RECENTLY_ADDED": "Recently added items",
+    "EMPTY_RESULT": "<span class=\"kaomoji\">(っ´ω`)ﾉ(╥ω╥)</span><br><br>No results,<br>why don't you try something else?",
+    "SEARCHING": {
+      "1": "Searching...",
+      "2": "<span class=\"kaomoji\">ƪ(‾ε‾“)ʃ</span> Maybe make yourself a cup of tea",
+      "3": "<span class=\"kaomoji\">ヾ(｡﹏｡)ﾉﾞ</span> It's too long, something went wrong... it doesn't seem to be working"
+    },
     "FIELDS": {
       "LABELS": {
         "FILTER": "Filter"

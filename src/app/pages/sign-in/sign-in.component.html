@@ -15,5 +15,8 @@
     <input id="registration-fields-password" type="password" formControlName="password" required>
     <p class="error visualy-hidden" *ngIf="password.errors?.required" [innerHTML]="'FORM.ERRORS.REQUIRED' | translate"></p>
   </div>
-  <button type="submit" app-button color="primary" [disabled]="!form.valid">{{ 'SIGN_IN.SUBMIT' | translate}}</button>
+  <button type="submit" app-button color="primary" [disabled]="!form.valid">
+    {{ 'SIGN_IN.SUBMIT' | translate}}
+    <app-simple-loader *ngIf="displayLoader" [height]="24"></app-simple-loader>
+  </button>
 </form>

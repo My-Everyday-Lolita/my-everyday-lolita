@@ -99,6 +99,8 @@
   --item-field-section-header: #424242;
   --item-field-section-header-text: #fff;
   --item-field-section: #c1c1c1;
+
+  --simple-loader-color: #424242;
 }
 
 body.theme-sweet {
@@ -199,6 +201,12 @@ body.theme-sweet {
   --memo-2: #cc9cff;
   --memo-3: #b972f7;
   --memo-4: #af71ff;
+
+  --simple-loader-color: #000;
+
+  .simple-loader.accent {
+    --simple-loader-color: #fff;
+  }
 }
 
 body.theme-gothic {
@@ -308,6 +316,8 @@ body.theme-gothic {
   --memo-2: #ece4e9;
   --memo-3: #110e33;
   --memo-4: #a6a0ff;
+
+  --simple-loader-color: #fff;
 }
 
 body.theme-classic {
@@ -409,4 +419,6 @@ body.theme-classic {
   --memo-2: #ffab9c;
   --memo-3: #f78d72;
   --memo-4: #b91313;
+
+  --simple-loader-color: #fff;
 }

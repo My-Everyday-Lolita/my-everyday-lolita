@@ -23,3 +23,20 @@ a.add-item {
   right: var(--spacing-medium);
   bottom: var(--spacing-medium);
 }
+
+app-simple-loader {
+  margin-top: var(--spacing-medium);
+}
+
+.empty-content {
+  max-width: 72vw;
+  margin: auto;
+  padding-top: var(--spacing-medium);
+  text-align: center;
+}
+
+.searching-content {
+  max-width: 72vw;
+  margin: auto none;
+  margin-top: var(--spacing);
+}

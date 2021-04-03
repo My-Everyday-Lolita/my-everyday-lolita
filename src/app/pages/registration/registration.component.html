@@ -37,5 +37,8 @@
     <p class="error visualy-hidden" *ngIf="confirmPassword.errors?.required" [innerHTML]="'FORM.ERRORS.REQUIRED' | translate"></p>
     <p class="error" *ngIf="form.errors?.notSameFields" [innerHTML]="'FORM.ERRORS.NOT_SAME_PASSWORD' | translate"></p>
   </div>
-  <button type="submit" app-button color="primary" [disabled]="!form.valid">{{ 'REGISTRATION.SUBMIT' | translate}}</button>
+  <button type="submit" app-button color="primary" [disabled]="!form.valid">
+    {{ 'REGISTRATION.SUBMIT' | translate}}
+    <app-simple-loader *ngIf="displayLoader" [height]="24"></app-simple-loader>
+  </button>
 </form>

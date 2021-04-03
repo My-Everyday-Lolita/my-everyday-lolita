@@ -71,6 +71,7 @@ import { IsArrayPipe } from './features/form/is-array.pipe';
 import { CacheItemPhotoPipe } from './features/resources/user-content/cache-item-photo.pipe';
 import { CoordMainPiecePipe } from './features/resources/user-content/coord-main-piece.pipe';
 import { DetailsComponent } from './features/dialog/details/details.component';
+import { SimpleLoaderComponent } from './features/loaders/simple-loader/simple-loader.component';
 
 registerLocaleData(localeEn, 'en');
 registerLocaleData(localeFr, 'fr');
@@ -129,6 +130,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     CacheItemPhotoPipe,
     CoordMainPiecePipe,
     DetailsComponent,
+    SimpleLoaderComponent,
   ],
   imports: [
     CommonModule,

@@ -11,10 +11,10 @@
   <img src="/assets/images/search-icon.svg" alt="Search icon" aria-hidden="true" submit-icon>
 </app-search-form>
 
-<ng-container *ngIf="searchForm.selectedCriteria.length === 0 && results.length === 0; else resultTemplate">
+<ng-container *ngIf="searchForm.selectedCriteria.length === 0 && results.length === 0 && !loading; else resultTemplate">
   <p>{{ 'SEARCH.RECENTLY_ADDED' | translate }}</p>
   <section *ngIf="recentlyAddedItems.length > 0" class="items" [@items]="results.length">
-    <article *ngFor="let item of recentlyAddedItems" class="item">
+    <article *ngFor="let item of recentlyAddedItems; trackBy: trackByFn" class="item">
       <a [routerLink]="['/item', item._id]" class="img-container">
         <img [attr.src]="item | itemPhoto" appImageLoad alt="Item colorway photo">
       </a>
@@ -62,7 +62,13 @@
     </article>
   </section>
   <ng-template #noResults>
-    <p>No results</p>
+    <p *ngIf="!loading" [innerHTML]="'SEARCH.EMPTY_RESULT' | translate" class="empty-content"></p>
+    <ng-container *ngIf="displayLoader">
+      <app-simple-loader [height]="42"></app-simple-loader>
+      <p class="searching-content" @searching [innerHTML]="'SEARCH.SEARCHING.1' | translate"></p>
+      <p class="searching-content" @searching *ngIf="searching >= 5000" [innerHTML]="'SEARCH.SEARCHING.2' | translate"></p>
+      <p class="searching-content" @searching *ngIf="searching >= 12000" [innerHTML]="'SEARCH.SEARCHING.3' | translate"></p>
+    </ng-container>
   </ng-template>
 </ng-template>
 

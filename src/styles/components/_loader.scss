@@ -1,0 +1,30 @@
+.simple-loader {
+  .loader-wrapper {
+    overflow: hidden;
+
+    > svg {
+      display: block;
+
+      use {
+        stroke: var(--simple-loader-color);
+        stroke-dasharray: 1662;
+        stroke-width: 18;
+      }
+
+      &.animated {
+        use {
+          animation: simple-loader 4s 330ms ease-in-out infinite;
+        }
+      }
+    }
+  }
+}
+
+@keyframes simple-loader {
+  from {
+    stroke-dashoffset: 3324;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}

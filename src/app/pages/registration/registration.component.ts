@@ -3,8 +3,8 @@ import { Component, HostBinding } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { of } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { interval, of } from 'rxjs';
+import { catchError, map, publish, switchMap, takeUntil, tap } from 'rxjs/operators';
 import { UserRegistrationService } from 'src/app/features/user/user-registration.service';
 import { UserSignInService } from 'src/app/features/user/user-sign-in.service';
 import { sameFields } from '../../features/form/validators/same-fields.validator';
@@ -32,6 +32,7 @@ export class RegistrationComponent {
   usernamePattern = /^[a-z0-9_\-]{3,100}$/;
   passwordPattern = /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=\S+).{8,20}$/;
   form: FormGroup;
+  displayLoader = false;
 
   constructor(
     private fb: FormBuilder,
@@ -53,31 +54,36 @@ export class RegistrationComponent {
   }
 
   onSubmit(): void {
-    this.userRegistrationService.register(this.form.value)
-      .pipe(
-        catchError(response => {
-          if (response.status === 409) {
-            this.toastr.error('REGISTRATION.TOASTS.CONFLICT', undefined, { closeButton: true, disableTimeOut: true });
-          } else {
-            this.toastr.error('REGISTRATION.TOASTS.UNKNOWN', undefined, { closeButton: true, disableTimeOut: true });
-          }
-          console.error(response);
-          return of(false);
-        })
-      ).subscribe(response => {
+    const register$ = this.userRegistrationService.register(this.form.value).pipe(
+      catchError(response => {
+        if (response.status === 409) {
+          this.toastr.error('REGISTRATION.TOASTS.CONFLICT', undefined, { closeButton: true, disableTimeOut: true });
+        } else {
+          this.toastr.error('REGISTRATION.TOASTS.UNKNOWN', undefined, { closeButton: true, disableTimeOut: true });
+        }
+        console.error(response);
+        return of(false);
+      }),
+      switchMap(response => {
         if (response && response.status === 201) {
           this.toastr.success('REGISTRATION.TOASTS.SUCCESS', undefined, { closeButton: true, disableTimeOut: true });
-          this.userSignInService.signIn({
+          return this.userSignInService.signIn({
             username: this.form.value.username,
             password: this.form.value.password
-          }).subscribe(signedIn => {
-            const redirect = this.activatedRoute.snapshot.queryParams.redirect || undefined;
-            if (signedIn && redirect) {
-              this.router.navigateByUrl(redirect, { replaceUrl: true });
-            }
           });
         }
-      });
+        return of(false);
+      }),
+      map(response => {
+        if (response) {
+          const redirect = this.activatedRoute.snapshot.queryParams.redirect || undefined;
+          if (redirect) {
+            this.router.navigateByUrl(redirect, { replaceUrl: true });
+          }
+        }
+      })
+    );
+    publish()(interval(500).pipe(tap(() => this.displayLoader = true), takeUntil(register$))).connect();
   }
 
   get username(): FormControl {
