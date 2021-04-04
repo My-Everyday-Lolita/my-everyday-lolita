@@ -9,6 +9,7 @@ import { DialogAttachComponent } from './features/dialog/dialog-attach/dialog-co
 import { DialogService } from './features/dialog/dialog.service';
 import { DialogComponent } from './features/dialog/dialog/dialog.component';
 import { TadaService } from './features/effects/tada/tada.service';
+import { AppLoaderService } from './features/loaders/app-loader.service';
 import { UserContentService } from './features/resources/user-content/user-content.service';
 import { ThemeService } from './features/theme/theme.service';
 import { TitleService } from './features/title/title.service';
@@ -127,7 +128,8 @@ export class AppComponent implements OnInit, OnDestroy {
     private renderer: Renderer2,
     @Inject(APP_ROUTES) routes: Routes,
     private update: UpdateService,
-    private userContentService: UserContentService
+    private userContentService: UserContentService,
+    private appLoaderService: AppLoaderService
   ) {
     this.others = routes.filter(route => route.data && route.data.others);
   }
@@ -136,6 +138,7 @@ export class AppComponent implements OnInit, OnDestroy {
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd),
       tap(event => {
+        this.appLoaderService.hide();
         this.currentPath = (event as NavigationEnd).url;
       }),
       map(event => this.activatedRoute.firstChild?.firstChild as ActivatedRoute),
