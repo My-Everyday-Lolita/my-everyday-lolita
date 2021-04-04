@@ -35,6 +35,14 @@ form {
   padding-bottom: 200px;
   width: 290px;
   margin-top: 140px;
+
+  @media screen and (min-width: 768px) {
+    width: 70vw;
+  }
+
+  @media screen and (min-width: 900px) {
+    width: 50vw;
+  }
 }
 
 input.has-preview {
@@ -158,6 +166,20 @@ app-form-field:not(:first-of-type) {
       }
     }
   }
+
+  @media screen and (min-width: 700px) {
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: var(--spacing) var(--spacing);
+  }
+
+  @media screen and (min-width: 900px) {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    max-width: 45vw;
+  }
+
+  @media screen and (min-width: 1367px) {
+    gap: var(--spacing-medium) var(--spacing-medium);
+  }
 }
 
 .item-header-wrapper {
@@ -170,6 +192,10 @@ app-form-field:not(:first-of-type) {
     position: relative;
     top: -1px;
     z-index: -1;
+  }
+
+  @media screen and (min-width: 900px) {
+    min-width: 50vw;
   }
 }
 
@@ -217,6 +243,10 @@ app-form-field:not(:first-of-type) {
       width: 32px;
       height: 32px;
     }
+  }
+
+  @media screen and (min-width: 900px) {
+    width: 45vw;
   }
 }
 

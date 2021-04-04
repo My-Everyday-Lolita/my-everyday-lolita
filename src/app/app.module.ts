@@ -72,6 +72,7 @@ import { CacheItemPhotoPipe } from './features/resources/user-content/cache-item
 import { CoordMainPiecePipe } from './features/resources/user-content/coord-main-piece.pipe';
 import { DetailsComponent } from './features/dialog/details/details.component';
 import { SimpleLoaderComponent } from './features/loaders/simple-loader/simple-loader.component';
+import { NgScrollbarModule } from 'ngx-scrollbar';
 
 registerLocaleData(localeEn, 'en');
 registerLocaleData(localeFr, 'fr');
@@ -162,6 +163,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     NgSelectModule,
     ObserversModule,
     SafePipeModule,
+    // NgScrollbarModule,
   ],
   entryComponents: [
     ToastComponent,

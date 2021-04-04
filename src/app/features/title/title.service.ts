@@ -17,10 +17,10 @@ export class TitleService {
   set(untranslatedTitle: string, disableTranslate = false): void {
     this.current = untranslatedTitle;
     if (disableTranslate) {
-      this.title.setTitle(untranslatedTitle);
+      this.title.setTitle(`${untranslatedTitle} | My Everyday Lolita`);
     } else {
       this.translate.get(untranslatedTitle).subscribe(translatedTitle => {
-        this.title.setTitle(translatedTitle);
+        this.title.setTitle(`${translatedTitle} | My Everyday Lolita`);
       });
     }
   }

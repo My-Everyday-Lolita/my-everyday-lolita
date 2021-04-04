@@ -30,6 +30,7 @@
     "@ngx-translate/http-loader": "^6.0.0",
     "animejs": "^3.2.1",
     "jwt-decode": "^3.1.2",
+    "ngx-scrollbar": "^7.5.4",
     "ngx-toastr": "^13.2.0",
     "rxjs": "~6.6.0",
     "safe-pipe": "^1.0.3",

@@ -6,10 +6,13 @@
 
   &.modal .dialog-content {
     top: 36px;
-    transform: translateX(-50%);
+    left: unset;
+    right: 0;
+    transform: translateX(-5%);
     width: 91vw;
     height: 165vw;
-    max-height: unset;
+    max-height: 684px;
+    max-width: 377px;
   }
 
   .dialog-content {

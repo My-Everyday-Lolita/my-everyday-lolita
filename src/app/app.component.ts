@@ -193,9 +193,15 @@ export class AppComponent implements OnInit, OnDestroy {
         dialogClass: 'main-menu',
         modal: true,
       }, this.menuContainer.viewContainerRef);
+      const originalClose = this.menuComponent.onClose;
+      this.menuComponent.onClose = () => {
+        if (originalClose) {
+          originalClose.bind(this.menuComponent)();
+        }
+        this.isMenuOpened = false;
+      };
       this.isMenuOpened = true;
     } else {
-      this.isMenuOpened = false;
       if (this.menuComponent) {
         this.menuComponent.close();
       }
