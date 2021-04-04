@@ -26,6 +26,11 @@ a.search-button {
   z-index: 1;
   right: var(--spacing-medium);
   bottom: var(--spacing-medium);
+
+  svg {
+    width: 36px;
+    height: 36px;
+  }
 }
 
 app-search-form {

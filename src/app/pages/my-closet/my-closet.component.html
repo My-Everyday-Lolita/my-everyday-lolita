@@ -20,7 +20,9 @@
 
 <a [routerLink]="['/search']" app-button class="circle search-button" color="accent">
   <span class="visualy-hidden">{{ 'MY_CLOSET.SEARCH.GO_TO' | translate }}</span>
-  <span class="add-icon" aria-hidden="true"></span>
+  <svg aria-hidden="true">
+    <use xlink:href="#search-add" />
+  </svg>
 </a>
 
 <section *ngIf="results.length > 0; else noResults" class="items" [@items]="results.length">

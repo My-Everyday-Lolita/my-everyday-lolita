@@ -1,11 +1,10 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, from, fromEvent, iif, merge, Observable, of, Subject, zip } from 'rxjs';
-import { filter, map, mergeMap, publish, reduce, shareReplay, switchMap, takeWhile, tap } from 'rxjs/operators';
+import { BehaviorSubject, fromEvent, merge, Observable, of, Subject, zip } from 'rxjs';
+import { filter, map, publish, shareReplay, switchMap } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { CacheService } from '../../cache/cache.service';
 import { UserSignInService } from '../../user/user-sign-in.service';
-import { UserService } from '../../user/user.service';
 import { Criterium, Item } from '../items/items.model';
 import { ItemsService } from '../items/items.service';
 import { UserContent, UserContentEvent } from './user-content.model';
@@ -27,7 +26,6 @@ export class UserContentService {
   constructor(
     private http: HttpClient,
     private userSignInService: UserSignInService,
-    private userService: UserService,
     private cacheService: CacheService,
     private itemsService: ItemsService
   ) {
@@ -36,41 +34,10 @@ export class UserContentService {
     this.content$ = new BehaviorSubject<UserContent>(this.content);
     this.ready$ = new BehaviorSubject<boolean>(false);
 
-    // this.userSignInService.signedIn$.subscribe(signedIn => {
-    //   if (this.userService.user && this.content.user !== this.userService.user.sub) {
-    //     this.content = this.defaultUserContentValue();
-    //   }
-    //   if (signedIn) {
-    //     this.getUserContentFromBackend().subscribe(userContent => {
-    //       this.getHandler(userContent);
-    //     });
-    //   }
-    // });
-    // fromEvent(document, 'visibilitychange').pipe(filter(() => this.userSignInService.isSignedIn())).subscribe(() => {
-    //   if (document.visibilityState === 'hidden' && this.hasChanged) {
-    //     this.update().subscribe(() => {
-    //       this.hasChanged = false;
-    //     });
-    //   }
-    //   if (document.visibilityState === 'visible') {
-    //     this.getUserContentFromBackend().subscribe(userContent => {
-    //       this.getHandler(userContent);
-    //     });
-    //   }
-    // });
-
     const visibile$ = fromEvent(document, 'visibilitychange').pipe(
       filter(() => this.userSignInService.isSignedIn()),
       map(() => document.visibilityState === 'visible')
     );
-    // const signedIn$ = this.userSignInService.signedIn$.pipe(
-    //   // tap(() => {
-    //   //   console.log((this.userService.user && this.content.user !== this.userService.user.sub));
-    //   //   // if (this.userService.user && this.content.user !== this.userService.user.sub) {
-    //   //   //   this.content = this.defaultUserContentValue();
-    //   //   // }
-    //   // })
-    // );
     const signedIn$ = this.userSignInService.signedIn$;
 
     merge(signedIn$, visibile$).pipe(
@@ -86,7 +53,6 @@ export class UserContentService {
     ).subscribe({
       next: (changed) => {
         this.ready$.next(true);
-        console.log('ready');
         if (changed) {
           localStorage.setItem(this.STORAGE_KEY, JSON.stringify(this.content));
           this.content$.next(this.content);
@@ -290,47 +256,5 @@ export class UserContentService {
         }));
       }),
     );
-
-    // zip(...cachedVariantItems$).pipe(
-    //   filter(cacheResponse => !cacheResponse),
-    //   switchMap(cacheResponse)
-    // );
-
-    // const items$ = this.content.filter(item => !item._wrongVariantId).map(item => this.cacheService.match(item.id).pipe(
-    //   switchMap(cacheResponse => {
-    //     if (cacheResponse) {
-    //       return from(cacheResponse.json()) as Observable<Item>;
-    //     }
-    //     const [itemId, colorIds] = item.id.split(':');
-    //     return this.itemsService.findById(itemId).pipe(
-    //       map(response => {
-    //         if (response) {
-    //           const selectedVariant = response.variants.filter(v => v.colors.map(c => c._id).join(',') === colorIds)[0] || undefined;
-    //           if (selectedVariant) {
-    //             const freshItem = {
-    //               ...JSON.parse(JSON.stringify(response)),
-    //               variants: [selectedVariant],
-    //             };
-    //             this.cacheService.put(item.id, freshItem);
-    //             return freshItem;
-    //           }
-    //         }
-    //       })
-    //     );
-    //   }),
-    //   map(almostReadyitem => {
-    //     if (almostReadyitem) {
-    //       almostReadyitem.wantToSell = item.wantToSell;
-    //       // Keep the variant id for reuse in the trackByFn function.
-    //       almostReadyitem._variantId = this.userContentService.buildVariantId(almostReadyitem);
-    //       item._wrongVariantId = false;
-    //     } else {
-    //       item._wrongVariantId = true;
-    //       this.userContentService.markAsChanged();
-    //     }
-    //     return almostReadyitem;
-    //   })
-    // ));
-    // return zip(...items$);
   }
 }

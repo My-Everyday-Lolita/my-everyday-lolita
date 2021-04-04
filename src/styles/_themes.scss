@@ -207,6 +207,11 @@ body.theme-sweet {
   .simple-loader.accent {
     --simple-loader-color: #fff;
   }
+
+  --search-add: #000;
+  .accent {
+    --search-add: #fff;
+  }
 }
 
 body.theme-gothic {
