@@ -166,7 +166,10 @@
       <label appLabel>
         {{ 'ITEM.FIELDS.LABELS.FEATURES' | translate }}
       </label>
-      <ng-select appInput formControlName="features" [items]="featuresData" [multiple]="true" bindLabel="name">
+      <ng-select appInput formControlName="features" [items]="availableFeatures" [multiple]="true" bindLabel="name">
+        <ng-template ng-notfound-tmp>
+          <div class="ng-option ng-option-disabled" [innerHTML]="'ITEM.FIELDS.NOT_FOUND.FEATURES' | translate"></div>
+        </ng-template>
         <ng-template ng-option-tmp let-item="item">
           <span>{{ item.name }}</span>
         </ng-template>

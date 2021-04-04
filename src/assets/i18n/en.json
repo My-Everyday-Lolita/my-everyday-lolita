@@ -151,6 +151,9 @@
       "LEGENDS": {
         "VARIANT": "Colorway {{i}}",
         "ADDITIONALS": "Additional fields"
+      },
+      "NOT_FOUND": {
+        "FEATURES": "No features related<br> to the selected category"
       }
     },
     "ADD_VARIANT": "Add new colorway",

@@ -4,9 +4,9 @@ import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@ang
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { interval, Subject } from 'rxjs';
-import { finalize, map, publish, takeUntil, tap } from 'rxjs/operators';
+import { map, publish, takeUntil, tap } from 'rxjs/operators';
 import { Brand } from 'src/app/features/resources/brands/brands.model';
-import { ExtendedCategory } from 'src/app/features/resources/categories/categories.model';
+import { Category, ExtendedCategory } from 'src/app/features/resources/categories/categories.model';
 import { Color } from 'src/app/features/resources/colors/colors.model';
 import { Feature } from 'src/app/features/resources/features/features.model';
 import { Item, ItemVariant } from 'src/app/features/resources/items/items.model';
@@ -47,6 +47,7 @@ export class ItemComponent implements OnInit, OnDestroy {
   item: Item;
   signedIn = false;
   displayLoader = false;
+  availableFeatures: Feature[] = [];
 
   substyles = [
     'Sweet lolita',
@@ -120,12 +121,23 @@ export class ItemComponent implements OnInit, OnDestroy {
     this.editing = this.isNew;
 
     this.initForm(this.item || null);
+
+    // Init available features
+    const category: ExtendedCategory = this.form.value.category || null;
+    this.availableFeatures = this.getAvailableFeatures(category);
   }
 
   ngOnInit(): void {
 
     this.form.valueChanges.pipe(takeUntil(this.unsubscriber)).subscribe(values => {
       sessionStorage.setItem(this.itemsService.TMP_SAVE_KEY, JSON.stringify(values));
+    });
+
+    this.category.valueChanges.pipe(takeUntil(this.unsubscriber)).subscribe({
+      next: value => {
+        this.availableFeatures = this.getAvailableFeatures(value);
+        this.features.setValue(this.features.value.filter((feature: Feature) => this.availableFeatures.some(f => f._id === feature._id)));
+      }
     });
 
     this.userSignInService.signedIn$.pipe(takeUntil(this.unsubscriber)).subscribe(signedIn => {
@@ -310,6 +322,17 @@ export class ItemComponent implements OnInit, OnDestroy {
 
   private updateTitle(): void {
     this.title.set(`${this.item.brand.shortname || this.item.brand.name} ${this.item.collectionn || ''}`, true);
+  }
+
+  private getAvailableFeatures(category: ExtendedCategory): Feature[] {
+    return this.featuresData.filter(feature => {
+      const categoryNames = feature.categories.map(c => c.name);
+      return category && (
+        categoryNames.includes(category.name) ||
+        category.parent && categoryNames.includes(category.parent.name) ||
+        category.parent && category.parent.parent && categoryNames.includes(category.parent.parent.name)
+      );
+    });
   }
 
 }
