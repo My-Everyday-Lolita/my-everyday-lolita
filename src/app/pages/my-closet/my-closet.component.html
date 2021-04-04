@@ -28,7 +28,7 @@
     <a [routerLink]="['/item', item._id]" class="img-container">
       <img [attr.src]="item | itemPhoto" appImageLoad alt="Item colorway photo">
     </a>
-    <div class="actions" *ngIf="signedIn">
+    <div class="actions">
       <button class="want-to-sell-btn" (click)="toggleWantToSellProperty(item)">
         <svg [class.grayscale]="!item.wantToSell">
           <use xlink:href="#want-to-sell" />

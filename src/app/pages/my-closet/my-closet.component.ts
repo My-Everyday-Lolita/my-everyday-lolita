@@ -1,7 +1,7 @@
 import { animate, query, style, transition, trigger, useAnimation } from '@angular/animations';
 import { Component, HostBinding, OnDestroy, OnInit } from '@angular/core';
-import { from, Observable, Subject, zip } from 'rxjs';
-import { filter, map, switchMap, takeUntil } from 'rxjs/operators';
+import { from, Observable, of, Subject, zip } from 'rxjs';
+import { filter, map, switchMap, takeUntil, tap } from 'rxjs/operators';
 import { itemsLeaveAnimation, itemsEnterAnimation } from 'src/app/features/animations/items.animation';
 import { CacheService } from 'src/app/features/cache/cache.service';
 import { Criterium, Item } from 'src/app/features/resources/items/items.model';
@@ -43,7 +43,7 @@ export class MyClosetComponent implements OnInit, OnDestroy {
   results: Item[] = [];
   signedIn = false;
   footerEE = 0;
-  content: { id: string, wantToSell?: boolean | undefined }[] = [];
+  content: { id: string, wantToSell?: boolean | undefined, _wrongVariantId?: boolean }[] = [];
   nbItems = 0;
   totalEstimatedPrice = 0;
   selectedCriteria: Criterium[] = [];
@@ -77,6 +77,7 @@ export class MyClosetComponent implements OnInit, OnDestroy {
       this.nbItems = this.content.length;
       this.getItems().pipe(takeUntil(this.unsubscriber)).subscribe(items => {
         this.items = items;
+        console.log(this.items);
         this.results = this.filterItems(this.items, this.selectedCriteria);
         this.totalEstimatedPrice = this.results.map(item => item.estimatedPrice || 0).reduce((count, value) => count + value, 0);
       });
@@ -108,36 +109,21 @@ export class MyClosetComponent implements OnInit, OnDestroy {
   }
 
   private getItems(): Observable<Item[]> {
-    const items$ = this.content.map(item => this.cacheService.match(item.id).pipe(
-      switchMap(cacheResponse => {
-        if (cacheResponse) {
-          return from(cacheResponse.json()) as Observable<Item>;
+    const items$ = this.content.filter(item => !item._wrongVariantId).map(item => this.cacheService.match(item.id).pipe(
+      switchMap(cache => cache ? from(cache?.json()) : of(undefined)),
+      map((almostReadyitem: Item) => {
+        if (almostReadyitem) {
+          almostReadyitem.wantToSell = item.wantToSell;
         }
-        const [itemId, colorIds] = item.id.split(':');
-        return this.itemsService.findById(itemId).pipe(
-          map(response => {
-            if (response) {
-              const selectedVariant = response.variants.filter(v => v.colors.map(c => c._id).join(',') === colorIds)[0] || undefined;
-              if (selectedVariant) {
-                const freshItem = {
-                  ...JSON.parse(JSON.stringify(response)),
-                  variants: [selectedVariant],
-                };
-                this.cacheService.put(item.id, freshItem);
-                return freshItem;
-              }
-            }
-          })
-        );
-      }),
-      map(almostReadyitem => {
-        almostReadyitem.wantToSell = item.wantToSell;
-        // Keep the variant id for reuse in the trackByFn function.
-        almostReadyitem._variantId = this.userContentService.buildVariantId(almostReadyitem);
         return almostReadyitem;
       })
     ));
-    return zip(...items$);
+    if (items$.length === 0) {
+      return of([]);
+    }
+    return zip(...items$).pipe(
+      map(items => items.filter(i => i !== undefined))
+    );
   }
 
   filterItems(items: Item[], criteria: Criterium[]): Item[] {

@@ -8,6 +8,7 @@ import { ResourcesFeaturesResolver } from './features/resources/features/feature
 import { ResourcesItemResolver } from './features/resources/items/item.resolver';
 import { CoordinationGuard } from './features/resources/user-content/coordination.guard';
 import { CoordinationResolver } from './features/resources/user-content/coordination.resolver';
+import { UserContentReadyGuard } from './features/resources/user-content/user-content-ready.guard';
 import { SignedInGuard } from './features/user/signed-in.guard';
 import { AboutProjectComponent } from './pages/about-project/about-project.component';
 import { AboutUsComponent } from './pages/about-us/about-us.component';
@@ -24,138 +25,142 @@ import { TipsComponent } from './pages/tips/tips.component';
 
 const routes: Routes = [
   {
-    path: '', component: HomeComponent,
-    data: {
-      animation: 'home',
-      isHome: true,
-    }
-  },
-  {
-    path: 'my-closet', component: MyClosetComponent,
-    resolve: {
-      brands: ResourcesBrandsResolver,
-      colors: ResourcesColorsResolver,
-      categories: ResourcesCategoriesResolver,
-      features: ResourcesFeaturesResolver,
-    },
-    data: {
-      home: true,
-      linkLabel: 'HOME.LINKS.MY_CLOSET',
-      animation: 'my_closet',
-      pageTitle: 'PAGES.TITLES.MY_CLOSET',
-    }
-  },
-  {
-    path: 'my-wishlist', component: MyWishlistComponent,
-    resolve: {
-      brands: ResourcesBrandsResolver,
-      colors: ResourcesColorsResolver,
-      categories: ResourcesCategoriesResolver,
-      features: ResourcesFeaturesResolver,
-    },
-    data: {
-      home: true,
-      linkLabel: 'HOME.LINKS.MY_WISHLIST',
-      animation: 'my_wishlist',
-      pageTitle: 'PAGES.TITLES.MY_WISHLIST',
-    }
-  },
-  {
-    path: 'my-coord-checklist', component: MyCoordChecklistComponent,
-    data: {
-      home: true,
-      linkLabel: 'HOME.LINKS.MY_COORD_CHECKLIST',
-      animation: 'my_coord_checklist',
-      pageTitle: 'PAGES.TITLES.MY_COORD_CHECKLIST',
-    }
-  },
-  {
-    path: 'my-coord-checklist/:id', component: CoordinationComponent,
-    resolve: {
-      coordination: CoordinationResolver
-    },
-    canActivate: [CoordinationGuard],
-    data: {
-      animation: 'coordination',
-      backHome: true
-    }
-  },
-  {
-    path: 'search', component: SearchComponent,
-    resolve: {
-      brands: ResourcesBrandsResolver,
-      colors: ResourcesColorsResolver,
-      categories: ResourcesCategoriesResolver,
-      features: ResourcesFeaturesResolver,
-    },
-    data: {
-      home: true,
-      linkLabel: 'HOME.LINKS.SEARCH',
-      animation: 'search',
-      pageTitle: 'PAGES.TITLES.SEARCH',
-    }
-  },
-  {
-    path: 'sign-in', component: SignInComponent,
-    data: {
-      home: false,
-      linkLabel: 'MENU.LINKS.SIGN_IN',
-      animation: 'sign_in',
-      pageTitle: 'PAGES.TITLES.SIGN_IN',
-    }
-  },
-  {
-    path: 'registration', component: RegistrationComponent,
-    data: {
-      home: false,
-      linkLabel: 'MENU.LINKS.REGISTRATION',
-      animation: 'registration',
-      pageTitle: 'PAGES.TITLES.REGISTRATION',
-    }
-  },
-  {
-    path: 'about-us', component: AboutUsComponent,
-    data: {
-      home: false,
-      others: true,
-      linkLabel: 'MENU.LINKS.ABOUT_US',
-      animation: 'about_us',
-      pageTitle: 'PAGES.TITLES.ABOUT_US',
-    }
-  },
-  {
-    path: 'about-the-project', component: AboutProjectComponent,
-    data: {
-      home: false,
-      others: true,
-      linkLabel: 'MENU.LINKS.ABOUT_PROJECT',
-      animation: 'about_project',
-      pageTitle: 'PAGES.TITLES.ABOUT_PROJECT',
-    }
-  },
-  {
-    path: 'tips', component: TipsComponent,
-    data: {
-      home: false,
-      others: true,
-      linkLabel: 'MENU.LINKS.TIPS',
-      animation: 'tips',
-      pageTitle: 'PAGES.TITLES.TIPS',
-    }
-  },
-  {
-    path: 'item/:id', component: ItemComponent,
-    resolve: {
-      brands: ResourcesBrandsResolver,
-      colors: ResourcesColorsResolver,
-      categories: ResourcesCategoriesResolver,
-      features: ResourcesFeaturesResolver,
-      item: ResourcesItemResolver,
-    },
-    data: {
-      animation: 'item',
-      backHome: true
-    }
+    path: '', canActivateChild: [UserContentReadyGuard], children: [
+      {
+        path: '', component: HomeComponent,
+        data: {
+          animation: 'home',
+          isHome: true,
+        }
+      },
+      {
+        path: 'my-closet', component: MyClosetComponent,
+        resolve: {
+          brands: ResourcesBrandsResolver,
+          colors: ResourcesColorsResolver,
+          categories: ResourcesCategoriesResolver,
+          features: ResourcesFeaturesResolver,
+        },
+        data: {
+          home: true,
+          linkLabel: 'HOME.LINKS.MY_CLOSET',
+          animation: 'my_closet',
+          pageTitle: 'PAGES.TITLES.MY_CLOSET',
+        }
+      },
+      {
+        path: 'my-wishlist', component: MyWishlistComponent,
+        resolve: {
+          brands: ResourcesBrandsResolver,
+          colors: ResourcesColorsResolver,
+          categories: ResourcesCategoriesResolver,
+          features: ResourcesFeaturesResolver,
+        },
+        data: {
+          home: true,
+          linkLabel: 'HOME.LINKS.MY_WISHLIST',
+          animation: 'my_wishlist',
+          pageTitle: 'PAGES.TITLES.MY_WISHLIST',
+        }
+      },
+      {
+        path: 'my-coord-checklist', component: MyCoordChecklistComponent,
+        data: {
+          home: true,
+          linkLabel: 'HOME.LINKS.MY_COORD_CHECKLIST',
+          animation: 'my_coord_checklist',
+          pageTitle: 'PAGES.TITLES.MY_COORD_CHECKLIST',
+        }
+      },
+      {
+        path: 'my-coord-checklist/:id', component: CoordinationComponent,
+        resolve: {
+          coordination: CoordinationResolver
+        },
+        canActivate: [CoordinationGuard],
+        data: {
+          animation: 'coordination',
+          backHome: true
+        }
+      },
+      {
+        path: 'search', component: SearchComponent,
+        resolve: {
+          brands: ResourcesBrandsResolver,
+          colors: ResourcesColorsResolver,
+          categories: ResourcesCategoriesResolver,
+          features: ResourcesFeaturesResolver,
+        },
+        data: {
+          home: true,
+          linkLabel: 'HOME.LINKS.SEARCH',
+          animation: 'search',
+          pageTitle: 'PAGES.TITLES.SEARCH',
+        }
+      },
+      {
+        path: 'sign-in', component: SignInComponent,
+        data: {
+          home: false,
+          linkLabel: 'MENU.LINKS.SIGN_IN',
+          animation: 'sign_in',
+          pageTitle: 'PAGES.TITLES.SIGN_IN',
+        }
+      },
+      {
+        path: 'registration', component: RegistrationComponent,
+        data: {
+          home: false,
+          linkLabel: 'MENU.LINKS.REGISTRATION',
+          animation: 'registration',
+          pageTitle: 'PAGES.TITLES.REGISTRATION',
+        }
+      },
+      {
+        path: 'about-us', component: AboutUsComponent,
+        data: {
+          home: false,
+          others: true,
+          linkLabel: 'MENU.LINKS.ABOUT_US',
+          animation: 'about_us',
+          pageTitle: 'PAGES.TITLES.ABOUT_US',
+        }
+      },
+      {
+        path: 'about-the-project', component: AboutProjectComponent,
+        data: {
+          home: false,
+          others: true,
+          linkLabel: 'MENU.LINKS.ABOUT_PROJECT',
+          animation: 'about_project',
+          pageTitle: 'PAGES.TITLES.ABOUT_PROJECT',
+        }
+      },
+      {
+        path: 'tips', component: TipsComponent,
+        data: {
+          home: false,
+          others: true,
+          linkLabel: 'MENU.LINKS.TIPS',
+          animation: 'tips',
+          pageTitle: 'PAGES.TITLES.TIPS',
+        }
+      },
+      {
+        path: 'item/:id', component: ItemComponent,
+        resolve: {
+          brands: ResourcesBrandsResolver,
+          colors: ResourcesColorsResolver,
+          categories: ResourcesCategoriesResolver,
+          features: ResourcesFeaturesResolver,
+          item: ResourcesItemResolver,
+        },
+        data: {
+          animation: 'item',
+          backHome: true
+        }
+      },
+    ]
   },
 ];
 
@@ -163,7 +168,7 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes, { scrollPositionRestoration: 'top' })],
   exports: [RouterModule],
   providers: [
-    { provide: APP_ROUTES, useValue: routes }
+    { provide: APP_ROUTES, useValue: routes[0].children }
   ]
 })
 export class AppRoutingModule { }

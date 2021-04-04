@@ -65,7 +65,6 @@ export class MyCoordChecklistComponent implements OnInit, OnDestroy {
     this.userContentService.content$.pipe(takeUntil(this.unsubscriber)).subscribe({
       next: content => {
         this.coordinations = content.coordinations;
-        console.log(this.coordinations);
       }
     });
   }

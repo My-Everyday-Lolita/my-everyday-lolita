@@ -138,7 +138,7 @@ export class AppComponent implements OnInit, OnDestroy {
       tap(event => {
         this.currentPath = (event as NavigationEnd).url;
       }),
-      map(event => this.activatedRoute.firstChild as ActivatedRoute),
+      map(event => this.activatedRoute.firstChild?.firstChild as ActivatedRoute),
       switchMap(route => route.data),
       takeUntil(this.unsubscsriber)
     ).subscribe(data => {

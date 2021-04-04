@@ -78,7 +78,6 @@ export class SearchComponent implements OnInit, OnDestroy {
     this.results = [];
     this.loading = true;
     const search$ = this.itemsService.findByCriteria(criteria).pipe(
-      delay(30000),
       map(response => {
         const colorCriteria = criteria.filter(crit => crit.type === 'color');
         const displayedItems = [];

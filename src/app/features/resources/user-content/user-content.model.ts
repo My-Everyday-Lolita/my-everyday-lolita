@@ -1,4 +1,4 @@
-import { Item } from "../items/items.model";
+import { Item } from '../items/items.model';
 
 /**
  * Variant id === item._id:color1._id[,color2._id]
@@ -6,11 +6,12 @@ import { Item } from "../items/items.model";
 export type VariantId = string;
 
 export interface UserContent {
+  _id?: string;
   modified: number;
-  closet: { id: VariantId, wantToSell?: boolean }[];
-  wishlist: { id: VariantId }[];
+  closet: { id: VariantId, wantToSell?: boolean, _wrongVariantId?: boolean }[];
+  wishlist: { id: VariantId, _wrongVariantId?: boolean }[];
   coordinations: Coordination[];
-  user: string;
+  user?: string;
 }
 
 export interface CoordinationField {
@@ -71,7 +72,7 @@ coordinationTypeMap[CoordinationFieldType.UNDERWEAR] = ['Underwear'];
 coordinationTypeMap[CoordinationFieldType.OTHERS] = ['Other'];
 
 export interface UserContentEvent {
-  type: 'add' | 'remove' | 'toggle-want-to-sell' | 'update-coordinations';
+  type: 'add' | 'remove' | 'update-coordinations' | 'silent';
   content: UserContent;
   item?: Item;
   id?: string;

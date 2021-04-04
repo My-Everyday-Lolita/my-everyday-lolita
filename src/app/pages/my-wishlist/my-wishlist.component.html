@@ -19,7 +19,7 @@
     <a [routerLink]="['/item', item._id]" class="img-container">
       <img [attr.src]="item | itemPhoto" appImageLoad alt="Item colorway photo">
     </a>
-    <div class="actions" *ngIf="signedIn">
+    <div class="actions">
       <button app-button color="discreet" class="circle no-shadow very-small remove-from-wishlist" (click)="remove(item)">
         <span class="clear-icon very-small"></span>
       </button>

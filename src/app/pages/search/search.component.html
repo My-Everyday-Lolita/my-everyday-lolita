@@ -18,7 +18,7 @@
       <a [routerLink]="['/item', item._id]" class="img-container">
         <img [attr.src]="item | itemPhoto" appImageLoad alt="Item colorway photo">
       </a>
-      <div class="actions" *ngIf="signedIn">
+      <div class="actions">
         <button app-button class="circle very-small no-shadow no-background" [tadaSize]="36" color="primary" appInCloset [item]="item" [variant]="item.variants[0]"
           #inCloset="inCloset">
           <span class="visualy-hidden">{{ 'ITEM.ACTIONS.ADD_TO_CLOSET' | translate }}</span>
@@ -43,7 +43,7 @@
       <a [routerLink]="['/item', item._id]" class="img-container">
         <img [attr.src]="item | itemPhoto" appImageLoad alt="Item colorway photo">
       </a>
-      <div class="actions" *ngIf="signedIn">
+      <div class="actions">
         <button app-button class="circle very-small no-shadow no-background" [tadaSize]="36" color="primary" appInCloset [item]="item" [variant]="item.variants[0]"
           #inCloset="inCloset">
           <span class="visualy-hidden">{{ 'ITEM.ACTIONS.ADD_TO_CLOSET' | translate }}</span>
