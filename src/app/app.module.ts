@@ -3,14 +3,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { CommonModule, DatePipe, registerLocaleData } from '@angular/common';
-import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import localeEn from '@angular/common/locales/en';
 import localeFr from '@angular/common/locales/fr';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { ObserversModule } from '@angular/cdk/observers';
 
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { ToastNoAnimationModule, ToastrModule } from 'ngx-toastr';
 
@@ -72,13 +71,16 @@ import { CacheItemPhotoPipe } from './features/resources/user-content/cache-item
 import { CoordMainPiecePipe } from './features/resources/user-content/coord-main-piece.pipe';
 import { DetailsComponent } from './features/dialog/details/details.component';
 import { SimpleLoaderComponent } from './features/loaders/simple-loader/simple-loader.component';
-import { NgScrollbarModule } from 'ngx-scrollbar';
+import { from, Observable } from 'rxjs';
+// import { NgScrollbarModule } from 'ngx-scrollbar';
 
 registerLocaleData(localeEn, 'en');
 registerLocaleData(localeFr, 'fr');
 
-export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
-  return new TranslateHttpLoader(http);
+export class WebpackTranslateLoader implements TranslateLoader {
+  getTranslation(lang: string): Observable<any> {
+    return from(import(`../assets/i18n/${lang}.json`));
+  }
 }
 
 @NgModule({
@@ -145,8 +147,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
       defaultLanguage: 'en',
       loader: {
         provide: TranslateLoader,
-        useFactory: HttpLoaderFactory,
-        deps: [HttpClient]
+        useClass: WebpackTranslateLoader
       }
     }),
     ServiceWorkerModule.register('ngsw-worker.js', {
