@@ -1,8 +1,8 @@
 import { Component, OnInit, ChangeDetectionStrategy, Output, EventEmitter, Input } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
-import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { ActivatedRoute, Router } from '@angular/router';
+import { merge, Subject } from 'rxjs';
+import { switchMap, takeUntil, tap } from 'rxjs/operators';
 import { Brand } from '../../resources/brands/brands.model';
 import { Category } from '../../resources/categories/categories.model';
 import { Color } from '../../resources/colors/colors.model';
@@ -40,7 +40,8 @@ export class SearchFormComponent implements OnInit {
     private fb: FormBuilder,
     private activatedRoute: ActivatedRoute,
     private userSignInService: UserSignInService,
-    private userService: UserService
+    private userService: UserService,
+    private router: Router
   ) {
     this.form = this.fb.group({
       criteria: [''],
@@ -110,23 +111,40 @@ export class SearchFormComponent implements OnInit {
 
     this.form.valueChanges.pipe(takeUntil(this.unsubscriber)).subscribe(values => {
       this.selectedCriteria = values.criteria;
-      this.triggerSearch();
+      this.router.navigate([], {
+        replaceUrl: true,
+        queryParams: {
+          criteria: this.selectedCriteria.length > 0 ? JSON.stringify(this.selectedCriteria) : undefined
+        }
+      });
     });
 
-    this.userSignInService.signedIn$.pipe(takeUntil(this.unsubscriber)).subscribe(signedIn => {
-      this.signedIn = signedIn;
-      if (this.enableMyItems) {
-        if (signedIn) {
-          if (!this.criteria.find(crit => crit.type === 'own')) {
-            this.criteria.push({
-              type: 'own',
-              displayValue: 'My items',
-              value: this.userService.user?.sub as string
-            });
+    this.userSignInService.signedIn$.pipe(
+      tap(signedIn => {
+        this.signedIn = signedIn;
+        if (this.enableMyItems) {
+          if (signedIn) {
+            if (!this.criteria.find(crit => crit.type === 'own')) {
+              this.criteria.push({
+                type: 'own',
+                displayValue: 'My items',
+                value: this.userService.user?.sub as string
+              });
+            }
+          } else {
+            this.criteria = this.criteria.filter(crit => crit.type !== 'own');
           }
-        } else {
-          this.criteria = this.criteria.filter(crit => crit.type !== 'own');
         }
+      }),
+      switchMap(() => {
+        return this.activatedRoute.queryParams;
+      })
+    ).pipe(takeUntil(this.unsubscriber)).subscribe({
+      next: queryParams => {
+        const criteria = queryParams.criteria && JSON.parse(queryParams.criteria) || [];
+        this.selectedCriteria = criteria;
+        this.form.get('criteria')?.setValue(this.selectedCriteria, { emitEvent: false });
+        this.triggerSearch();
       }
     });
   }
