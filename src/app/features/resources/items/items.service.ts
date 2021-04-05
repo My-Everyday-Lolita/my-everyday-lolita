@@ -35,7 +35,7 @@ export class ItemsService {
     return this.http.get<Item>(`${environment.domains.mel}/api/resources/items/${id}`);
   }
 
-  findByCriteria(criteria: Criterium[], skip = 0, limit = 100): Observable<Item[]> {
+  findByCriteria(criteria: Criterium[], skip = 0, limit = 60): Observable<Item[]> {
     const params = new HttpParams({
       fromObject: {
         limit: `${limit}`,

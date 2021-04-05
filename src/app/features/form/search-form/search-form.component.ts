@@ -1,7 +1,7 @@
 import { Component, OnInit, ChangeDetectionStrategy, Output, EventEmitter, Input } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { merge, Subject } from 'rxjs';
+import { Subject } from 'rxjs';
 import { switchMap, takeUntil, tap } from 'rxjs/operators';
 import { Brand } from '../../resources/brands/brands.model';
 import { Category } from '../../resources/categories/categories.model';
@@ -111,12 +111,7 @@ export class SearchFormComponent implements OnInit {
 
     this.form.valueChanges.pipe(takeUntil(this.unsubscriber)).subscribe(values => {
       this.selectedCriteria = values.criteria;
-      this.router.navigate([], {
-        replaceUrl: true,
-        queryParams: {
-          criteria: this.selectedCriteria.length > 0 ? JSON.stringify(this.selectedCriteria) : undefined
-        }
-      });
+      this.triggerSearch();
     });
 
     this.userSignInService.signedIn$.pipe(
@@ -141,16 +136,19 @@ export class SearchFormComponent implements OnInit {
       })
     ).pipe(takeUntil(this.unsubscriber)).subscribe({
       next: queryParams => {
-        const criteria = queryParams.criteria && JSON.parse(queryParams.criteria) || [];
+        const criteria = queryParams.criteria && JSON.parse(queryParams.criteria) || undefined;
+        if (criteria === undefined) {
+          return;
+        }
         this.selectedCriteria = criteria;
         this.form.get('criteria')?.setValue(this.selectedCriteria, { emitEvent: false });
-        this.triggerSearch();
+        this.triggerHostSearch();
       }
     });
   }
 
-  triggerSearch(): void {
-    this.search.emit(this.selectedCriteria);
+  onSubmit(): void {
+    this.triggerSearch();
   }
 
   searchCriterias(term: string, item: Criterium): boolean {
@@ -164,6 +162,19 @@ export class SearchFormComponent implements OnInit {
       displayValue: term,
       type: 'keyword',
     };
+  }
+
+  private triggerSearch(): void {
+    this.router.navigate([], {
+      replaceUrl: true,
+      queryParams: {
+        criteria: JSON.stringify(this.selectedCriteria)
+      }
+    });
+  }
+
+  private triggerHostSearch(): void {
+    this.search.emit(this.selectedCriteria);
   }
 
 }

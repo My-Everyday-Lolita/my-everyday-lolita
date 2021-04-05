@@ -1,7 +1,7 @@
 import { trigger, transition, style, animate, query, useAnimation } from '@angular/animations';
 import { Component, HostBinding, OnDestroy, OnInit } from '@angular/core';
 import { interval, Subject } from 'rxjs';
-import { delay, map, publish, takeUntil, tap } from 'rxjs/operators';
+import { map, publish, takeUntil, tap } from 'rxjs/operators';
 import { itemsEnterAnimation, itemsLeaveAnimation } from 'src/app/features/animations/items.animation';
 import { Criterium, Item } from 'src/app/features/resources/items/items.model';
 import { ItemsService } from 'src/app/features/resources/items/items.service';
