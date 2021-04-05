@@ -136,7 +136,12 @@
       <label appLabel>
         {{ 'ITEM.FIELDS.LABELS.BRAND' | translate }}
       </label>
-      <ng-select appInput formControlName="brand" [items]="brands" bindLabel="name" [addTag]="addCustomBrand" required></ng-select>
+      <ng-select appInput formControlName="brand" [items]="brands" bindLabel="name" [searchFn]="searchFn" [addTag]="addCustomBrand" required>
+        <ng-template ng-option-tmp let-item="item">
+          <span *ngIf="!item.shortname">{{ item.name }}</span>
+          <span *ngIf="item.shortname">{{ item.name }} ({{ item.shortname }})</span>
+        </ng-template>
+      </ng-select>
       <p class="error visualy-hidden" *ngIf="brand.errors?.required">{{ 'FORM.ERRORS.REQUIRED' | translate }}</p>
     </app-form-field>
     <app-form-field>
@@ -155,9 +160,12 @@
       <label appLabel>
         {{ 'ITEM.FIELDS.LABELS.CATEGORY' | translate }}
       </label>
-      <ng-select appInput formControlName="category" [items]="categories" bindLabel="name" required>
+      <ng-select appInput formControlName="category" [items]="categories" [searchFn]="searchFn" bindLabel="name" required>
         <ng-template ng-option-tmp let-item="item">
-          <span [ngClass]="item._lvlClass">{{ item.name }}</span>
+          <span [ngClass]="item._lvlClass">
+            <span *ngIf="!item.shortname">{{ item.name }}</span>
+            <span *ngIf="item.shortname">{{ item.name }} ({{ item.shortname }})</span>
+          </span>
         </ng-template>
       </ng-select>
       <p class="error visualy-hidden" *ngIf="category.errors?.required">{{ 'FORM.ERRORS.REQUIRED' | translate }}</p>

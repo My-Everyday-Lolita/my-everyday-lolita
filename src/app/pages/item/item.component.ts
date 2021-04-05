@@ -264,6 +264,11 @@ export class ItemComponent implements OnInit, OnDestroy {
     };
   }
 
+  searchFn(term: string, item: any): boolean {
+    term = term.toLowerCase();
+    return item && (item.name && item.name.toLowerCase().includes(term) || item.shortname && item.shortname.toLowerCase().includes(term));
+  }
+
   private _addVariant(initialValue?: ItemVariant): FormGroup {
     const variantControl = this.fb.group({
       colors: [initialValue && initialValue.colors || null, [Validators.required]],

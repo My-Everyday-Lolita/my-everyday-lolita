@@ -53,7 +53,7 @@ export class SearchFormComponent implements OnInit {
         this.criteria.push({
           type: 'brand',
           value: brand.name,
-          displayValue: brand.name,
+          displayValue: brand.shortname ? `${brand.name} (${brand.shortname})` : brand.name,
         });
       });
     }
@@ -80,7 +80,7 @@ export class SearchFormComponent implements OnInit {
         this.criteria.push({
           type: 'category',
           value: category.name,
-          displayValue: category.name,
+          displayValue: category.shortname ? `${category.name} (${category.shortname})` : category.name,
           _lvlClass: 'lvl-0',
         });
         if (category.children) {
@@ -88,7 +88,7 @@ export class SearchFormComponent implements OnInit {
             this.criteria.push({
               type: 'category',
               value: category2.name,
-              displayValue: category2.name,
+              displayValue: category2.shortname ? `${category2.name} (${category2.shortname})` : category2.name,
               parents: [category.name],
               _lvlClass: 'lvl-1',
             });
@@ -97,7 +97,7 @@ export class SearchFormComponent implements OnInit {
                 this.criteria.push({
                   type: 'category',
                   value: category3.name,
-                  displayValue: category3.name,
+                  displayValue: category3.shortname ? `${category3.name} (${category3.shortname})` : category3.name,
                   parents: [category.name, category2.name],
                   _lvlClass: 'lvl-2',
                 });
