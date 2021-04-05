@@ -263,37 +263,6 @@ app-form-field:not(:first-of-type) {
   }
 }
 
-.add-to-wrapper {
+.app-clouds-wrapper {
   padding-bottom: var(--spacing-bigger);
-}
-
-[app-cloud-container] {
-  width: 160px;
-  height: 93px;
-  margin-bottom: var(--spacing);
-
-  .add-to-closet {
-    position: absolute;
-    top: 50%;
-    left: 0;
-    transform: translate(-50%, -50%);
-    background: #fff;
-
-    svg {
-      width: 25px;
-      height: 25px;
-    }
-  }
-  .add-to-wishlist {
-    position: absolute;
-    top: 50%;
-    right: 0;
-    transform: translate(50%, -50%);
-    background: #fff;
-
-    svg {
-      width: 25px;
-      height: 25px;
-    }
-  }
 }

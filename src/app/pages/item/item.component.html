@@ -106,7 +106,7 @@
         </ul>
       </div>
     </section>
-    <ul class="add-to-wrapper">
+    <ul class="app-clouds-wrapper">
       <li app-cloud-container *ngFor="let variant of item.variants" class="alternate-ff fw-normal">
         <button app-button color="default" class="circle small no-shadow add-to-closet" *ngIf="signedIn" appInCloset [item]="item" [variant]="variant" #inCloset="inCloset">
           <span class="visualy-hidden" [innerHTML]="'ITEM.ADD_TO_CLOSET' | translate"></span>
