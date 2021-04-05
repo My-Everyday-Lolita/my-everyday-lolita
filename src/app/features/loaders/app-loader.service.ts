@@ -15,7 +15,7 @@ export class AppLoaderService {
     rendererFactory: RendererFactory2
   ) {
     this.renderer = rendererFactory.createRenderer(null, null);
-    this.elt = document.querySelector('body > .app-loader') as HTMLDivElement;
+    this.elt = document.querySelector('body > .app-loader-wrapper') as HTMLDivElement;
   }
 
   hide(): void {

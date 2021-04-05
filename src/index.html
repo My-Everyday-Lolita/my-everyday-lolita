@@ -14,12 +14,20 @@
   <link rel="apple-touch-icon" sizes="180x180" href="assets/icons/apple-touch-icon.png">
   <script src="assets/env.js"></script>
   <style>
+    .app-loader-wrapper {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 1100;
+    }
+
     .app-loader {
       position: fixed;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%) scale(0.8);
-      z-index: 1100;
       display: flex;
       flex-direction: column;
       perspective: 900px;
@@ -1267,8 +1275,8 @@
   </svg>
   <app-root></app-root>
   <noscript>Please enable JavaScript to continue using this application.</noscript>
-  <div class="app-loader" aria-hidden="true">
-    <div class="app-loader content">
+  <div class="app-loader-wrapper">
+    <div class="app-loader" aria-hidden="true">
       <div class="top">
         <svg>
           <use xlink:href="#loader-top-1" />
