@@ -35,6 +35,7 @@ export class SearchFormComponent implements OnInit {
   selectedCriteria: Criterium[] = [];
   signedIn = false;
   private unsubscriber = new Subject();
+  private lastSearch?: string;
 
   constructor(
     private fb: FormBuilder,
@@ -131,15 +132,14 @@ export class SearchFormComponent implements OnInit {
           }
         }
       }),
-      switchMap(() => {
-        return this.activatedRoute.queryParams;
-      })
+      switchMap(() => this.activatedRoute.queryParams)
     ).pipe(takeUntil(this.unsubscriber)).subscribe({
       next: queryParams => {
         const criteria = queryParams.criteria && JSON.parse(queryParams.criteria) || undefined;
-        if (criteria === undefined) {
+        if (criteria === undefined || (this.lastSearch && this.lastSearch === queryParams.criteria)) {
           return;
         }
+        this.lastSearch = queryParams.criteria;
         this.selectedCriteria = criteria;
         this.form.get('criteria')?.setValue(this.selectedCriteria, { emitEvent: false });
         this.triggerHostSearch();

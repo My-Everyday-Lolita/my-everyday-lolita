@@ -1,11 +1,12 @@
-import { animate, query, style, transition, trigger, useAnimation } from '@angular/animations';
+import { animate, style, transition, trigger } from '@angular/animations';
+import { BreakpointObserver } from '@angular/cdk/layout';
 import { Component, HostBinding, OnDestroy, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { PaginationInstance } from 'ngx-pagination';
 import { from, Observable, of, Subject, zip } from 'rxjs';
-import { filter, map, switchMap, takeUntil, tap } from 'rxjs/operators';
-import { itemsLeaveAnimation, itemsEnterAnimation } from 'src/app/features/animations/items.animation';
+import { filter, map, switchMap, takeUntil } from 'rxjs/operators';
 import { CacheService } from 'src/app/features/cache/cache.service';
 import { Criterium, Item } from 'src/app/features/resources/items/items.model';
-import { ItemsService } from 'src/app/features/resources/items/items.service';
 import { UserContentService } from 'src/app/features/resources/user-content/user-content.service';
 import { ThemeService } from 'src/app/features/theme/theme.service';
 import { UserSignInService } from 'src/app/features/user/user-sign-in.service';
@@ -23,16 +24,6 @@ import { UserSignInService } from 'src/app/features/user/user-sign-in.service';
         style({ opacity: 1, transform: 'translateY(0%)' }),
         animate('330ms linear', style({ opacity: 0, transform: 'translateY(5%)' }))
       ]),
-    ]),
-    trigger('items', [
-      transition('* <=> *', [
-        query(':leave', [
-          useAnimation(itemsLeaveAnimation),
-        ], { optional: true }),
-        query(':enter', [
-          useAnimation(itemsEnterAnimation),
-        ], { optional: true })
-      ])
     ])
   ]
 })
@@ -47,16 +38,29 @@ export class MyClosetComponent implements OnInit, OnDestroy {
   nbItems = 0;
   totalEstimatedPrice = 0;
   selectedCriteria: Criterium[] = [];
+  paginationConfig: PaginationInstance = {
+    id: 'mel-pager',
+    itemsPerPage: 20,
+    currentPage: 1
+  };
 
   private unsubscriber = new Subject();
   private items: Item[] = [];
+  private breakpoints = ['(min-width: 700px)', '(min-width: 900px)', '(min-width: 1367px)'];
+  private breakpointsItemsPerPageMap: { [key: string]: number } = {
+    '(min-width: 700px)': 10,
+    '(min-width: 900px)': 10,
+    '(min-width: 1367px)': 10,
+  };
 
   constructor(
     private userSignInService: UserSignInService,
     private userContentService: UserContentService,
-    private itemsService: ItemsService,
     public themeService: ThemeService,
-    private cacheService: CacheService
+    private cacheService: CacheService,
+    private breakpointObserver: BreakpointObserver,
+    private router: Router,
+    private activatedRoute: ActivatedRoute
   ) { }
 
   ngOnDestroy(): void {
@@ -77,10 +81,24 @@ export class MyClosetComponent implements OnInit, OnDestroy {
       this.nbItems = this.content.length;
       this.getItems().pipe(takeUntil(this.unsubscriber)).subscribe(items => {
         this.items = items;
-        console.log(this.items);
         this.results = this.filterItems(this.items, this.selectedCriteria);
         this.totalEstimatedPrice = this.results.map(item => item.estimatedPrice || 0).reduce((count, value) => count + value, 0);
       });
+    });
+
+    this.breakpointObserver.observe(this.breakpoints).pipe(takeUntil(this.unsubscriber)).subscribe({
+      next: result => {
+        const itemsPerPage = Object.entries(result.breakpoints).reduce((acc, [breakpoint, value]) => {
+          if (value) {
+            acc += this.breakpointsItemsPerPageMap[breakpoint];
+          }
+          return acc;
+        }, 20);
+        if (this.paginationConfig.itemsPerPage !== itemsPerPage) {
+          this.paginationConfig.itemsPerPage = itemsPerPage;
+          this.router.navigate([], { queryParams: { ...this.activatedRoute.snapshot.queryParams, page: 1 }, replaceUrl: true });
+        }
+      }
     });
   }
 
@@ -145,6 +163,10 @@ export class MyClosetComponent implements OnInit, OnDestroy {
       }
       return view;
     });
+  }
+
+  onPageChange(page: number): void {
+    this.paginationConfig.currentPage = page;
   }
 
 }

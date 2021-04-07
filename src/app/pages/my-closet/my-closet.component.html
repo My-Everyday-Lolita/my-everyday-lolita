@@ -25,22 +25,26 @@
   </svg>
 </a>
 
-<section *ngIf="results.length > 0; else noResults" class="items" [@items]="results.length">
-  <article *ngFor="let item of results; trackBy: trackByFn" class="item">
-    <a [routerLink]="['/item', item._id]" class="img-container">
-      <img [attr.src]="item | itemPhoto" appImageLoad alt="Item colorway photo">
-    </a>
-    <div class="actions">
-      <button class="want-to-sell-btn" (click)="toggleWantToSellProperty(item)">
-        <svg [class.grayscale]="!item.wantToSell">
-          <use xlink:href="#want-to-sell" />
-        </svg>
-      </button>
-      <button app-button color="discreet" class="circle no-shadow very-small remove-from-closet" (click)="remove(item)">
-        <span class="clear-icon very-small"></span>
-      </button>
-    </div>
-  </article>
+<section *ngIf="results.length > 0; else noResults">
+  <app-pagination [id]="'mel-pager'" (pageChange)="onPageChange($event)"></app-pagination>
+  <div class="items">
+    <article *ngFor="let item of results | paginate: paginationConfig; trackBy: trackByFn" class="item">
+      <a [routerLink]="['/item', item._id]" class="img-container">
+        <img [attr.src]="item | itemPhoto" appImageLoad alt="Item colorway photo">
+      </a>
+      <div class="actions">
+        <button class="want-to-sell-btn" (click)="toggleWantToSellProperty(item)">
+          <svg [class.grayscale]="!item.wantToSell">
+            <use xlink:href="#want-to-sell" />
+          </svg>
+        </button>
+        <button app-button color="discreet" class="circle no-shadow very-small remove-from-closet" (click)="remove(item)">
+          <span class="clear-icon very-small"></span>
+        </button>
+      </div>
+    </article>
+  </div>
+  <app-pagination [id]="'mel-pager'" (pageChange)="onPageChange($event)"></app-pagination>
 </section>
 <ng-template #noResults>
   <p>No results</p>

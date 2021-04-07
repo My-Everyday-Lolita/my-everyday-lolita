@@ -5,6 +5,14 @@
     justify-content: center;
   }
 
+  &.space-around {
+    justify-content: space-around;
+  }
+
+  &.space-between {
+    justify-content: space-between;
+  }
+
   &.align-center {
     align-items: center;
   }

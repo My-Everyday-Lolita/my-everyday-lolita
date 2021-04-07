@@ -44,3 +44,12 @@ app-simple-loader {
   margin: auto none;
   margin-top: var(--spacing);
 }
+
+app-pagination {
+  margin-top: var(--spacing-medium);
+  display: block;
+}
+
+.items + app-pagination {
+  margin-bottom: 100px;
+}

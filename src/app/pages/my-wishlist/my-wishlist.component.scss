@@ -100,3 +100,12 @@ footer {
     height: auto;
   }
 }
+
+app-pagination {
+  margin-top: var(--spacing-medium);
+  display: block;
+}
+
+.items + app-pagination {
+  margin-bottom: 100px;
+}

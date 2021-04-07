@@ -38,28 +38,32 @@
   </section>
 </ng-container>
 <ng-template #resultTemplate>
-  <section *ngIf="results.length > 0; else noResults" class="items" [@items]="results.length">
-    <article *ngFor="let item of results" class="item">
-      <a [routerLink]="['/item', item._id]" class="img-container">
-        <img [attr.src]="item | itemPhoto" appImageLoad alt="Item colorway photo">
-      </a>
-      <div class="actions">
-        <button app-button class="circle very-small no-shadow no-background" [tadaSize]="36" color="primary" appInCloset [item]="item" [variant]="item.variants[0]"
-          #inCloset="inCloset">
-          <span class="visualy-hidden">{{ 'ITEM.ACTIONS.ADD_TO_CLOSET' | translate }}</span>
-          <svg [class.grayscale]="!inCloset.isIn">
-            <use xlink:href="#add_to_closet" />
-          </svg>
-        </button>
-        <button app-button class="circle very-small no-shadow no-background" [tadaSize]="36" color="primary" appInWishlist [item]="item" [variant]="item.variants[0]"
-          #inWishlist="inWishlist">
-          <span class="visualy-hidden">{{ 'ITEM.ACTIONS.ADD_TO_WISHLIST' | translate }}</span>
-          <svg [class.grayscale]="!inWishlist.isIn">
-            <use xlink:href="#add_to_wishlist" />
-          </svg>
-        </button>
-      </div>
-    </article>
+  <section *ngIf="results.length > 0; else noResults">
+    <app-pagination [id]="'mel-pager'" (pageChange)="onPageChange($event)"></app-pagination>
+    <div class="items">
+      <article *ngFor="let item of results | paginate: paginationConfig" class="item">
+        <a [routerLink]="['/item', item._id]" class="img-container">
+          <img [attr.src]="item | itemPhoto" appImageLoad alt="Item colorway photo">
+        </a>
+        <div class="actions">
+          <button app-button class="circle very-small no-shadow no-background" [tadaSize]="36" color="primary" appInCloset [item]="item" [variant]="item.variants[0]"
+            #inCloset="inCloset">
+            <span class="visualy-hidden">{{ 'ITEM.ACTIONS.ADD_TO_CLOSET' | translate }}</span>
+            <svg [class.grayscale]="!inCloset.isIn">
+              <use xlink:href="#add_to_closet" />
+            </svg>
+          </button>
+          <button app-button class="circle very-small no-shadow no-background" [tadaSize]="36" color="primary" appInWishlist [item]="item" [variant]="item.variants[0]"
+            #inWishlist="inWishlist">
+            <span class="visualy-hidden">{{ 'ITEM.ACTIONS.ADD_TO_WISHLIST' | translate }}</span>
+            <svg [class.grayscale]="!inWishlist.isIn">
+              <use xlink:href="#add_to_wishlist" />
+            </svg>
+          </button>
+        </div>
+      </article>
+    </div>
+    <app-pagination [id]="'mel-pager'" (pageChange)="onPageChange($event)"></app-pagination>
   </section>
   <ng-template #noResults>
     <p *ngIf="!loading" [innerHTML]="'SEARCH.EMPTY_RESULT' | translate" class="empty-content"></p>

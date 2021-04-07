@@ -6,7 +6,6 @@
   grid-template-rows: auto;
   width: 70vw;
   gap: var(--spacing-small) var(--spacing-small);
-  transition: all 330ms linear;
 
   @media screen and (min-width: 700px) {
     grid-template-columns: 1fr 1fr 1fr;

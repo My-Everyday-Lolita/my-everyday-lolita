@@ -9,6 +9,7 @@ import localeFr from '@angular/common/locales/fr';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { ObserversModule } from '@angular/cdk/observers';
+import { LayoutModule } from '@angular/cdk/layout';
 
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { ToastNoAnimationModule, ToastrModule } from 'ngx-toastr';
@@ -72,6 +73,9 @@ import { CoordMainPiecePipe } from './features/resources/user-content/coord-main
 import { DetailsComponent } from './features/dialog/details/details.component';
 import { SimpleLoaderComponent } from './features/loaders/simple-loader/simple-loader.component';
 import { from, Observable } from 'rxjs';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { PaginationComponent } from './features/pagination/pagination/pagination.component';
+import { PaginationQueryParamsPipe } from './features/pagination/pagination-query-params.pipe';
 // import { NgScrollbarModule } from 'ngx-scrollbar';
 
 registerLocaleData(localeEn, 'en');
@@ -134,6 +138,8 @@ export class WebpackTranslateLoader implements TranslateLoader {
     CoordMainPiecePipe,
     DetailsComponent,
     SimpleLoaderComponent,
+    PaginationComponent,
+    PaginationQueryParamsPipe,
   ],
   imports: [
     CommonModule,
@@ -164,6 +170,8 @@ export class WebpackTranslateLoader implements TranslateLoader {
     NgSelectModule,
     ObserversModule,
     SafePipeModule,
+    NgxPaginationModule,
+    LayoutModule,
     // NgScrollbarModule,
   ],
   entryComponents: [

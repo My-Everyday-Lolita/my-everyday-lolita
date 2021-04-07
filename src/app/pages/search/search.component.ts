@@ -1,8 +1,10 @@
-import { trigger, transition, style, animate, query, useAnimation } from '@angular/animations';
+import { trigger, transition, style, animate } from '@angular/animations';
+import { BreakpointObserver } from '@angular/cdk/layout';
 import { Component, HostBinding, OnDestroy, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { PaginationInstance } from 'ngx-pagination';
 import { interval, Subject } from 'rxjs';
 import { map, publish, takeUntil, tap } from 'rxjs/operators';
-import { itemsEnterAnimation, itemsLeaveAnimation } from 'src/app/features/animations/items.animation';
 import { Criterium, Item } from 'src/app/features/resources/items/items.model';
 import { ItemsService } from 'src/app/features/resources/items/items.service';
 import { UserContentService } from 'src/app/features/resources/user-content/user-content.service';
@@ -22,16 +24,6 @@ import { UserSignInService } from 'src/app/features/user/user-sign-in.service';
         animate('330ms linear', style({ opacity: 0, transform: 'translateY(5%)' }))
       ]),
     ]),
-    trigger('items', [
-      transition('* <=> *', [
-        query(':leave', [
-          useAnimation(itemsLeaveAnimation),
-        ], { optional: true }),
-        query(':enter', [
-          useAnimation(itemsEnterAnimation),
-        ], { optional: true })
-      ])
-    ]),
     trigger('searching', [
       transition(':enter', [
         style({ opacity: 0, transform: 'translateY(10%)' }),
@@ -50,13 +42,27 @@ export class SearchComponent implements OnInit, OnDestroy {
   displayLoader = false;
   loading = false;
   searching = 0;
+  paginationConfig: PaginationInstance = {
+    id: 'mel-pager',
+    itemsPerPage: 20,
+    currentPage: 1
+  };
 
   private unsubscriber = new Subject();
+  private breakpoints = ['(min-width: 700px)', '(min-width: 900px)', '(min-width: 1367px)'];
+  private breakpointsItemsPerPageMap: { [key: string]: number } = {
+    '(min-width: 700px)': 10,
+    '(min-width: 900px)': 10,
+    '(min-width: 1367px)': 10,
+  };
 
   constructor(
     private userSignInService: UserSignInService,
     private itemsService: ItemsService,
-    private userContentService: UserContentService
+    private userContentService: UserContentService,
+    private breakpointObserver: BreakpointObserver,
+    private router: Router,
+    private activatedRoute: ActivatedRoute
   ) {
   }
 
@@ -71,6 +77,20 @@ export class SearchComponent implements OnInit, OnDestroy {
     });
     this.itemsService.recentlyAdded().subscribe(response => {
       this.recentlyAddedItems = response || [];
+    });
+    this.breakpointObserver.observe(this.breakpoints).pipe(takeUntil(this.unsubscriber)).subscribe({
+      next: result => {
+        const itemsPerPage = Object.entries(result.breakpoints).reduce((acc, [breakpoint, value]) => {
+          if (value) {
+            acc += this.breakpointsItemsPerPageMap[breakpoint];
+          }
+          return acc;
+        }, 20);
+        if (this.paginationConfig.itemsPerPage !== itemsPerPage) {
+          this.paginationConfig.itemsPerPage = itemsPerPage;
+          this.router.navigate([], { queryParams: { ...this.activatedRoute.snapshot.queryParams, page: 1 }, replaceUrl: true });
+        }
+      }
     });
   }
 
@@ -114,6 +134,10 @@ export class SearchComponent implements OnInit, OnDestroy {
 
   trackByFn(index: number, item: Item): string {
     return item._variantId as string;
+  }
+
+  onPageChange(page: number): void {
+    this.paginationConfig.currentPage = page;
   }
 
 }
