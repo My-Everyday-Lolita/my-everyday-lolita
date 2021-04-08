@@ -13,7 +13,7 @@
 
 <ng-container *ngIf="searchForm.selectedCriteria.length === 0 && results.length === 0 && !loading; else resultTemplate">
   <p>{{ 'SEARCH.RECENTLY_ADDED' | translate }}</p>
-  <section *ngIf="recentlyAddedItems.length > 0" class="items" [@items]="results.length">
+  <section *ngIf="recentlyAddedItems.length > 0" class="items">
     <article *ngFor="let item of recentlyAddedItems; trackBy: trackByFn" class="item">
       <a [routerLink]="['/item', item._id]" class="img-container">
         <img [attr.src]="item | itemPhoto" appImageLoad alt="Item colorway photo">
