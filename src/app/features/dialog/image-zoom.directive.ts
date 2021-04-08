@@ -31,6 +31,9 @@ export class ImageZoomDirective {
   @HostListener('click')
   onClick(): void {
     const rect = this.elementRef.nativeElement.getBoundingClientRect();
+    const naturalWidth = this.elementRef.nativeElement.naturalWidth;
+    const naturalHeight = this.elementRef.nativeElement.naturalHeight;
+    const ratio = Math.min(window.innerWidth / naturalWidth, window.innerHeight / naturalHeight);
 
     this.open(this.url, {
       initialTop: rect.y,
@@ -39,8 +42,8 @@ export class ImageZoomDirective {
       initialHeight: rect.height,
       finalTop: window.innerHeight / 2,
       finalLeft: window.innerWidth / 2,
-      finalWidth: window.innerWidth,
-      finalHeight: window.innerHeight,
+      finalWidth: Math.min(naturalWidth * ratio, naturalWidth),
+      finalHeight: Math.min(naturalHeight * ratio, naturalHeight),
     });
   }
 
