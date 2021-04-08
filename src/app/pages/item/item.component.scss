@@ -101,6 +101,19 @@ button.cancel-button {
   }
 }
 
+button.duplicate {
+  position: fixed;
+  z-index: 1004;
+  bottom: 88px;
+  right: var(--spacing-medium);
+
+  svg {
+    fill: var(--app-button-default-text-color);
+    width: 30px;
+    height: 30px;
+  }
+}
+
 app-details.right {
   position: absolute;
   top: 0;

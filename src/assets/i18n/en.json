@@ -122,6 +122,7 @@
     "CANCEL": "Cancel",
     "ADD_TO_CLOSET": "Add to <span class=\"visualy-hidden\">closet</span>",
     "ADD_TO_WISHLIST": "Add to <span class=\"visualy-hidden\">wishlist</span>",
+    "DUPLICATE": "Duplicate this item",
     "TITLES": {
       "NEW": "Add new item"
     },

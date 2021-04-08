@@ -312,7 +312,7 @@
       <span class="clear-icon very-small"></span>
     </button>
 
-    <button type="submit" app-button class="circle" color="accent" *ngIf="form" [disabled]="(form.invalid && editable)">
+    <button type="submit" app-button class="circle" color="accent" *ngIf="form" [disabled]="(form.invalid && editable) || forceDisabled">
       <span class="visualy-hidden">{{ 'ITEM.SUBMIT' | translate }}</span>
       <svg aria-hidden="true" *ngIf="!displayLoader">
         <use xlink:href="#save-icon" />
@@ -321,6 +321,13 @@
     </button>
   </form>
 </ng-template>
+
+<button type="button" app-button class="circle duplicate" *ngIf="isAdmin && !isNew" (click)="duplicate()">
+  <span class="visualy-hidden">{{ 'ITEM.DUPLICATE' | translate }}</span>
+  <svg>
+    <use xlink:href="#content-copy" />
+  </svg>
+</button>
 
 <button type="button" app-button class="circle toggle-edit" color="accent" *ngIf="!editing && editable" (click)="toggleEditMode()">
   <span class="visualy-hidden">{{ 'ITEM.TOGGLE_EDIT_MODE' | translate }}</span>

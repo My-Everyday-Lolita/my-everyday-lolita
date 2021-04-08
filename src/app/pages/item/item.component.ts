@@ -4,9 +4,9 @@ import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@ang
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { interval, Subject } from 'rxjs';
-import { map, publish, takeUntil, tap } from 'rxjs/operators';
+import { delay, map, publish, takeUntil, tap } from 'rxjs/operators';
 import { Brand } from 'src/app/features/resources/brands/brands.model';
-import { Category, ExtendedCategory } from 'src/app/features/resources/categories/categories.model';
+import { ExtendedCategory } from 'src/app/features/resources/categories/categories.model';
 import { Color } from 'src/app/features/resources/colors/colors.model';
 import { Feature } from 'src/app/features/resources/features/features.model';
 import { Item, ItemVariant } from 'src/app/features/resources/items/items.model';
@@ -44,10 +44,12 @@ export class ItemComponent implements OnInit, OnDestroy {
   colors: Color[] = [];
   editing = false;
   editable = true;
-  item: Item;
+  item!: Item;
   signedIn = false;
   displayLoader = false;
   availableFeatures: Feature[] = [];
+  isAdmin?: boolean;
+  forceDisabled?: boolean;
 
   substyles = [
     'Sweet lolita',
@@ -77,6 +79,7 @@ export class ItemComponent implements OnInit, OnDestroy {
   ];
 
   private unsubscriber = new Subject();
+  private unsubscriber2 = new Subject();
 
   constructor(
     private title: TitleService,
@@ -87,7 +90,9 @@ export class ItemComponent implements OnInit, OnDestroy {
     private router: Router,
     private itemsService: ItemsService,
     private toastr: ToastrService
-  ) {
+  ) { }
+
+  init(): void {
     this.id = this.activatedRoute.snapshot.params.id;
     this.brands = this.activatedRoute.snapshot.data.brands;
     this.colors = this.activatedRoute.snapshot.data.colors;
@@ -129,37 +134,52 @@ export class ItemComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
 
-    this.form.valueChanges.pipe(takeUntil(this.unsubscriber)).subscribe(values => {
-      sessionStorage.setItem(this.itemsService.TMP_SAVE_KEY, JSON.stringify(values));
-    });
+    this.activatedRoute.params.pipe(takeUntil(this.unsubscriber)).subscribe({
+      next: () => {
+        this.unsubscriber2.next();
+        this.init();
 
-    this.category.valueChanges.pipe(takeUntil(this.unsubscriber)).subscribe({
-      next: value => {
-        this.availableFeatures = this.getAvailableFeatures(value);
-        this.features.setValue(this.features.value.filter((feature: Feature) => this.availableFeatures.some(f => f._id === feature._id)));
+        this.form.valueChanges.pipe(takeUntil(this.unsubscriber2)).subscribe(values => {
+          sessionStorage.setItem(this.itemsService.TMP_SAVE_KEY, JSON.stringify(values));
+        });
+
+        this.category.valueChanges.pipe(takeUntil(this.unsubscriber2)).subscribe({
+          next: value => {
+            this.availableFeatures = this.getAvailableFeatures(value);
+            let newFeatureValue = [];
+            if (this.features.value) {
+              newFeatureValue = this.features.value.filter((feature: Feature) => this.availableFeatures.some(f => f._id === feature._id));
+            }
+            this.features.setValue(newFeatureValue);
+          }
+        });
+
+        this.userSignInService.signedIn$.pipe(takeUntil(this.unsubscriber2)).subscribe(signedIn => {
+          this.signedIn = signedIn;
+          this.isAdmin = this.userService.isAdmin();
+          this.editable = signedIn && (this.isNew || this.item.owner === this.userService.user?.sub || this.userService.isAdmin());
+          if (!signedIn && this.isNew) {
+            this.router.navigateByUrl('/', { replaceUrl: true });
+          }
+        });
+
+        setTimeout(() => {
+          if (this.isNew) {
+            this.title.set('ITEM.TITLES.NEW');
+          } else {
+            this.updateTitle();
+          }
+        });
       }
     });
 
-    this.userSignInService.signedIn$.pipe(takeUntil(this.unsubscriber)).subscribe(signedIn => {
-      this.signedIn = signedIn;
-      this.editable = signedIn && (this.isNew || this.item.owner === this.userService.user?.sub || this.userService.isAdmin());
-      if (!signedIn && this.isNew) {
-        this.router.navigateByUrl('/', { replaceUrl: true });
-      }
-    });
-
-    setTimeout(() => {
-      if (this.isNew) {
-        this.title.set('ITEM.TITLES.NEW');
-      } else {
-        this.updateTitle();
-      }
-    });
   }
 
   ngOnDestroy(): void {
     this.unsubscriber.next();
     this.unsubscriber.complete();
+    this.unsubscriber2.next();
+    this.unsubscriber2.complete();
   }
 
   toggleEditMode(): void {
@@ -207,7 +227,18 @@ export class ItemComponent implements OnInit, OnDestroy {
     this.form.reset(this.item || null);
   }
 
+  duplicate(): void {
+    const clone: Item = JSON.parse(JSON.stringify(this.form.value));
+    delete clone._id;
+    clone.variants.forEach(variant => {
+      (variant.photos as any) = [null];
+    });
+    sessionStorage.setItem(this.itemsService.TMP_SAVE_KEY, JSON.stringify(clone));
+    this.router.navigateByUrl('/item/new', { replaceUrl: true });
+  }
+
   onSubmit(): void {
+    this.forceDisabled = true;
     const values = JSON.parse(JSON.stringify(this.form.value));
     this.cleanValues(values);
     let request$;
@@ -223,6 +254,7 @@ export class ItemComponent implements OnInit, OnDestroy {
           this.editing = false;
           sessionStorage.removeItem(this.itemsService.TMP_SAVE_KEY);
           this.displayLoader = false;
+          this.forceDisabled = false;
         })
       );
     } else {
@@ -234,7 +266,8 @@ export class ItemComponent implements OnInit, OnDestroy {
           this.toggleEditMode();
           this.updateTitle();
           this.displayLoader = false;
-        })
+          this.forceDisabled = false;
+        }),
       );
     }
     if (request$) {
