@@ -136,7 +136,8 @@
       <label appLabel>
         {{ 'ITEM.FIELDS.LABELS.BRAND' | translate }}
       </label>
-      <ng-select appInput formControlName="brand" [items]="brands" bindLabel="name" [searchFn]="searchFn" [addTag]="addCustomBrand" required>
+      <ng-select appInput formControlName="brand" [items]="brands" bindLabel="name" [searchFn]="searchFn" [addTag]="addCustomBrand" [addTagText]="'ITEM.ADD_TAG.BRAND' | translate"
+        required>
         <ng-template ng-option-tmp let-item="item">
           <span *ngIf="!item.shortname">{{ item.name }}</span>
           <span *ngIf="item.shortname">{{ item.name }} ({{ item.shortname }})</span>
@@ -267,7 +268,11 @@
             <p [innerHTML]="'ITEM.HELPS.KEYWORDS' | translate"></p>
           </div>
         </app-details>
-        <ng-select appInput formControlName="keywords" [multiple]="true" [items]="[]" [addTag]="true" [selectOnTab]="true" (changeEvent)="additionalFields.onContentChange()">
+        <ng-select appInput formControlName="keywords" [multiple]="true" [items]="[]" [addTag]="true" [addTagText]="'ITEM.ADD_TAG.KEYWORDS' | translate" [selectOnTab]="true"
+          (changeEvent)="additionalFields.onContentChange()">
+          <ng-template ng-notfound-tmp>
+            <div class="ng-option ng-option-disabled" [innerHTML]="'ITEM.NOT_FOUND_TEXT.KEYWORDS' | translate"></div>
+          </ng-template>
           <ng-template ng-label-tmp let-item="item" let-clear="clear">
             <span class="ng-value-content">
               <span class="ng-value-icon left" (click)="clear(item);" aria-hidden="true">×</span>
@@ -288,8 +293,8 @@
             <p [innerHTML]="'ITEM.HELPS.SUBSTYLES' | translate"></p>
           </div>
         </app-details>
-        <ng-select appInput formControlName="substyles" [multiple]="true" [items]="substyles" [addTag]="true" [selectOnTab]="true"
-          (changeEvent)="additionalFields.onContentChange()">
+        <ng-select appInput formControlName="substyles" [multiple]="true" [items]="substyles" [addTag]="true" [addTagText]="'ITEM.ADD_TAG.SUBSTYLES' | translate"
+          [selectOnTab]="true" (changeEvent)="additionalFields.onContentChange()">
           <ng-template ng-label-tmp let-item="item" let-clear="clear">
             <span class="ng-value-content">
               <span class="ng-value-icon left" (click)="clear(item);" aria-hidden="true">×</span>

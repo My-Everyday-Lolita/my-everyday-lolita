@@ -112,7 +112,8 @@
     },
     "ADD": {
       "LABEL": "Add new item"
-    }
+    },
+    "ADD_TAG": "Search with the keyword"
   },
   "ITEM": {
     "REQUIRED_TEXT": "Fields marked with an * are mandatory.",
@@ -171,6 +172,14 @@
     "TOASTS": {
       "NEW_SUCCESS": "Oh yeah! Successfully created.",
       "UPDATE_SUCCESS": "Oh yeah! Successfully updated."
+    },
+    "ADD_TAG": {
+      "BRAND": "Add a new brand",
+      "KEYWORDS": "Add a keyword",
+      "SUBSTYLES": "Add a substyle/theme"
+    },
+    "NOT_FOUND_TEXT": {
+      "KEYWORDS": "Enter any keywords to describe<br> your item"
     }
   },
   "MY_CLOSET": {

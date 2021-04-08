@@ -4,7 +4,8 @@
     <div class="form-field">
       <label class="visualy-hidden" for="criteria-select">{{ 'SEARCH.FIELDS.LABELS.FILTER' | translate }}</label>
       <ng-select id="criteria-select" aria-describedby="criteria-select-description" formControlName="criteria" [virtualScroll]="true" [items]="criteria" bindLabel="displayValue"
-        [multiple]="true" [placeholder]="placeholder" [searchFn]="searchCriterias" [addTag]="enableKeywords && addKeywords" class="padding-right">
+        [multiple]="true" [placeholder]="placeholder" [searchFn]="searchCriterias" [addTag]="enableKeywords && addKeywords" [addTagText]="'SEARCH.ADD_TAG' | translate"
+        class="padding-right">
         <ng-template ng-option-tmp let-item="item">
           <span [ngClass]="item._lvlClass" class="layout column">
             {{ item.displayValue }}
