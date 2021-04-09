@@ -1,0 +1,4 @@
+<div class="content">
+  <ng-content></ng-content>
+</div>
+<div class="info" [innerHTML]="'APP.PAGINATION.INFO' | translate:{start: id | paginateInfo:'start', end: id | paginateInfo:'end', total: id | paginateInfo:'total'}"></div>

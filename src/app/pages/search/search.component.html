@@ -39,7 +39,9 @@
 </ng-container>
 <ng-template #resultTemplate>
   <section *ngIf="results.length > 0; else noResults">
-    <app-pagination [id]="'mel-pager'" (pageChange)="onPageChange($event)"></app-pagination>
+    <app-pagination-info [id]="'mel-pager'">
+      <app-pagination [id]="'mel-pager'" (pageChange)="onPageChange($event)"></app-pagination>
+    </app-pagination-info>
     <div class="items">
       <article *ngFor="let item of results | paginate: paginationConfig" class="item">
         <a [routerLink]="['/item', item._id]" class="img-container">

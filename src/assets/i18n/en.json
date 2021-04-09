@@ -20,6 +20,9 @@
     "HOME_LINK": "Go back to the home page",
     "DETAILS": {
       "CLOSE": "Close"
+    },
+    "PAGINATION": {
+      "INFO": "{{start}} - {{end}} of {{total}}"
     }
   },
   "PAGES": {
