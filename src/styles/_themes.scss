@@ -32,19 +32,16 @@
   --strip-5-color: #f7bff2;
 
   // BUTTON
-  --app-button-primary: #424242;
-  --app-button-primary-text-color: #eee;
-  --app-button-primary-shadow: #232323;
-  --app-button-accent: #424242;
-  --app-button-accent-text-color: #eee;
-  --app-button-accent-shadow: #232323;
-  --app-button-default: #424242;
-  --app-button-default-text-color: #eee;
-  --app-button-default-shadow: #232323;
-  --app-button-discreet: #999999;
-  --app-button-discreet-text-color: #fff;
-  --app-button-discreet-shadow: #2e2e2e;
   --app-button-theme: #eee;
+  --app-button: #424242;
+  --app-button-text: #eee;
+  --app-button-shadow: #232323;
+
+  .discreet {
+    --app-button: #999999;
+    --app-button-text: #fff;
+    --app-button-shadow: #2e2e2e;
+  }
 
   --menu-background: #424242;
   --menu-foreground: #232323;
@@ -101,6 +98,26 @@
   --item-field-section: #c1c1c1;
 
   --simple-loader-color: #424242;
+
+  --tada: #424242;
+  .primary {
+    --tada: #424242;
+  }
+  .primary-shadow {
+    --tada: #424242;
+  }
+  .accent {
+    --tada: #424242;
+  }
+  .accent-shadow {
+    --tada: #424242;
+  }
+  .default {
+    --tada: #424242;
+  }
+  .default-shadow {
+    --tada: #424242;
+  }
 }
 
 body.theme-sweet {
@@ -132,16 +149,54 @@ body.theme-sweet {
   --strip-5-color: #f7bff2;
 
   // BUTTON
-  --app-button-primary: #f7bff2;
-  --app-button-primary-text-color: #000;
-  --app-button-primary-shadow: #cc85ff;
-  --app-button-accent: #92c8f4;
-  --app-button-accent-text-color: #fff0fe;
-  --app-button-accent-shadow: #6396d3;
-  --app-button-default: #424242;
-  --app-button-default-text-color: #eee;
-  --app-button-default-shadow: #232323;
   --app-button-theme: #fff;
+  --app-button: #424242;
+  --app-button-text: #eee;
+  --app-button-shadow: #232323;
+
+  .primary {
+    --app-button: #f7bff2;
+    --app-button-text: #000;
+    --app-button-shadow: #cc85ff;
+  }
+
+  .accent {
+    --app-button: #92c8f4;
+    --app-button-text: #fff0fe;
+    --app-button-shadow: #6396d3;
+  }
+
+  .discreet {
+    --app-button: #999999;
+    --app-button-text: #fff;
+    --app-button-shadow: #2e2e2e;
+  }
+
+  .warn {
+    --app-button: #cc2d2d;
+    --app-button-text: #fff;
+    --app-button-shadow: #721a1a;
+  }
+
+  --tada: #424242;
+  .primary {
+    --tada: #f7bff2;
+  }
+  .primary-shadow {
+    --tada: #cc85ff;
+  }
+  .accent {
+    --tada: #92c8f4;
+  }
+  .accent-shadow {
+    --tada: #6396d3;
+  }
+  .default-shadow {
+    --tada: #232323;
+  }
+  .warn-shadow {
+    --tada: #721a1a;
+  }
 
   --menu-background: #f7bff2;
   --menu-foreground: #cc85ff;
@@ -247,18 +302,53 @@ body.theme-gothic {
   --strip-5-color: #000;
 
   // BUTTON
-  --app-button-primary: #322187;
-  --app-button-primary-text-color: #fff;
-  --app-button-primary-shadow: #000;
-  --app-button-accent: #3f0670;
-  --app-button-accent-text-color: #fff0fe;
-  --app-button-accent-shadow: #1c0638;
-  --app-button-default: #424242;
-  --app-button-default-text-color: #eee;
-  --app-button-default-shadow: #232323;
-  --app-button-discreet: #424242;
-  --app-button-discreet-text-color: #fff;
-  --app-button-discreet-shadow: #000000;
+  --app-button: #424242;
+  --app-button-text: #eee;
+  --app-button-shadow: #232323;
+
+  .primary {
+    --app-button: #322187;
+    --app-button-text: #fff;
+    --app-button-shadow: #000;
+  }
+
+  .accent {
+    --app-button: #3f0670;
+    --app-button-text: #fff0fe;
+    --app-button-shadow: #1c0638;
+  }
+
+  .discreet {
+    --app-button: #424242;
+    --app-button-text: #fff;
+    --app-button-shadow: #000000;
+  }
+
+  .warn {
+    --app-button: #cc2d2d;
+    --app-button-text: #fff;
+    --app-button-shadow: #721a1a;
+  }
+
+  --tada: #424242;
+  .primary {
+    --tada: #322187;
+  }
+  .primary-shadow {
+    --tada: #000;
+  }
+  .accent {
+    --tada: #3f0670;
+  }
+  .accent-shadow {
+    --tada: #1c0638;
+  }
+  .default-shadow {
+    --tada: #232323;
+  }
+  .warn-shadow {
+    --tada: #721a1a;
+  }
 
   --menu-background: #fdf2f8;
   --menu-foreground: #000;
@@ -327,6 +417,10 @@ body.theme-gothic {
   --memo-4: #a6a0ff;
 
   --simple-loader-color: #fff;
+
+  --pagination-color: #000;
+  --pagination-current: #3f0670;
+  --pagination-current-color: #fff;
 }
 
 body.theme-classic {
@@ -358,15 +452,47 @@ body.theme-classic {
   --strip-5-color: #b50000;
 
   // BUTTON
-  --app-button-primary: #d32a09;
-  --app-button-primary-text-color: #fff;
-  --app-button-primary-shadow: #892806;
-  --app-button-accent: #875533;
-  --app-button-accent-text-color: #fff0fe;
-  --app-button-accent-shadow: #422a1a;
-  --app-button-default: #424242;
-  --app-button-default-text-color: #eee;
-  --app-button-default-shadow: #232323;
+  --app-button: #424242;
+  --app-button-text: #eee;
+  --app-button-shadow: #232323;
+
+  .primary {
+    --app-button: #d32a09;
+    --app-button-text: #fff;
+    --app-button-shadow: #892806;
+  }
+
+  .accent {
+    --app-button: #875533;
+    --app-button-text: #fff0fe;
+    --app-button-shadow: #422a1a;
+  }
+
+  .warn {
+    --app-button: #1b1b1b;
+    --app-button-text: #fff;
+    --app-button-shadow: #000000;
+  }
+
+  --tada: #424242;
+  .primary {
+    --tada: #d32a09;
+  }
+  .primary-shadow {
+    --tada: #892806;
+  }
+  .accent {
+    --tada: #875533;
+  }
+  .accent-shadow {
+    --tada: #422a1a;
+  }
+  .default-shadow {
+    --tada: #232323;
+  }
+  .warn-shadow {
+    --tada: #000000;
+  }
 
   --menu-background: #edbe69;
   --menu-foreground: #b50000;
@@ -430,4 +556,8 @@ body.theme-classic {
   --memo-4: #b91313;
 
   --simple-loader-color: #fff;
+
+  --pagination-color: #000;
+  --pagination-current: #875533;
+  --pagination-current-color: #fff;
 }

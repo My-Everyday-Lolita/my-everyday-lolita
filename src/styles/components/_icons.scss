@@ -12,6 +12,7 @@
     width: 50%;
     height: 6px;
     border-radius: 8px;
+    background: var(--app-button-text);
   }
 
   &::before {
@@ -19,25 +20,6 @@
   }
   &::after {
     transform: translate(-50%, -50%) rotate(90deg);
-  }
-
-  .primary & {
-    &::before,
-    &::after {
-      background: var(--app-button-primary-text-color);
-    }
-  }
-  .accent & {
-    &::before,
-    &::after {
-      background: var(--app-button-accent-text-color);
-    }
-  }
-  .default & {
-    &::before,
-    &::after {
-      background: var(--app-button-default-text-color);
-    }
   }
 
   &.small {
@@ -70,6 +52,7 @@
     width: 50%;
     height: 6px;
     border-radius: 8px;
+    background: var(--app-button-text);
   }
 
   &::before {
@@ -77,31 +60,6 @@
   }
   &::after {
     transform: translate(-50%, -50%) rotate(-45deg);
-  }
-
-  .primary & {
-    &::before,
-    &::after {
-      background: var(--app-button-primary-text-color);
-    }
-  }
-  .accent & {
-    &::before,
-    &::after {
-      background: var(--app-button-accent-text-color);
-    }
-  }
-  .default & {
-    &::before,
-    &::after {
-      background: var(--app-button-default-text-color);
-    }
-  }
-  .discreet & {
-    &::before,
-    &::after {
-      background: #fff;
-    }
   }
 
   &.small {

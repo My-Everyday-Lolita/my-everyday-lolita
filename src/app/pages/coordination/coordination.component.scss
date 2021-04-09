@@ -136,7 +136,7 @@ button[type="submit"] {
     font-size: var(--font-size-very-small);
     border-bottom-left-radius: 16px;
     border-bottom-right-radius: 16px;
-    color: var(--app-button-primary-text-color);
+    color: var(--app-button-text);
   }
 }
 
@@ -148,7 +148,7 @@ button.memo {
   margin-top: var(--spacing-big);
   display: flex;
   padding: var(--spacing-medium) var(--spacing-medium);
-  color: var(--app-button-primary-text-color);
+  color: var(--app-button-text);
 
   .memo-value {
     font-family: "Gamja Flower";

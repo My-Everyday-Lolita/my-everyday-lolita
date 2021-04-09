@@ -25,8 +25,12 @@ export class ButtonComponent {
     return this.color === 'default';
   }
 
-  @HostBinding('class.discreet') get userLinkClass(): boolean {
+  @HostBinding('class.discreet') get discretClass(): boolean {
     return this.color === 'discreet';
+  }
+
+  @HostBinding('class.warn') get warnClass(): boolean {
+    return this.color === 'warn';
   }
 
   constructor(

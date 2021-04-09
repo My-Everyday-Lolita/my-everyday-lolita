@@ -32,7 +32,6 @@ p {
 }
 
 form {
-  padding-bottom: 200px;
   width: 290px;
   margin-top: 140px;
 
@@ -108,7 +107,7 @@ button.duplicate {
   right: var(--spacing-medium);
 
   svg {
-    fill: var(--app-button-default-text-color);
+    fill: var(--app-button-text);
     width: 30px;
     height: 30px;
   }
@@ -131,7 +130,7 @@ app-details.right {
     position: absolute;
     top: var(--spacing);
     right: 34px + 8px;
-    border: 1px solid var(--app-button-primary-shadow);
+    border: 1px solid var(--app-button-shadow);
   }
 
   .photo-fieldset {
@@ -278,4 +277,9 @@ app-form-field:not(:first-of-type) {
 
 .app-clouds-wrapper {
   padding-bottom: var(--spacing-bigger);
+}
+
+.delete-item {
+  margin-top: 200px;
+  margin-bottom: 100px;
 }

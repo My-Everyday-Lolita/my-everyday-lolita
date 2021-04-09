@@ -15,9 +15,9 @@
 }
 
 :host:not(.no-style) {
-  background-color: var(--app-button-default);
-  box-shadow: 5px 4px 0 var(--app-button-default-shadow);
-  color: var(--app-button-default-text-color);
+  background-color: var(--app-button);
+  box-shadow: 5px 4px 0 var(--app-button-shadow);
+  color: var(--app-button-text);
   border-radius: 16px;
   display: flex;
   font-family: Caveat;
@@ -74,35 +74,9 @@
     opacity: 0.3;
     background-color: transparent;
     transition: all 220ms linear;
-  }
 
-  &.primary {
-    background-color: var(--app-button-primary);
-    box-shadow: 5px 4px 0 var(--app-button-primary-shadow);
-    color: var(--app-button-primary-text-color);
-
-    &:focus::before {
-      background-color: var(--app-button-primary-shadow);
-    }
-  }
-
-  &.accent {
-    background-color: var(--app-button-accent);
-    box-shadow: 5px 4px 0 var(--app-button-accent-shadow);
-    color: var(--app-button-accent-text-color);
-
-    &:focus::before {
-      background-color: var(--app-button-accent-shadow);
-    }
-  }
-
-  &.discreet {
-    background-color: var(--app-button-discreet);
-    box-shadow: 5px 4px 0 var(--app-button-discreet-shadow);
-    color: var(--app-button-discreet-text-color);
-
-    &:focus::before {
-      background-color: var(--app-button-discreet-shadow);
+    &:focus {
+      background-color: var(--app-button-shadow);
     }
   }
 
@@ -114,18 +88,8 @@
     &,
     &:visited,
     &:link {
-      color: var(--app-button-default-text-color);
+      color: var(--app-button-text);
       text-decoration: none;
-
-      &.primary {
-        color: var(--app-button-primary-text-color);
-      }
-      &.accent {
-        color: var(--app-button-accent-text-color);
-      }
-      &.discreet {
-        color: var(--app-button-discreet-text-color);
-      }
     }
   }
 
@@ -142,31 +106,13 @@
     &.small {
       width: 42px;
       height: 42px;
-
-      &.primary {
-        box-shadow: 2px 2px 0 var(--app-button-primary-shadow);
-      }
-      &.accent {
-        box-shadow: 2px 2px 0 var(--app-button-accent-shadow);
-      }
-      &.default {
-        box-shadow: 2px 2px 0 var(--app-button-default-shadow);
-      }
+      box-shadow: 2px 2px 0 var(--app-button-shadow);
     }
 
     &.very-small {
       width: 34px;
       height: 34px;
-
-      &.primary {
-        box-shadow: 2px 2px 0 var(--app-button-primary-shadow);
-      }
-      &.accent {
-        box-shadow: 2px 2px 0 var(--app-button-accent-shadow);
-      }
-      &.default {
-        box-shadow: 2px 2px 0 var(--app-button-default-shadow);
-      }
+      box-shadow: 2px 2px 0 var(--app-button-shadow);
     }
   }
 

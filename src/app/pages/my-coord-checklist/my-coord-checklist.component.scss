@@ -19,7 +19,7 @@ button.trash-button {
     transform: translate(-50%, -50%);
     width: 28px;
     height: 36px;
-    fill: var(--app-button-default-text-color);
+    fill: var(--app-button-text);
 
     &.opened {
       width: 28px;
