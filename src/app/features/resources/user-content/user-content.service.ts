@@ -235,14 +235,15 @@ export class UserContentService {
         if (criteria.length === 0) {
           return of(true);
         }
-        return this.itemsService.findByCriteria(criteria, 0, 500).pipe(map(results => {
+        return this.itemsService.findByCriteria(criteria).pipe(map(results => {
           for (const resultItem of results) {
             const variantItemIds = resultItem.variants.map(v => `${resultItem._id}:${v.colors.map(c => c._id).join(',')}`);
             for (const resultVariant of resultItem.variants) {
               const variantId = `${resultItem._id}:${resultVariant.colors.map(c => c._id).join(',')}`;
               if (items.find(i => i?.id === variantId)) {
                 const clone = JSON.parse(JSON.stringify(resultItem)) as Item;
-                this.cacheService.put(variantId, { ...clone, variants: [clone.variants[0]] });
+                const index = resultItem.variants.findIndex(item => item === resultVariant);
+                this.cacheService.put(variantId, { ...clone, variants: [clone.variants[index]] });
               }
             }
             const wrongVariantItems = variantItems
