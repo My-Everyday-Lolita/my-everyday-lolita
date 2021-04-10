@@ -130,7 +130,7 @@
 </ng-container>
 
 <ng-template #formTemplate>
-  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="edit-form">
     <p [innerHTML]="'ITEM.REQUIRED_TEXT' | translate"></p>
     <app-form-field>
       <label appLabel>
@@ -320,7 +320,7 @@
       <app-simple-loader class="accent" *ngIf="displayLoader" [height]="24"></app-simple-loader>
     </button>
 
-    <button app-button type="button" color="warn" class="small fw-normal delete-item">
+    <button app-button type="button" color="warn" class="small fw-normal delete-item" (click)="openDeleteModal()">
       Delete this item
     </button>
   </form>
@@ -414,4 +414,22 @@
       </app-form-field>
     </div>
   </ng-container>
+</ng-template>
+
+<ng-template #deleteItemModal let-ref let-data="data">
+  <app-default-dialog-content [ref]="ref">
+    <div [appDialognInnerContent]="ref" [padding]="32">
+      <form class="delete-form" [formGroup]="deleteForm" (ngSubmit)="deleteItem(ref)">
+        <p [innerHTML]="'ITEM.DELETE_PARAGRAPH' | translate:{id: id}"></p>
+        <app-form-field>
+          <label appLabel>{{ 'ITEM.FIELDS.LABELS.DELETE_ITEM_ID' | translate }}</label>
+          <input type="text" formControlName="id" appInput required autocomplete="off">
+        </app-form-field>
+        <div class="actions layout space-between">
+          <button type="button" app-button class="small fw-normal" color="default" (click)="ref.close()">Cancel</button>
+          <button type="submit" app-button class="small fw-normal" color="warn" [disabled]="deleteForm.invalid">Delete</button>
+        </div>
+      </form>
+    </div>
+  </app-default-dialog-content>
 </ng-template>

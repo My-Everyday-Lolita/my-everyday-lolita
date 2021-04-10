@@ -35,6 +35,14 @@ export class ItemsService {
     return this.http.get<Item>(`${environment.domains.mel}/api/resources/items/${id}`);
   }
 
+  delete(id: string): Observable<any> {
+    return this.http.delete<any>(`${environment.domains.mel}/api/resources/items/${id}`, {
+      headers: new HttpHeaders({
+        Authorization: 'auto'
+      })
+    });
+  }
+
   findByCriteria(criteria: Criterium[], skip = 0, limit = 60): Observable<Item[]> {
     const params = new HttpParams({
       fromObject: {

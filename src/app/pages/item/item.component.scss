@@ -31,7 +31,7 @@ p {
   margin-top: var(--spacing);
 }
 
-form {
+form.edit-form {
   width: 290px;
   margin-top: 140px;
 
@@ -282,4 +282,21 @@ app-form-field:not(:first-of-type) {
 .delete-item {
   margin-top: 200px;
   margin-bottom: 100px;
+}
+
+.delete-form {
+  p {
+    margin-top: var(--spacing-big);
+  }
+
+  .actions {
+    width: 100%;
+    margin-top: var(--spacing-big);
+    padding: var(--spacing);
+    box-sizing: border-box;
+  }
+
+  [type="submit"] {
+    margin-top: 0;
+  }
 }

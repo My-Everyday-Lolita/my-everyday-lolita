@@ -23,7 +23,8 @@
     },
     "PAGINATION": {
       "INFO": "{{start}} - {{end}} of {{total}}"
-    }
+    },
+    "CLOSE_MODAL": "Close"
   },
   "PAGES": {
     "TITLES": {
@@ -126,6 +127,7 @@
     "ADD_TO_CLOSET": "Add to <span class=\"visualy-hidden\">closet</span>",
     "ADD_TO_WISHLIST": "Add to <span class=\"visualy-hidden\">wishlist</span>",
     "DUPLICATE": "Duplicate this item",
+    "DELETE_PARAGRAPH": "Do you really want to delete this item?<br>This action is definitive and cannot be undone.<br>To delete the item copy paste the identifier in the field below: \"{{id}}\"",
     "TITLES": {
       "NEW": "Add new item"
     },
@@ -142,7 +144,8 @@
         "MEASURMENTS": "Measurments",
         "ESTIMATED_PRICE": "Estimated price",
         "KEYWORDS": "Keywords",
-        "SUBSTYLES": "Substyle(s) / Theme(s)"
+        "SUBSTYLES": "Substyle(s) / Theme(s)",
+        "DELETE_ITEM_ID": "Item identifier"
       },
       "SECTIONS": {
         "FEATURES": "Features",
@@ -246,7 +249,6 @@
       },
       "EMPTY_FIELD": "(Keep this field empty)"
     },
-    "CLOSE_MODAL": "Close",
     "EMPTY_MEMO": "- Bring bunny plush for the photoshoot ₍ᐢ ̥ ̞ ̥ᐢ₎\n- Bring my camera (*•̀ᴗ•́*)و ̑̑ ",
     "MODAL": {
       "TITLES": {

@@ -1,0 +1,71 @@
+<div class="dialog-inner-container coordination-modal">
+  <div class="deco-wrapper">
+    <svg class="deco top right r45" aria-hidden="true">
+      <use xlink:href="#modal-deco-1" />
+    </svg>
+    <svg class="deco top left-middle small" aria-hidden="true">
+      <use xlink:href="#modal-deco-1" />
+    </svg>
+    <svg class="deco top-1 left small" aria-hidden="true">
+      <use xlink:href="#modal-deco-1" />
+    </svg>
+    <svg class="deco top-2-5 right small" aria-hidden="true">
+      <use xlink:href="#modal-deco-1" />
+    </svg>
+    <svg class="deco bottom left medium" aria-hidden="true">
+      <use xlink:href="#modal-deco-1" />
+    </svg>
+    <svg class="deco bottom-2-5 left small" aria-hidden="true">
+      <use xlink:href="#modal-deco-1" />
+    </svg>
+    <svg class="deco bottom right-middle small" aria-hidden="true">
+      <use xlink:href="#modal-deco-1" />
+    </svg>
+    <svg class="deco top left medium r45" aria-hidden="true">
+      <use xlink:href="#modal-deco-2" />
+    </svg>
+    <svg class="deco top-2-5 left small" aria-hidden="true">
+      <use xlink:href="#modal-deco-2" />
+    </svg>
+    <svg class="deco top-middle right medium" aria-hidden="true">
+      <use xlink:href="#modal-deco-2" />
+    </svg>
+    <svg class="deco bottom middle" aria-hidden="true">
+      <use xlink:href="#modal-deco-2" />
+    </svg>
+    <svg class="deco top middle" aria-hidden="true">
+      <use xlink:href="#modal-deco-3" />
+    </svg>
+    <svg class="deco top right-middle small" aria-hidden="true">
+      <use xlink:href="#modal-deco-3" />
+    </svg>
+    <svg class="deco top-1 right small" aria-hidden="true">
+      <use xlink:href="#modal-deco-3" />
+    </svg>
+    <svg class="deco top-middle left r45 medium" aria-hidden="true">
+      <use xlink:href="#modal-deco-3" />
+    </svg>
+    <svg class="deco bottom right r45 medium" aria-hidden="true">
+      <use xlink:href="#modal-deco-3" />
+    </svg>
+    <svg class="deco bottom-1 right medium" aria-hidden="true">
+      <use xlink:href="#modal-deco-3" />
+    </svg>
+    <svg class="deco bottom-2-5 right small" aria-hidden="true">
+      <use xlink:href="#modal-deco-3" />
+    </svg>
+    <svg class="deco bottom left-middle small" aria-hidden="true">
+      <use xlink:href="#modal-deco-3" />
+    </svg>
+    <svg class="deco bottom-1-5 left small" aria-hidden="true">
+      <use xlink:href="#modal-deco-3" />
+    </svg>
+  </div>
+  <button app-button color="default" class="circle small close-modal no-shadow" (click)="ref.close()">
+    <span class="visualy-hidden">{{ 'APP.CLOSE_MODAL' | translate }}</span>
+    <span class="clear-icon very-small"></span>
+  </button>
+  <div class="dialog-inner-content">
+    <ng-content></ng-content>
+  </div>
+</div>

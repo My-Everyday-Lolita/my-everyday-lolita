@@ -78,6 +78,7 @@ import { PaginationComponent } from './features/pagination/pagination/pagination
 import { PaginationQueryParamsPipe } from './features/pagination/pagination-query-params.pipe';
 import { PaginationInfoComponent } from './features/pagination/pagination-info/pagination-info.component';
 import { PaginateInfoPipe } from './features/pagination/paginate-info.pipe';
+import { DefaultDialogContentComponent } from './features/dialog/default-dialog-content/default-dialog-content.component';
 // import { NgScrollbarModule } from 'ngx-scrollbar';
 
 registerLocaleData(localeEn, 'en');
@@ -144,6 +145,7 @@ export class WebpackTranslateLoader implements TranslateLoader {
     PaginationQueryParamsPipe,
     PaginationInfoComponent,
     PaginateInfoPipe,
+    DefaultDialogContentComponent,
   ],
   imports: [
     CommonModule,

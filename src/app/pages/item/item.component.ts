@@ -1,10 +1,12 @@
 import { trigger, transition, style, animate } from '@angular/animations';
-import { Component, HostBinding, OnDestroy, OnInit } from '@angular/core';
+import { Component, HostBinding, OnDestroy, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { interval, Subject } from 'rxjs';
 import { delay, map, publish, takeUntil, tap } from 'rxjs/operators';
+import { DialogService } from 'src/app/features/dialog/dialog.service';
+import { DialogComponent } from 'src/app/features/dialog/dialog/dialog.component';
 import { Brand } from 'src/app/features/resources/brands/brands.model';
 import { ExtendedCategory } from 'src/app/features/resources/categories/categories.model';
 import { Color } from 'src/app/features/resources/colors/colors.model';
@@ -33,9 +35,12 @@ import { UserService } from 'src/app/features/user/user.service';
 })
 export class ItemComponent implements OnInit, OnDestroy {
 
+  @ViewChild('deleteItemModal') deleteItemModal!: TemplateRef<any>;
+
   @HostBinding('@pageAnimation') private pageAnimation = true;
 
   form!: FormGroup;
+  deleteForm!: FormGroup;
   id!: string;
   isNew!: boolean;
   brands: Brand[] = [];
@@ -89,7 +94,8 @@ export class ItemComponent implements OnInit, OnDestroy {
     private userService: UserService,
     private router: Router,
     private itemsService: ItemsService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private dialogService: DialogService
   ) { }
 
   init(): void {
@@ -126,6 +132,9 @@ export class ItemComponent implements OnInit, OnDestroy {
     this.editing = this.isNew;
 
     this.initForm(this.item || null);
+    this.deleteForm = this.fb.group({
+      id: ['', [Validators.required, Validators.pattern(this.id)]],
+    });
 
     // Init available features
     const category: ExtendedCategory = this.form.value.category || null;
@@ -300,6 +309,19 @@ export class ItemComponent implements OnInit, OnDestroy {
   searchFn(term: string, item: any): boolean {
     term = term.toLowerCase();
     return item && (item.name && item.name.toLowerCase().includes(term) || item.shortname && item.shortname.toLowerCase().includes(term));
+  }
+
+  openDeleteModal(): void {
+    this.dialogService.open(this.deleteItemModal, { modal: true });
+  }
+
+  deleteItem(dialog: DialogComponent): void {
+    this.itemsService.delete(this.id).subscribe({
+      next: response => {
+        dialog.close();
+        this.router.navigateByUrl('/search', { replaceUrl: true });
+      }
+    });
   }
 
   private _addVariant(initialValue?: ItemVariant): FormGroup {
