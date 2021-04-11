@@ -36,7 +36,7 @@
       "REGISTRATION": "Registration",
       "ABOUT_US": "About us",
       "ABOUT_PROJECT": "About the project",
-      "TIPS": "Tips"
+      "TIPS": "Games & Tips"
     }
   },
   "HOME": {
@@ -54,7 +54,7 @@
       "REGISTRATION": "Register",
       "ABOUT_US": "About us",
       "ABOUT_PROJECT": "About the project",
-      "TIPS": "Tips",
+      "TIPS": "Games & Tips",
       "PROFILE": "Profile"
     },
     "TEXT": {
@@ -221,7 +221,7 @@
     "ADD_TO": "Create a new coordination",
     "TOGGLE_TRASH": "Toggle the trash mode",
     "REMOVE_COORDINATION": "Remove the coordination \"{{name}}\"",
-    "EMPTY_LIST": "No coordination yet ?<br>Create one by clicking on the plus button here"
+    "EMPTY_LIST": "No coordination yet?<br>Create one by clicking on the plus button here"
   },
   "COORDINATION": {
     "SUBMIT": "Save the coordination",
@@ -249,7 +249,7 @@
       },
       "EMPTY_FIELD": "(Keep this field empty)"
     },
-    "EMPTY_MEMO": "- Bring bunny plush for the photoshoot ₍ᐢ ̥ ̞ ̥ᐢ₎\n- Bring my camera (*•̀ᴗ•́*)و ̑̑ ",
+    "EMPTY_MEMO": "- Bring bunny plush for the photoshoot <span class=\"kaomoji\">₍ᐢ ̥ ̞ ̥ᐢ₎</span>\n- Bring my camera <span class=\"kaomoji\">(*•̀ᴗ•́*)و ̑̑ </span>",
     "MODAL": {
       "TITLES": {
         "HEADDRESS": "Headress",
@@ -276,5 +276,77 @@
       "PASSWORD_PATTERN": "Password must contain at least:<br><ul><li>8 characters</li><li>1 lower case letter</li><li>1 upper case letter</li><li>1 numeric character</li></ul><br>(e.g.: Iamsoita1)",
       "NOT_SAME_PASSWORD": "¯\\_(ツ)_/¯ The passwords do not match."
     }
-  }
+  },
+  "ABOUT_US": [
+    "Hi there! <span class=\"kaomoji\">(◕‿◕)♡</span>",
+    "‘Who is behind this app?’ You may wonder!<br><b>My Everyday Lolita</b> is made by a lolita for lolitas!<br>For real, we are two French people, a couple.",
+    "<b>Lheido</b> is a professional web developer, he conceived the entire front-end and back-end of my-everyday-lolita, which is a huge job. (he has to make the design work, securise the whole account system, make things work etc.). So, yeah, without him, there is nothing.",
+    "I am <b>Rockuu</b>, and I made the design of the app, every little drawing you see and I try to handle the communication around the app. I also wrote the English version and translated it into French.",
+    "On the contrary to my loved one, I am not a professional of these domains, therefore, I ask for your kindness.<br><span class=\"kaomoji\">ヽ(￣ω￣(。。 )ゝ</span>",
+    "We made this app in our free time, with our own budget, just to share the love of lolita fashion. <span class=\"kaomoji\">╰(*´︶`*)╯</span>",
+    {
+      "DISCLAIMER": "Disclaimer",
+      "CHILDREN": [
+        {
+          "ITEMS": [
+            "I am not a professional artist, I have no formation whatsoever. I tried to do something cute and I really hope my work is not hurtful to any artist.<br><span class=\"kaomoji\">(っ˘̩╭╮˘̩)っ</span>",
+            "I am not a professional of English either, I'm really sorry for the mistakes. I try to be a good girl. <span class=\"kaomoji\">ʕ◉ᴥ◉ʔ</span> (please, pet my head gently.)",
+            "The different themes are a visual representation abstract of the style suggested. It is in no way a representation of what sweet, gothic or classic lolita should be. It is just an illustration. (You don’t have to play violin to be a classic lolita, it does not make sense haha). <span class=\"kaomoji\">┐('～`;)┌</span>",
+            "I am not what you can call an “advanced lolita” just an enthusiast, I hope my work is relevant though. I’ve been practising lolita fashion on my own for about 8 years.<br><span class=\"kaomoji\">|ʘ‿ʘ)╯</span>",
+            "Unfortunately, there are things we just can’t do the way we wanted to. Due to the technology we use or the price it costs. You are always free to suggest things here: my.everyday.lolita@gmail.com.<br>Remember that this app is still under construction, it’s a work in progress! <span class=\"kaomoji\">(o´ω`o)ﾉ</span>",
+            "Have in mind that this app is free but requires time and work, so if you feel our work deserves anything positive, you can help with our patreon: <a href=\"{{patreon}}\" target=\"_blank\">Patreon</a> or just subscribe to my YouTube channel, it’s free!<br><span class=\"kaomoji\">\\( ˙▿˙ )/\\( ˙▿˙ )/</span>"
+          ]
+        }
+      ]
+    },
+    "If you want to contact me, to see my work, to know more about me:",
+    {
+      "ITEMS": [
+        "<a href=\"{{youtube}}\" target=\"_blank\" class=\"youtube\">YouTube channel (in French) talking about Japan</a>",
+        "<a href=\"{{youtubeLolita}}\" target=\"_blank\" class=\"youtube\">YouTube channel (in English) talking about lolita fashion</a>",
+        "<a href=\"{{instagram}}\" target=\"_blank\" class=\"instagram\">Instagram account</a>",
+        "<a href=\"{{facebook}}\" target=\"_blank\" class=\"facebook\">Facebook page</a>"
+      ]
+    },
+    "To know more about the project, click on the menu and select “About the project”.<br>Thank you! <span class=\"kaomoji\">( ´ ∀ `)ノ～ ♡</span>"
+  ],
+  "ABOUT_PROJECT": [
+    "This project was born in February 2021.<br>Unfortunately, I was jobless at that time, I was spending my time on lolita websites, trying to handle my closet and wishlist using pictures on my computer / albums on Facebook or using websites. I was really struggling! My boyfriend offered to make an app for me…!<br>I thought it was a joke but...here we are!",
+    {
+      "DISCLAIMER": "Disclaimer",
+      "CHILDREN": [
+        "We are perfectly aware that other apps and websites exist to do this, if you prefer them, that is okay! <span class=\"kaomoji\">(⌒ω⌒)</span> However, at that moment it did not correspond to my needs.<br><br>Some random examples:",
+        {
+          "ITEMS": [
+            "One can’t add an item with one color to the wishlist and the same item of another color to the closet at the same time",
+            "One can’t see the color chosen in one's closet, only the “default” color is displayed",
+            "One can’t classify or filter elements already present in one's wishlist or closet",
+            "One can’t have an idea of the total amount of money or the total of items present in one's closet or wishlist",
+            "One can’t create coordination, or can but as it is not precisely made for lolitas, it is messy",
+            "One can’t have a visual hint in case the item is already in one’s wishlist or closet",
+            "One can’t filter or search by style (could be useful if one only search for gothic items for example)",
+            "Some types of items are not handled (wigs, plush…)",
+            "Some brands are not taken into account (indie brands, Taobao brands…)",
+            "One can't always see or display the measurements of an item",
+            "One can’t add (or can't add easily) it’s own item if it is not referenced on the app",
+            "Some fashion apps are good but are not made for lolitas...some features are hence missing"
+          ]
+        },
+        "Maybe you will find other issues <br><span class=\"kaomoji\">┐(￣ヘ￣)┌</span>"
+      ]
+    },
+    "Obviously, we admire the work of the already existing apps and websites, they do an amazing job and are a source of inspiration for all of us.<br>We just wanted to do things our own way.<br>Of course, we will not pretend we can do better but we do try our best to correct the issues and to build something that will correspond to the needs of many people.<br>To improve our work even more, we are open to suggestions.<br>For technical reasons, we can’t put in place everything, but we will do our best! <span class=\"kaomoji\">(°▽°)/</span>",
+    "With My Everyday Lolita (MEL for short) you can do three main things:",
+    {
+      "ITEMS": [
+        "<b>Organize your closet</b><br>You can add items to your closet by searching them in the Search menu, or add your own items if they have not been created yet. You can filter by categories these items if you want to see only the dresses, only the accessories etc.<br><b>For short:</b> ‘My closet’ is the perfect place to have an overview of your real closet wherever you are!",
+        "<b>Organize your wishlist</b><br>As in 'My Closet', in 'My Wishlist' you can add items you wish to have using the Search menu, you can then share your wishlist with people (so that they’ll know what to offer you<br><span class=\"kaomoji\">(￢‿￢ )</span>)<br>You can simultaneously have an item from one color in your closet and the same item with another color to your wishlist. You can also filter your wishlist to display different items such as brands, categories...<br><b>For short:</b> My wishlist is the menu where you can add every item you ever dream of!",
+        "<b>Create your coordinations</b><br>The 'Coordination Checklist' is such a useful tool for lolitas. If you have an upcoming event (Tea party with friends? Or you just want to go out and be sure to look fantastic?), you can create a new coordination, name it, add any useful information. Basically do whatever you want. The point of this tool is to avoid forgetting any item as every category represents a “necessary item to wear or to bring”. You don’t have to fill every category of course. You can also use this tool to know what to buy in the future.Then, you can share a coordination to ask you friends what they think about it. Be free to make mistakes, without making a mess in your closet!<br><b>For short:</b> You can anticipate your lolita life with the Coord Checklist and make progress!"
+      ]
+    },
+    "Whether you are a debutant lolita or an experienced lolita, I hope this will be useful!",
+    "Watch the first video I made for the app to explain everything:<br>=> Link to YouTube Video",
+    "It’s an open source project, totally free to use! Available on Android and iOS..<br>The serveur costs us fees every month, we want to spread the word as widely as possible, but the more users there are on our app, the more costly it becomes.",
+    "If you are able to support us and want to do it, you can go to our Patreon here: <a href=\"{{patreon}}\" target=\"_blank\">Patreon</a>"
+  ]
 }

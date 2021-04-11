@@ -10,6 +10,7 @@ export const environment = {
     login: 'http://192.168.1.22:8080',
     mel: 'http://192.168.1.22:3001',
   },
+  links: (window as any).env.links,
   api: {
     auth: {
       realm: 'my-everyday-lolita-realm',

@@ -1,6 +1,8 @@
 :root {
   --main-background-color: #fff0fe;
 
+  --link: #424242;
+
   --primary: #424242;
   --primary-text: #fff;
   --primary-shadow: #232323;
@@ -122,6 +124,8 @@
 
 body.theme-sweet {
   --main-background-color: #fff0fe;
+
+  --link: #6396d3;
 
   --primary: #f7bff2;
   --primary-shadow: #cc85ff;
@@ -276,6 +280,8 @@ body.theme-sweet {
 body.theme-gothic {
   --main-background-color: #7b71a5;
 
+  --link: #3f0670;
+
   --primary: #322187;
   --primary-shadow: #000;
   --primary-text: #fff;
@@ -425,6 +431,8 @@ body.theme-gothic {
 
 body.theme-classic {
   --main-background-color: #ffe2a9;
+
+  --link: #892806;
 
   --primary: #d32a09;
   --primary-shadow: #892806;

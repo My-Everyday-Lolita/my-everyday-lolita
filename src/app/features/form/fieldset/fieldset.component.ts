@@ -52,6 +52,9 @@ export class FieldsetComponent implements OnInit {
 
   ngOnInit(): void {
     this.open = this.opened;
+    setTimeout(() => {
+      this.onContentChange();
+    });
   }
 
   toggle(): void {

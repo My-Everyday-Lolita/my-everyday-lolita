@@ -1,0 +1,56 @@
+a {
+  &.youtube {
+    position: relative;
+
+    $ratio: 150 / 215;
+
+    &::before {
+      content: "";
+      background: url("https://www.youtube.com/about/static/svgs/icons/brand-resources/YouTube_icon_light.svg")
+        no-repeat;
+      background-size: contain;
+      width: 30px;
+      height: 30px * $ratio;
+      display: block;
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translate(-125%, -50%);
+    }
+  }
+
+  &.instagram {
+    position: relative;
+
+    &::before {
+      content: "";
+      background: url("https://facebookbrand.com/wp-content/uploads/2021/03/glyph-logo_May2016.png?w=300") no-repeat;
+      background-size: contain;
+      width: 30px;
+      height: 30px;
+      display: block;
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translate(-125%, -50%);
+    }
+  }
+
+  &.facebook {
+    position: relative;
+
+    &::before {
+      content: "";
+      background: url("https://facebookbrand.com/wp-content/uploads/2019/04/f_logo_RGB-Hex-Blue_512.png?w=300")
+        no-repeat;
+      background-size: contain;
+      width: 30px;
+      height: 30px;
+      display: block;
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translate(-125%, -50%);
+    }
+  }
+}

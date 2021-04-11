@@ -1,5 +1,10 @@
 import { trigger, transition, style, animate } from '@angular/animations';
-import { Component, HostBinding, OnInit } from '@angular/core';
+import { Component, HostBinding, OnDestroy, OnInit } from '@angular/core';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
+import { Content } from 'src/app/features/static-content/static-content.model';
+import { StaticContentService } from 'src/app/features/static-content/static-content.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   templateUrl: './about-project.component.html',
@@ -17,13 +22,35 @@ import { Component, HostBinding, OnInit } from '@angular/core';
     ])
   ]
 })
-export class AboutProjectComponent implements OnInit {
+export class AboutProjectComponent implements OnInit, OnDestroy {
 
   @HostBinding('@pageAnimation') private pageAnimation = true;
 
-  constructor() { }
+  data: Content[] = [];
+
+  translateParams = {
+    patreon: environment.links.patreon,
+  };
+
+  private unsubscriber = new Subject();
+
+  constructor(
+    private staticContentService: StaticContentService
+  ) { }
+
+  ngOnDestroy(): void {
+    this.unsubscriber.next();
+    this.unsubscriber.complete();
+  }
 
   ngOnInit(): void {
+
+    this.staticContentService.getAndlisten('ABOUT_PROJECT').pipe(takeUntil(this.unsubscriber)).subscribe({
+      next: data => {
+        this.data = data;
+      }
+    });
   }
+
 
 }

@@ -1,1 +1,18 @@
-<p>about-us works!</p>
+<div class="page-content">
+  <ng-container *ngFor="let item of data">
+    <ng-container *ngTemplateOutlet="renderContent; context:{$implicit: item}"></ng-container>
+  </ng-container>
+</div>
+<ng-template #renderContent let-item>
+  <p *ngIf="item | scIsParagraph; else complex;" [innerHTML]="item | translate:translateParams"></p>
+  <ng-template #complex>
+    <app-fieldset *ngIf="item.DISCLAIMER" [legend]="item.DISCLAIMER | translate:translateParams">
+      <ng-container *ngFor="let child of item.CHILDREN">
+        <ng-container *ngTemplateOutlet="renderContent; context:{$implicit: child}"></ng-container>
+      </ng-container>
+    </app-fieldset>
+    <ul *ngIf="item.ITEMS">
+      <li *ngFor="let listItem of item.ITEMS" [innerHTML]="listItem | translate:translateParams"></li>
+    </ul>
+  </ng-template>
+</ng-template>

@@ -17,6 +17,7 @@
 @import "./styles/components/search";
 @import "./styles/components/coordination";
 @import "./styles/components/loader";
+@import "./styles/components/social-links";
 
 body {
   transition: all 330ms linear;
@@ -56,4 +57,13 @@ b {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+a:not([app-button]) {
+  text-decoration: none;
+  &,
+  &:link,
+  &:visited {
+    color: var(--link);
+  }
 }

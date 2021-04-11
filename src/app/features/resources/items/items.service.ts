@@ -32,7 +32,7 @@ export class ItemsService {
   }
 
   findById(id: string): Observable<Item> {
-    return this.http.get<Item>(`${environment.domains.mel}/api/resources/items/${id}`);
+    return this.http.get<Item>(`${environment.domains.mel}/api/resources/items/get/${id}`);
   }
 
   delete(id: string): Observable<any> {

@@ -4,4 +4,47 @@
   flex-direction: column;
   align-items: center;
   min-height: 100vh;
+  font-family: "Gamja Flower";
+  font-size: var(--font-size-small);
+}
+
+.page-content {
+  margin-top: 150px;
+  margin-bottom: 200px;
+  max-width: 70vw;
+
+  @media screen and (min-width: 700px) {
+    max-width: 60vw;
+  }
+
+  @media screen and (min-width: 900px) {
+    max-width: 50vw;
+  }
+}
+
+p {
+  margin: var(--spacing-medium) 0;
+}
+
+ul {
+  padding-left: var(--spacing-big);
+  padding-right: var(--spacing);
+}
+
+li {
+  list-style: none;
+  font-size: var(--font-size-very-small);
+  margin-left: var(--spacing);
+  margin-bottom: var(--spacing-medium);
+
+  @media screen and (min-width: 700px) {
+    margin-left: var(--spacing-big);
+  }
+}
+
+app-fieldset {
+  li {
+    list-style: circle;
+    margin-left: 0;
+  }
 }
