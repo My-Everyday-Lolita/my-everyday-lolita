@@ -43,7 +43,7 @@ app-search-form {
 }
 
 .actions {
-  justify-content: flex-end;
+  justify-content: space-between;
 }
 
 .remove-from-wishlist {
@@ -111,4 +111,30 @@ app-pagination {
 
 .items + app-pagination {
   margin-bottom: 100px;
+}
+
+.dream-dress-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  position: relative;
+  text-align: center;
+  border: none;
+  padding: 0;
+  background: transparent;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:active {
+    border: none;
+  }
+
+  svg {
+    width: 53px;
+    height: 22px;
+  }
 }

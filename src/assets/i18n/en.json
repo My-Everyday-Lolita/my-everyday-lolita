@@ -208,6 +208,9 @@
     }
   },
   "MY_WISHLIST": {
+    "TOP": {
+      "TEXT": "You have a dream dress that you want to spot immediately when you look at your wishlist? Hit the <svg class=\"small-yes\"><use xlink:href=\"#dream-dress\" /></svg> button!<br>So that you can see what are your Dream Dresses, that is to say...your top priorities!"
+    },
     "FOOTER": {
       "ESTIMATED_PRICE": "Estimation of your wishlist: <b>${{price}}</b>. You are going to need more money to buy this dream!",
       "ESTIMATED_PRICE_ZERO": "You are going to need more money to buy this dream!"

@@ -29,6 +29,7 @@ export interface Item {
    * Specific closet/wishlist
    */
   wantToSell?: boolean;
+  dreamDress?: boolean;
   _variantId?: string;
 }
 

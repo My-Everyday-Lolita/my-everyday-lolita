@@ -34,7 +34,7 @@ export class MyWishlistComponent implements OnInit, OnDestroy {
   results: Item[] = [];
   signedIn = false;
   footerEE = 0;
-  content: { id: string, _wrongVariantId?: boolean }[] = [];
+  content: { id: string, dreamDress?: boolean, _wrongVariantId?: boolean }[] = [];
   totalEstimatedPrice = 0;
   nbItems = 0;
   selectedCriteria: Criterium[] = [];
@@ -124,7 +124,13 @@ export class MyWishlistComponent implements OnInit, OnDestroy {
 
   private getItems(): Observable<Item[]> {
     const items$ = this.content.filter(item => !item._wrongVariantId).map(item => this.cacheService.match(item.id).pipe(
-      switchMap(cache => cache ? from(cache?.json()) : of(undefined))
+      switchMap(cache => cache ? from(cache?.json()) : of(undefined)),
+      map((almostReadyitem: Item) => {
+        if (almostReadyitem) {
+          almostReadyitem.dreamDress = item.dreamDress;
+        }
+        return almostReadyitem;
+      })
     ));
     if (items$.length === 0) {
       return of([]);
@@ -157,6 +163,10 @@ export class MyWishlistComponent implements OnInit, OnDestroy {
 
   onPageChange(page: number): void {
     this.paginationConfig.currentPage = page;
+  }
+
+  toggleDreamDressProperty(item: Item): void {
+    item.dreamDress = this.userContentService.toggleDreamDressPropertyWishlist(item);
   }
 
 }

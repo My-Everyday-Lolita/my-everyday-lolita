@@ -9,7 +9,7 @@ export interface UserContent {
   _id?: string;
   modified: number;
   closet: { id: VariantId, wantToSell?: boolean, _wrongVariantId?: boolean }[];
-  wishlist: { id: VariantId, _wrongVariantId?: boolean }[];
+  wishlist: { id: VariantId, dreamDress?: boolean, _wrongVariantId?: boolean }[];
   coordinations: Coordination[];
   user?: string;
 }

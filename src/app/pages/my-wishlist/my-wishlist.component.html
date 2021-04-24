@@ -6,6 +6,15 @@
 
 <app-search-form (search)="onFilter($event)" [enableMyItems]="false" [enableColors]="false" [enableFeatures]="false" [enableKeywords]="false"
   [placeholder]="'MY_WISHLIST.SEARCH.PLACEHOLDER' | translate">
+  <details before>
+    <summary>
+      <span class="visualy-hidden">How to search</span>
+      <span class="help-icon" aria-hidden="true">?</span>
+    </summary>
+    <div class="details-content">
+      <p class="filter-top-text" id="criteria-select-description" [innerHTML]="'MY_WISHLIST.TOP.TEXT' | translate | safe:'html'"></p>
+    </div>
+  </details>
   <img src="/assets/images/filter-icon.svg" alt="Filter icon" aria-hidden="true" submit-icon>
 </app-search-form>
 
@@ -26,6 +35,11 @@
         <img [attr.src]="item | itemPhoto" appImageLoad alt="Item colorway photo">
       </a>
       <div class="actions">
+        <button class="dream-dress-btn" (click)="toggleDreamDressProperty(item)">
+          <svg [class.grayscale]="!item.dreamDress">
+            <use xlink:href="#dream-dress" />
+          </svg>
+        </button>
         <button app-button color="discreet" class="circle no-shadow very-small remove-from-wishlist" (click)="remove(item)">
           <span class="clear-icon very-small"></span>
         </button>

@@ -128,7 +128,7 @@ export class UserContentService {
   addToWishlist(item: Item): void {
     const variantId = this.buildVariantId(item);
     if (!this.content.wishlist.find(vi => vi.id === variantId)) {
-      this.content.wishlist.push({ id: variantId });
+      this.content.wishlist.push({ id: variantId, dreamDress: false });
       this.content.closet = this.content.closet.filter(vi => vi.id !== variantId);
       this.changes$.next({ type: 'add', content: this.content, item, id: variantId });
     }
@@ -149,6 +149,17 @@ export class UserContentService {
       variantItem.wantToSell = !variantItem.wantToSell;
       this.changes$.next({ type: 'silent', content: this.content, item, id: variantId });
       return variantItem.wantToSell;
+    }
+    return false;
+  }
+
+  toggleDreamDressPropertyWishlist(item: Item): boolean {
+    const variantId = this.buildVariantId(item);
+    const variantItem = this.content.wishlist.find(vi => vi.id === variantId);
+    if (variantItem) {
+      variantItem.dreamDress = !variantItem.dreamDress;
+      this.changes$.next({ type: 'silent', content: this.content, item, id: variantId });
+      return variantItem.dreamDress;
     }
     return false;
   }
