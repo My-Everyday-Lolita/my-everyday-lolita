@@ -5,29 +5,348 @@
     },
     "THEME": {
       "BUTTONS": {
-        "SWEET": "Theme sweet",
-        "GOTHIC": "Theme gothic",
-        "CLASSIC": "Theme classic"
+        "SWEET": "Thème sweet",
+        "GOTHIC": "Thème gothic",
+        "CLASSIC": "Thème classic"
       }
     },
-    "BACK": "Page précédente"
+    "BACK": "Page précédente",
+    "TOASTS": {
+      "ERRORS": {
+        "SIGNED_IN": "Vous devez être connecté pour accéder à cette page."
+      },
+      "PWA_UPDATE": "Une nouvelle version est disponible,<br> cliquez ici pour mettre à jour !"
+    },
+    "HOME_LINK": "Retour à la page d'accueil",
+    "DETAILS": {
+      "CLOSE": "Fermer"
+    },
+    "PAGINATION": {
+      "INFO": "{{start}} - {{end}} de {{total}}"
+    },
+    "CLOSE_MODAL": "Fermer"
   },
   "PAGES": {
     "TITLES": {
-      "MY_CLOSET": "Mon placard",
+      "MY_CLOSET": "Ma closet",
       "MY_WISHLIST": "Ma wishlist",
-      "MY_COORD_CHECKLIST": "Ma coordi checklist",
+      "MY_COORD_CHECKLIST": "Ma coord checklist",
       "SEARCH": "Recherche",
-      "REGISTRATION": "Inscription"
+      "SIGN_IN": "Se connecter",
+      "REGISTRATION": "S'enregistrer",
+      "ABOUT_US": "A propos de nous",
+      "ABOUT_PROJECT": "A propos du projet",
+      "TIPS": "Jeux & Tips"
     }
   },
   "HOME": {
     "LINKS": {
-      "MY_CLOSET": "Mon placard",
+      "MY_CLOSET": "Ma closet",
       "MY_WISHLIST": "Ma wishlist",
-      "MY_COORD_CHECKLIST": "Ma coordi checklist",
-      "SEARCH": "Recherche",
-      "REGISTRATION": "Inscription"
+      "MY_COORD_CHECKLIST": "Ma coord checklist",
+      "SEARCH": "Recherche"
     }
-  }
+  },
+  "MENU": {
+    "LINKS": {
+      "SIGN_IN": "Se connecter",
+      "SIGN_OUT": "Se déconnecter",
+      "REGISTRATION": "S'enregistrer",
+      "ABOUT_US": "A propos de nous",
+      "ABOUT_PROJECT": "A propos du projet",
+      "TIPS": "Jeux & Tips",
+      "PROFILE": "Profil"
+    },
+    "TEXT": {
+      "ANNONYMOUS": "Vous n'êtes pas connecté,<br>voulez-vous :"
+    }
+  },
+  "REGISTRATION": {
+    "SUBMIT": "S'enregistrer",
+    "REQUIRED_TEXT": "Les champs marqués d'un * sont obligatoires.",
+    "FIELDS": {
+      "LABELS": {
+        "USERNAME": "Nom d'utilisateur",
+        "EMAIL": "Email",
+        "PASSWORD": "Mot de passe",
+        "CONFIRM_PASSWORD": "Confirmation du mot de passe"
+      }
+    },
+    "TOASTS": {
+      "SUCCESS": "Félicitations!<br>Votre inscription a été complétée avec succès.",
+      "CONFLICT": "Oh non !<br>Cet email ou nom d'utilisateur existe déjà.",
+      "UNKNOWN": "Une erreur inconnue s'est produite."
+    }
+  },
+  "SIGN_IN": {
+    "SUBMIT": "Se connecter",
+    "REQUIRED_TEXT": "Les champs marqués d'un * sont obligatoires.",
+    "FIELDS": {
+      "LABELS": {
+        "USERNAME": "Nom d'utilisateur",
+        "PASSWORD": "Mot de passe"
+      }
+    },
+    "TOASTS": {
+      "SUCCESS": "Félicitations!<br>Votre inscription a été complétée avec succès.",
+      "CONFLICT": "Oh non !<br>Cet email ou nom d'utilisateur existe déjà.",
+      "UNKNOWN": "Tristesse !<br>Une erreur inconnue s'est produite.",
+      "CREDENTIALS_ERROR": "Olala...<br>C'est sans doute le mauvais nom d'utilisateur ou mot de passe.",
+      "EXPIRED_SESSION": "Où étiez-vous ?<br>Votre session a expiré."
+    }
+  },
+  "SEARCH": {
+    "RECENTLY_ADDED": "Items récemment ajoutés",
+    "EMPTY_RESULT": "<span class=\"kaomoji\">(っ´ω`)ﾉ(╥ω╥)</span><br><br>Aucun résultat,<br>Pourquoi ne pas essayer quelque chose d'autre ?",
+    "SEARCHING": {
+      "1": "Recherche...",
+      "2": "<span class=\"kaomoji\">ƪ(‾ε‾“)ʃ</span> Peut-être faites-vous une tasse de thé...",
+      "3": "<span class=\"kaomoji\">ヾ(｡﹏｡)ﾉﾞ</span> C'est trop long...Quelque chose s'est mal passé...ça ne semble pas fonctionner"
+    },
+    "FIELDS": {
+      "LABELS": {
+        "FILTER": "Filtres"
+      },
+      "PLACEHOLDER": {
+        "CRITERIA": "Filtrer par marques, categories, caractéristiques ou mots clés..."
+      }
+    },
+    "TOP": {
+      "TEXT": "Vous pouvez rechercher un item par: <ul><li><span class=\"brand\">brand</span> (Angelic Pretty, BABY THE STARS SHINE BRIGHT...),</li><li><span class=\"category\">category</span> (jumperskirts, socks, underwear...),</li><li><span class=\"color\">color</span> (Pink, Gold, Sax...),</li><li><span class=\"feature\">feature</span> (Full back shirring, scalloped, Peter Pan collar...)</li><li>ou même <span class=\"keywords\">keywords</span> (Sugary carnival, bunny, cookie...).</li></ul>Vous pouvez toujours ajouter plus de critères à votre recherche en cliquant sur la barre de recherche et en continuant de taper.<br><br>Astuce: Tapez \"My items\" pour n'afficher que les items que vous avez créé."
+    },
+    "ADD": {
+      "LABEL": "Ajouter un nouvel item"
+    },
+    "ADD_TAG": "Chercher avec le mot clé"
+  },
+  "ITEM": {
+    "REQUIRED_TEXT": "Les champs marqués d'un * sont obligatoires.",
+    "SUBMIT": "Enregistrer",
+    "TOGGLE_EDIT_MODE": "Activer le mode édition",
+    "CANCEL": "Annuler",
+    "ADD_TO_CLOSET": "Ajouter à <span class=\"visualy-hidden\">closet</span>",
+    "ADD_TO_WISHLIST": "Ajouter à <span class=\"visualy-hidden\">wishlist</span>",
+    "DUPLICATE": "Dupliquer un item",
+    "DELETE_PARAGRAPH": "Voulez-vous vraimment supprimer cet item ?<br>Cette action est définitive et ne peut être annulée.<br>Pour supprimer cet item, copiez collez l'identifiant dans le champ ci-dessous : \"{{id}}\"",
+    "TITLES": {
+      "NEW": "Ajouter un nouvel item"
+    },
+    "FIELDS": {
+      "LABELS": {
+        "BRAND": "Marque",
+        "COLLECTIONN": "Collection",
+        "CATEGORY": "Catégorie",
+        "FEATURES": "Caractéristique",
+        "COLORS": "Couleur(s)",
+        "PHOTO": "Photo",
+        "YEAR": "Année",
+        "JAPANESE": "Nom originel",
+        "MEASURMENTS": "Mesures",
+        "ESTIMATED_PRICE": "Prix estimé",
+        "KEYWORDS": "Mots clés",
+        "SUBSTYLES": "Substyle(s) / Thème(s)",
+        "DELETE_ITEM_ID": "Identifiant d' item"
+      },
+      "SECTIONS": {
+        "FEATURES": "Caractéristiques",
+        "YEAR": "Année de sortie",
+        "JAPANESE": "Nom originel",
+        "MEASURMENTS": "Mesures",
+        "ESTIMATED_PRICE": "Prix estimé",
+        "KEYWORDS": "Mots clés",
+        "SUBSTYLES": "Substyle(s) / Thème(s)"
+      },
+      "LEGENDS": {
+        "VARIANT": "Coloris {{i}}",
+        "ADDITIONALS": "Champs additionnels"
+      },
+      "NOT_FOUND": {
+        "FEATURES": "Aucune caractéristique liée<br> à la catégorie sélectionnée"
+      }
+    },
+    "ADD_VARIANT": "Ajouter un coloris",
+    "REMOVE_VARIANT": "Effacer",
+    "HELPS": {
+      "PHOTO": "Dans le but de limiter le poids de nos images, il convient de mettre l'URL de l'image de l'item que vous pouvez trouver sur Google.<br>Si vous voulez utiliser des photos personnelles, vous devez juste les héberger, en utilisant un site d'hébergement d'images (comme Zupimage, SmugMug, Google Photos, Flickr Pro, Imgur...)<br>Essayez de fournir la meilleure qualité d'image possible s'il vous plaît.<br>Merci :)",
+      "COLLECTION": "indice: parfois, les marques sortent des mêmes items sous différentes couleurs mais sous le même nom.<br>Pas toutes les marques le font, donc vous n'avez pas à remplir ce champ si l'item n'appartient pas à une collection.<br><br>Par exemple:<br><b>Toy Doll Box</b> (Angelic Pretty)<br><br><b>The World's Most Adorable Dog and the World's Most Delicious Strawberry Frappe</b> (Baby, The Stars Shine Bright)<br><br>Aussi, comme vous pouvez le remarquer, ça peut être long à écrire.",
+      "ADDITONALS": "Ces champs ici ne sont pas obligatoires, si vous en avez les détails vous pouvez les remplir, si ce n'est pas le cas, c'est okay, d'autres membres peuvent l'éditer plus tard.",
+      "KEYWORDS": "Ici vous pouvez taper des mots clés liés aux motifs, vous pouvez en ajouter plusieurs !<br>Tapez \"Christmas\" c'est une robe sur le thème de Noël, <br>Tapez \"bunnies\" si vous voyez d'adorables lapins sur la jupe,<br>Tapez \"cherries\" si il y a des cerises sur ces chaussures...<br>C'est simple !<br>Faites attention que chaque mot clé soit validé avec une bordure les séparants.<br>Cela peut aider les membres à trouver leur dream dresses avec un motif entièrement composé de chats ! (Qui sont des créatures démoniaques, pour rappel...)",
+      "SUBSTYLES": "Ceci permet à vos chèr(e)s collègues lolita de trouver plus aisément des items qui correspondent à leur personnalité !<br>Vous pouvez en ajouter plusieurs bien sûr, un thème St Valentin peut être sweet, une robe peut-être à la fois military et circus etc.<br><br>Gardez juste à l'esprit que c'est pour aider tout le monde à faire des recherches plus pertinentes."
+    },
+    "DETAILS": {
+      "HOW_TO": "Comment remplir ce champ ?"
+    },
+    "TOASTS": {
+      "NEW_SUCCESS": "Oh yeah ! Crée avec succès.",
+      "UPDATE_SUCCESS": "Oh yeah ! Mis à jour avec succès."
+    },
+    "ADD_TAG": {
+      "BRAND": "Ajouter une nouvelle marque",
+      "KEYWORDS": "Ajouter un mot clé",
+      "SUBSTYLES": "Ajouter un substyle/thème"
+    },
+    "NOT_FOUND_TEXT": {
+      "KEYWORDS": "Entrez n'importe quel mot clé pour<br> décrire votre item"
+    }
+  },
+  "MY_CLOSET": {
+    "TOP": {
+      "TEXT": "Si vous avez prévu de vendre votre item, tapez sur le boutton <svg class=\"small-yes\"><use xlink:href=\"#want-to-sell\" /></svg> !<br>Pour avoir un indice visuel."
+    },
+    "FOOTER": {
+      "BEGINING": "Ce n'est que le début ! Muhahaha *rire démoniaque*",
+      "MORE_POWERFUL": "Oh tu deviens plus puissant(e) !",
+      "IMPRESSIVE": "Ton pouvoir est impressionnant!",
+      "MANA_SAMA": "Sur la voie pour devenir Mana-sama!",
+      "GOD": "Es-tu la divinité de la mode lolita ?!<br>La légende disait vraie",
+      "ESTIMATED_PRICE": "Ta collection complète s'élève à $<b>{{price}}</b>! Incroyable !",
+      "ESTIMATED_PRICE_ZERO": "Aucun item encore ? Ajoutes-en s'il te plaît, que je puisse te dire à quel point tu es puissant(e)."
+    },
+    "SEARCH": {
+      "PLACEHOLDER": "Filtrez votre collection par marque ou catégorie",
+      "GO_TO": "Se rendre à la page de recherche"
+    }
+  },
+  "MY_WISHLIST": {
+    "FOOTER": {
+      "ESTIMATED_PRICE": "Estimation de ta wishlist: <b>${{price}}</b>. Tu va avoir besoin de plus d'argent pour acheter ce rêve !",
+      "ESTIMATED_PRICE_ZERO": "Tu va avoir besoin de plus d'argent pour acheter ce rêve !"
+    },
+    "SEARCH": {
+      "PLACEHOLDER": "Filtre ta wishlist par marque ou catégorie",
+      "GO_TO": "Se rendre à la page de recherche"
+    }
+  },
+  "COORDINATIONS": {
+    "ADD_TO": "Créer une nouvelle coordination",
+    "TOGGLE_TRASH": "Activer le mode suppression",
+    "REMOVE_COORDINATION": "Effacer la coordination \"{{name}}\"",
+    "EMPTY_LIST": "Pas encore de coordination ?<br>Crées en une en cliquant sur le bouton plus ici"
+  },
+  "COORDINATION": {
+    "SUBMIT": "Enregistrer la coordination",
+    "TITLES": {
+      "NEW": "Nouvelle coordination"
+    },
+    "ERRORS": {
+      "NOT_FOUND": "Coordination non trouvée.<br> ce message n'est pas supposé s'afficher"
+    },
+    "DETAILS": {
+      "HOW_TO": "En quoi est-ce utile ?"
+    },
+    "HELPS": {
+      "USEFUL": "La Coordination Checklist est là pour vous aider à coordiner vos tenues!<br>Cliquez sur chaque catégorie pour choisir un item de votre closet.<br><br>Que vous soyez une baby lolita ou une lolita avancée, je suis sûre que cela vous sera utile !<br><br>Vous pouvez utiliser cet outil si vous êtes occuppé(e) avec de nombreux évènements approchants ou si vous voulez simplement vous mettre sur votre trente-et-un à la maison et vous souvenir de vos coordinations plus tard. Vous pouvez donner des titres à vos coords, ajouter une date et un thème, ce sera utile pour anticiper n'importe quel évènement auquel vous êtes invité(e) ça vous aidera aussi à vous souvenir des progrès que vous avez fait dans la construction de coordination. De plus, cela peut être utilisé comme un rappel pour savoir ce que vous devez acheter plus tard pour complèter vos coordinations !<br><br>Vous n'avez pas besoin d'être à la maison à côté de votre garde-robe !<br>Vous avez juste besoin de votre wi-fi et de votre adorable closet (que vous avez mis sur My Everyday Lolita et mis à jour régulièrement, n'est-ce pas ?) ainsi, vous pouvez travailler sur vos coordinations, n'importe où, n'importe quand !<br><br>You have no idea how to coordinate a piece?<br><br>Have a look at the Coord Helper!<br><br>Vous pouvez utiliser le champ memo pour écrire ce que vous avez besoin de prendre pour un évènement spécifique.<br>Il arrive parfois de regretter d'avoir oublié d'apporter une seconde paire de chaussures ou un plus grand sac (ces sacs lolita sont si petits...si mignons pour les photos mais SIIIII PETIIITS). Bref : Ecrivez ce que vous voulez !<br><br>Vous pouvez partager vos coordinations avec vos amis et leurs demander des critiques constructives...ou non ! (Pour de vrai, je ne suis pas là pour juger, vous pouvez faire ce que voulez, je suis déjà super heureuse que vous soyez là 💕)"
+    },
+    "FIELDS": {
+      "LABELS": {
+        "TITLE": "Nom de la coordination",
+        "EVENT": "Evènement",
+        "THEME": "Thème",
+        "DATE": "Date",
+        "PLACE": "Lieu",
+        "MEMO": "Memo",
+        "CUSTOM_TEXT": "Coiffure"
+      },
+      "EMPTY_FIELD": "(Garder ce champ vide)"
+    },
+    "EMPTY_MEMO": "- Apporter une peluche lapin pour le shooting photo <span class=\"kaomoji\">₍ᐢ ̥ ̞ ̥ᐢ₎</span>\n- Apporter mon appareil photo <span class=\"kaomoji\">(*•̀ᴗ•́*)و ̑̑ </span>",
+    "MODAL": {
+      "TITLES": {
+        "HEADDRESS": "Headress",
+        "HAIRSTYLE": "Coiffure & wig",
+        "MAIN_PIECE": "Main piece",
+        "TOPWEAR": "Topwear",
+        "OUTERWEAR": "Outerwear",
+        "BAG": "Sac",
+        "ACCESSORIES": "Accessoires",
+        "LEGWEAR": "Legwear",
+        "SHOES": "Chaussures",
+        "UNDERWEAR": "Underwear",
+        "OTHERS": "Autres"
+      }
+    }
+  },
+  "FORM": {
+    "ERRORS": {
+      "REQUIRED": "Meh. Ce champ est requis.",
+      "MAX_LENGTH": "Wow wow wow. Ce champ doit être comprit dans {{maxlength}} caractères.",
+      "MIN_LENGTH": "Ce champ doit être d'un minimum de {{minlength}} caractères.",
+      "EMAIL": "Format de l'email incorrect<br>(ex: cupcake.lolita@soita.com)",
+      "USERNAME_PATTERN": "Le nom d'utilisateur doit uniquement contenir des lettres minuscules, des nombres, des underscores et tirets.",
+      "PASSWORD_PATTERN": "Le mot de passe doit contenir au moins :<br><ul><li>8 caractères</li><li>1 lettre minuscule</li><li>1 lettre majuscule</li><li>1 chiffre</li></ul><br>(e.g.: Iamsoita1)",
+      "NOT_SAME_PASSWORD": "¯\\_(ツ)_/¯ Les mots de passe ne correspondent pas."
+    }
+  },
+  "ABOUT_US": [
+    "Salut vous ! <span class=\"kaomoji\">(◕‿◕)♡</span>",
+    "« Qui est derrière cette application ? » vous devez vous demander !<br><b>My Everyday Lolita</b> est fait par une lolita pour des lolitas !<br>En vrai, nous sommes deux français, un couple.",
+    "<b>Lheido</b> Lheido est un développeur web professionnel, il a conçu l’entièreté du front end et du back end de my-everyday-lolita, ce qui est un travail énorme. (il doit faire en sorte que le design fonctionne, sécuriser le système de comptes, faire en sorte que tout fonctionne etc.). Donc oui, sans lui, il n’y a rien.",
+    "Je suis <b>Rockuu</b>, et j’ai fait le design de l’application, chaque petit dessin que vous pouvez voir et j’essaie de gérer la communication autour de l’application. J’ai aussi écrit la version anglaise et je l’ai traduite en français.",
+    "Au contraire de mon bien-aimé, je ne suis pas professionnelle dans ces domaines, je demande donc votre bienveillance. <br><span class=\"kaomoji\">ヽ(￣ω￣(。。 )ゝ</span>",
+    "Nous avons fait cette application sur notre temps libre, avec notre propre budget juste pour partager notre amour de la mode lolita. <span class=\"kaomoji\">╰(*´︶`*)╯</span>",
+    {
+      "DISCLAIMER": "Avertissement",
+      "CHILDREN": [
+        {
+          "ITEMS": [
+            "Je ne suis pas une artiste professionnelle, je n’ai pas de formation quelle qu’elle soit. J’ai fait de mon mieux pour faire quelque chose de mignon et j’espère que mon travail n’offense aucun artiste.<br><span class=\"kaomoji\">(っ˘̩╭╮˘̩)っ</span>",
+            "Je ne suis pas une professionnelle de l’anglais non plus, je suis vraiment désolée pour les erreurs, j’essaie d’être une bonne fille. <span class=\"kaomoji\">ʕ◉ᴥ◉ʔ</span> (tapotez ma tête gentiment s’il vous plaît.)            ",
+            "Les différents thèmes sont une représentation abstraite des styles suggérés. Ce n’est pas une représentation de ce qu’une sweet, gothic ou classic lolita devrait être. C’est juste une illustration. (Vous n’avez pas à jouer du violon pour être une classic lolita ça n’a pas de sens haha). <span class=\"kaomoji\">┐('～`;)┌</span>",
+            "Je ne suis pas ce que vous pourriez appeler une « lolita avancée » juste une passionnée, j’espère que mon travail est pertinent tout de même. Je pratique la mode lolita de mon côté depuis 8 ans.<br><span class=\"kaomoji\">|ʘ‿ʘ)╯</span>",
+            "Malheureusement, il y a juste des choses que nous ne pouvons faire de la manière que nous voudrions. A cause de la technologie que nous utilisons ou du prix qu’elle coûte. Vous êtes libres de faire des suggestions ici : my.everyday.lolita@gmail.com.<br>Rappelez vous que cette application est toujours en construction, c’est un travail en cours ! <span class=\"kaomoji\">(o´ω`o)ﾉ</span>",
+            "Gardez à l’esprit que cette application est gratuite mais qu’elle requiert du temps et du travail, donc si vous pensez que notre travail mérite quoi que ce soit de positif, vous pouvez nous soutenir avec notre patreon : <a href=\"{{patreon}}\" target=\"_blank\">Patreon</a> ou juste vous abonner à ma chaîne YouTube, c’est gratuit !<br><span class=\"kaomoji\">\\( ˙▿˙ )/\\( ˙▿˙ )/</span>"
+          ]
+        }
+      ]
+    },
+    "Si vous voulez me contacter, voir mon travail ou en savoir plus sur moi :",
+    {
+      "ITEMS": [
+        "<a href=\"{{youtube}}\" target=\"_blank\" class=\"youtube\">Chaîne YouTube (en français) qui parle du Japon</a>",
+        "<a href=\"{{youtubeLolita}}\" target=\"_blank\" class=\"youtube\">Chaîne YouTube (en anglais) qui parle de la mode lolita</a>",
+        "<a href=\"{{instagram}}\" target=\"_blank\" class=\"instagram\">Compte Instagram</a>",
+        "<a href=\"{{facebook}}\" target=\"_blank\" class=\"facebook\">Page Facebook</a>"
+      ]
+    },
+    "Pour en savoir plus sur le projet, cliquez sur le menu et sélectionnez « à propos du projet ». Merci ! <span class=\"kaomoji\">( ´ ∀ `)ノ～ ♡</span>"
+  ],
+  "ABOUT_PROJECT": [
+    "Ce projet est né en février 2021.<br>Malheureusement j’étais sans emploi à ce moment, je passais mon temps sur les sites lolita, à essayer de gérer ma closet (garde-robe) et ma wishlist (liste de souhaits) en utilisant des images sur mon ordinateur ou des albums Facebook. Je galérais vraiment ! Mon copain m’a demandé si je voulais qu’il fasse une application pour moi…!<br>Je pensais que c’était une blague mais...nous y voilà !",
+    {
+      "DISCLAIMER": "Avertissement",
+      "CHILDREN": [
+        "Nous sommes parfaitement au courant que d’autres applications et d’autres sites internet existent pour faire cela, si vous préférez les utilisez, pas de problème ! <span class=\"kaomoji\">(⌒ω⌒)</span> En revanche, à cet instant ils ne correspondaient pas à mes besoins.<br><br>Quelques exemples aléatoires :",
+        {
+          "ITEMS": [
+            "On ne peut pas ajouter un item d’une couleur à son closet avec le même item d’une autre couleur à sa wishlist",
+            "On ne peut pas voir la couleur choisie dans son closet, seulement la couleur « par défaut » est montrée",
+            "On ne peut pas trier ou filtrer les éléments déjà présents dans sa wishlist ou dans sa closet",
+            "On ne peut pas avoir une idée de la somme d’argent que représente la totalité des items dans son closet ou sa wishlist",
+            "On ne peut pas créer de coordination ou on peut mais ce n’est pas fait pour les lolita donc c’est désordonné",
+            "On ne peut pas avoir d’indice visuel si un item est déjà présent dans notre wishlist ou closet",
+            "On ne peut pas filtrer ou rechercher par style (ce qui peut être utile si on recherche seulement des items gothic par exemple)",
+            "Certains types d’items ne sont pas pris en compte (perruques, peluches…)",
+            "Certaines marques ne sont pas prises en compte (marques indépendantes, marques TaoBao…)",
+            "On ne peut pas forcément voir ou afficher les mesures d’un item",
+            "On ne peut pas ajouter ou pas facilement ajouter ses propres items quand ils ne sont pas référencés dans l’application",
+            "Certaines applications de mode mode sont biens mais ne sont pas faites pour les lolita...des caractéristiques sont donc manquantes"
+          ]
+        },
+        "Peut-être que vous trouverez d’autres problèmes.<br><span class=\"kaomoji\">┐(￣ヘ￣)┌</span>"
+      ]
+    },
+    "Bien évidemment, nous admirons le travail des applications et sites web déjà existants, ils font un travail incroyable et sont une source d’inspiration pour nous tous.<br>Nous voulions juste faire les choses de notre propre manière.<br>Bien sûr, nous ne prétendons pas faire mieux mais nous essayons de faire au mieux pour corriger les problèmes et pour bâtir quelque chose qui correspond aux besoins d’un grand nombre de personnes.<br>Pour améliorer encore plus notre travail, nous sommes ouverts aux suggestions.<br>Pour des raisons techniques on ne peut pas tout mettre en place, mais nous faisons de notre mieux !<span class=\"kaomoji\">(°▽°)/</span>",
+    "Avec My Everyday Lolita (MEL pour faire court) vous pouvez faire principalement trois choses:",
+    {
+      "ITEMS": [
+        "<b>Organiser votre closet (garde-robe)</b><br>Vous pouvez ajouter des items à votre closet en les recherchant via le menu Recherche ou ajouter vos propres items s' ils n’ont pas encore été créés. Vous pouvez filtrer par catégories ces items si vous voulez ne voir que les robes, que les accessoires etc.<br><b>En bref :</b> ‘Ma closet’ est l’endroit parfait pour avoir un aperçu de votre véritable garde-robe peu importe où vous vous trouvez !",
+        "<b>Organiser votre wishlist (liste de souhaits)</b><br>Comme dans « My Closet », dans « My Wishlist » vous pouvez ajouter des items que vous aimeriez avoir, en utilisant le menu Recherche, vous pouvez alors partagez votre wishlist avec des gens (comme ça il sauront quoi vous offrir <br><span class=\"kaomoji\">(￢‿￢ )</span>)<br>Vous pouvez simultanément avoir un item d’une couleur dans votre closet et en même temps d’une autre couleur dans votre wishlist. Vous pouvez aussi filtrer votre wishlist pour afficher différents items comme les marques, les catégories…<br><b>En bref :</b>Ma wishlist est le menu où vous pouvez ajouter tout item dont vous avez toujours rêvé !",
+        "<b>Créer des coordinations</b><br>La « coordi checklist » (liste de contrôle de coordination) est un outil très utile pour les lolitas. Si vous avec un événement approchant (une tea party avec des amis ? Ou vous voulez juste sortir et être sûre d’avoir l’air fantastique ?), vous pouvez créer une nouvelle coordination, la nommer, entrer n’importe quelle information utile. En gros faites ce que vous voulez. L’intérêt de cet outil est d’éviter d’oublier un item comme chaque catégorie représente un « item à porter ou à apporter ». Vous n’avez pas à remplir toutes les catégories bien sûr. Vous pouvez aussi utiliser cet outil pour savoir quoi acheter à l’avenir. Puis, vous pouvez partager une coordination pour demander à vos amis ce qu’ils en pensent. Soyez libres de faire des erreurs sans avoir peur de mettre le désordre dans votre placard !<br><b>En bref :</b> Vous pouvez anticiper votre vie de lolita avec la Coord Checklist et faire des progrès !"
+      ]
+    },
+    "Que vous soyez une lolita débutante ou expérimentée, j’espère que ce sera utile !",
+    "Regardez la première vidéo que j’ai fait sur l’application pour tout expliquer:<br>=> Link to YouTube Video",
+    "C’est un projet open source, totalement gratuit ! Disponible sur Android et iOS.<br>Le serveur nous coûte des frais tous les mois, nous voulons passer le mot aussi largement que possible, mais plus d’utilisateurs nous avons, plus coûteux devient le projet.",
+    "Si vous pouvez nous soutenir et que vous voulez le faire, vous pouvez aller sur notre Patreon ici: <a href=\"{{patreon}}\" target=\"_blank\">Patreon</a>"
+  ]
 }
