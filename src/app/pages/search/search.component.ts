@@ -1,5 +1,5 @@
 import { trigger, transition, style, animate } from '@angular/animations';
-import { BreakpointObserver } from '@angular/cdk/layout';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Component, HostBinding, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PaginationInstance } from 'ngx-pagination';
@@ -38,6 +38,7 @@ export class SearchComponent implements OnInit, OnDestroy {
 
   results: Item[] = [];
   recentlyAddedItems: Item[] = [];
+  displayedRecentlyAddedItems: Item[] = [];
   signedIn = false;
   displayLoader = false;
   loading = false;
@@ -75,8 +76,14 @@ export class SearchComponent implements OnInit, OnDestroy {
     this.userSignInService.signedIn$.pipe(takeUntil(this.unsubscriber)).subscribe(signedIn => {
       this.signedIn = signedIn;
     });
-    this.itemsService.recentlyAdded().subscribe(response => {
-      this.recentlyAddedItems = response || [];
+    this.itemsService.recentlyAdded().subscribe({
+      next: response => {
+        this.recentlyAddedItems = response || [];
+        const isHandset = this.breakpointObserver.isMatched(Breakpoints.Handset);
+        const isTablet = this.breakpointObserver.isMatched(Breakpoints.Tablet);
+        const length = isHandset ? 4 : isTablet ? 12 : 20;
+        this.displayedRecentlyAddedItems = this.recentlyAddedItems.slice(0, length);
+      }
     });
     this.breakpointObserver.observe(this.breakpoints).pipe(takeUntil(this.unsubscriber)).subscribe({
       next: result => {
@@ -90,6 +97,11 @@ export class SearchComponent implements OnInit, OnDestroy {
           this.paginationConfig.itemsPerPage = itemsPerPage;
           this.router.navigate([], { queryParams: { ...this.activatedRoute.snapshot.queryParams, page: 1 }, replaceUrl: true });
         }
+        // recently added items
+        const isHandset = this.breakpointObserver.isMatched(Breakpoints.Handset);
+        const isTablet = this.breakpointObserver.isMatched(Breakpoints.Tablet);
+        const length = isHandset ? 4 : isTablet ? 12 : 20;
+        this.displayedRecentlyAddedItems = this.recentlyAddedItems.slice(0, length);
       }
     });
   }
